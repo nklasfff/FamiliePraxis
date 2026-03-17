@@ -482,122 +482,122 @@ var SAMMENHAENGE = [
 var TEMA_INDHOLD = [
   {
     id: 'kommunikation',
-    titel: 'Kommunikation i familien',
+    titel: 'Når ordene ikke rækker',
     ikon: '💬',
     privat: {
-      intro: 'Måden I taler sammen på former hele familiens atmosfære.',
-      tekst: 'God kommunikation handler ikke om altid at sige det rigtige. Det handler om at lytte med ægte nysgerrighed, at turde være ærlig og at kunne sige undskyld, når det er nødvendigt. I familier, der kommunikerer godt, er der plads til uenighed — uden at nogen bliver gjort forkert.',
+      intro: 'I familier med svære erfaringer er kommunikation sjældent bare ord. Det er tonefald, tavshed, blikke og kroppe, der taler.',
+      tekst: 'Mange familier har lært at overleve ved ikke at tale om det svære. Tavsheden beskytter — men den isolerer også. At lære at kommunikere handler ikke om at finde de rigtige ord, men om at turde vise, hvad der ligger bag ordene. I familier med traumatiske spor er kroppen ofte hurtigere end munden: irritation, tilbagetrækning eller udbrud fortæller mere end selve ordene.',
       cirkler: ['centrum', 'relationer', 'familie']
     },
     professionel: {
-      intro: 'Kommunikationsmønstre er en af de vigtigste indikatorer for familiens funktion.',
-      tekst: 'Strukturerede kommunikationsøvelser — som gensidig lytning, jeg-budskaber og parafrasering — kan implementeres i familiebehandlingen. Videoanalyse af familiens kommunikation er et kraftfuldt redskab til at synliggøre mønstre.',
-      cirkler: ['centrum', 'familie', 'parterapi']
+      intro: 'I udsatte familier er kommunikationsmønstre ofte præget af overlevelsesstrategier: tavshed, eskalering eller undvigelse.',
+      tekst: 'Narrativ tilgang til kommunikation fokuserer på at give familien et nyt sprog for deres oplevelser. Ved at eksternalisere — "hvornår sniger tavsheden sig ind mellem jer?" — åbnes der for samtale uden skyld. I familier med traumehistorie er nonverbal kommunikation ofte vigtigere end den verbale: kroppens reaktioner, ansigtsudtryk og nervesystemets tilstand giver afgørende information.',
+      cirkler: ['centrum', 'familie', 'aandedraet']
     }
   },
   {
     id: 'skilsmisse',
-    titel: 'Skilsmisse & brud',
+    titel: 'Brud, tab & nye familieformer',
     ikon: '💔',
     privat: {
-      intro: 'En skilsmisse er en af livets største omvæltninger — for alle i familien.',
-      tekst: 'At gå fra hinanden behøver ikke at betyde, at familien går i stykker. Med den rette støtte kan I finde en ny form for familie, hvor børnene stadig mærker kærlighed og tryghed fra begge forældre. Det kræver mod, men det er muligt.',
+      intro: 'Når en familie splitter, mister alle noget — og børnene har brug for at vide, at de ikke er skyld i det.',
+      tekst: 'Skilsmisse, anbringelse eller tab af en forælder er blandt de mest omvæltende oplevelser for et barn. I udsatte familier kompliceres bruddet ofte af allerede eksisterende belastninger: konflikter, misbrug, psykisk sygdom eller myndighedsindgreb. Det vigtigste er, at børnene ikke fanges i midten. De har brug for at vide, at begge forældre stadig er deres forældre — uanset hvad der er sket mellem de voksne.',
       cirkler: ['parterapi', 'boern', 'familie']
     },
     professionel: {
-      intro: 'Skilsmisseforløb kræver en særlig opmærksomhed på børneperspektivet og forældrealliancen.',
-      tekst: 'Forskning viser konsistent, at det ikke er skilsmissen i sig selv, men den interparentale konflikt, der skader børnene. Facilitering af et konstruktivt co-parenting-samarbejde er derfor centralt. Konflikttrappen og forskellige samværsmodeller bør indgå i den faglige vurdering.',
+      intro: 'I udsatte familier er brud sjældent simple skilsmisser — de involverer ofte anbringelser, myndighedsafgørelser og komplekse loyalitetskonflikter.',
+      tekst: 'Co-parenting efter brud i traumatiserede familier kræver særlig opmærksomhed. Når konflikten mellem forældrene er drevet af ubearbejdede traumer, er klassisk mægling sjældent nok. Nervesystemet skal reguleres, før samarbejde er muligt. Ved anbringelser er §75-støtte til forældrene afgørende for at bevare og udvikle relationen til barnet.',
       cirkler: ['parterapi', 'boern', 'familie']
     }
   },
   {
     id: 'graenser',
-    titel: 'Grænser & behov',
+    titel: 'Grænser i kaos',
     ikon: '🛡️',
     privat: {
-      intro: 'At sætte grænser er en kærlighedshandling — over for dig selv og andre.',
-      tekst: 'Mange af os har lært, at det er egoistisk at have grænser. Men uden grænser brænder vi ud, bliver bitre eller trækker os helt fra relationen. Sunde grænser er fleksible, tydelige og kærlige. De beskytter det vigtigste: din evne til at være til stede for dem, du elsker.',
-      cirkler: ['individuel', 'relationer', 'centrum']
+      intro: 'I familier under pres kan grænser enten være for stive eller helt fraværende. Begge dele gør ondt.',
+      tekst: 'Mange forældre i udsatte familier kæmper med at sætte grænser — fordi de selv voksede op uden tydelige grænser, eller fordi de selv oplevede grænser som straf. Sunde grænser er ikke mure — de er vejledning. De siger: "Jeg er her, jeg holder, og jeg slipper dig ikke." For børn i kaos er tydelige, varme grænser det mest tryghedsskabende, der findes.',
+      cirkler: ['individuel', 'boern', 'centrum']
     },
     professionel: {
-      intro: 'Grænser i familiesystemer er et centralt begreb i strukturel familieterapi.',
-      tekst: 'Minuchins begreb om grænser — rigide, diffuse eller klare — giver et præcist sprog for familiens organisation. Intervention rettes mod at etablere klare, fleksible grænser mellem subsystemer: forældresubsystemet, søskendesubsystemet og individet.',
+      intro: 'Grænseproblematik i udsatte familier handler sjældent om viden — det handler om forældrenes egen grænseerfaring.',
+      tekst: 'Forældre, der selv har oplevet grænseoverskridelser, kan have svært ved at skelne mellem sunde grænser og kontrol. Arbejdet med grænser må derfor altid inkludere forældrenes egen historie. Narrativ tilgang gør det muligt at udforske: "Hvilke grænser havde du brug for som barn — og hvad fik du i stedet?" Denne forståelse transformerer grænsesætning fra pligt til omsorg.',
       cirkler: ['individuel', 'familie', 'centrum']
     }
   },
   {
     id: 'stress',
-    titel: 'Stress & overbelastning',
+    titel: 'Kronisk stress & overlevelse',
     ikon: '⚡',
     privat: {
-      intro: 'Stress er ikke kun et individuelt problem — det smitter i hele familien.',
-      tekst: 'Når en forælder er stresset, mærker børnene det. Når børnene reagerer, stiger forældrenes stress. Det kan blive en spiral, men den kan brydes. Det første skridt er at anerkende, at stress er et fælles problem, der kræver fælles løsninger.',
+      intro: 'Stress i udsatte familier er sjældent forbigående — det er en tilstand, kroppen har vænnet sig til at leve i.',
+      tekst: 'Når stress ikke er en forbigående reaktion, men en konstant tilstand, ændrer det hele familiens nervesystem. Forældrene er udmattede, børnene er på vagt, og selv små ting kan udløse store reaktioner. Det første skridt er at anerkende, at jeres stress ikke er svaghed — det er en normal reaktion på unormale vilkår. Og at kroppens vej ud af kronisk stress går gennem regulering, ikke viljestyrke.',
       cirkler: ['centrum', 'aandedraet', 'individuel']
     },
     professionel: {
-      intro: 'Familiens stressregulering er et systemisk fænomen med individuelle og relationelle komponenter.',
-      tekst: 'Det dobbelte ABCX-model beskriver, hvordan familier håndterer stress: stressoren (A), familiens ressourcer (B), familiens perception (C) og det samlede resultat (X). Intervention kan rettes mod alle fire komponenter.',
+      intro: 'Kronisk stress i udsatte familier er ofte sammenflettet med trauma, fattigdom og systemisk belastning.',
+      tekst: 'ACE-forskningen (Adverse Childhood Experiences) dokumenterer, at ophobning af belastende barndomsoplevelser har kumulativ effekt på sundhed og funktion. I udsatte familier ser vi ofte, at både forældre og børn scorer højt. Polyvagal forståelse er central: kronisk stress fastholder nervesystemet i sympatisk aktivering, hvilket reducerer mentaliseringsevnen og øger reaktiviteten. Kropslig regulering er derfor en forudsætning for, at samtalebaseret intervention kan virke.',
       cirkler: ['centrum', 'aandedraet', 'individuel']
     }
   },
   {
     id: 'tab',
-    titel: 'Sorg & tab',
+    titel: 'Sorg, tab & anbringelse',
     ikon: '🕊️',
     privat: {
-      intro: 'Sorg er kærlighedens pris. At sørge sammen som familie kan styrke jeres bånd.',
-      tekst: 'Tab kan have mange former: dødsfald, skilsmisse, sygdom, tab af drømme. Familier sørger på forskellige måder og i forskellige tempi, og det kan skabe misforståelser. I terapien lærer I at give plads til alles sorg — uden at sammenligne eller rangordne.',
-      cirkler: ['familie', 'relationer', 'individuel']
+      intro: 'Tab i udsatte familier har mange ansigter — og sorgen over det, man aldrig fik, kan være lige så tung som sorgen over det, man mistede.',
+      tekst: 'Tab handler ikke kun om dødsfald. Det handler om den barndom, du ikke fik. Det handler om det parforhold, der gik i stykker. Det handler om det barn, der blev anbragt. Sorg i familier med traumatiske erfaringer er ofte kompliceret, fordi den blander sig med skyld, skam og vrede. At give plads til sorgen — uden at dømme den — er begyndelsen på heling.',
+      cirkler: ['familie', 'individuel', 'boern']
     },
     professionel: {
-      intro: 'Familier i sorg kræver en tilgang, der rummer systemets samlede tabsoplevelse.',
-      tekst: 'Worden\'s fire sorgsopgaver og Stroebe & Schuts dobbeltproces-model giver nyttige rammer for at forstå familiers sorgprocesser. Kulturelle og spirituelle faktorer spiller en væsentlig rolle og bør altid afdækkes.',
-      cirkler: ['familie', 'relationer', 'individuel']
+      intro: 'Sorg i udsatte familier er ofte kompliceret af skam, skyld og systemisk involvering — særligt ved anbringelser.',
+      tekst: 'Forældres sorg over anbragte børn er en af de mest undervurderede kliniske udfordringer. Sorgen er ambivalent: blandet med lettelse, skam, vrede mod systemet og selvbebrejdelse. Uden bearbejdning af denne sorg svækkes forældrenes mulighed for at genopbygge relationen til barnet. §75-støtte bør altid inkludere en sorgdimension.',
+      cirkler: ['familie', 'individuel', 'boern']
     }
   },
   {
     id: 'unge',
-    titel: 'Unge & identitet',
+    titel: 'Unge i udsatte familier',
     ikon: '🌟',
     privat: {
-      intro: 'Ungdomsårene er en tid med vild forandring — for den unge og for hele familien.',
-      tekst: 'Når dit barn bliver teenager, ændrer jeres relation sig fundamentalt. Den unge har brug for at løsrive sig — og samtidig vide, at I er der. Det kan føles som en afvisning, men det er sundt. Kunst er at give slip uden at slippe.',
-      cirkler: ['boern', 'familie', 'relationer']
+      intro: 'Unge, der vokser op i familier med traumatiske spor, bærer ofte på mere, end nogen ser — og deres oprør rummer ofte en bøn om hjælp.',
+      tekst: 'Teenageårene er svære for alle familier — men for unge i udsatte familier er det ekstra intenst. De kæmper med at løsrive sig fra forældre, de måske både elsker og frygter. De kan overtage forældrenes mønstre eller gøre oprør mod dem. Nogle unge reagerer udadtil med vrede og grænseoverskridelser. Andre trækker sig indad med angst, selvskade eller isolation. Begge dele er meningsfuld kommunikation.',
+      cirkler: ['boern', 'familie', 'individuel']
     },
     professionel: {
-      intro: 'Adolescensens udviklingsopgaver stiller særlige krav til familiebehandlingen.',
-      tekst: 'Individuation-separationsprocessen (Blos) og identitetsudvikling (Erikson) er centrale rammer. Familien skal navigere den paradoksale opgave at understøtte autonomi og samtidig opretholde tilknytning. Ungdomsårene afslører ofte latente familiedynamikker.',
-      cirkler: ['boern', 'familie', 'relationer']
+      intro: 'Unge fra udsatte familier viser ofte symptomer, der afspejler familiens ubearbejdede traumer — løsrivelsen aktiverer hele systemets tilknytningssår.',
+      tekst: 'Ungdomsårene er en kritisk periode, hvor familiemønstre ofte intensiveres. Den unges behov for autonomi udfordrer forældre, hvis eget tilknytningsmønster er utrygt — de kan opleve løsrivelsen som svigt. Omvendt kan unge med desorganiseret tilknytning have svært ved at balancere frihed og forbindelse. Arbejdet kræver både individuel kontakt med den unge og systemisk intervention i familien.',
+      cirkler: ['boern', 'familie', 'individuel']
     }
   },
   {
     id: 'selvvaerd',
-    titel: 'Selvværd & selvmedfølelse',
+    titel: 'Skam, skyld & selvværd',
     ikon: '✨',
     privat: {
-      intro: 'Dit selvværd er ikke noget, du har eller ikke har. Det er noget, du kan dyrke.',
-      tekst: 'Mange kæmper med en indre kritiker, der aldrig er tilfreds. Selvmedfølelse — at behandle dig selv med samme venlighed, som du ville give en god ven — er en af de mest transformerende praksisser, der findes. Det starter med at lægge mærke til, hvordan du taler til dig selv.',
+      intro: 'Mange forældre i udsatte familier bærer på en dyb skam — over deres egen historie, over deres forældreskab, over at have brug for hjælp.',
+      tekst: 'Skam er en af de mest destruktive følelser, fordi den siger: "Der er noget galt med MIG." Skyld siger: "Jeg gjorde noget forkert." Skam siger: "JEG er forkert." I familier med traumatiske erfaringer lever skammen ofte i generationer. At turde se den — og langsomt erstatte den med medfølelse for sig selv — er en af de vigtigste transformationer i terapien.',
       cirkler: ['individuel', 'relationer', 'aandedraet']
     },
     professionel: {
-      intro: 'Selvværd og selvmedfølelse er forskningsbaserede fokusområder med dokumenteret terapeutisk effekt.',
-      tekst: 'Kristin Neffs og Christopher Germers arbejde med Mindful Self-Compassion (MSC) giver evidensbaserede interventioner for lavt selvværd. Integration af selvmedfølelsesøvelser i terapien styrker klientens evne til at tolerere svære følelser og reducerer skam.',
+      intro: 'Skam er en central affekt i arbejdet med udsatte familier og en væsentlig barriere for forandring.',
+      tekst: 'Skam-baseret selvforståelse blokerer mentalisering: en forælder, der er oversvømmet af skam, kan ikke være nysgerrig på barnets indre verden. Narrativ tilgang er særligt effektiv, fordi den adskiller identitet fra handling. Når forælderen kan se sin historie som kontekst — "du gjorde det bedste, du kunne med det, du havde" — reduceres skammen, og handlekraften vokser.',
       cirkler: ['individuel', 'relationer', 'aandedraet']
     }
   },
   {
     id: 'traumer',
-    titel: 'Traumer & heling',
+    titel: 'Familietraumer & heling',
     ikon: '🌿',
     privat: {
-      intro: 'Et traume er ikke det, der skete med dig. Det er det, der skete inde i dig som følge af det, der skete.',
-      tekst: 'Traumer kan stamme fra store begivenheder, men også fra gentagne små krænkelser i relationer. Heling handler ikke om at glemme, men om at integrere oplevelsen, så den ikke længere styrer dit liv og dine relationer. Det er muligt at heles — i dit eget tempo.',
-      cirkler: ['individuel', 'aandedraet', 'relationer']
+      intro: 'Et familietraume er ikke bare det, der skete — det er det, der skete inde i hele familien som følge af det, der skete.',
+      tekst: 'Traumer i familier spreder sig som ringe i vand. En forælder, der bærer på ubearbejdede traumer, kan ubevidst give dem videre til sine børn — ikke af ond vilje, men fordi nervesystemet husker det, sindet har forsøgt at glemme. Heling handler ikke om at glemme, men om at integrere: at finde en plads til det, der skete, så det ikke længere styrer familiens samspil. Det kræver tid, tryghed og professionel hjælp.',
+      cirkler: ['centrum', 'individuel', 'aandedraet']
     },
     professionel: {
-      intro: 'Traumebehandling i en familieterapeutisk kontekst holder fokus på traumets relationelle dimensioner.',
-      tekst: 'Relationelle traumer kræver relationel heling. Judith Hermans faseopdelte model (sikkerhed, bearbejdning, integration) forbliver den kliniske standard. Integration af somatiske tilgange (SE, sensorimotor psykoterapi) er indiceret ved kompleks PTSD.',
-      cirkler: ['individuel', 'aandedraet', 'relationer']
+      intro: 'Familietraumer kræver en integreret tilgang, der adresserer både individuelle og systemiske dimensioner af traumet.',
+      tekst: 'Intergenerationelle traumer videreføres gennem tre kanaler: tilknytningsmønstre (relationel transmission), kropslig regulering (somatisk transmission) og familiefortællinger (narrativ transmission). Effektiv behandling adresserer alle tre. Judith Hermans faseopdelte model — sikkerhed, bearbejdning, integration — gælder også på familieniveau. Somatiske tilgange og åndedrætsterapi er centrale supplement til den narrative familiebehandling.',
+      cirkler: ['centrum', 'individuel', 'aandedraet']
     }
   }
 ];
@@ -607,141 +607,146 @@ var TEMA_INDHOLD = [
 // ============================================================
 var OEVELSER = [
   {
-    id: 'pusterummet',
-    titel: 'Pusterummet',
-    tid: '3 min',
-    sted: 'Hvor som helst',
-    intro: 'En enkel øvelse der bringer dig tilbage til nuet gennem tre bevidste vejrtrækninger.',
-    trin: [
-      'Find en behagelig position — siddende, stående eller liggende.',
-      'Luk øjnene eller lad blikket hvile blødt på et punkt foran dig.',
-      'Tag en dyb indånding gennem næsen. Tæl langsomt til 4.',
-      'Hold vejret et øjeblik. Mærk stilheden.',
-      'Ånd langsomt ud gennem munden. Tæl til 6. Lad udåndingen være længere end indåndingen.',
-      'Gentag tre gange. Mærk, hvad der ændrer sig i din krop.',
-      'Åbn øjnene. Tag den ro med dig videre.'
-    ],
-    cirkel: 'aandedraet'
-  },
-  {
-    id: 'tryg-havn',
-    titel: 'Den trygge havn',
-    tid: '10 min',
-    sted: 'Et roligt sted',
-    intro: 'En visualiseringsøvelse der hjælper dig med at finde din indre tryghed — et sted du altid kan vende tilbage til.',
-    trin: [
-      'Sæt dig behageligt og luk øjnene.',
-      'Tag et par dybe vejrtrækninger og lad kroppen falde til ro.',
-      'Forestil dig et sted, hvor du føler dig helt tryg. Det kan være virkeligt eller opdigtet.',
-      'Se stedet for dig i detaljer: farver, lys, former.',
-      'Mærk stedet med alle sanser: hvad kan du høre? Lugte? Mærke mod huden?',
-      'Læg mærke til den følelse af ro og tryghed, der fylder dig.',
-      'Giv stedet et navn eller et billede, du nemt kan finde tilbage til.',
-      'Bliv her så længe, du har brug for det.',
-      'Når du er klar, vend langsomt tilbage. Mærk fødderne mod gulvet.'
-    ],
-    cirkel: 'individuel'
-  },
-  {
-    id: 'familiecirklen',
-    titel: 'Familiecirklen',
-    tid: '15 min',
-    sted: 'Hjemme med familien',
-    intro: 'En øvelse I kan lave som familie, der styrker forbindelsen og giver alle en stemme.',
-    trin: [
-      'Sæt jer i en cirkel — på gulvet, sofaen eller ved bordet.',
-      'En voksen starter med at sige én ting, de er taknemmelige for i dag.',
-      'Send ordet videre til den næste i cirklen. Alle bidrager.',
-      'Anden runde: Sig én ting, der var svær i dag. Ingen kommentarer — bare lytning.',
-      'Tredje runde: Sig én ting, du ønsker for i morgen.',
-      'Afslut med at holde i hånd eller give hinanden et kram.',
-      'Tip: Gør det til en ugentlig tradition — f.eks. søndag aften.'
-    ],
-    cirkel: 'familie'
-  },
-  {
-    id: 'parmoede',
-    titel: 'Parforholdscheck-in',
-    tid: '20 min',
-    sted: 'Et roligt sted uden afbrydelser',
-    intro: 'En struktureret samtale mellem jer to, der åbner op for det, der fylder — uden at det bliver til en diskussion.',
-    trin: [
-      'Sæt jer over for hinanden. Sluk telefoner og fjern distraktioner.',
-      'Partner A taler i 5 minutter om, hvad der fylder lige nu. Partner B lytter — uden at svare eller kommentere.',
-      'Partner B parafraserer kort: "Jeg hører dig sige, at..."',
-      'Partner A bekræfter eller korrigerer.',
-      'Byt roller. Partner B taler, Partner A lytter.',
-      'Afslut med at dele én ting, I sætter pris på ved hinanden.',
-      'Kram hinanden. Det behøver ikke være mere kompliceret end det.'
-    ],
-    cirkel: 'parterapi'
-  },
-  {
-    id: 'grounding',
-    titel: '5-4-3-2-1 Grounding',
+    id: 'vagus-aanding',
+    titel: 'Vagus-åndedræt for forældre i pres',
     tid: '5 min',
-    sted: 'Hvor som helst',
-    intro: 'En sanselig øvelse der bringer dig tilbage til her-og-nu, når tankerne kører i ring.',
+    sted: 'Hvor som helst — også midt i kaos',
+    intro: 'Denne øvelse aktiverer din vagusnerve og skifter dit nervesystem fra alarm til ro. Den er designet til dig som forælder, der lever med konstant pres — fra kommunen, fra børnenes behov, fra din egen historie. Når du regulerer dig selv, kan du regulere dit barn. Det er ikke selvforkælelse — det er det vigtigste forældreredskab, du har.',
     trin: [
-      'Tag tre dybe vejrtrækninger.',
-      'Nævn 5 ting, du kan SE. Vær specifik — farver, former, detaljer.',
-      'Nævn 4 ting, du kan MÆRKE. Stolen under dig, luften på huden...',
-      'Nævn 3 ting, du kan HØRE. Lytte efter de stille lyde.',
-      'Nævn 2 ting, du kan LUGTE. Eller gå hen og lug til noget.',
-      'Nævn 1 ting, du kan SMAGE.',
-      'Tag en afsluttende dyb vejrtrækning. Mærk, at du er her.'
+      'Stop hvad du laver. Du behøver ikke gå væk — du kan gøre dette stående ved køkkenbordet, på toilettet, eller i bilen.',
+      'Læg én hånd på brystet og én på maven. Mærk hvilken hånd der bevæger sig mest. Hos de fleste stressede forældre er det brysthånden — det betyder, at dit nervesystem er i alarmberedskab.',
+      'Ånd ind gennem næsen i 4 sekunder. Forestil dig, at du trækker vejret helt ned til den hånd, der ligger på maven.',
+      'Hold vejret i 4 sekunder. Ikke anstrengt — bare en blid pause.',
+      'Ånd ud gennem munden i 8 sekunder — dobbelt så lang udånding. Det er HER vagusnerven aktiveres. Den lange udånding fortæller dit nervesystem: "Der er ingen fare lige nu."',
+      'Gentag 4 gange. Ved tredje gentagelse vil de fleste mærke en ændring: skuldrene falder, kæben løsner, maven begynder at bevæge sig.',
+      'Mærk forskellen. Dit barn kan mærke den også — børn aflæser dit nervesystem hurtigere end dine ord.',
+      'Brug denne øvelse FØR du reagerer på dit barns adfærd. Ikke efter. De 20 sekunder, det tager, kan ændre hele situationen.'
     ],
     cirkel: 'aandedraet'
   },
   {
-    id: 'boernetegning',
-    titel: 'Tegn din familie',
-    tid: '15 min',
-    sted: 'Ved et bord med papir og farver',
-    intro: 'En øvelse for børn (og voksne!), der åbner for samtale om familiens relationer.',
+    id: 'co-regulering',
+    titel: 'Co-regulering: Lån dit barn din ro',
+    tid: '10 min',
+    sted: 'Hjemme — når dit barn er uroligt eller ude af sig selv',
+    intro: 'Børn i udsatte familier har ofte et nervesystem, der er i konstant alarmberedskab. De kan ikke regulere sig selv — de har brug for at låne DIT nervesystem. Denne øvelse bygger på polyvagal teori og Circle of Security: du bliver den trygge havn, dit barn kan lande i. Det kræver ikke, at du siger de rigtige ord. Det kræver, at din krop er rolig.',
     trin: [
-      'Giv barnet papir og farver.',
-      'Bed barnet tegne familien — "Tegn alle dem, der hører til din familie."',
-      'Lad barnet tegne i fred. Ingen rettelser eller forslag.',
-      'Når tegningen er færdig, spørg nysgerrigt: "Fortæl mig om din tegning."',
-      'Lyt til, hvem barnet har tegnet, hvem der står sammen, hvem der er stor/lille.',
-      'Spørg: "Hvad laver I på tegningen? Er I glade? Hvorfor?"',
-      'Hæng tegningen op et sted, barnet selv vælger.'
+      'Når dit barn er uroligt, overtaget af følelser eller i udbrud: STOP. Tag tre dybe vagus-vejrtrækninger (lang udånding) FØR du gør noget.',
+      'Sæt dig ned, så du er i barnets øjenhøjde. Ikke over barnet — ved siden af eller foran. Dit nervesystem skal signalere: "Jeg er her. Jeg er rolig. Du er ikke alene."',
+      'Tal med lav, langsom stemme. Ikke hvad du siger, men HVORDAN du siger det, regulerer barnet. Prøv: "Jeg kan se, det er rigtig svært lige nu. Jeg bliver her."',
+      'Hvis barnet tillader det: læg en hånd på ryggen eller skulderen. Langsom, rytmisk berøring aktiverer barnets vagusnerve. Ikke klap — bare roligt, stabilt tryk.',
+      'Ånd bevidst langsomt, så barnet kan høre din vejrtrækning. Børn synkroniserer automatisk til en voksens åndedræt, når den voksne er reguleret.',
+      'Forsøg IKKE at tale barnet ud af følelsen. Sig ikke "det er ikke noget at være ked af" eller "stop nu." Følelsen er reel. Din opgave er at rumme den — ikke fjerne den.',
+      'Bliv i det. Også når det er ubehageligt. Mange forældre har selv lært, at stærke følelser er farlige. Men når du bliver i det med dit barn, lærer I begge noget nyt: at følelser kan holdes og gå over.',
+      'Når stormen har lagt sig, kan I tale om det. Ikke før. Mentalisering — evnen til at forstå hvad der skete indeni — kræver, at nervesystemet er roligt først.'
     ],
     cirkel: 'boern'
   },
   {
-    id: 'kropsscanning',
-    titel: 'Kropsscanning',
-    tid: '10 min',
-    sted: 'Liggende eller siddende',
-    intro: 'En blid rejse gennem kroppen, der hjælper dig med at mærke, hvad du bærer på — og slippe det.',
+    id: 'narrativ-livslinje',
+    titel: 'Din families fortælling — narrativ livslinje',
+    tid: '20 min',
+    sted: 'Et roligt sted med papir og pen',
+    intro: 'I narrativ terapi arbejder vi med den historie, du fortæller om dit liv og din familie. Mange familier i krise bærer på en "tynd historie" — en fortælling domineret af problemer, nederlag og skyld. Denne øvelse hjælper dig med at finde den "tykke historie": alle de øjeblikke, hvor du handlede med styrke, kærlighed eller mod — også selvom det ikke lykkedes perfekt. Din familie er mere end det sværeste, I har oplevet.',
     trin: [
-      'Læg dig ned eller sæt dig behageligt. Luk øjnene.',
-      'Begynd ved fødderne. Mærk kontakten med underlaget.',
-      'Flyt langsomt opmærksomheden op gennem benene. Mærk eventuelle spændinger.',
-      'Fortsæt til maven og brystet. Læg mærke til åndedrættet her.',
-      'Mærk skuldrene, nakken, kæben. Slip eventuelle spændinger med udåndingen.',
-      'Scan ansigtet: panden, øjnene, munden. Blødgør alt, hvad du kan.',
-      'Mærk hele kroppen som en helhed. Hvil her et øjeblik.',
-      'Åbn langsomt øjnene. Tak din krop for at bære dig.'
+      'Tag et stort stykke papir og tegn en vandret linje fra venstre til højre. Venstre er din fødsel, højre er nu.',
+      'Marker de store begivenheder i dit liv OVER linjen: fødsler, flytninger, møder, tab, brud, anbringelser, nye begyndelser. Bare korte ord eller symboler.',
+      'Nu det vigtige: marker UNDER linjen de øjeblikke, hvor du viste styrke — også den stille slags. Det kan være: "Jeg ringede til kommunen, selvom jeg var bange." "Jeg holdt mit barn, da alt andet var kaos." "Jeg sagde fra over for min partner."',
+      'Kig på de øjeblikke under linjen. Hvad fortæller de om dig? Hvad er det for værdier, der har båret dig — også når det var sværest?',
+      'Giv disse værdier navne. Måske er det "beskyttelse", "udholdenhed", "kærlighed trods alt", "mod til at bede om hjælp."',
+      'Vælg ét af disse øjeblikke og skriv 5-10 linjer om det. Ikke hvad der var svært — men hvad DU gjorde, og hvorfor det mattered.',
+      'Spørg dig selv: Hvis mit barn om 20 år læste dette, hvad ville de tænke om mig? Ofte er svaret en helt anden historie end den, du normalt fortæller om dig selv.',
+      'Du kan lave denne øvelse sammen med din partner, et familiemedlem, eller alene. Fortællingen er din — og du har ret til at fortælle den forfra.'
     ],
-    cirkel: 'aandedraet'
+    cirkel: 'individuel'
   },
   {
-    id: 'taknemmelighed',
-    titel: 'Taknemmeligheds­brev',
+    id: 'mentalisering-par',
+    titel: 'Mentalisering mellem forældre',
+    tid: '20 min',
+    sted: 'Hjemme — når børnene sover eller er væk',
+    intro: 'Mentalisering er evnen til at forestille sig, hvad der foregår INDE I den anden — ikke kun reagere på det, der sker UDENFOR. I familier under pres kollapser mentaliseringen ofte: I reagerer på hinandens adfærd uden at forstå, hvad der ligger bag. Denne øvelse er baseret på mentaliseringsbaseret terapi (MBT) og hjælper jer med at genopbygge den bro mellem jer, som stress har nedbrudt.',
+    trin: [
+      'Sæt jer over for hinanden. Ingen telefoner, ingen baggrundsstøj. I har brug for 20 uforstyrrede minutter.',
+      'Partner A: Beskriv en konkret situation fra den seneste uge, hvor du følte dig alene, frustreret eller overset. Vær specifik: "Da du gik ud af stuen, mens jeg talte om mødet med kommunen..."',
+      'Partner B: Din opgave er KUN at lytte. Ikke forsvare dig. Ikke forklare. Bare lytte med kroppen vendt mod din partner og øjenkontakt.',
+      'Partner B: Når A er færdig, sig: "Jeg tror, du følte... fordi..." — GÆT på, hvad din partner følte indeni. Du behøver ikke ramme rigtigt. Det vigtige er forsøget på at forstå.',
+      'Partner A: Bekræft eller juster. "Ja, det var lige præcis det" eller "Det var tæt på, men egentlig følte jeg mere..."',
+      'Byt roller. Partner B deler, Partner A lytter og mentaliserer.',
+      'Afslut med at svare hinanden på dette spørgsmål: "Hvad gør mig mest sårbar lige nu — og hvad har jeg allermest brug for fra dig?"',
+      'Det er normalt, at denne øvelse føles akavet eller svær de første gange. Mange forældre i pressede familier har aldrig selv oplevet at blive lyttet til på denne måde. I øver jer — og det er nok.'
+    ],
+    cirkel: 'parterapi'
+  },
+  {
+    id: 'familiekort',
+    titel: 'Familielandkortet — hvem står hvor?',
+    tid: '15 min',
+    sted: 'Hjemme med familien — alle der har lyst deltager',
+    intro: 'I systemisk familieterapi arbejder vi med at synliggøre de usynlige mønstre i familien: hvem er tæt på hvem, hvem føler sig udenfor, hvem bærer mest. Denne øvelse gør det abstrakte konkret — og giver ofte overraskende indsigter. Børn er ofte exceptionelt præcise i deres familielandkort, fordi de mærker dynamikkerne direkte i kroppen.',
+    trin: [
+      'Find figurer — det kan være legetøjsdyr, kopper, sko, sten eller tegn cirkler på et stort papir. Hver figur repræsenterer et familiemedlem.',
+      'Én person starter: Placer figurerne, som du oplever familien lige nu. Hvem er tæt på hvem? Hvem er langt fra hinanden? Hvem vender ryggen til? Hvem holder om nogen?',
+      'De andre kigger på opstillingen i stilhed. Ingen rettelser endnu.',
+      'Spørg den, der har opstillet: "Fortæl os, hvad du ser. Hvorfor står de sådan?" Lyt til historien bag placeringerne.',
+      'Nu laver næste familiemedlem sin egen opstilling — med de samme figurer. Læg mærke til forskelle og ligheder.',
+      'Hvis børn deltager: Tag deres opstilling lige så alvorligt som de voksnes. Ofte afslører børns kort ting, som voksne ikke vil sige højt — f.eks. at et barn har placeret sig selv mellem to forældre som "buffer."',
+      'Afslut med at lave én fælles opstilling: "Sådan kunne vi godt tænke os, at det var." Det er ikke en plan — det er en retning.',
+      'Denne øvelse kan afsløre parentificering (et barn der bærer forældreansvar), usynlige alliancer, eller isolation. Det er ikke farligt at se det — det er begyndelsen på forandring.'
+    ],
+    cirkel: 'familie'
+  },
+  {
+    id: 'tryghedscirkel-barn',
+    titel: 'Tryghedscirklen — øvelse for forælder og barn',
+    tid: '15 min',
+    sted: 'Et trygt, roligt sted — gulvet er ofte bedst',
+    intro: 'Denne øvelse er inspireret af Circle of Security — tryghedscirklen — som Rikke arbejder med i sit terapeutiske arbejde. Alle børn har brug for to ting: en tryg base at gå ud fra (udforske verden) og en tryg havn at vende tilbage til (når verden bliver for meget). I udsatte familier er denne cirkel ofte brudt — barnet ved ikke, om havnen er der, når det kommer tilbage. Denne øvelse genopbygger cirklen — ét øjeblik ad gangen.',
+    trin: [
+      'Sid på gulvet med dit barn. Ikke i sofaen, ikke ved bordet — gulvet. Det sænker hierarkiet og gør dig tilgængelig.',
+      'Sig til dit barn: "Vi skal prøve noget. Du bestemmer, hvornår du går, og hvornår du kommer tilbage. Jeg bliver her."',
+      'Lad barnet bevæge sig væk fra dig — hente legetøj, kigge ud af vinduet, udforske. DU BLIVER SIDDENDE. Du er basen.',
+      'Når barnet kigger tilbage mod dig (og det vil det), mød dets blik med et smil eller et nik. Det er "tankstationen" — barnet tjekker: "Er du der stadig?"',
+      'Når barnet kommer tilbage til dig, tag imod det. Fysisk: åbne arme, et kram, en berøring. Sig: "Der er du. Jeg er her." Du er havnen.',
+      'Gentag dette naturlige mønster: barnet går ud, barnet vender tilbage. Hver gang du er der, når barnet vender tilbage, styrker du tilknytningen.',
+      'For ældre børn (8-14 år) kan du lave øvelsen verbalt: "Hvornår i denne uge havde du brug for mig? Var jeg der? Hvad ønsker du, at jeg havde gjort?"',
+      'Det vigtigste er IKKE at være perfekt. Det vigtigste er reparation: "Jeg kan se, at jeg ikke var der for dig den dag. Det er jeg ked af. Hvad har du brug for nu?" Reparation er stærkere end perfektion.'
+    ],
+    cirkel: 'boern'
+  },
+  {
+    id: 'somatisk-landing',
+    titel: 'Somatisk landing — når kroppen bærer traumet',
+    tid: '10 min',
+    sted: 'Liggende eller siddende — et sted du føler dig sikker',
+    intro: 'Traumer sætter sig i kroppen. Ikke kun som minder, men som spændinger, smerter, uro og en konstant følelse af at være "på vagt." Mange forældre i udsatte familier bærer årtiers uforløste traumatiske spor i deres krop — fra egen barndom, fra vold, fra tab, fra systemsvigt. Denne øvelse er baseret på somatisk traumeterapi og hjælper dig med langsomt at genopbygge kontakten til din krop som et sikkert sted at være.',
+    trin: [
+      'Find en position, hvor du føler dig SIKKER. For mange med traumehistorik er det IKKE at ligge med lukkede øjne — det kan føles sårbart. Sid gerne op med åbne øjne og ryggen mod en væg. Sikkerhed først.',
+      'Begynd med fødderne. Pres dem mod gulvet. Mærk gulvet presse tilbage. Sig til dig selv: "Jeg er her. Gulvet holder mig."',
+      'Scan langsomt op gennem kroppen — ikke for at finde noget galt, men for at mærke, hvad der ER. Mærk benene, hofterne, maven, brystet, skuldrene.',
+      'Når du møder et sted med spænding, uro eller ubehag: BLIV DER et øjeblik. Ikke for at fikse det. Bare for at anerkende det. Prøv at sige indeni: "Jeg kan mærke dig. Du har båret noget for mig."',
+      'Læg en hånd på det sted i kroppen, der har mest brug for opmærksomhed. Mange traumeoverlevere mærker det i maven, brystet eller halsen. Din hånd er en anker — et signal om, at du er til stede for dig selv.',
+      'Ånd langsomt ind og forestil dig, at åndedrættet når helt hen til det sted, din hånd hviler. Ånd ud og forestil dig, at spændingen opløses en lille smule. Ikke alt — bare en lille smule.',
+      'Afslut med at mærke hele din krop som en helhed. Mærk, at du sidder her, at du har overlevet alt det, der bragte dig hertil. Din krop har beskyttet dig. Nu kan du begynde at fortælle den, at faren er forbi.',
+      'Vigtig note: Hvis denne øvelse fremkalder stærke følelser eller minder, er det et tegn på, at kroppen begynder at slippe. Det er ikke farligt, men det kan kræve professionel støtte. Rikke kan hjælpe dig videre.'
+    ],
+    cirkel: 'individuel'
+  },
+  {
+    id: 'generationsbrev',
+    titel: 'Brev til den forælder, du gerne vil være',
     tid: '15 min',
     sted: 'Et stille sted med papir og pen',
-    intro: 'Skriv et brev til en person, der har betydet noget for dig. Du behøver ikke sende det.',
+    intro: 'Mange forældre i udsatte familier kæmper med intergenerationelle mønstre: de opdrager ud fra det, de selv oplevede — eller i desperat modstand mod det. Denne narrative øvelse hjælper dig med at skille fortid fra nutid og bevidst vælge, hvilken forælder du vil være — ikke ud fra skyld eller skam, men ud fra dine dybeste værdier for dine børn.',
     trin: [
-      'Vælg en person, der har gjort en forskel i dit liv.',
-      'Find papir og pen — håndskrift virker bedre end skærm her.',
-      'Skriv til personen. Start med: "Kære... Jeg skriver til dig fordi..."',
-      'Beskriv konkret, hvad personen har gjort, og hvad det har betydet for dig.',
-      'Lad dig mærke af følelserne undervejs. Det er meningen.',
-      'Afslut brevet, som det føles rigtigt.',
-      'Beslut om du vil sende det, dele det, eller beholde det for dig selv. Alt er rigtigt.'
+      'Skriv øverst på papiret: "Kære mig selv som forælder."',
+      'Skriv først tre ting, du fik med fra din egen barndom, som du IKKE vil give videre. Vær specifik: ikke "dårlig barndom", men f.eks. "tavshed om følelser", "at blive straffet for at græde", "at ingen forklarede, hvad der skete."',
+      'Skriv nu tre ting fra din barndom, du gerne vil BEVARE — også små ting. Måske en bedstemor, der lyttede. En tradition. Et øjeblik af tryghed. Disse ting er dit fundament.',
+      'Skriv nu til dit barn (eller dine børn) — som om de er voksne og læser dette om 20 år: "Det vigtigste for mig som din forælder var..."',
+      'Skriv om de kampe, du kæmper NU for at bryde mønstret. Det er ikke en indrømmelse af svaghed — det er dokumentation af mod. Skriv f.eks.: "Jeg kæmpede for at lære at holde min vrede, fordi min far ikke kunne."',
+      'Skriv én konkret ting, du vil gøre anderledes DENNE UGE. Ikke et stort løfte. En lille, konkret handling. F.eks.: "Jeg vil sætte mig ned, når mit barn taler til mig" eller "Jeg vil sige undskyld, når jeg har råbt."',
+      'Fold brevet sammen og gem det et sted, du kan finde det igen. Tag det frem, når skammen eller tvivlen melder sig. Det er dit kompas.',
+      'Husk: At du overvejer disse spørgsmål, viser allerede, at du er en anden forælder end den, du selv havde. Mønstret er allerede begyndt at brydes.'
     ],
     cirkel: 'relationer'
   }
