@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2C5F5C">
+  <title>Familiepraxis — Rikke Veth</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== TOP BAR ========== -->
+  <header class="topbar">
+    <button class="topbar-btn menu-btn" aria-label="Menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <div class="topbar-brand">
+      <span class="brand-name">Familiepraxis</span>
+    </div>
+    <button class="topbar-btn search-btn" aria-label="Søg">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- ========== SIDE MENU ========== -->
+  <div class="menu-overlay"></div>
+  <nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <div class="menu-terapeut">
+        <div class="menu-avatar">RV</div>
+        <div>
+          <div class="menu-terapeut-navn">Rikke Veth</div>
+          <div class="menu-terapeut-titel">Familieterapeut</div>
+        </div>
+      </div>
+      <button class="menu-close-btn" aria-label="Luk menu">&times;</button>
+    </div>
+    <div class="menu-body" id="menuBody"></div>
+  </nav>
+
+  <!-- ========== SEARCH OVERLAY ========== -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Søg i alt indhold..." autocomplete="off">
+        <button class="search-clear" id="searchClear">&times;</button>
+      </div>
+      <div class="search-tags" id="searchTags"></div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- ========== ONBOARDING ========== -->
+  <div class="onboarding-overlay" id="onboarding">
+    <div class="onboarding-content">
+      <div class="onboarding-medallion">
+        <div class="medallion-circle">
+          <span class="medallion-icon">🌿</span>
+        </div>
+      </div>
+      <h1 class="onboarding-title">Familiepraxis</h1>
+      <p class="onboarding-subtitle">Rikke Veth · Familieterapeut</p>
+      <p class="onboarding-text">Velkommen. Denne app guider dig gennem familieterapiens kernebegreber — med øvelser, viden og refleksion.</p>
+      <p class="onboarding-text">Hvem er du?</p>
+      <div class="onboarding-buttons">
+        <button class="onboarding-btn" data-perspektiv="privat">
+          <span class="onboarding-btn-icon">🏠</span>
+          <span class="onboarding-btn-label">Jeg er privat klient</span>
+          <span class="onboarding-btn-desc">Familie, par eller individuel</span>
+        </button>
+        <button class="onboarding-btn" data-perspektiv="professionel">
+          <span class="onboarding-btn-icon">🏛️</span>
+          <span class="onboarding-btn-label">Jeg er fagprofessionel</span>
+          <span class="onboarding-btn-desc">Kommune, supervision eller samarbejde</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="app-main" id="appMain">
+
+    <!-- PERSPEKTIV BAR -->
+    <div class="perspektiv-bar" id="perspektivBar">
+      <span class="perspektiv-label" id="perspektivLabel">Privat klient</span>
+      <button class="perspektiv-switch" id="perspektivSwitch">Skift perspektiv</button>
+    </div>
+
+    <!-- VELKOMST -->
+    <section class="welcome-section" id="welcomeSection" style="display:none;">
+      <div class="welcome-card">
+        <p class="welcome-text">Velkommen til <strong>Familiepraxis</strong>. Udforsk cirklerne herunder for at dykke ned i familieterapiens kerneområder.</p>
+      </div>
+    </section>
+
+    <!-- ===== VIEW: HJEM ===== -->
+    <section class="view view-hjem active" id="viewHjem">
+      <div class="hero-section">
+        <div class="hero-text">
+          <h2 class="hero-title">Relationer der bærer</h2>
+          <p class="hero-desc">Udforsk de syv kerneområder i familieterapien. Tryk på en cirkel for at lære mere.</p>
+        </div>
+      </div>
+
+      <!-- SVG Circle Diagram -->
+      <div class="cirkel-container" id="cirkelContainer">
+        <svg viewBox="0 0 520 520" class="cirkel-svg" id="cirkelSvg">
+          <!-- Connection lines -->
+          <g class="connection-lines" id="connectionLines" opacity="0"></g>
+
+          <!-- Center circle -->
+          <g class="cirkel-group" data-cirkel="centrum" style="cursor:pointer">
+            <circle cx="260" cy="260" r="72" class="cirkel-bg cirkel-centrum"/>
+            <text x="260" y="252" class="cirkel-text cirkel-text-center" id="txtCentrum1">Familien</text>
+            <text x="260" y="274" class="cirkel-text cirkel-text-center" id="txtCentrum2">i balance</text>
+          </g>
+
+          <!-- Outer circles (hexagonal arrangement) -->
+          <g class="cirkel-group" data-cirkel="relationer" style="cursor:pointer">
+            <circle cx="260" cy="110" r="56" class="cirkel-bg cirkel-outer"/>
+            <text x="260" y="104" class="cirkel-text" id="txtRelationer1">Relationer</text>
+            <text x="260" y="122" class="cirkel-text" id="txtRelationer2">& tilknytning</text>
+          </g>
+
+          <g class="cirkel-group" data-cirkel="parterapi" style="cursor:pointer">
+            <circle cx="390" cy="185" r="56" class="cirkel-bg cirkel-outer"/>
+            <text x="390" y="179" class="cirkel-text" id="txtParterapi1">Parforholdet</text>
+            <text x="390" y="197" class="cirkel-text" id="txtParterapi2">& nærvær</text>
+          </g>
+
+          <g class="cirkel-group" data-cirkel="familie" style="cursor:pointer">
+            <circle cx="390" cy="335" r="56" class="cirkel-bg cirkel-outer"/>
+            <text x="390" y="329" class="cirkel-text" id="txtFamilie1">Familien</text>
+            <text x="390" y="347" class="cirkel-text" id="txtFamilie2">& samspil</text>
+          </g>
+
+          <g class="cirkel-group" data-cirkel="boern" style="cursor:pointer">
+            <circle cx="260" cy="410" r="56" class="cirkel-bg cirkel-outer"/>
+            <text x="260" y="404" class="cirkel-text" id="txtBoern1">Børnene</text>
+            <text x="260" y="422" class="cirkel-text" id="txtBoern2">& trivsel</text>
+          </g>
+
+          <g class="cirkel-group" data-cirkel="aandedraet" style="cursor:pointer">
+            <circle cx="130" cy="335" r="56" class="cirkel-bg cirkel-outer"/>
+            <text x="130" y="329" class="cirkel-text" id="txtAandedraet1">Åndedræt</text>
+            <text x="130" y="347" class="cirkel-text" id="txtAandedraet2">& krop</text>
+          </g>
+
+          <g class="cirkel-group" data-cirkel="individuel" style="cursor:pointer">
+            <circle cx="130" cy="185" r="56" class="cirkel-bg cirkel-outer"/>
+            <text x="130" y="179" class="cirkel-text" id="txtIndividuel1">Dig selv</text>
+            <text x="130" y="197" class="cirkel-text" id="txtIndividuel2">& indre ro</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== VIEW: TRAPPEN ===== -->
+    <section class="view view-trappen" id="viewTrappen">
+      <h2 class="view-title">Nervesystemets trappe</h2>
+      <p class="view-desc">Hvor er du lige nu? Tryk på det trin, der passer bedst.</p>
+      <div class="trappe-container" id="trappeContainer"></div>
+    </section>
+
+    <!-- ===== VIEW: TEMAER ===== -->
+    <section class="view view-temaer" id="viewTemaer">
+      <h2 class="view-title">Temaer</h2>
+      <p class="view-desc">Hverdagssituationer, du måske kan genkende.</p>
+      <div class="tema-grid" id="temaGrid"></div>
+    </section>
+
+    <!-- ===== VIEW: ØVELSER ===== -->
+    <section class="view view-oevelser" id="viewOevelser">
+      <h2 class="view-title">Øvelser</h2>
+      <p class="view-desc">Konkrete øvelser du kan lave alene, med din partner eller med familien.</p>
+      <div class="oevelse-list" id="oevelseList"></div>
+    </section>
+
+    <!-- ===== VIEW: CIRKEL DETAIL ===== -->
+    <section class="view view-cirkeldetalje" id="viewCirkelDetalje">
+      <button class="back-btn" id="backFromCirkel">← Tilbage</button>
+      <div id="cirkelDetaljeContent"></div>
+    </section>
+
+  </main>
+
+  <!-- ========== BOTTOM NAV ========== -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-btn active" data-view="hjem">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
+      </svg>
+      <span>Hjem</span>
+    </button>
+    <button class="nav-btn" data-view="trappen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 20h4v-4h4v-4h4v-4h4"/>
+      </svg>
+      <span>Trappen</span>
+    </button>
+    <button class="nav-btn" data-view="temaer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Temaer</span>
+    </button>
+    <button class="nav-btn" data-view="oevelser">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6h4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><line x1="10" y1="16" x2="14" y2="16"/><line x1="10" y1="19" x2="14" y2="19"/>
+      </svg>
+      <span>Øvelser</span>
+    </button>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
