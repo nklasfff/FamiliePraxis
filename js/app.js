@@ -598,6 +598,239 @@
     return div.innerHTML;
   }
 
+  // ---------- Dynamik Side ----------
+  function renderDynamik() {
+    var container = document.getElementById('dynamikContent');
+    if (!container) return;
+
+    var html = '';
+
+    // Header
+    html += '<h2 class="dynamik-title">Dynamikken bag cirkelmodellen</h2>';
+    html += '<p class="dynamik-lead">Cirkelmodellen er ikke bare en illustration. Den er et spejl af den måde din familie faktisk fungerer — som ét sammenhængende system, hvor intet område står alene. Forstår du denne dynamik, forstår du også hvorfor forandring kræver mere end én isoleret indsats.</p>';
+
+    // === SECTION 1: Balance ===
+    html += '<div class="dynamik-section">';
+    html += '<h3 class="dynamik-section-title">Når alt er i balance</h3>';
+
+    // SVG balanced
+    html += '<div class="dynamik-svg-wrap">';
+    html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
+    // Connection lines
+    html += '<g opacity="0.2">';
+    var balPos = {c:[260,260],r:[260,110],p:[390,185],f:[390,335],b:[260,410],a:[130,335],i:[130,185]};
+    var keys = ['r','p','f','b','a','i'];
+    keys.forEach(function(k){
+      html += '<line x1="'+balPos.c[0]+'" y1="'+balPos.c[1]+'" x2="'+balPos[k][0]+'" y2="'+balPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
+    });
+    for(var x=0;x<keys.length;x++){
+      for(var y=x+1;y<keys.length;y++){
+        html += '<line x1="'+balPos[keys[x]][0]+'" y1="'+balPos[keys[x]][1]+'" x2="'+balPos[keys[y]][0]+'" y2="'+balPos[keys[y]][1]+'" stroke="#2C5F5C" stroke-width="0.5" stroke-dasharray="3,5"/>';
+      }
+    }
+    html += '</g>';
+    // Circles
+    html += '<circle cx="260" cy="260" r="72" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
+    html += '<text x="260" y="252" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">Familien</text>';
+    html += '<text x="260" y="274" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">som helhed</text>';
+    var balCircles = [
+      {x:260,y:110,l1:'Tilknytning',l2:'& tryghed'},
+      {x:390,y:185,l1:'Parforholdet',l2:'& nærvær'},
+      {x:390,y:335,l1:'Samspil',l2:'& mønstre'},
+      {x:260,y:410,l1:'Barnets',l2:'stemme'},
+      {x:130,y:335,l1:'Åndedræt',l2:'& nervesystem'},
+      {x:130,y:185,l1:'Dig selv',l2:'& dine spor'}
+    ];
+    balCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="56" fill="#3A7A76" stroke="#2C5F5C" stroke-width="1.5" opacity="0.88"/>';
+      html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle">'+c.l1+'</text>';
+      html += '<text x="'+c.x+'" y="'+(c.y+12)+'" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle">'+c.l2+'</text>';
+    });
+    html += '</svg>';
+    html += '<p class="dynamik-svg-caption">Systemet i balance — alle områder støtter hinanden</p>';
+    html += '</div>';
+
+    html += '<p class="dynamik-text">Når familien fungerer, arbejder alle syv dimensioner sammen i en gensidig vekselvirkning. I narrativ-systemisk forståelse er det den tilstand hvor familiens fortælling bærer alle medlemmer — hvor hver stemme har plads, og hvor relationer er fleksible nok til at rumme konflikter uden at bryde sammen.</p>';
+    html += '<p class="dynamik-text">I denne tilstand er tilknytningen tryg. Parforholdet bærer. Barnet mærker at det er set og hørt. Åndedrættet er dybt og frit. Og de mønstre, der præger samspillet, er bløde nok til at tillade forandring. Familiens nervesystem — det fælles reguleringssystem — kører i et roligt, stabilt gear.</p>';
+    html += '<p class="dynamik-text">Læg mærke til figuren. Symmetrien. De lige afstande. Forbindelseslinjerne der fordeler sig jævnt. Du kan se det med det samme — her er noget der fungerer. Symmetrien afspejler et system i harmoni.</p>';
+    html += '</div>';
+
+    // === SECTION 2: Under pressure ===
+    html += '<div class="dynamik-section">';
+    html += '<h3 class="dynamik-section-title">Når systemet er under pres</h3>';
+
+    html += '<div class="dynamik-svg-wrap">';
+    html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
+    // Shifted positions
+    var presPos = {c:[270,255],r:[240,100],p:[405,165],f:[380,355],b:[280,420],a:[115,310],i:[145,200]};
+    html += '<g opacity="0.15">';
+    var pk = ['r','p','f','b','a','i'];
+    pk.forEach(function(k){
+      html += '<line x1="'+presPos.c[0]+'" y1="'+presPos.c[1]+'" x2="'+presPos[k][0]+'" y2="'+presPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
+    });
+    for(var x2=0;x2<pk.length;x2++){
+      for(var y2=x2+1;y2<pk.length;y2++){
+        html += '<line x1="'+presPos[pk[x2]][0]+'" y1="'+presPos[pk[x2]][1]+'" x2="'+presPos[pk[y2]][0]+'" y2="'+presPos[pk[y2]][1]+'" stroke="#2C5F5C" stroke-width="0.5" stroke-dasharray="3,5"/>';
+      }
+    }
+    html += '</g>';
+    html += '<circle cx="270" cy="255" r="68" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
+    html += '<text x="270" y="247" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Familien</text>';
+    html += '<text x="270" y="267" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">som helhed</text>';
+    var presCircles = [
+      {x:240,y:100,r:48,l1:'Tilknytning',l2:'& tryghed',op:'0.7'},
+      {x:405,y:165,r:44,l1:'Parforholdet',l2:'& nærvær',op:'0.65'},
+      {x:380,y:355,r:62,l1:'Samspil',l2:'& mønstre',op:'0.9'},
+      {x:280,y:420,r:50,l1:'Barnets',l2:'stemme',op:'0.75'},
+      {x:115,y:310,r:58,l1:'Åndedræt &',l2:'nervesystem',op:'0.85'},
+      {x:145,y:200,r:42,l1:'Dig selv',l2:'& dine spor',op:'0.6'}
+    ];
+    presCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#3A7A76" stroke="#2C5F5C" stroke-width="1.5" opacity="'+c.op+'"/>';
+      html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="12" text-anchor="middle">'+c.l1+'</text>';
+      html += '<text x="'+c.x+'" y="'+(c.y+10)+'" fill="#fff" font-family="Georgia,serif" font-size="12" text-anchor="middle">'+c.l2+'</text>';
+    });
+    html += '</svg>';
+    html += '<p class="dynamik-svg-caption">Systemet under pres — symmetrien er brudt</p>';
+    html += '</div>';
+
+    html += '<p class="dynamik-text">Men livet ser ikke altid sådan ud. Stress, traumer, anbringelser, skilsmisse, vold, misbrug, kronisk pres fra kommunale systemer — alt dette trækker familien ud af balance. Og det sker ikke isoleret. Når ét område belastes, mærker alle de andre det.</p>';
+    html += '<p class="dynamik-text">Se på figuren. Sammenlign den med den forrige. Symmetrien er brudt. Nogle cirkler er trukket tættere sammen, andre skubbet fra hinanden. Cirklerne har ændret størrelse — nogle er svundet ind, andre vokset. Det er præcis sådan det føles i en familie under pres.</p>';
+    html += '<p class="dynamik-text">Noget er skævt. Noget sidder fast. Du kan mærke det i kroppen, i samspillet ved aftenbordet, i den måde I taler til hinanden på — men det er svært at sætte fingeren på, hvad det egentlig er. Og det er fordi det ikke er ét enkelt problem. Det er hele familiesystemet der er trukket ud af sin naturlige balance.</p>';
+    html += '</div>';
+
+    // === SECTION 3: One area dominates ===
+    html += '<div class="dynamik-section">';
+    html += '<h3 class="dynamik-section-title">Når ét område dominerer</h3>';
+
+    html += '<div class="dynamik-svg-wrap">';
+    html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
+    // "Dig selv & dine spor" (trauma/individuel) dominates - it's big and pulls everything
+    var domPos = {c:[280,260],r:[255,115],p:[395,200],f:[370,350],b:[260,415],a:[120,320],i:[100,165]};
+    html += '<g opacity="0.15">';
+    var dk = ['r','p','f','b','a','i'];
+    dk.forEach(function(k){
+      html += '<line x1="'+domPos.c[0]+'" y1="'+domPos.c[1]+'" x2="'+domPos[k][0]+'" y2="'+domPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
+    });
+    for(var x3=0;x3<dk.length;x3++){
+      for(var y3=x3+1;y3<dk.length;y3++){
+        html += '<line x1="'+domPos[dk[x3]][0]+'" y1="'+domPos[dk[x3]][1]+'" x2="'+domPos[dk[y3]][0]+'" y2="'+domPos[dk[y3]][1]+'" stroke="#2C5F5C" stroke-width="0.5" stroke-dasharray="3,5"/>';
+      }
+    }
+    html += '</g>';
+    html += '<circle cx="280" cy="260" r="65" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
+    html += '<text x="280" y="252" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Familien</text>';
+    html += '<text x="280" y="272" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">som helhed</text>';
+    // Big "individuel" circle
+    html += '<circle cx="100" cy="165" r="78" fill="#9E6B7B" stroke="#7D5563" stroke-width="2" opacity="0.85"/>';
+    html += '<text x="100" y="155" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Ubearbejdede</text>';
+    html += '<text x="100" y="175" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">spor</text>';
+    // Other circles - smaller, pulled toward trauma
+    var domCircles = [
+      {x:255,y:115,r:42,l1:'Tilknytning',l2:'& tryghed',op:'0.6'},
+      {x:395,y:200,r:40,l1:'Parforholdet',l2:'& nærvær',op:'0.55'},
+      {x:370,y:350,r:48,l1:'Samspil',l2:'& mønstre',op:'0.7'},
+      {x:260,y:415,r:44,l1:'Barnets',l2:'stemme',op:'0.65'},
+      {x:120,y:320,r:46,l1:'Åndedræt &',l2:'nervesystem',op:'0.7'}
+    ];
+    domCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#3A7A76" stroke="#2C5F5C" stroke-width="1.5" opacity="'+c.op+'"/>';
+      html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l1+'</text>';
+      html += '<text x="'+c.x+'" y="'+(c.y+8)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l2+'</text>';
+    });
+    html += '</svg>';
+    html += '<p class="dynamik-svg-caption">Ubearbejdede spor fra fortiden trækker hele familiesystemet mod sig</p>';
+    html += '</div>';
+
+    html += '<p class="dynamik-text">Lad os se nærmere på hvad der sker, når ét specifikt område er under pres — for eksempel ubearbejdede spor fra en forælders egen barndom.</p>';
+    html += '<p class="dynamik-text">Traumet bliver ikke i sin egen cirkel. Det udvider sig. Det fylder mere. Og i takt med at det vokser, trækker det alle andre områder ud af deres naturlige position:</p>';
+
+    html += '<ul class="dynamik-list">';
+    html += '<li><strong>Tilknytning & tryghed:</strong> Barnets tilknytning bliver utryg. Forælderen kan ikke give den ro, barnet har brug for, fordi forælderens eget nervesystem er i alarmberedskab. Barnet tilpasser sig — bliver enten usynligt eller uroligt.</li>';
+    html += '<li><strong>Parforholdet:</strong> Partneren oplever en mur eller en eksplosivitet, der ikke handler om dem — men om noget, der skete for længe siden. Nærhed bliver svær. Konflikter eskalerer, fordi nervesystemerne ikke kan mødes.</li>';
+    html += '<li><strong>Samspil & mønstre:</strong> Familiens mønstre stivner. De samme konflikter gentager sig. Rollerne låser sig fast — én tager ansvar, én trækker sig, børnene navigerer i et minefelt, de ikke har sprog for.</li>';
+    html += '<li><strong>Barnets stemme:</strong> Barnet mister sin stemme. I en familie, hvor en forælder bærer uforløste traumer, lærer barnet at læse stemninger frem for at mærke sig selv. Det er parentificering — barnet bliver den følelsesmæssige voksen.</li>';
+    html += '<li><strong>Åndedræt & nervesystem:</strong> Åndedrættet bliver overfladisk. Kroppen holder. Nervesystemet sidder fast i sympatisk aktivering eller dorsal nedlukning — og det smitter fra forælder til barn, fra barn til forælder.</li>';
+    html += '</ul>';
+
+    html += '<p class="dynamik-text">Det er ikke svaghed. Det er nervesystemets og familiesystemets forsøg på at overleve. Men prisen er, at hele systemets balance går tabt.</p>';
+    html += '</div>';
+
+    // === SECTION 4: Multiple areas ===
+    html += '<div class="dynamik-section">';
+    html += '<h3 class="dynamik-section-title">Når flere områder belastes samtidig</h3>';
+
+    html += '<div class="dynamik-svg-wrap">';
+    html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
+    var mulPos = {c:[265,265],r:[220,95],p:[410,175],f:[395,360],b:[240,430],a:[100,340],i:[110,170]};
+    html += '<g opacity="0.12">';
+    var mk = ['r','p','f','b','a','i'];
+    mk.forEach(function(k){
+      html += '<line x1="'+mulPos.c[0]+'" y1="'+mulPos.c[1]+'" x2="'+mulPos[k][0]+'" y2="'+mulPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
+    });
+    for(var x4=0;x4<mk.length;x4++){
+      for(var y4=x4+1;y4<mk.length;y4++){
+        html += '<line x1="'+mulPos[mk[x4]][0]+'" y1="'+mulPos[mk[x4]][1]+'" x2="'+mulPos[mk[y4]][0]+'" y2="'+mulPos[mk[y4]][1]+'" stroke="#2C5F5C" stroke-width="0.5" stroke-dasharray="3,5"/>';
+      }
+    }
+    html += '</g>';
+    html += '<circle cx="265" cy="265" r="62" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
+    html += '<text x="265" y="257" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">Familien</text>';
+    html += '<text x="265" y="277" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">som helhed</text>';
+    // Multiple enlarged circles with warm color
+    var mulCircles = [
+      {x:220,y:95,r:52,l1:'Tilknytning',l2:'& tryghed',fill:'#B8956A',stroke:'#9E7A55',op:'0.85'},
+      {x:410,y:175,r:42,l1:'Parforholdet',l2:'& nærvær',fill:'#3A7A76',stroke:'#2C5F5C',op:'0.55'},
+      {x:395,y:360,r:68,l1:'Samspil',l2:'& mønstre',fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'},
+      {x:240,y:430,r:38,l1:'Barnets',l2:'stemme',fill:'#3A7A76',stroke:'#2C5F5C',op:'0.5'},
+      {x:100,y:340,r:60,l1:'Åndedræt &',l2:'nervesystem',fill:'#B8956A',stroke:'#9E7A55',op:'0.8'},
+      {x:110,y:170,r:70,l1:'Dig selv',l2:'& dine spor',fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'}
+    ];
+    mulCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="'+c.fill+'" stroke="'+c.stroke+'" stroke-width="1.5" opacity="'+c.op+'"/>';
+      html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l1+'</text>';
+      html += '<text x="'+c.x+'" y="'+(c.y+8)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l2+'</text>';
+    });
+    html += '</svg>';
+    html += '<p class="dynamik-svg-caption">Flere områder under pres — systemet trækkes i flere retninger</p>';
+    html += '</div>';
+
+    html += '<p class="dynamik-text">I virkeligheden er det sjældent kun ét område, der er belastet. En familie med intergenerationelle traumer har ofte også forstyrrede tilknytningsmønstre OG et parforhold under pres OG et barn der reagerer OG et nervesystem der sidder fast i alarmberedskab. Hvert presset område forstærker de andre.</p>';
+    html += '<p class="dynamik-text">Det er derfor isolerede tilgange ofte rammer et loft. At arbejde kun med barnet uden at forstå forældrenes mønstre. At fokusere på parforholdet uden at adressere de ubearbejdede spor fra barndommen. At lave åndedrætsterapi uden at inddrage familiedynamikken. Hver tilgang kan noget — men ingen af dem alene kan genskabe balancen i et system, der trækkes i flere retninger samtidig.</p>';
+    html += '<p class="dynamik-text">Det er netop her, Rikkes narrative-systemiske tilgang adskiller sig. Hun arbejder ikke med isolerede symptomer. Hun ser hele familiesystemet — og forstår, at forandring i én dimension sender bølger gennem alle de andre.</p>';
+    html += '</div>';
+
+    // === SECTION 5: Why wholeness matters ===
+    html += '<div class="dynamik-section">';
+    html += '<h3 class="dynamik-section-title">Hvorfor helheden er afgørende</h3>';
+    html += '<p class="dynamik-text">Cirkelmodellen er ikke bare et kort — den er en behandlingsfilosofi. Når vi forstår, at alt påvirker alt i en familie, ændrer det måden vi arbejder med forandring på. Vi behandler ikke symptomer. Vi adresserer systemet.</p>';
+    html += '<p class="dynamik-text">Det er derfor Rikkes arbejde integrerer narrativ-systemisk terapi med polyvagal regulering, åndedrætsterapi og mentaliseringsbaseret tilgang. Ikke fordi kompleksitet er målet, men fordi familiesystemet selv er en integreret helhed. Balance vender tilbage, når vi møder familien på dens egne præmisser — med tålmodighed, med nærvær, og med forståelse for, at forandring i ét familiemedlem skaber bevægelse i hele systemet.</p>';
+    html += '</div>';
+
+    // === For the client ===
+    html += '<div class="dynamik-callout dynamik-callout-privat">';
+    html += '<h3 class="dynamik-callout-title">For dig og din familie</h3>';
+    html += '<p class="dynamik-text">Når du ser den skæve figur, genkender du måske din egen familie. Den trækken. Den fornemmelse af, at alt er lidt forskudt — at I elsker hinanden, men ikke kan nå hinanden.</p>';
+    html += '<p class="dynamik-text">Vid at det ikke er permanent. Jeres familiesystem har kapaciteten til balance — det har bare brug for de rette betingelser for at finde tilbage. Rikkes arbejde handler om at skabe de betingelser: at hjælpe jer med at finde de fortællinger, der bærer, de åndedrag der regulerer, og det samspil der forbinder jer igen.</p>';
+    html += '<p class="dynamik-text">Udforsk cirklerne ovenfor. Start der, hvor du mærker mest. Og vid, at uanset hvor du begynder, arbejder du med hele systemet.</p>';
+    html += '</div>';
+
+    // === For the professional ===
+    html += '<div class="dynamik-callout dynamik-callout-prof">';
+    html += '<h3 class="dynamik-callout-title">For dig som fagprofessionel</h3>';
+    html += '<p class="dynamik-text">Modellen giver dig en ramme for at forstå, hvorfor enkeltstående indsatser i §50-undersøgelser eller §75-støtte ofte når et loft. Når du kan se hele familiesystemet — ikke bare det symptom, familien er henvist med — kan du identificere, hvilke forbindelser der er belastet, og hvor reguleringen har brug for støtte.</p>';
+    html += '<p class="dynamik-text">Det er fundamentet i Rikkes metode: narrativ-systemisk helhedsbehandling, hvor polyvagal forståelse, mentalisering og åndedrætsterapi integreres i arbejdet med udsatte familier. Det er også den tilgang, hun tilbyder i supervision og faglig sparring med kommuner.</p>';
+    html += '</div>';
+
+    container.innerHTML = html;
+  }
+
+  function showDynamik() {
+    renderDynamik();
+    showView('dynamik');
+    document.querySelectorAll('.nav-btn').forEach(function (b) { b.classList.remove('active'); });
+  }
+
   // ---------- Event Binding ----------
   function bindEvents() {
     // Onboarding buttons
@@ -639,12 +872,20 @@
       showView('hjem');
     });
 
-    // Back buttons from trappen, temaer, oevelser
+    // Back buttons from trappen, temaer, oevelser, dynamik
     document.querySelectorAll('.back-to-hjem').forEach(function (btn) {
       btn.addEventListener('click', function () {
         showView('hjem');
       });
     });
+
+    // Dynamik link
+    var dynamikLink = document.getElementById('dynamikLink');
+    if (dynamikLink) {
+      dynamikLink.addEventListener('click', function () {
+        showDynamik();
+      });
+    }
 
     // Menu
     document.querySelector('.menu-btn').addEventListener('click', openMenu);

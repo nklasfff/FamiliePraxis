@@ -1201,6 +1201,162 @@ body {
   line-height: 1.5;
 }
 
+/* ---------- Dynamik Link (Homepage) ---------- */
+.dynamik-link-wrap {
+  text-align: center;
+  padding: 0 20px 12px;
+}
+
+.dynamik-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-pale);
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 10px 20px;
+  color: var(--primary);
+  font-family: Georgia, serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dynamik-link:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-md);
+}
+
+.dynamik-link-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+
+.dynamik-link:hover .dynamik-link-icon {
+  transform: scale(1.2);
+}
+
+/* ---------- Dynamik Page ---------- */
+.dynamik-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.dynamik-title {
+  font-size: 1.5rem;
+  color: var(--text);
+  font-weight: 600;
+  margin: 8px 0 16px;
+}
+
+.dynamik-lead {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+}
+
+.dynamik-section {
+  margin-bottom: 40px;
+}
+
+.dynamik-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.dynamik-svg-wrap {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 20px 10px 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.dynamik-svg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.dynamik-svg-caption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 12px;
+  font-family: Georgia, serif;
+}
+
+.dynamik-text {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.dynamik-list {
+  list-style: none;
+  margin: 16px 0 20px;
+}
+
+.dynamik-list li {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.65;
+  padding: 10px 0 10px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.dynamik-list li:last-child {
+  border-bottom: none;
+}
+
+.dynamik-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.dynamik-callout {
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.dynamik-callout-privat {
+  background: var(--sage-bg);
+  border-left: 4px solid var(--sage);
+}
+
+.dynamik-callout-prof {
+  background: var(--amber-bg);
+  border-left: 4px solid var(--amber);
+}
+
+.dynamik-callout-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
 /* ---------- Bottom Nav ---------- */
 .bottom-nav {
   position: fixed;
