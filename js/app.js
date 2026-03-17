@@ -634,9 +634,16 @@
       });
     });
 
-    // Back button
+    // Back button from cirkel detail
     document.getElementById('backFromCirkel').addEventListener('click', function () {
       showView('hjem');
+    });
+
+    // Back buttons from trappen, temaer, oevelser
+    document.querySelectorAll('.back-to-hjem').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        showView('hjem');
+      });
     });
 
     // Menu
