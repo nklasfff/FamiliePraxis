@@ -453,6 +453,12 @@
       aktivTema = null;
       renderTemaer();
     }
+    if (viewName !== 'oevelser') {
+      var oevelseList = document.getElementById('oevelseList');
+      if (oevelseList) {
+        oevelseList.querySelectorAll('.oevelse-card.active').forEach(function (c) { c.classList.remove('active'); });
+      }
+    }
     // Skjul muligt-formularen hvis vi forlader den side
     if (viewName !== 'muligt') {
       var addForm = document.getElementById('muligtAddForm');
