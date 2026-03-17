@@ -808,3 +808,250 @@ var TRAPPEN = [
     }
   }
 ];
+
+// ============================================================
+// Morgen Check-in — 25 varianter
+// Hver variant: spørgsmål, svar-knapper med respons + link
+// ============================================================
+var MORGEN_CHECKIN = [
+  {
+    spoergsmaal: 'Hvordan mærker du dig selv lige nu?',
+    svar: [
+      { label: 'Rolig', respons: 'Det er et godt udgangspunkt. Måske er det i dag, du kan mærke lidt mere af det, der ellers forsvinder i støjen.', link: 'temaer', linkTekst: 'Udforsk et tema' },
+      { label: 'Urolig', respons: 'Når kroppen er i alarm, er det svært at tænke klart. Start med åndedrættet — det er den hurtigste vej til ro.', link: 'oevelser', linkTekst: 'Prøv en øvelse' },
+      { label: 'Tung', respons: 'Nogle morgener vejer mere end andre. Du behøver ikke løfte det hele. Bare én ting.', link: 'muligt', linkTekst: 'Hvad er muligt lige nu?' },
+      { label: 'Ved ikke', respons: 'Det er også et svar. Bare det at du er her, er nok.', link: 'hjem', linkTekst: 'Udforsk i dit tempo' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad fylder mest i dig her til morgen?',
+    svar: [
+      { label: 'Bekymring', respons: 'Bekymringer fylder, fordi du holder af nogen. Lad os se, om der er ét lille sted at starte.', link: 'muligt', linkTekst: 'Find ét skridt' },
+      { label: 'Tristhed', respons: 'Tristhed er ikke svaghed. Den fortæller dig, at noget betyder noget. Giv den plads.', link: 'temaer', linkTekst: 'Læs om tab & sorg' },
+      { label: 'Vrede', respons: 'Vrede er energi. Den viser dig, hvor dine grænser er. Spørgsmålet er, hvad du vil gøre med den.', link: 'trappen', linkTekst: 'Se hvor du er på trappen' },
+      { label: 'Håb', respons: 'Hold fast i det. Selv det mindste håb er en dør, der står på klem.', link: 'hjem', linkTekst: 'Udforsk videre' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvis din krop kunne sige én ting — hvad ville det være?',
+    svar: [
+      { label: 'Jeg er træt', respons: 'Din krop beder om pause. Ikke nødvendigvis søvn — men et øjeblik uden krav. Start med tre dybe åndedrag.', link: 'oevelser', linkTekst: 'Prøv åndedrættet' },
+      { label: 'Jeg er anspændt', respons: 'Spændinger er kroppens måde at beskytte dig på. Lad os hjælpe den med at slippe, bare lidt.', link: 'trappen', linkTekst: 'Forstå dit nervesystem' },
+      { label: 'Jeg er rastløs', respons: 'Rastløshed er bevægelse, der leder efter en retning. Måske er der noget, der vil have opmærksomhed.', link: 'temaer', linkTekst: 'Find dit tema' },
+      { label: 'Jeg har det ok', respons: 'Det er værd at lægge mærke til. Gode øjeblikke fortjener opmærksomhed — også de stille.', link: 'hjem', linkTekst: 'Nyd roen' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvor er du på trappen lige nu?',
+    svar: [
+      { label: 'Tryg', respons: 'Når du er i dit tolerancevindue, er du bedst til at møde dig selv og andre. Brug det.', link: 'temaer', linkTekst: 'Udforsk et nyt tema' },
+      { label: 'Aktiveret', respons: 'Dit sympatiske nervesystem er tændt. Det er ikke farligt — men det er vigtigt at mærke det, før det styrer dig.', link: 'trappen', linkTekst: 'Lær mere om trappen' },
+      { label: 'Lukket ned', respons: 'Når kroppen lukker ned, har den brug for varme — ikke krav. Vær blid med dig selv.', link: 'oevelser', linkTekst: 'Start blødt med en øvelse' },
+      { label: 'Skifter hele tiden', respons: 'Det er normalt, især under pres. Dit nervesystem søger balance. Lad os finde et anker.', link: 'oevelser', linkTekst: 'Find et anker' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad har du brug for i dag?',
+    svar: [
+      { label: 'Ro', respons: 'Ro er ikke dovenskab. Det er genopladning. Giv dig selv lov.', link: 'oevelser', linkTekst: 'Øvelse til ro' },
+      { label: 'Mod', respons: 'Mod handler ikke om at være frygtløs. Det handler om at tage næste skridt, selvom det er svært.', link: 'muligt', linkTekst: 'Tag ét skridt' },
+      { label: 'At blive set', respons: 'Det er menneskeligt at have brug for vidner. Du er ikke alene i det, du bærer.', link: 'temaer', linkTekst: 'Du er ikke alene' },
+      { label: 'Overblik', respons: 'Når alt flyder sammen, hjælper det at sortere. Én ting ad gangen.', link: 'muligt', linkTekst: 'Skab overblik' }
+    ]
+  },
+  {
+    spoergsmaal: 'Er der noget, du bærer med fra i går?',
+    svar: [
+      { label: 'En konflikt', respons: 'Konflikter efterlader spor i kroppen. Det vigtigste nu er ikke at løse den — men at regulere dig selv først.', link: 'trappen', linkTekst: 'Tjek dit nervesystem' },
+      { label: 'En god stund', respons: 'Gem den. Gode stunder er brændstof. Læg mærke til, hvad der gjorde den mulig.', link: 'hjem', linkTekst: 'Fortsæt herfra' },
+      { label: 'Dårlig samvittighed', respons: 'Samvittighed viser, at du holder af. Men den må ikke fylde så meget, at den lammer dig. Hvad kan du gøre i dag?', link: 'muligt', linkTekst: 'Hvad er muligt nu?' },
+      { label: 'Ingenting særligt', respons: 'Også fint. Ikke alle dage behøver at være tunge. Nogle dage bare er.', link: 'hjem', linkTekst: 'Bare vær her' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvem tænker du på lige nu?',
+    svar: [
+      { label: 'Mit barn', respons: 'Dit barn mærker dig, før du siger noget. Når du regulerer dig selv, giver du dit barn lov til at slappe af.', link: 'trappen', linkTekst: 'Start med dig selv' },
+      { label: 'Min partner', respons: 'Parforholdet er familiens fundament. Selv små bevægelser mod hinanden gør en forskel.', link: 'temaer', linkTekst: 'Læs om parforholdet' },
+      { label: 'Mig selv', respons: 'At tænke på dig selv er ikke egoistisk. Det er nødvendigt. Du kan ikke give fra en tom kop.', link: 'oevelser', linkTekst: 'Gør noget for dig' },
+      { label: 'Hele familien', respons: 'Familien er et system. Når du bevæger dig, bevæger alle sig. Start med det, du kan.', link: 'hjem', linkTekst: 'Se helheden' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvis du kun måtte løfte én ting i dag — hvad ville det være?',
+    svar: [
+      { label: 'Noget praktisk', respons: 'Praktiske ting kan give kontrol tilbage. Vælg den mindste opgave og gør den færdig. Det tæller.', link: 'muligt', linkTekst: 'Skriv det ned' },
+      { label: 'En relation', respons: 'Relationer kræver nærvær, ikke perfektion. Ét øjeblik af ægte kontakt er nok.', link: 'temaer', linkTekst: 'Forstå relationen' },
+      { label: 'Min egen tilstand', respons: 'Det vigtigste arbejde er ofte det usynlige. At regulere dig selv er en gave til alle omkring dig.', link: 'oevelser', linkTekst: 'Start her' },
+      { label: 'Jeg ved det ikke', respons: 'Når du ikke ved, er det ærligt. Giv det lidt tid. Svaret kommer, når kroppen er klar.', link: 'hjem', linkTekst: 'Tag det roligt' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvordan sov du i nat?',
+    svar: [
+      { label: 'Godt', respons: 'Søvn er kroppens vigtigste reparation. Tag det med som et godt fundament i dag.', link: 'hjem', linkTekst: 'God start' },
+      { label: 'Uroligt', respons: 'Urolig søvn fortæller, at nervesystemet stadig arbejder. Åndedrættet kan hjælpe med at finde ro.', link: 'oevelser', linkTekst: 'Prøv åndedrætsøvelse' },
+      { label: 'For lidt', respons: 'Når kroppen mangler søvn, er tærsklen lavere. Vær ekstra venlig mod dig selv i dag.', link: 'trappen', linkTekst: 'Vær opmærksom i dag' },
+      { label: 'Kunne ikke falde i søvn', respons: 'Tankemylder holder nervesystemet aktivt. Prøv at lande i kroppen i stedet for i hovedet.', link: 'oevelser', linkTekst: 'Øvelse til landing' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad er det første, du mærker i kroppen lige nu?',
+    svar: [
+      { label: 'Spænding i skuldrene', respons: 'Skuldrene bærer det, du ikke siger højt. Lad dem falde — bare et øjeblik. Du behøver ikke bære det hele.', link: 'oevelser', linkTekst: 'Slip spændingen' },
+      { label: 'Knude i maven', respons: 'Maven reagerer på det ubevidste. Der er noget, der vil have opmærksomhed. Du behøver ikke løse det — bare mærke det.', link: 'trappen', linkTekst: 'Forstå signalet' },
+      { label: 'Tyngde', respons: 'Tyngde er kroppens måde at sige: langsomt. Følg dens tempo i dag.', link: 'oevelser', linkTekst: 'Start langsomt' },
+      { label: 'Ingenting særligt', respons: 'Nogle gange er kroppen stille. Det er fint. Den taler, når den er klar.', link: 'hjem', linkTekst: 'Fortsæt stille' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad ville du sige til dig selv, hvis du var din egen bedste ven?',
+    svar: [
+      { label: 'Du gør det godt nok', respons: '"Godt nok" er ikke en undskyldning — det er sandheden. Perfektionisme er traumets forklædning.', link: 'temaer', linkTekst: 'Læs om skam & skyld' },
+      { label: 'Det bliver bedre', respons: 'Og det gør det. Ikke fordi alt fikser sig selv — men fordi du allerede er i bevægelse.', link: 'hjem', linkTekst: 'Se din bevægelse' },
+      { label: 'Tag en pause', respons: 'Pause er ikke opgivelse. Det er regulering. Din krop ved bedst.', link: 'oevelser', linkTekst: 'Tag en pause nu' },
+      { label: 'Bed om hjælp', respons: 'At bede om hjælp er styrke, ikke svaghed. Ingen klarer det alene — og det skal du heller ikke.', link: 'temaer', linkTekst: 'Du er ikke alene' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvis denne dag kunne give dig én ting — hvad ville det være?',
+    svar: [
+      { label: 'Lethed', respons: 'Lethed kommer i små glimt. Ikke som fravær af problemer, men som øjeblikke hvor du glemmer dem.', link: 'hjem', linkTekst: 'Find et glimt' },
+      { label: 'Forbindelse', respons: 'Vi er skabt til forbindelse. Ét ægte øjeblik med et andet menneske kan ændre en hel dag.', link: 'temaer', linkTekst: 'Forstå forbindelsen' },
+      { label: 'Klarhed', respons: 'Klarhed kommer sjældent af at tænke mere. Den kommer af at stoppe op og mærke, hvad der er vigtigt.', link: 'muligt', linkTekst: 'Sortér det vigtige' },
+      { label: 'Bare at overleve', respons: 'Det er nok. Overlevelse er ikke fiasko — det er fundament. Du er her. Det tæller.', link: 'trappen', linkTekst: 'Mærk hvor du er' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad gør dig mest sårbar lige nu?',
+    svar: [
+      { label: 'Ensomhed', respons: 'Ensomhed i en familie er en af de tungeste ting. Du er ikke forkert — du mangler at blive mødt.', link: 'temaer', linkTekst: 'Om isolation' },
+      { label: 'Magtkampe', respons: 'Magtkampe handler sjældent om magt. De handler om at blive hørt. Hvad vil du egentlig sige?', link: 'temaer', linkTekst: 'Forstå konflikten' },
+      { label: 'Børnenes reaktioner', respons: 'Børn reagerer på det, de mærker — ikke det, de bliver fortalt. Deres adfærd er kommunikation.', link: 'hjem', linkTekst: 'Se barnets perspektiv' },
+      { label: 'Min egen historie', respons: 'Dine sår gør dig ikke til en dårlig forælder. De gør dig til et menneske, der kæmper. Det er modigt.', link: 'oevelser', linkTekst: 'Start med dig selv' }
+    ]
+  },
+  {
+    spoergsmaal: 'Mærker du mere frygt eller mere håb lige nu?',
+    svar: [
+      { label: 'Mest frygt', respons: 'Frygt er nervesystemets alarmklokke. Den beskytter dig — men den behøver ikke styre dig.', link: 'trappen', linkTekst: 'Regulér frygten' },
+      { label: 'Mest håb', respons: 'Håb er ikke naivt. Det er dit nervesystem, der siger: der er muligheder her. Følg det.', link: 'muligt', linkTekst: 'Grib muligheden' },
+      { label: 'Begge dele', respons: 'Det er det mest menneskelige svar. Frygt og håb lever side om side. Du behøver ikke vælge.', link: 'hjem', linkTekst: 'Lad begge dele være' },
+      { label: 'Hverken eller', respons: 'Følelsesløshed kan være kroppens pause-knap. Den beskytter dig, men den holder dig også væk.', link: 'oevelser', linkTekst: 'Kom tilbage til kroppen' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad har du brug for at høre i dag?',
+    svar: [
+      { label: 'At det er okay', respons: 'Det er okay. Ikke alt behøver at være løst. Ikke alt behøver at give mening. Det er okay, som det er lige nu.', link: 'hjem', linkTekst: 'Bare vær her' },
+      { label: 'At jeg ikke er alene', respons: 'Du er ikke alene. Tusindvis af familier kæmper med det samme. Din kamp gør dig ikke isoleret — den forbinder dig.', link: 'temaer', linkTekst: 'Andre kender det' },
+      { label: 'At der er en vej', respons: 'Der er en vej. Den er ikke altid synlig, og den er sjældent lige. Men den er der.', link: 'muligt', linkTekst: 'Se næste skridt' },
+      { label: 'At jeg gør det godt nok', respons: 'Du gør det godt nok. Ikke perfekt — godt nok. Og det er præcis nok.', link: 'oevelser', linkTekst: 'Giv dig selv credit' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvilken rolle fylder mest i dig lige nu?',
+    svar: [
+      { label: 'Forælder', respons: 'At være forælder under pres er udmattende. Husk: dit barn har ikke brug for en perfekt forælder — men en tilstrækkelig én.', link: 'hjem', linkTekst: 'Giv dig selv ro' },
+      { label: 'Partner', respons: 'Parforholdet under pres er som at bygge bro i storm. Det kræver tålmodighed — med dig selv og den anden.', link: 'temaer', linkTekst: 'Om parforholdet' },
+      { label: 'Mig selv', respons: 'Du eksisterer også uden dine roller. Den person, du var før alt det her — den er der stadig.', link: 'oevelser', linkTekst: 'Find dig selv' },
+      { label: 'Alt på én gang', respons: 'Når alt skal alt på én gang, knager fundamentet. Vælg én rolle i dag. Resten venter.', link: 'muligt', linkTekst: 'Prioritér i dag' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvordan ville du beskrive din energi lige nu?',
+    svar: [
+      { label: 'Fuld af energi', respons: 'Brug den klogt. Energi er en ressource — og du bestemmer, hvor den skal hen.', link: 'muligt', linkTekst: 'Sæt den i spil' },
+      { label: 'Neutral', respons: 'Neutral er undervurderet. Det er herfra, du kan vælge frit. Nyd det stille øjeblik.', link: 'hjem', linkTekst: 'Udforsk roligt' },
+      { label: 'Lav', respons: 'Lav energi er kroppens besked: gør mindre, ikke mere. Hvad kan du droppe i dag?', link: 'oevelser', linkTekst: 'Genoplad stille' },
+      { label: 'Svingende', respons: 'Svingende energi afspejler et nervesystem i bevægelse. Det er ikke ustabilitet — det er regulering i gang.', link: 'trappen', linkTekst: 'Forstå svingningerne' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad ville hjælpe dig mest lige nu?',
+    svar: [
+      { label: 'At forstå mere', respons: 'Forståelse skaber ro. Når du ved, hvad der sker, mister det noget af sin magt.', link: 'temaer', linkTekst: 'Lær noget nyt' },
+      { label: 'At gøre noget konkret', respons: 'Handling er medicin mod magtesløshed. Selv den mindste handling ændrer dynamikken.', link: 'muligt', linkTekst: 'Gør én ting' },
+      { label: 'At mærke min krop', respons: 'Kroppen ved ofte mere end hovedet. Når du lander i den, finder du svar, tanken ikke kan give.', link: 'oevelser', linkTekst: 'Land i kroppen' },
+      { label: 'Bare at trække vejret', respons: 'Så gør det. Tre dybe åndedrag. Ind gennem næsen, ud gennem munden. Du har tid.', link: 'oevelser', linkTekst: 'Åndedrættet' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad ser du, når du kigger på din familie lige nu?',
+    svar: [
+      { label: 'Kærlighed under pres', respons: 'Kærlighed under pres er stadig kærlighed. Den er bare svær at få øje på, når alarmen kører.', link: 'hjem', linkTekst: 'Se helheden' },
+      { label: 'Afstand', respons: 'Afstand i en familie er smertefuld. Men den er også information: noget kan repareres.', link: 'temaer', linkTekst: 'Forstå afstanden' },
+      { label: 'Kaos', respons: 'Kaos er, hvad der sker, når mange nervesystemer er dysregulerede samtidig. Det er ikke familiens skyld.', link: 'trappen', linkTekst: 'Start med dit nervesystem' },
+      { label: 'Muligheder', respons: 'At se muligheder er et tegn på, at du er i dit tolerancevindue. Grib det, mens det er her.', link: 'muligt', linkTekst: 'Grib dem nu' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvilken sætning rammer dig mest lige nu?',
+    svar: [
+      { label: 'Jeg gør mit bedste', respons: 'Ja. Og dit bedste er nok. Det er ikke altid pænt — men det er ægte.', link: 'hjem', linkTekst: 'Du er nok' },
+      { label: 'Jeg er bange for at fejle', respons: 'Angsten for at fejle er ofte arvet. Du gentager ikke nødvendigvis din historie — du skriver en ny.', link: 'temaer', linkTekst: 'Bryd mønstret' },
+      { label: 'Jeg savner mig selv', respons: 'Savn efter dig selv er et sundt tegn. Det betyder, at du ved, der er mere.', link: 'oevelser', linkTekst: 'Find dig selv igen' },
+      { label: 'Det kan ikke fortsætte', respons: 'Når du mærker det, er du allerede i bevægelse. Forandring starter med at sige: det her virker ikke.', link: 'muligt', linkTekst: 'Tag det første skridt' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvordan er stemningen derhjemme?',
+    svar: [
+      { label: 'Stille — den gode slags', respons: 'Stille rum er rum, hvor nervesystemet kan regulere. Nyd det. Det er helende.', link: 'hjem', linkTekst: 'Hvil i det' },
+      { label: 'Anspændt', respons: 'Anspændthed smitter. Når ét nervesystem er i alarm, følger de andre. Start med at regulere dit eget.', link: 'trappen', linkTekst: 'Start med dig' },
+      { label: 'Kaotisk', respons: 'Kaos er midlertidigt. Det føles uendeligt, men det er det ikke. Find ét roligt punkt og hold fast.', link: 'oevelser', linkTekst: 'Find dit anker' },
+      { label: 'Fraværende', respons: 'Når alle er til stede men ingen er "der", mangler forbindelsen. Ét øjeblik af ægte kontakt kan ændre det.', link: 'temaer', linkTekst: 'Genopbyg kontakten' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad drømte du om, da du var yngre?',
+    svar: [
+      { label: 'En tryg familie', respons: 'Den drøm lever stadig. Tryghed bygges ikke af perfektion, men af tilstedeværelse og reparation.', link: 'hjem', linkTekst: 'Byg videre' },
+      { label: 'Frihed', respons: 'Frihed i en familie handler ikke om at slippe væk — men om at være dig selv, sammen med andre.', link: 'oevelser', linkTekst: 'Mærk friheden' },
+      { label: 'At blive set', respons: 'Behovet for at blive set forsvinder aldrig. Giv dig selv det, du ikke fik. Det er aldrig for sent.', link: 'temaer', linkTekst: 'Om tilknytning' },
+      { label: 'Husker det ikke', respons: 'Når drømme er glemt, er det ofte fordi overlevelse tog al pladsen. De er der stadig — under overfladen.', link: 'oevelser', linkTekst: 'Grav forsigtigt' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvornår følte du dig sidst virkelig til stede?',
+    svar: [
+      { label: 'For nylig', respons: 'Hold fast i den følelse. Nærvær er en muskel — jo mere du bruger den, jo stærkere bliver den.', link: 'hjem', linkTekst: 'Styrk den' },
+      { label: 'Det er længe siden', respons: 'Når nærvær er blevet sjældent, har nervesystemet brug for hjælp til at komme ned i gear.', link: 'oevelser', linkTekst: 'Kom ned i gear' },
+      { label: 'Kun med mit barn', respons: 'Børn trækker os ind i nuet. De er vores bedste lærere i nærvær — uanset alder.', link: 'hjem', linkTekst: 'Lær af dit barn' },
+      { label: 'Aldrig rigtig', respons: 'Hvis du altid har levet i overlevelsesmode, kan nærvær føles fremmed. Det kan læres. Langsomt og trygt.', link: 'trappen', linkTekst: 'Forstå hvorfor' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvad ville Rikke sige til dig lige nu?',
+    svar: [
+      { label: 'Mærk det', respons: 'Rikke ville sige: lad dig mærke det. Ikke analysere det, ikke løse det — bare mærke det.', link: 'oevelser', linkTekst: 'Mærk det nu' },
+      { label: 'Du er ikke alene', respons: 'Rikke ville sige: de familier, jeg møder, bærer alle på det her. Du er ikke den eneste.', link: 'temaer', linkTekst: 'Se at andre kender det' },
+      { label: 'Start med kroppen', respons: 'Rikke ville sige: din krop husker mere, end du tror. Vejen ind gennem kroppen er ofte hurtigere end ord.', link: 'oevelser', linkTekst: 'Start med kroppen' },
+      { label: 'Bed om hjælp', respons: 'Rikke ville sige: at bede om hjælp er ikke at give op. Det er at tage sig selv og sin familie alvorligt.', link: 'hjem', linkTekst: 'Tag det alvorligt' }
+    ]
+  },
+  {
+    spoergsmaal: 'Hvordan har du det med dagen, der venter?',
+    svar: [
+      { label: 'Overskuelig', respons: 'Når dagen føles overskuelig, er dit nervesystem reguleret. Brug det — men pres dig ikke.', link: 'hjem', linkTekst: 'Tag det med' },
+      { label: 'Overvældende', respons: 'En overvældende dag behøver ikke leves på én gang. Tænk i de næste 30 minutter. Det er nok.', link: 'muligt', linkTekst: 'Ét skridt ad gangen' },
+      { label: 'Ensformig', respons: 'Ensformighed kan være trygt — eller kvælende. Hvad er det for dig? Der er ingen forkerte svar.', link: 'temaer', linkTekst: 'Udforsk noget nyt' },
+      { label: 'Uforudsigelig', respons: 'Uforudsigelighed holder nervesystemet aktivt. Giv dig selv et anker — én ting, der er fast.', link: 'oevelser', linkTekst: 'Find dit anker' }
+    ]
+  }
+];
+
+// Hilsner baseret på ugedag og årstid
+var MORGEN_HILSNER = {
+  mandag: 'Ny uge. Du behøver ikke have en plan — bare et næste skridt.',
+  tirsdag: 'Tirsdag. Ugen er i gang. Hvordan landede du i den?',
+  onsdag: 'Midt i ugen. Et godt tidspunkt at stoppe op og mærke efter.',
+  torsdag: 'Torsdag. Snart weekend. Hvad har denne uge lært dig?',
+  fredag: 'Fredag. Ugen er næsten slut. Hvad vil du tage med videre?',
+  loerdag: 'Weekend. Måske er der rum til noget, der ellers ikke får plads.',
+  soendag: 'Søndag. En dag til at samle sig — inden en ny uge begynder.',
+  vinter: 'Det er mørkt udenfor. Men du er her.',
+  foraar: 'Noget nyt er på vej. Også i dig.',
+  sommer: 'Lyset er langt. Brug det til at se klart.',
+  efteraar: 'Bladene falder. Måske er der noget, du også kan slippe.'
+};

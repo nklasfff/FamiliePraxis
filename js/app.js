@@ -206,6 +206,7 @@
     if (aktivPerspektiv === 'kommune') {
       renderKommune();
     }
+    renderMorgenCheckin();
   }
 
   // ---------- Onboarding ----------
@@ -257,6 +258,106 @@
       welcomeSection.style.transition = 'opacity 1s';
       setTimeout(function () { welcomeSection.style.display = 'none'; }, 1000);
     }, 20000);
+  }
+
+  // ---------- Morgen Check-in ----------
+  function renderMorgenCheckin() {
+    var container = document.getElementById('morgenCheckin');
+    if (!container) return;
+
+    // Only show if morning check-in is enabled
+    if (localStorage.getItem('fp_morning') !== 'true') {
+      container.style.display = 'none';
+      return;
+    }
+
+    // Only show between 5:00 and 11:00
+    var hour = new Date().getHours();
+    if (hour < 5 || hour >= 11) {
+      container.style.display = 'none';
+      return;
+    }
+
+    // Check if already dismissed today
+    var today = new Date().toISOString().slice(0, 10);
+    if (localStorage.getItem('fp_checkin_dismissed') === today) {
+      container.style.display = 'none';
+      return;
+    }
+
+    // Select variant based on day of year (deterministic — same for all users)
+    var now = new Date();
+    var start = new Date(now.getFullYear(), 0, 0);
+    var dayOfYear = Math.floor((now - start) / 86400000);
+    var variantIndex = dayOfYear % MORGEN_CHECKIN.length;
+    var variant = MORGEN_CHECKIN[variantIndex];
+
+    // Get greeting based on day of week + season
+    var dage = ['soendag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'loerdag'];
+    var dagKey = dage[now.getDay()];
+    var maaned = now.getMonth(); // 0-11
+    var saesonKey = maaned >= 2 && maaned <= 4 ? 'foraar' : maaned >= 5 && maaned <= 7 ? 'sommer' : maaned >= 8 && maaned <= 10 ? 'efteraar' : 'vinter';
+    // Alternate between day greeting and season greeting
+    var hilsen = dayOfYear % 2 === 0 ? MORGEN_HILSNER[dagKey] : MORGEN_HILSNER[saesonKey];
+
+    // Render question state
+    var html = '<div class="morgen-inner">';
+    html += '<button class="morgen-close" id="morgenClose">&times;</button>';
+    html += '<div class="morgen-icon">' + IKONER.sprout(28) + '</div>';
+    html += '<div class="morgen-hilsen">' + hilsen + '</div>';
+    html += '<div class="morgen-spoergsmaal">' + variant.spoergsmaal + '</div>';
+    html += '<div class="morgen-svar-wrap">';
+    for (var i = 0; i < variant.svar.length; i++) {
+      html += '<button class="morgen-svar-btn" data-svar-idx="' + i + '">' + variant.svar[i].label + '</button>';
+    }
+    html += '</div></div>';
+
+    container.innerHTML = html;
+    container.style.display = 'block';
+
+    // Bind close button
+    document.getElementById('morgenClose').addEventListener('click', function () {
+      localStorage.setItem('fp_checkin_dismissed', today);
+      container.style.opacity = '0';
+      container.style.transition = 'opacity 0.4s';
+      setTimeout(function () { container.style.display = 'none'; }, 400);
+    });
+
+    // Bind answer buttons
+    container.querySelectorAll('.morgen-svar-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(this.getAttribute('data-svar-idx'));
+        var svar = variant.svar[idx];
+        showMorgenRespons(container, svar, today);
+      });
+    });
+  }
+
+  function showMorgenRespons(container, svar, today) {
+    var html = '<div class="morgen-inner morgen-respons-state">';
+    html += '<button class="morgen-close" id="morgenCloseRespons">&times;</button>';
+    html += '<div class="morgen-icon">' + IKONER.sprout(28) + '</div>';
+    html += '<div class="morgen-respons-tekst">' + svar.respons + '</div>';
+    html += '<button class="morgen-link-btn" data-morgen-nav="' + svar.link + '">' + svar.linkTekst + ' &rarr;</button>';
+    html += '</div>';
+
+    container.innerHTML = html;
+
+    // Bind close
+    document.getElementById('morgenCloseRespons').addEventListener('click', function () {
+      localStorage.setItem('fp_checkin_dismissed', today);
+      container.style.opacity = '0';
+      container.style.transition = 'opacity 0.4s';
+      setTimeout(function () { container.style.display = 'none'; }, 400);
+    });
+
+    // Bind navigation link
+    container.querySelector('.morgen-link-btn').addEventListener('click', function () {
+      var nav = this.getAttribute('data-morgen-nav');
+      localStorage.setItem('fp_checkin_dismissed', today);
+      container.style.display = 'none';
+      showView(nav);
+    });
   }
 
   // ---------- Circle Diagram ----------

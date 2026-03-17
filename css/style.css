@@ -686,6 +686,108 @@ body {
   text-align: center;
 }
 
+/* ---------- Morgen Check-in ---------- */
+.morgen-checkin {
+  margin: 16px 16px 0;
+  transition: opacity 0.4s;
+}
+
+.morgen-inner {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-pale), #f0f5f4);
+  border: 1px solid var(--primary-light);
+  border-radius: 16px;
+  padding: 24px 20px 20px;
+  text-align: center;
+}
+
+.morgen-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.morgen-icon {
+  color: var(--primary);
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.morgen-hilsen {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.morgen-spoergsmaal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.morgen-svar-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.morgen-svar-btn {
+  background: white;
+  border: 1.5px solid var(--primary-light);
+  border-radius: 10px;
+  padding: 10px 8px;
+  font-size: 0.88rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.morgen-svar-btn:hover,
+.morgen-svar-btn:active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.morgen-respons-tekst {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.morgen-link-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+}
+
+.morgen-link-btn:hover,
+.morgen-link-btn:active {
+  opacity: 0.85;
+}
+
 /* ---------- Hero Section ---------- */
 .hero-section {
   padding: 24px 20px 0;
