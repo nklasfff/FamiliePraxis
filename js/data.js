@@ -761,16 +761,16 @@ var TRAPPEN = [
     navn: 'Tryghed & forbindelse',
     farve: 'sage',
     privat: {
-      beskrivelse: 'Du er i kontakt med dig selv og dem omkring dig. Du føler dig tryg, nærværende og åben. Herfra kan du møde andres følelser uden at miste dig selv.',
-      kropsSignaler: ['Roligt åndedræt', 'Afslappede skuldre', 'Øjenkontakt føles naturlig', 'Varm fornemmelse i brystet'],
-      handlinger: ['Vær nysgerrig på dem omkring dig', 'Del det, der fylder — også det gode', 'Nyd de stille øjeblikke', 'Vær til stede med hele din opmærksomhed'],
-      oevelser: ['pusterummet', 'familiecirklen', 'taknemmelighed']
+      beskrivelse: 'Dit ventrale vagale system er aktivt — du er i din "tryghedszone." Du kan mærke dig selv, mærke andre, og være til stede uden at være på vagt. For mange forældre i udsatte familier er denne tilstand sjælden og uvant. Måske kender du den kun i korte glimt. Det er okay. Hvert glimt tæller — og jo mere du øver dig i at genkende denne tilstand, jo lettere kan du finde tilbage til den.',
+      kropsSignaler: ['Åndedrættet er langsomt og når ned i maven', 'Skuldrene er sænkede — uden at du tænker over det', 'Du kan holde øjenkontakt med dit barn uden ubehag', 'Stemmen er blød og varm — dit barn kan høre det'],
+      handlinger: ['Brug dette øjeblik til at forbinde med dit barn — bare et blik, et smil, en berøring', 'Del noget, der fylder, med en du stoler på', 'Mærk den ro, der er her lige nu — den er reel, også selvom den er kort', 'Hvis dit barn er i nærheden: lad dem mærke din ro. De regulerer sig efter dig.'],
+      oevelser: ['co-regulering', 'familiekort', 'generationsbrev']
     },
     professionel: {
-      beskrivelse: 'Ventral vagal tilstand: social engagement-systemet er aktivt. Klienten er tilgængelig for relationel kontakt og terapeutisk arbejde. Optimal tilstand for dybere bearbejdning.',
-      kropsSignaler: ['Reguleret åndedræt', 'Afslappet muskulatur', 'Prosodisk stemme', 'Responsiv ansigtsmimik'],
-      handlinger: ['Arbejd med dybere temaer', 'Facilitér relationel kontakt', 'Udforsk følelsesmæssige lag', 'Konsolidér nye erfaringer'],
-      oevelser: ['parmoede', 'familiecirklen', 'taknemmelighed']
+      beskrivelse: 'Ventral vagal tilstand (Porges): det sociale engagementsystem er fuldt aktivt. Klienten har adgang til mentalisering, refleksion og relationel kontakt. Dette er det optimale vindue for narrativt arbejde, for udforskning af tilknytningsmønstre, og for at bearbejde traumatiske oplevelser. I udsatte familier er denne tilstand ofte underudviklet — familiens "tryghedsmuskel" har ikke haft mulighed for at træne.',
+      kropsSignaler: ['Reguleret diafragmatisk respiration', 'Prosodisk stemmeføring med variation', 'Responsiv ansigtsmimik — klienten "møder" dig', 'Afslappet muskulatur, særligt kæbe og skuldre'],
+      handlinger: ['Udnyt vinduet til narrativt arbejde: eksternaliser problemhistorien, udforsk alternative fortællinger', 'Facilitér mentalisering mellem familiemedlemmer — "hvad tror du, din datter følte i det øjeblik?"', 'Arbejd med Circle of Security: styrk forælderens evne til at være tryg base og tryg havn', 'Konsolidér nye erfaringer somatisk — lad klienten mærke i kroppen, hvad det vil sige at være tryg'],
+      oevelser: ['mentalisering-par', 'familiekort', 'generationsbrev']
     }
   },
   {
@@ -778,33 +778,33 @@ var TRAPPEN = [
     navn: 'Alarm & aktivering',
     farve: 'amber',
     privat: {
-      beskrivelse: 'Dit nervesystem er i alarmberedskab. Du mærker uro, irritation eller angst. Det er kroppens måde at sige, at noget kræver opmærksomhed — men du behøver ikke handle på det med det samme.',
-      kropsSignaler: ['Hurtig puls', 'Spændte muskler', 'Rastløshed', 'Overfladisk åndedræt'],
-      handlinger: ['Tag en pause — det er ikke svaghed, det er visdom', 'Mærk fødderne mod gulvet', 'Forlæng udåndingen', 'Sig til en du stoler på, at du har brug for et øjeblik'],
-      oevelser: ['pusterummet', 'grounding', 'kropsscanning']
+      beskrivelse: 'Dit sympatiske nervesystem er aktiveret — kamp-eller-flugt. Du mærker det som vrede, uro, angst eller en intens trang til at handle LIGE NU. For forældre med traumehistorik kan denne tilstand trigges af ting, der objektivt set er små: dit barn, der ikke lytter, en opringning fra kommunen, en stemme der lyder som noget fra fortiden. Din krop reagerer, som om faren er her NU — selvom den egentlig hører til dengang.',
+      kropsSignaler: ['Hjertet banker hurtigt — du kan mærke pulsen i halsen', 'Musklerne spænder, særligt kæbe, skuldre og hænder', 'Åndedrættet er hurtigt og højt i brystet', 'Du kan ikke tænke klart — hjernen "lukker ned" for nuancer'],
+      handlinger: ['STOP før du reagerer. 20 sekunder vagus-åndedræt kan ændre alt: 4 sekunder ind, 8 sekunder ud', 'Mærk fødderne mod gulvet — det fortæller dit nervesystem, at du er HER, ikke DENGANG', 'Sig til dig selv: "Min krop reagerer på noget gammelt. Faren er ikke reel lige nu."', 'Hvis du mærker, at du er ved at reagere på dit barn fra dette sted: gå væk i 2 minutter. Ikke som straf. Som beskyttelse — for jer begge.'],
+      oevelser: ['vagus-aanding', 'somatisk-landing', 'co-regulering']
     },
     professionel: {
-      beskrivelse: 'Sympatisk aktivering: kamp-flugt-systemet er aktiveret. Klienten kan fremstå agiteret, fjendtlig eller angst. Prioritér regulering før bearbejdning.',
-      kropsSignaler: ['Forhøjet puls og blodtryk', 'Muskelspændinger', 'Hypervigilans', 'Overfladisk thorakal respiration'],
-      handlinger: ['Down-regulér gennem samstemning', 'Brug pacing og grounding', 'Validér nervesystemets reaktion', 'Undgå konfrontation i denne tilstand'],
-      oevelser: ['pusterummet', 'grounding', 'kropsscanning']
+      beskrivelse: 'Sympatisk aktivering: kamp-flugt-systemet dominerer. I familier med traumehistorik er dette ofte kronisk — nervesystemet har lært, at verden er farlig, og forbliver i alarmberedskab. Klienten kan fremstå agiteret, konfronterende, hypervigilant eller panikslagen. Mentalisering er kompromitteret — klienten reagerer fra det limbiske system, ikke fra præfrontal cortex. Prioritér ALTID regulering før bearbejdning.',
+      kropsSignaler: ['Forhøjet autonom arousal: takykardi, hypertension, mydriasis', 'Muskelspændinger, særligt aksiale muskler og kæbe', 'Hypervigilans — klienten scanner konstant for fare', 'Respiration er thorakal og hurtig — vagal bremse er deaktiveret'],
+      handlinger: ['Down-regulér gennem samstemning: match først energiniveau, sænk derefter gradvist', 'Brug polyvagale interventioner: forlænget udånding, stemmelejevariation, langsom rytmisk bevægelse', 'Validér nervesystemets reaktion — "Din krop gør præcis, hvad den har lært at gøre for at beskytte dig"', 'Undgå konfrontation og fortolkning i denne tilstand — hjernen kan ikke processere det. Regulér først, mentaliser bagefter.'],
+      oevelser: ['vagus-aanding', 'somatisk-landing', 'co-regulering']
     }
   },
   {
     trin: 3,
-    navn: 'Overbelastning & afkobling',
+    navn: 'Overbelastning & nedlukning',
     farve: 'rose',
     privat: {
-      beskrivelse: 'Dit nervesystem har lukket ned. Du føler dig tom, fjern eller udmattet. Det er kroppens ultimative beskyttelse — men den kan langsomt åbnes igen. Vær blid ved dig selv.',
-      kropsSignaler: ['Følelsesløshed eller tomhed', 'Træthed og energiløshed', 'Følelse af at være "væk"', 'Svært at tænke klart'],
-      handlinger: ['Gør noget meget lille og konkret', 'Mærk noget fysisk — en varm kop, en blød dyne', 'Bed om hjælp — det er okay', 'Vær tålmodig med dig selv'],
-      oevelser: ['kropsscanning', 'tryg-havn', 'pusterummet']
+      beskrivelse: 'Dit dorsale vagale system har taget over — din krop har lukket ned for at beskytte dig. Du føler dig tom, fjern, udmattet eller "ikke rigtig til stede." For mange forældre med traumehistorik er dette en velkendt tilstand — du har overlevet ved at koble fra. Det var en klog strategi dengang. Men nu gør den det svært at være til stede for dit barn og for dig selv. Vejen tilbage er langsom, blid og kræver ikke, at du "tager dig sammen."',
+      kropsSignaler: ['Følelsesløshed eller tomhed — som om du ser livet udefra', 'Dyb træthed, der ikke forsvinder med søvn', 'Svært at mærke kroppen, følelser eller behov', 'Følelse af at være "bag glas" — til stede, men ikke rigtigt der'],
+      handlinger: ['Start med det allermest konkrete: mærk vandet mod hænderne, en varm kop i hånden, fødderne mod gulvet', 'Bevæg dig langsomt — gå en kort tur, stræk dig, ryst kroppen let. Bevægelse fortæller nervesystemet, at du ikke er frosset fast', 'Opsøg en anden person — du behøver ikke tale om det. Bare at sidde i nærheden af et andet reguleret nervesystem hjælper', 'Vær tålmodig med dig selv. Nedlukning er ikke svaghed. Det er det mest avancerede beskyttelsessystem, din krop har. Det tog tid at komme hertil — det tager tid at komme tilbage.'],
+      oevelser: ['somatisk-landing', 'vagus-aanding', 'narrativ-livslinje']
     },
     professionel: {
-      beskrivelse: 'Dorsal vagal tilstand: immobiliseringsresponsen er aktiv. Klienten kan fremstå dissocieret, affladdet eller fjern. Kræver varsom, gradvis mobilisering.',
-      kropsSignaler: ['Hypoton muskulatur', 'Monoton stemme', 'Reduceret ansigtsmimik', 'Begrænset øjenkontakt'],
-      handlinger: ['Aktiver forsigtigt gennem sensorisk stimulering', 'Arbejd med orientering i rummet', 'Hold en langsom, varm stemme', 'Undgå at presse — følg klientens tempo'],
-      oevelser: ['kropsscanning', 'tryg-havn', 'grounding']
+      beskrivelse: 'Dorsal vagal tilstand (Porges): immobiliseringsresponsen er aktiv. Klienten er i hypoarousal — under det terapeutiske vindue. Kan fremstå dissocieret, affladtet, fjern eller "compliant uden kontakt." I udsatte familier ses dette ofte hos forældre med kompleks PTSD og langvarig omsorgssvigt — nervesystemet har lært, at afkobling er den sikreste strategi. Denne tilstand kræver den mest varsomme, graduerede tilgang.',
+      kropsSignaler: ['Hypoton muskulatur — kroppen virker "tung" eller kollapset', 'Monoton, lav stemme uden prosodisk variation', 'Reduceret eller fraværende ansigtsmimik', 'Begrænset øjenkontakt — blikket er "tomt" eller rettet nedad'],
+      handlinger: ['Aktivér forsigtigt gennem sensorisk stimulering: temperatur, berøring, lugt — bottom-up interventioner der omgår kognitiv processering', 'Arbejd med orientering: "Kan du se dig omkring? Hvad lægger du mærke til i rummet?" — genaktivér det sociale engagementsystem gradvist', 'Hold en langsom, varm stemme med prosodisk variation — din stemme ER en polyvagal intervention', 'ALDRIG pres klienten til at "mærke" eller "være til stede." Følg nervesystemets tempo. Tilbyd små, sikre invitationer. Reparation af dorsal vagal tilstand tager tid — og det er okay.'],
+      oevelser: ['somatisk-landing', 'vagus-aanding', 'narrativ-livslinje']
     }
   }
 ];
