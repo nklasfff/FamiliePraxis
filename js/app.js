@@ -55,7 +55,15 @@
     // Navigation
     arrowBack:   function(s){ return svgWrap(s||18, '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'); },
     chevUp:      function(s){ return svgWrap(s||16, '<polyline points="18 15 12 9 6 15"/>'); },
-    chevDown:    function(s){ return svgWrap(s||16, '<polyline points="6 9 12 15 18 9"/>'); }
+    chevDown:    function(s){ return svgWrap(s||16, '<polyline points="6 9 12 15 18 9"/>'); },
+
+    // Social
+    linkedin:    function(s){ return svgWrap(s||16, '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>'); },
+
+    // Favoritter
+    bookmark:    function(s){ return svgWrap(s||18, '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>'); },
+    bookmarkFill:function(s){ return '<svg width="'+(s||18)+'" height="'+(s||18)+'" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'; },
+    share:       function(s){ return svgWrap(s||18, '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>'); }
   };
 
   // ---------- State ----------
@@ -65,6 +73,96 @@
   var aktivTema = null;
   var aktivTrin = null;
   var isFirstVisit = !localStorage.getItem('fp_visited');
+
+  // ---------- Favoritter ----------
+  function getFavoritter() {
+    try { return JSON.parse(localStorage.getItem('fp_favoritter') || '[]'); } catch(e) { return []; }
+  }
+
+  function saveFavoritter(fav) {
+    localStorage.setItem('fp_favoritter', JSON.stringify(fav));
+  }
+
+  function isFavorit(type, id) {
+    return getFavoritter().some(function(f) { return f.type === type && f.id === id; });
+  }
+
+  function toggleFavorit(type, id, titel) {
+    var fav = getFavoritter();
+    var idx = -1;
+    fav.forEach(function(f, i) { if (f.type === type && f.id === id) idx = i; });
+    if (idx >= 0) {
+      fav.splice(idx, 1);
+    } else {
+      fav.push({ type: type, id: id, titel: titel, dato: new Date().toISOString().slice(0,10) });
+    }
+    saveFavoritter(fav);
+    return idx < 0; // true if added, false if removed
+  }
+
+  function buildActionBar(type, id, titel, shareText) {
+    var saved = isFavorit(type, id);
+    return '<div class="action-bar" data-action-type="' + type + '" data-action-id="' + id + '" data-action-titel="' + escapeAttr(titel) + '" data-action-share="' + escapeAttr(shareText || titel) + '">' +
+      '<button class="action-btn action-btn-save' + (saved ? ' active' : '') + '" title="' + (saved ? 'Fjern fra favoritter' : 'Gem som favorit') + '">' +
+      (saved ? IKONER.bookmarkFill(16) : IKONER.bookmark(16)) +
+      '<span>' + (saved ? 'Gemt' : 'Gem') + '</span></button>' +
+      '<button class="action-btn action-btn-share" title="Del">' +
+      IKONER.share(16) + '<span>Del</span></button>' +
+      '</div>';
+  }
+
+  function escapeAttr(str) {
+    return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;');
+  }
+
+  function bindActionBars(container) {
+    container.querySelectorAll('.action-bar').forEach(function(bar) {
+      var type = bar.getAttribute('data-action-type');
+      var id = bar.getAttribute('data-action-id');
+      var titel = bar.getAttribute('data-action-titel');
+      var shareText = bar.getAttribute('data-action-share');
+
+      var saveBtn = bar.querySelector('.action-btn-save');
+      saveBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var added = toggleFavorit(type, id, titel);
+        this.classList.toggle('active', added);
+        this.innerHTML = (added ? IKONER.bookmarkFill(16) : IKONER.bookmark(16)) + '<span>' + (added ? 'Gemt' : 'Gem') + '</span>';
+        this.title = added ? 'Fjern fra favoritter' : 'Gem som favorit';
+        // Update menu badge
+        updateFavoritBadge();
+      });
+
+      var shareBtn = bar.querySelector('.action-btn-share');
+      shareBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (navigator.share) {
+          navigator.share({ title: 'Familiepraxis — ' + titel, text: shareText, url: window.location.href });
+        } else {
+          // Fallback: copy text
+          var ta = document.createElement('textarea');
+          ta.value = titel + '\n\n' + shareText + '\n\nFra Familiepraxis-appen';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          // Visual feedback
+          var span = this.querySelector('span');
+          span.textContent = 'Kopieret';
+          var self = this;
+          setTimeout(function() { span.textContent = 'Del'; }, 1500);
+        }
+      });
+    });
+  }
+
+  function updateFavoritBadge() {
+    var badge = document.getElementById('favoritBadge');
+    if (!badge) return;
+    var count = getFavoritter().length;
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'inline-flex' : 'none';
+  }
 
   // ---------- DOM refs ----------
   var onboarding = document.getElementById('onboarding');
@@ -298,6 +396,7 @@
       data.dybde.forEach(function (afsnit) {
         html += '<p class="cirkel-dybde-afsnit">' + afsnit + '</p>';
       });
+      html += buildActionBar('fordybelse', aktivCirkel, cirkel.titel + ' — Fordybelse', data.dybde.join('\n\n'));
     } else if (aktivTab === 'sammenhaenge') {
       var relationer = SAMMENHAENGE.filter(function (s) {
         return s.fra === aktivCirkel || s.til === aktivCirkel;
@@ -334,6 +433,7 @@
         showCirkelDetail(this.getAttribute('data-goto'));
       });
     });
+    bindActionBars(container);
   }
 
   // ---------- Trappen ----------
@@ -360,18 +460,20 @@
         '<div class="trappe-section-title">Handlinger</div>' +
         '<ul class="trappe-list">';
       data.handlinger.forEach(function (h) { html += '<li>' + h + '</li>'; });
-      html += '</ul></div></div></div>';
+      html += '</ul>' + buildActionBar('trappen', trin.navn, trin.navn, data.beskrivelse) + '</div></div></div>';
     });
 
     container.innerHTML = html;
 
     container.querySelectorAll('.trappe-trin').forEach(function (trin) {
-      trin.addEventListener('click', function () {
+      trin.addEventListener('click', function (e) {
+        if (e.target.closest('.action-bar')) return;
         var trinNum = parseInt(this.getAttribute('data-trin'));
         aktivTrin = aktivTrin === trinNum ? null : trinNum;
         renderTrappen();
       });
     });
+    bindActionBars(container);
   }
 
   // ---------- Temaer ----------
@@ -433,18 +535,21 @@
           '<div class="oevelse-step-text">' + trin + '</div>' +
           '</div>';
       });
+      html += buildActionBar('oevelse', oev.titel, oev.titel, oev.intro + '\n\n' + oev.trin.join('\n'));
       html += '</div></div></div>';
     });
 
     list.innerHTML = html;
 
     list.querySelectorAll('.oevelse-card').forEach(function (card) {
-      card.addEventListener('click', function () {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.action-bar')) return; // Don't toggle card when clicking action bar
         var wasActive = this.classList.contains('active');
         list.querySelectorAll('.oevelse-card').forEach(function (c) { c.classList.remove('active'); });
         if (!wasActive) this.classList.add('active');
       });
     });
+    bindActionBars(list);
   }
 
   // ---------- Menu ----------
@@ -475,6 +580,7 @@
       '</div>';
 
     // Navigation
+    var favCount = getFavoritter().length;
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Navigation</div>' +
       '<div class="menu-link" data-nav="hjem">Hjem</div>' +
@@ -483,6 +589,7 @@
       '<div class="menu-link" data-nav="oevelser">Øvelser</div>' +
       '<div class="menu-link" data-nav="muligt">Hvad er muligt lige nu?</div>' +
       (aktivPerspektiv === 'kommune' ? '<div class="menu-link" data-nav="kommune">Samarbejde med Rikke</div>' : '') +
+      '<div class="menu-link menu-link-favoritter" id="menuFavoritter">' + IKONER.bookmark(15) + ' Mine favoritter <span class="menu-favorit-badge" id="favoritBadge" style="' + (favCount > 0 ? '' : 'display:none') + '">' + favCount + '</span></div>' +
       '</div>';
 
     // Kontakt
@@ -492,6 +599,7 @@
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + PRAKSIS_INFO.email + '</div>' +
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mapPin(15) + '</span>' + PRAKSIS_INFO.adresse + '</div>' +
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.hash(15) + '</span>CVR: ' + PRAKSIS_INFO.cvr + '</div>' +
+      '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="menu-contact-item menu-contact-link"><span class="menu-contact-icon">' + IKONER.linkedin(15) + '</span>LinkedIn</a>' +
       '</div>';
 
     // Indstillinger
@@ -534,6 +642,14 @@
         closeMenu();
       });
     });
+
+    var favLink = document.getElementById('menuFavoritter');
+    if (favLink) {
+      favLink.addEventListener('click', function () {
+        showFavoritter();
+        closeMenu();
+      });
+    }
   }
 
   function buildToggle(label, key) {
@@ -1020,6 +1136,7 @@
     html += '<div class="kommune-cta-info">';
     html += '<a href="tel:' + PRAKSIS_INFO.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">' + IKONER.phone(18) + ' Ring ' + PRAKSIS_INFO.telefon + '</a>';
     html += '<a href="mailto:' + PRAKSIS_INFO.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">' + IKONER.mail(18) + ' Skriv til ' + PRAKSIS_INFO.email + '</a>';
+    html += '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="kommune-cta-btn kommune-cta-btn-linkedin">' + IKONER.linkedin(18) + ' Se Rikkes LinkedIn</a>';
     html += '</div>';
     html += '<p class="kommune-cta-cvr">CVR: ' + PRAKSIS_INFO.cvr + ' · ' + PRAKSIS_INFO.adresse + '</p>';
     html += '</div>';
@@ -1041,6 +1158,80 @@
         showView(this.getAttribute('data-goto'));
       });
     });
+  }
+
+  // ---------- Favoritter View ----------
+  function renderFavoritter() {
+    var container = document.getElementById('favoritterContent');
+    if (!container) return;
+    var fav = getFavoritter();
+
+    if (fav.length === 0) {
+      container.innerHTML = '<div class="favoritter-empty">' +
+        '<div class="favoritter-empty-icon">' + IKONER.bookmark(32) + '</div>' +
+        '<p>Du har ikke gemt noget endnu.</p>' +
+        '<p class="favoritter-empty-hint">Tryk på ' + IKONER.bookmark(14) + ' Gem når du finder indhold, du vil vende tilbage til.</p>' +
+        '</div>';
+      return;
+    }
+
+    var typeLabels = { oevelse: 'Øvelse', fordybelse: 'Fordybelse', trappen: 'Nervesystemet' };
+    var typeIcons = { oevelse: IKONER.wind(16), fordybelse: IKONER.leaf(16), trappen: IKONER.lightning(16) };
+
+    // Group by type
+    var groups = {};
+    fav.forEach(function(f) {
+      if (!groups[f.type]) groups[f.type] = [];
+      groups[f.type].push(f);
+    });
+
+    var html = '';
+    Object.keys(groups).forEach(function(type) {
+      html += '<div class="favoritter-group">';
+      html += '<div class="favoritter-group-title">' + (typeIcons[type] || '') + ' ' + (typeLabels[type] || type) + '</div>';
+      groups[type].forEach(function(f) {
+        html += '<div class="favoritter-item" data-fav-type="' + f.type + '" data-fav-id="' + escapeAttr(f.id) + '">' +
+          '<div class="favoritter-item-info">' +
+          '<div class="favoritter-item-titel">' + f.titel + '</div>' +
+          '<div class="favoritter-item-dato">Gemt ' + f.dato + '</div>' +
+          '</div>' +
+          '<button class="favoritter-item-remove" data-fav-type="' + f.type + '" data-fav-id="' + escapeAttr(f.id) + '" title="Fjern">&times;</button>' +
+          '</div>';
+      });
+      html += '</div>';
+    });
+
+    container.innerHTML = html;
+
+    // Bind clicks to navigate
+    container.querySelectorAll('.favoritter-item').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        if (e.target.closest('.favoritter-item-remove')) return;
+        var type = this.getAttribute('data-fav-type');
+        var id = this.getAttribute('data-fav-id');
+        if (type === 'oevelse') { showView('oevelser'); }
+        else if (type === 'fordybelse') { showCirkelDetail(id); }
+        else if (type === 'trappen') { showView('trappen'); }
+      });
+    });
+
+    // Bind remove buttons
+    container.querySelectorAll('.favoritter-item-remove').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var type = this.getAttribute('data-fav-type');
+        var id = this.getAttribute('data-fav-id');
+        toggleFavorit(type, id, '');
+        renderFavoritter();
+        updateFavoritBadge();
+      });
+    });
+  }
+
+  function showFavoritter() {
+    renderFavoritter();
+    showView('favoritter');
+    document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
   }
 
   function showKommune() {
