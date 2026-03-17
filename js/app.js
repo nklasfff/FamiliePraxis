@@ -1362,7 +1362,7 @@
     html += '<div class="dynamik-svg-wrap">';
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
     // Connection lines
-    html += '<g opacity="0.2">';
+    html += '<g opacity="0.35">';
     var balPos = {c:[260,260],r:[260,110],p:[390,185],f:[390,335],b:[260,410],a:[130,335],i:[130,185]};
     var keys = ['r','p','f','b','a','i'];
     keys.forEach(function(k){
@@ -1374,7 +1374,8 @@
       }
     }
     html += '</g>';
-    // Circles
+    // Circles — white mask first, then colored circle on top
+    html += '<circle cx="260" cy="260" r="72" fill="#fff"/>';
     html += '<circle cx="260" cy="260" r="72" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
     html += '<text x="260" y="252" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">Familien</text>';
     html += '<text x="260" y="274" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">som helhed</text>';
@@ -1387,6 +1388,7 @@
       {x:130,y:185,l1:'Dig selv',l2:'& dine spor'}
     ];
     balCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="56" fill="#fff"/>';
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="56" fill="#3A7A76" stroke="#2C5F5C" stroke-width="1.5" opacity="0.88"/>';
       html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle">'+c.l1+'</text>';
       html += '<text x="'+c.x+'" y="'+(c.y+12)+'" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle">'+c.l2+'</text>';
@@ -1408,7 +1410,7 @@
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
     // Shifted positions
     var presPos = {c:[270,255],r:[240,100],p:[405,165],f:[380,355],b:[280,420],a:[115,310],i:[145,200]};
-    html += '<g opacity="0.15">';
+    html += '<g opacity="0.35">';
     var pk = ['r','p','f','b','a','i'];
     pk.forEach(function(k){
       html += '<line x1="'+presPos.c[0]+'" y1="'+presPos.c[1]+'" x2="'+presPos[k][0]+'" y2="'+presPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
@@ -1419,6 +1421,7 @@
       }
     }
     html += '</g>';
+    html += '<circle cx="270" cy="255" r="68" fill="#fff"/>';
     html += '<circle cx="270" cy="255" r="68" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
     html += '<text x="270" y="247" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Familien</text>';
     html += '<text x="270" y="267" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">som helhed</text>';
@@ -1431,6 +1434,7 @@
       {x:145,y:200,r:42,l1:'Dig selv',l2:'& dine spor',op:'0.6'}
     ];
     presCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#fff"/>';
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#3A7A76" stroke="#2C5F5C" stroke-width="1.5" opacity="'+c.op+'"/>';
       html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="12" text-anchor="middle">'+c.l1+'</text>';
       html += '<text x="'+c.x+'" y="'+(c.y+10)+'" fill="#fff" font-family="Georgia,serif" font-size="12" text-anchor="middle">'+c.l2+'</text>';
@@ -1452,7 +1456,7 @@
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
     // "Dig selv & dine spor" (trauma/individuel) dominates - it's big and pulls everything
     var domPos = {c:[280,260],r:[255,115],p:[395,200],f:[370,350],b:[260,415],a:[120,320],i:[100,165]};
-    html += '<g opacity="0.15">';
+    html += '<g opacity="0.35">';
     var dk = ['r','p','f','b','a','i'];
     dk.forEach(function(k){
       html += '<line x1="'+domPos.c[0]+'" y1="'+domPos.c[1]+'" x2="'+domPos[k][0]+'" y2="'+domPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
@@ -1463,10 +1467,12 @@
       }
     }
     html += '</g>';
+    html += '<circle cx="280" cy="260" r="65" fill="#fff"/>';
     html += '<circle cx="280" cy="260" r="65" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
     html += '<text x="280" y="252" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Familien</text>';
     html += '<text x="280" y="272" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">som helhed</text>';
-    // Big "individuel" circle
+    // Big "individuel" circle — white mask first
+    html += '<circle cx="100" cy="165" r="78" fill="#fff"/>';
     html += '<circle cx="100" cy="165" r="78" fill="#9E6B7B" stroke="#7D5563" stroke-width="2" opacity="0.85"/>';
     html += '<text x="100" y="155" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Ubearbejdede</text>';
     html += '<text x="100" y="175" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">spor</text>';
@@ -1479,6 +1485,7 @@
       {x:120,y:320,r:46,l1:'Åndedræt &',l2:'nervesystem',op:'0.7'}
     ];
     domCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#fff"/>';
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#3A7A76" stroke="#2C5F5C" stroke-width="1.5" opacity="'+c.op+'"/>';
       html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l1+'</text>';
       html += '<text x="'+c.x+'" y="'+(c.y+8)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l2+'</text>';
@@ -1508,7 +1515,7 @@
     html += '<div class="dynamik-svg-wrap">';
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
     var mulPos = {c:[265,265],r:[220,95],p:[410,175],f:[395,360],b:[240,430],a:[100,340],i:[110,170]};
-    html += '<g opacity="0.12">';
+    html += '<g opacity="0.35">';
     var mk = ['r','p','f','b','a','i'];
     mk.forEach(function(k){
       html += '<line x1="'+mulPos.c[0]+'" y1="'+mulPos.c[1]+'" x2="'+mulPos[k][0]+'" y2="'+mulPos[k][1]+'" stroke="#2C5F5C" stroke-width="1" stroke-dasharray="4,4"/>';
@@ -1519,10 +1526,11 @@
       }
     }
     html += '</g>';
+    html += '<circle cx="265" cy="265" r="62" fill="#fff"/>';
     html += '<circle cx="265" cy="265" r="62" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
     html += '<text x="265" y="257" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">Familien</text>';
     html += '<text x="265" y="277" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">som helhed</text>';
-    // Multiple enlarged circles with warm color
+    // Multiple enlarged circles with warm color — white mask first
     var mulCircles = [
       {x:220,y:95,r:52,l1:'Tilknytning',l2:'& tryghed',fill:'#B8956A',stroke:'#9E7A55',op:'0.85'},
       {x:410,y:175,r:42,l1:'Parforholdet',l2:'& nærvær',fill:'#3A7A76',stroke:'#2C5F5C',op:'0.55'},
@@ -1532,6 +1540,7 @@
       {x:110,y:170,r:70,l1:'Dig selv',l2:'& dine spor',fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'}
     ];
     mulCircles.forEach(function(c){
+      html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#fff"/>';
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="'+c.fill+'" stroke="'+c.stroke+'" stroke-width="1.5" opacity="'+c.op+'"/>';
       html += '<text x="'+c.x+'" y="'+(c.y-6)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l1+'</text>';
       html += '<text x="'+c.x+'" y="'+(c.y+8)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l2+'</text>';
