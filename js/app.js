@@ -576,7 +576,8 @@
 
     // Om Rikke
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title">Om terapeuten</div>' +
+      '<div class="menu-section-title" style="text-align:center">Om terapeuten</div>' +
+      '<div style="text-align:center;margin-bottom:12px"><img src="img/rikke-veth.png" alt="Rikke Veth" class="menu-terapeut-foto"></div>' +
       '<div class="menu-info" style="margin-bottom:10px">Rikke Veth er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun tilbyder familieterapi, parterapi, individuel terapi og åndedrætsterapi for private — og familiebehandling, undersøgelser og supervision til kommuner. Hendes styrke ligger i at skabe udvikling, hvor følelser, kommunikation og samspil går i hårdknude.</div>' +
       '</div>';
 
