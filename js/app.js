@@ -297,12 +297,12 @@
   function drawConnectionLines() {
     var positions = {
       centrum: [260, 260],
-      relationer: [260, 105],
-      parterapi: [400, 180],
-      familie: [400, 340],
-      boern: [260, 415],
-      aandedraet: [120, 340],
-      individuel: [120, 180]
+      relationer: [260, 95],
+      parterapi: [403, 175],
+      familie: [403, 345],
+      boern: [260, 425],
+      aandedraet: [117, 345],
+      individuel: [117, 175]
     };
     var linesGroup = document.getElementById('connectionLines');
     if (!linesGroup) return;
@@ -566,12 +566,13 @@
   function renderMenuContent() {
     var html = '';
 
-    // Perspektiv info
+    // Perspektiv info + skift
+    var perspIkon = aktivPerspektiv === 'privat' ? IKONER.house(16) : aktivPerspektiv === 'kommune' ? IKONER.handshake(16) : IKONER.building(16);
+    var perspNavn = aktivPerspektiv === 'privat' ? 'Privat klient' : aktivPerspektiv === 'kommune' ? 'Kommune & samarbejde' : 'Fagprofessionel';
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Dit perspektiv</div>' +
-      '<div class="menu-link" id="menuSwitchPerspektiv">' +
-      (aktivPerspektiv === 'privat' ? IKONER.house(16) + ' Privat klient' : aktivPerspektiv === 'kommune' ? IKONER.handshake(16) + ' Kommune & samarbejde' : IKONER.building(16) + ' Fagprofessionel') +
-      ' — tryk for at skifte</div></div>';
+      '<div class="menu-info" style="margin-bottom:8px">' + perspIkon + ' ' + perspNavn + '</div>' +
+      '<div class="menu-link" id="menuSwitchPerspektiv">' + IKONER.arrowLeftRight(15) + ' Skift perspektiv</div></div>';
 
     // Om Rikke
     html += '<div class="menu-section">' +
