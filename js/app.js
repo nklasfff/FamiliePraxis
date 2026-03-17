@@ -440,9 +440,23 @@
       btn.classList.toggle('active', btn.getAttribute('data-view') === viewName);
     });
 
-    // Reset detail views
+    // Reset all expanded/active states when leaving a view
     if (viewName !== 'cirkelDetalje') {
       aktivCirkel = null;
+      aktivTab = 'overblik';
+    }
+    if (viewName !== 'trappen' && aktivTrin !== null) {
+      aktivTrin = null;
+      renderTrappen();
+    }
+    if (viewName !== 'temaer' && aktivTema !== null) {
+      aktivTema = null;
+      renderTemaer();
+    }
+    // Skjul muligt-formularen hvis vi forlader den side
+    if (viewName !== 'muligt') {
+      var addForm = document.getElementById('muligtAddForm');
+      if (addForm) addForm.style.display = 'none';
     }
 
     // Ensure kommune content is rendered when navigating to it
