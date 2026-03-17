@@ -6,6 +6,57 @@
 (function () {
   'use strict';
 
+  // ---------- SVG Icon Library ----------
+  var SVG_ATTRS = ' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">';
+  function svgWrap(size, inner) { return '<svg width="' + size + '" height="' + size + '"' + SVG_ATTRS + inner + '</svg>'; }
+
+  var IKONER = {
+    // Cirkler
+    leaf:        function(s){ return svgWrap(s||20, '<path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.5 4.5 0 0 0 8 20c4 0 8.5-3 11-8"/><path d="M2 22c1.5-3.5 3-7 6-9.5"/>'); },
+    heart:       function(s){ return svgWrap(s||20, '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>'); },
+    heartDouble: function(s){ return svgWrap(s||20, '<path d="M16 4a4.5 4.5 0 0 0-4 2.3A4.5 4.5 0 0 0 3 9.5C3 14 8 18 12 21c4-3 9-7 9-11.5A4.5 4.5 0 0 0 16 4z"/><path d="M12 7.3A4.5 4.5 0 0 1 16 4"/>'); },
+    homeHeart:   function(s){ return svgWrap(s||20, '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11a2 2 0 0 0-2 2c0 1.5 2 3 2 3s2-1.5 2-3a2 2 0 0 0-2-2z"/>'); },
+    butterfly:   function(s){ return svgWrap(s||20, '<path d="M12 3v18"/><path d="M4.5 8c0-3 2-5.5 4.5-5.5 2 0 3 2 3 4.5s-1 4.5-3 4.5C6.5 11.5 4.5 11 4.5 8z"/><path d="M19.5 8c0-3-2-5.5-4.5-5.5-2 0-3 2-3 4.5s1 4.5 3 4.5c2.5 0 4.5-.5 4.5-3.5z"/><path d="M7 15c-1 2-2 4.5 0 5.5s3-1 5-3.5"/><path d="M17 15c1 2 2 4.5 0 5.5s-3-1-5-3.5"/>'); },
+    wind:        function(s){ return svgWrap(s||20, '<path d="M9.59 4.59A2 2 0 1 1 11 8H2"/><path d="M12.59 19.41A2 2 0 1 0 14 16H2"/><path d="M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"/>'); },
+    sprout:      function(s){ return svgWrap(s||20, '<path d="M7 20h10"/><path d="M12 20v-8"/><path d="M12 12C12 8 8 5 4 5c0 4 3 7 8 7"/><path d="M12 12c0-4 4-7 8-7-0 4-3 7-8 7"/>'); },
+
+    // Temaer
+    chatBubble:  function(s){ return svgWrap(s||20, '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>'); },
+    heartCrack:  function(s){ return svgWrap(s||20, '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/><path d="M12 8l-2 4h4l-2 4"/>'); },
+    shield:      function(s){ return svgWrap(s||20, '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'); },
+    lightning:   function(s){ return svgWrap(s||20, '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>'); },
+    dove:        function(s){ return svgWrap(s||20, '<path d="M18 8c0-3.3-2.7-6-6-6-1.5 0-2.8.5-3.8 1.5L3 9l4 1-2 4 5-2 1 4 4-5c2.8-.3 5-2.7 5-5.5"/><path d="M12.5 3.5L16 7"/>'); },
+    star:        function(s){ return svgWrap(s||20, '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'); },
+    sparkles:    function(s){ return svgWrap(s||20, '<path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5z"/><path d="M18 14l.75 2.25L21 17l-2.25.75L18 20l-.75-2.25L15 17l2.25-.75z"/>'); },
+
+    // Onboarding
+    house:       function(s){ return svgWrap(s||24, '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>'); },
+    building:    function(s){ return svgWrap(s||24, '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><path d="M9 22v-4h6v4"/>'); },
+    handshake:   function(s){ return svgWrap(s||24, '<path d="M17 11h3a2 2 0 0 0 0-4h-3.5L14 4.5 11.5 7 8 4H4a2 2 0 0 0 0 4h3"/><path d="M7 11l3.5 3.5L14 11l3 3"/><path d="M10.5 14.5L8 17l3 3 5-5"/>'); },
+
+    // Kommune metode-kort
+    lungs:       function(s){ return svgWrap(s||20, '<path d="M12 4v8"/><path d="M12 12c-3 0-5 2-5 5s1 4 3 4c1.5 0 2-1 2-2V12"/><path d="M12 12c3 0 5 2 5 5s-1 4-3 4c-1.5 0-2-1-2-2"/>'); },
+    brain:       function(s){ return svgWrap(s||20, '<path d="M12 2a4 4 0 0 0-4 4c0 1 .5 2 1 2.5"/><path d="M12 2a4 4 0 0 1 4 4c0 1-.5 2-1 2.5"/><path d="M8 8.5A3.5 3.5 0 0 0 5 12c0 1.5 1 2.5 2 3"/><path d="M16 8.5A3.5 3.5 0 0 1 19 12c0 1.5-1 2.5-2 3"/><path d="M7 15a4 4 0 0 0 5 4v-7"/><path d="M17 15a4 4 0 0 1-5 4v-7"/>'); },
+    eye:         function(s){ return svgWrap(s||20, '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'); },
+
+    // Kontakt
+    phone:       function(s){ return svgWrap(s||16, '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>'); },
+    mail:        function(s){ return svgWrap(s||16, '<rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/>'); },
+    mapPin:      function(s){ return svgWrap(s||16, '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>'); },
+    hash:        function(s){ return svgWrap(s||16, '<line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>'); },
+
+    // UI & status
+    arrowLeftRight: function(s){ return svgWrap(s||18, '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'); },
+    refresh:     function(s){ return svgWrap(s||14, '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>'); },
+    hourglass:   function(s){ return svgWrap(s||14, '<path d="M5 3h14"/><path d="M5 21h14"/><path d="M7 3v3a5 5 0 0 0 5 5 5 5 0 0 0 5-5V3"/><path d="M7 21v-3a5 5 0 0 1 5-5 5 5 0 0 1 5 5v3"/>'); },
+    check:       function(s){ return svgWrap(s||14, '<polyline points="20 6 9 17 4 12"/>'); },
+    checkCircle: function(s){ return svgWrap(s||14, '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'); },
+
+    // Navigation
+    arrowBack:   function(s){ return svgWrap(s||18, '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'); },
+    chevUp:      function(s){ return svgWrap(s||16, '<polyline points="18 15 12 9 6 15"/>'); }
+  };
+
   // ---------- State ----------
   var aktivPerspektiv = localStorage.getItem('fp_perspektiv') || null;
   var aktivCirkel = null;
@@ -188,6 +239,15 @@
       aktivCirkel = null;
     }
 
+    // Ensure kommune content is rendered when navigating to it
+    if (viewName === 'kommune') {
+      renderKommune();
+    }
+    // Ensure dynamik content is rendered when navigating to it
+    if (viewName === 'dynamik') {
+      renderDynamik();
+    }
+
     // Scroll to top on view change
     if (appMain) appMain.scrollTop = 0;
     window.scrollTo(0, 0);
@@ -211,7 +271,7 @@
     var container = document.getElementById('cirkelDetaljeContent');
 
     var html = '<div class="cirkel-detail-header">' +
-      '<span class="cirkel-detail-ikon">' + cirkel.ikon + '</span>' +
+      '<span class="cirkel-detail-ikon">' + (IKONER[cirkel.ikon] ? IKONER[cirkel.ikon](28) : cirkel.ikon) + '</span>' +
       '<h2 class="cirkel-detail-titel">' + cirkel.titel + '</h2>' +
       '</div>';
 
@@ -324,7 +384,7 @@
       var data = tema[p];
       var isActive = aktivTema === tema.id;
       html += '<div class="tema-card' + (isActive ? ' active' : '') + '" data-tema="' + tema.id + '">' +
-        '<div class="tema-ikon">' + tema.ikon + '</div>' +
+        '<div class="tema-ikon">' + (IKONER[tema.ikon] ? IKONER[tema.ikon](24) : tema.ikon) + '</div>' +
         '<div class="tema-titel">' + tema.titel + '</div>' +
         '<div class="tema-intro">' + data.intro + '</div>' +
         '<div class="tema-expanded"><div class="tema-expanded-inner">' +
@@ -404,7 +464,7 @@
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Dit perspektiv</div>' +
       '<div class="menu-link" id="menuSwitchPerspektiv">' +
-      (aktivPerspektiv === 'privat' ? '🏠 Privat klient' : aktivPerspektiv === 'kommune' ? '🤝 Kommune & samarbejde' : '🏛️ Fagprofessionel') +
+      (aktivPerspektiv === 'privat' ? IKONER.house(16) + ' Privat klient' : aktivPerspektiv === 'kommune' ? IKONER.handshake(16) + ' Kommune & samarbejde' : IKONER.building(16) + ' Fagprofessionel') +
       ' — tryk for at skifte</div></div>';
 
     // Om Rikke
@@ -427,10 +487,10 @@
     // Kontakt
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Kontakt</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">📞</span>' + PRAKSIS_INFO.telefon + '</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">✉️</span>' + PRAKSIS_INFO.email + '</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">📍</span>' + PRAKSIS_INFO.adresse + '</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">🔢</span>CVR: ' + PRAKSIS_INFO.cvr + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.phone(15) + '</span>' + PRAKSIS_INFO.telefon + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + PRAKSIS_INFO.email + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mapPin(15) + '</span>' + PRAKSIS_INFO.adresse + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.hash(15) + '</span>CVR: ' + PRAKSIS_INFO.cvr + '</div>' +
       '</div>';
 
     // Indstillinger
@@ -462,6 +522,7 @@
         renderTemaer();
         renderMenuContent();
         if (aktivCirkel) renderCirkelDetail();
+        if (aktivPerspektiv === 'kommune') renderKommune();
         closeMenu();
       });
     }
@@ -530,7 +591,7 @@
       if (match) {
         results.push({
           type: 'Cirkel',
-          titel: c.ikon + ' ' + c.titel,
+          titel: (IKONER[c.ikon] ? IKONER[c.ikon](16) : '') + ' ' + c.titel,
           snippet: data.overblik.beskrivelse.substring(0, 120) + '...',
           action: function () { closeSearch(); showCirkelDetail(c.id); }
         });
@@ -545,7 +606,7 @@
       if (match) {
         results.push({
           type: 'Tema',
-          titel: t.ikon + ' ' + t.titel,
+          titel: (IKONER[t.ikon] ? IKONER[t.ikon](16) : '') + ' ' + t.titel,
           snippet: data.intro,
           action: function () { closeSearch(); showView('temaer'); }
         });
@@ -659,10 +720,10 @@
 
     var statusIcons = {
       'none': '<span class="muligt-check muligt-check-empty"></span>',
-      'working': '<span class="muligt-check muligt-check-working">⟳</span>',
-      'waiting': '<span class="muligt-check muligt-check-waiting">⏳</span>',
-      'temp': '<span class="muligt-check muligt-check-temp">✓</span>',
-      'done': '<span class="muligt-check muligt-check-done">✓</span>'
+      'working': '<span class="muligt-check muligt-check-working">' + IKONER.refresh(14) + '</span>',
+      'waiting': '<span class="muligt-check muligt-check-waiting">' + IKONER.hourglass(14) + '</span>',
+      'temp': '<span class="muligt-check muligt-check-temp">' + IKONER.check(14) + '</span>',
+      'done': '<span class="muligt-check muligt-check-done">' + IKONER.checkCircle(14) + '</span>'
     };
 
     var html = '';
@@ -681,10 +742,10 @@
       html += '<textarea class="muligt-card-note" data-idx="' + idx + '" placeholder="Hvad kan vi gøre lige nu?" rows="2">' + (item.note || '') + '</textarea>';
       html += '</div>';
       html += '<div class="muligt-card-statuses">';
-      html += '<button class="muligt-status-btn' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working" title="Under arbejde">⟳</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting" title="Vi venter">⏳</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp" title="For nu — midlertidigt flueben">✓~</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done" title="Løst">✓</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working" title="Under arbejde">' + IKONER.refresh(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting" title="Vi venter">' + IKONER.hourglass(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp" title="For nu — midlertidigt">' + IKONER.check(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done" title="Løst">' + IKONER.checkCircle(14) + '</button>';
       html += '</div>';
       html += '</div>';
     });
@@ -819,25 +880,25 @@
 
     html += '<div class="kommune-cards">';
     html += '<div class="kommune-card kommune-card-sage">';
-    html += '<div class="kommune-card-icon">🌿</div>';
+    html += '<div class="kommune-card-icon">' + IKONER.leaf(24) + '</div>';
     html += '<h4>Narrativ-systemisk terapi</h4>';
     html += '<p>Rikke arbejder med familiens fortælling — ikke kun symptomerne. Hun finder de historier, der fastholder familien i destruktive mønstre, og hjælper med at skabe nye fortællinger, der bærer.</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-rose">';
-    html += '<div class="kommune-card-icon">🫁</div>';
+    html += '<div class="kommune-card-icon">' + IKONER.lungs(24) + '</div>';
     html += '<h4>Åndedrætsterapi</h4>';
     html += '<p>Mange udsatte forældre har et nervesystem i konstant alarmberedskab. Rikke bruger åndedrættet som direkte adgang til regulering — noget familien kan tage med hjem fra første session.</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-amber">';
-    html += '<div class="kommune-card-icon">🧠</div>';
+    html += '<div class="kommune-card-icon">' + IKONER.brain(24) + '</div>';
     html += '<h4>Polyvagal forståelse</h4>';
     html += '<p>Porges\' polyvagale teori giver Rikke et præcist sprog for, hvorfor forældre reagerer, som de gør. Det flytter fokus fra skyld til nervesystem — og åbner for reel forandring.</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-stone">';
-    html += '<div class="kommune-card-icon">👁️</div>';
+    html += '<div class="kommune-card-icon">' + IKONER.eye(24) + '</div>';
     html += '<h4>Mentalisering (MBT)</h4>';
     html += '<p>Rikke hjælper forældre med at se deres barn som et selvstændigt menneske med egne følelser og behov — den grundlæggende kapacitet, der er forstyrret i udsatte familier.</p>';
     html += '</div>';
@@ -927,8 +988,8 @@
     html += '<h3 class="kommune-cta-title">Klar til en samtale?</h3>';
     html += '<p class="kommune-cta-text">Rikke tager gerne en uforpligtende samtale om, hvordan et samarbejde kan se ud for jeres kommune.</p>';
     html += '<div class="kommune-cta-info">';
-    html += '<a href="tel:' + PRAKSIS_INFO.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">📞 Ring ' + PRAKSIS_INFO.telefon + '</a>';
-    html += '<a href="mailto:' + PRAKSIS_INFO.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">✉️ Skriv til ' + PRAKSIS_INFO.email + '</a>';
+    html += '<a href="tel:' + PRAKSIS_INFO.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">' + IKONER.phone(18) + ' Ring ' + PRAKSIS_INFO.telefon + '</a>';
+    html += '<a href="mailto:' + PRAKSIS_INFO.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">' + IKONER.mail(18) + ' Skriv til ' + PRAKSIS_INFO.email + '</a>';
     html += '</div>';
     html += '<p class="kommune-cta-cvr">CVR: ' + PRAKSIS_INFO.cvr + ' · ' + PRAKSIS_INFO.adresse + '</p>';
     html += '</div>';
@@ -1206,6 +1267,9 @@
       renderTemaer();
       renderMenuContent();
       if (aktivCirkel) renderCirkelDetail();
+      if (aktivPerspektiv === 'kommune') {
+        renderKommune();
+      }
     });
 
     // Bottom nav

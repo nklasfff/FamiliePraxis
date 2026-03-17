@@ -58,7 +58,7 @@ var CIRKLER = [
   {
     id: 'centrum',
     titel: 'Familien som helhed',
-    ikon: '🌿',
+    ikon: 'leaf',
     privat: {
       overblik: {
         beskrivelse: 'I en familie hænger alt sammen. Når ét medlem har det svært, mærker alle det — og når familien finder vej sammen, løfter det alle. At forstå familien som en helhed er det første skridt mod forandring.',
@@ -99,7 +99,7 @@ var CIRKLER = [
   {
     id: 'relationer',
     titel: 'Tilknytning & tryghed',
-    ikon: '💛',
+    ikon: 'heart',
     privat: {
       overblik: {
         beskrivelse: 'Tryghed er fundamentet for alt. Den måde, du blev mødt på som barn, former den måde, du møder verden på i dag. At forstå dine tilknytningsmønstre er ikke at finde fejl — det er at finde vejen hjem til dig selv.',
@@ -140,7 +140,7 @@ var CIRKLER = [
   {
     id: 'parterapi',
     titel: 'Parforholdet',
-    ikon: '💜',
+    ikon: 'heartDouble',
     privat: {
       overblik: {
         beskrivelse: 'Parforholdet er familiens nerve. Når forældrene kæmper — med hinanden, med livet, med deres egne spor — mærker hele familien det. At tage sig af parforholdet er at tage sig af børnene.',
@@ -181,7 +181,7 @@ var CIRKLER = [
   {
     id: 'familie',
     titel: 'Samspil & mønstre',
-    ikon: '🏡',
+    ikon: 'homeHeart',
     privat: {
       overblik: {
         beskrivelse: 'Hver familie har sine mønstre — måder at reagere på, roller der er fordelt, ting der ikke siges højt. Nogle mønstre beskytter. Andre holder jer fast. At se dem er første skridt mod at vælge dem om.',
@@ -222,7 +222,7 @@ var CIRKLER = [
   {
     id: 'individuel',
     titel: 'Dig selv & dine spor',
-    ikon: '🦋',
+    ikon: 'butterfly',
     privat: {
       overblik: {
         beskrivelse: 'Du bærer på spor fra dit liv — fra din opvækst, dine relationer, dine tab og dine kampe. Individuel terapi handler ikke om at fikse dig. Det handler om at stå mere solidt i det, du står i, og finde de ressourcer, du har glemt du har.',
@@ -263,7 +263,7 @@ var CIRKLER = [
   {
     id: 'aandedraet',
     titel: 'Åndedræt & nervesystem',
-    ikon: '🌬️',
+    ikon: 'wind',
     privat: {
       overblik: {
         beskrivelse: 'Dit nervesystem er som en indre alarm. Hos mennesker med traumatiske erfaringer står alarmen ofte på — også når der ikke er fare. Åndedrættet er den mest direkte vej til at fortælle din krop, at det er trygt nu.',
@@ -304,7 +304,7 @@ var CIRKLER = [
   {
     id: 'boern',
     titel: 'Barnets stemme',
-    ikon: '🌱',
+    ikon: 'sprout',
     privat: {
       overblik: {
         beskrivelse: 'Børns adfærd er aldrig tilfældig. Et barn, der slår, skriger, trækker sig eller tilpasser sig for meget, fortæller os noget vigtigt. Barnets adfærd er ikke problemet — den er kommunikation om, at noget i omgivelserne er svært.',
@@ -483,7 +483,7 @@ var TEMA_INDHOLD = [
   {
     id: 'kommunikation',
     titel: 'Når ordene ikke rækker',
-    ikon: '💬',
+    ikon: 'chatBubble',
     privat: {
       intro: 'I familier med svære erfaringer er kommunikation sjældent bare ord. Det er tonefald, tavshed, blikke og kroppe, der taler.',
       tekst: 'Mange familier har lært at overleve ved ikke at tale om det svære. Tavsheden beskytter — men den isolerer også. At lære at kommunikere handler ikke om at finde de rigtige ord, men om at turde vise, hvad der ligger bag ordene. I familier med traumatiske spor er kroppen ofte hurtigere end munden: irritation, tilbagetrækning eller udbrud fortæller mere end selve ordene.',
@@ -498,7 +498,7 @@ var TEMA_INDHOLD = [
   {
     id: 'skilsmisse',
     titel: 'Brud, tab & nye familieformer',
-    ikon: '💔',
+    ikon: 'heartCrack',
     privat: {
       intro: 'Når en familie splitter, mister alle noget — og børnene har brug for at vide, at de ikke er skyld i det.',
       tekst: 'Skilsmisse, anbringelse eller tab af en forælder er blandt de mest omvæltende oplevelser for et barn. I udsatte familier kompliceres bruddet ofte af allerede eksisterende belastninger: konflikter, misbrug, psykisk sygdom eller myndighedsindgreb. Det vigtigste er, at børnene ikke fanges i midten. De har brug for at vide, at begge forældre stadig er deres forældre — uanset hvad der er sket mellem de voksne.',
@@ -513,7 +513,7 @@ var TEMA_INDHOLD = [
   {
     id: 'graenser',
     titel: 'Grænser i kaos',
-    ikon: '🛡️',
+    ikon: 'shield',
     privat: {
       intro: 'I familier under pres kan grænser enten være for stive eller helt fraværende. Begge dele gør ondt.',
       tekst: 'Mange forældre i udsatte familier kæmper med at sætte grænser — fordi de selv voksede op uden tydelige grænser, eller fordi de selv oplevede grænser som straf. Sunde grænser er ikke mure — de er vejledning. De siger: "Jeg er her, jeg holder, og jeg slipper dig ikke." For børn i kaos er tydelige, varme grænser det mest tryghedsskabende, der findes.',
@@ -528,7 +528,7 @@ var TEMA_INDHOLD = [
   {
     id: 'stress',
     titel: 'Kronisk stress & overlevelse',
-    ikon: '⚡',
+    ikon: 'lightning',
     privat: {
       intro: 'Stress i udsatte familier er sjældent forbigående — det er en tilstand, kroppen har vænnet sig til at leve i.',
       tekst: 'Når stress ikke er en forbigående reaktion, men en konstant tilstand, ændrer det hele familiens nervesystem. Forældrene er udmattede, børnene er på vagt, og selv små ting kan udløse store reaktioner. Det første skridt er at anerkende, at jeres stress ikke er svaghed — det er en normal reaktion på unormale vilkår. Og at kroppens vej ud af kronisk stress går gennem regulering, ikke viljestyrke.',
@@ -543,7 +543,7 @@ var TEMA_INDHOLD = [
   {
     id: 'tab',
     titel: 'Sorg, tab & anbringelse',
-    ikon: '🕊️',
+    ikon: 'dove',
     privat: {
       intro: 'Tab i udsatte familier har mange ansigter — og sorgen over det, man aldrig fik, kan være lige så tung som sorgen over det, man mistede.',
       tekst: 'Tab handler ikke kun om dødsfald. Det handler om den barndom, du ikke fik. Det handler om det parforhold, der gik i stykker. Det handler om det barn, der blev anbragt. Sorg i familier med traumatiske erfaringer er ofte kompliceret, fordi den blander sig med skyld, skam og vrede. At give plads til sorgen — uden at dømme den — er begyndelsen på heling.',
@@ -558,7 +558,7 @@ var TEMA_INDHOLD = [
   {
     id: 'unge',
     titel: 'Unge i udsatte familier',
-    ikon: '🌟',
+    ikon: 'star',
     privat: {
       intro: 'Unge, der vokser op i familier med traumatiske spor, bærer ofte på mere, end nogen ser — og deres oprør rummer ofte en bøn om hjælp.',
       tekst: 'Teenageårene er svære for alle familier — men for unge i udsatte familier er det ekstra intenst. De kæmper med at løsrive sig fra forældre, de måske både elsker og frygter. De kan overtage forældrenes mønstre eller gøre oprør mod dem. Nogle unge reagerer udadtil med vrede og grænseoverskridelser. Andre trækker sig indad med angst, selvskade eller isolation. Begge dele er meningsfuld kommunikation.',
@@ -573,7 +573,7 @@ var TEMA_INDHOLD = [
   {
     id: 'selvvaerd',
     titel: 'Skam, skyld & selvværd',
-    ikon: '✨',
+    ikon: 'sparkles',
     privat: {
       intro: 'Mange forældre i udsatte familier bærer på en dyb skam — over deres egen historie, over deres forældreskab, over at have brug for hjælp.',
       tekst: 'Skam er en af de mest destruktive følelser, fordi den siger: "Der er noget galt med MIG." Skyld siger: "Jeg gjorde noget forkert." Skam siger: "JEG er forkert." I familier med traumatiske erfaringer lever skammen ofte i generationer. At turde se den — og langsomt erstatte den med medfølelse for sig selv — er en af de vigtigste transformationer i terapien.',
@@ -588,7 +588,7 @@ var TEMA_INDHOLD = [
   {
     id: 'traumer',
     titel: 'Familietraumer & heling',
-    ikon: '🌿',
+    ikon: 'leaf',
     privat: {
       intro: 'Et familietraume er ikke bare det, der skete — det er det, der skete inde i hele familien som følge af det, der skete.',
       tekst: 'Traumer i familier spreder sig som ringe i vand. En forælder, der bærer på ubearbejdede traumer, kan ubevidst give dem videre til sine børn — ikke af ond vilje, men fordi nervesystemet husker det, sindet har forsøgt at glemme. Heling handler ikke om at glemme, men om at integrere: at finde en plads til det, der skete, så det ikke længere styrer familiens samspil. Det kræver tid, tryghed og professionel hjælp.',

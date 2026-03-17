@@ -306,7 +306,10 @@ body {
 }
 
 .menu-contact-icon {
-  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px;
+  color: var(--primary);
 }
 
 /* ---------- Search Overlay ---------- */
@@ -488,7 +491,14 @@ body {
 }
 
 .medallion-icon {
-  font-size: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255,255,255,0.95);
+}
+
+.medallion-icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 @keyframes medallionPulse {
@@ -545,7 +555,14 @@ body {
 }
 
 .onboarding-btn-icon {
-  font-size: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255,255,255,0.9);
+}
+
+.onboarding-btn-icon svg {
+  width: 26px;
+  height: 26px;
 }
 
 .onboarding-btn-label {
@@ -869,8 +886,13 @@ body {
 }
 
 .tema-ikon {
-  font-size: 1.6rem;
   margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.tema-ikon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .tema-titel {
@@ -1044,18 +1066,43 @@ body {
 
 /* ---------- Cirkel Detail View ---------- */
 .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: none;
   border: none;
   color: var(--primary);
   font-family: Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   padding: 20px 0 12px;
   transition: opacity 0.2s;
 }
 
+.back-btn svg {
+  flex-shrink: 0;
+}
+
 .back-btn:hover {
   opacity: 0.7;
+}
+
+/* ---------- SVG Icon Defaults ---------- */
+.cirkel-detail-ikon svg,
+.tema-ikon svg,
+.kommune-card-icon svg,
+.menu-contact-icon svg,
+.onboarding-btn-icon svg,
+.medallion-icon svg,
+.dynamik-link-icon svg,
+.muligt-check svg,
+.muligt-status-btn svg,
+.search-result-title svg,
+.menu-link svg,
+.kommune-cta-btn svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 .cirkel-detail-header {
@@ -1066,7 +1113,9 @@ body {
 }
 
 .cirkel-detail-ikon {
-  font-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary);
 }
 
 .cirkel-detail-titel {
@@ -1233,7 +1282,8 @@ body {
 }
 
 .dynamik-link-icon {
-  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
   transition: transform 0.3s;
 }
 
@@ -1443,8 +1493,13 @@ body {
 .kommune-card-stone { background: #EDEBE8; border-color: #D5D1CC; }
 
 .kommune-card-icon {
-  font-size: 1.5rem;
   margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.kommune-card-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .kommune-card h4 {
@@ -1833,6 +1888,9 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .muligt-status-btn:hover {
