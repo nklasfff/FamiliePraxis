@@ -453,6 +453,12 @@
       aktivTema = null;
       renderTemaer();
     }
+    if (viewName !== 'oevelser') {
+      var oevelseList = document.getElementById('oevelseList');
+      if (oevelseList) {
+        oevelseList.querySelectorAll('.oevelse-card.active').forEach(function (c) { c.classList.remove('active'); });
+      }
+    }
     // Skjul muligt-formularen hvis vi forlader den side
     if (viewName !== 'muligt') {
       var addForm = document.getElementById('muligtAddForm');
@@ -673,6 +679,189 @@
     bindActionBars(list);
   }
 
+  // ---------- Nyhedsbrev ----------
+  function renderNyhedsbrev() {
+    var container = document.getElementById('nyhedsbrevContent');
+    if (!container) return;
+
+    var tilmeldt = localStorage.getItem('fp_nyhedsbrev_email');
+
+    if (!tilmeldt) {
+      // Tilmeldingsformular
+      container.innerHTML =
+        '<div class="nyhedsbrev-signup">' +
+          '<div class="nyhedsbrev-hero">' +
+            '<div class="nyhedsbrev-hero-icon">' +
+              '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">' +
+                '<rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/>' +
+              '</svg>' +
+            '</div>' +
+            '<h2 class="nyhedsbrev-title">Rikkes Nyhedsbrev</h2>' +
+            '<p class="nyhedsbrev-subtitle">Modtag indsigt, øvelser og refleksioner om familieliv, relationer og nervesystemet — direkte fra Rikke.</p>' +
+          '</div>' +
+          '<div class="nyhedsbrev-gave-preview">' +
+            '<div class="nyhedsbrev-gave-badge">Gave ved tilmelding</div>' +
+            '<h3 class="nyhedsbrev-gave-title">Fem veje hjem — en mini-bog af Rikke Veth</h3>' +
+            '<p class="nyhedsbrev-gave-desc">En eksklusiv mini-bog på 1.200 ord, hvor Rikke deler de fem principper, der bærer hele hendes arbejde med mennesker. Med fem originale illustrationer.</p>' +
+          '</div>' +
+          '<form class="nyhedsbrev-form" id="nyhedsbrevForm">' +
+            '<input type="email" class="nyhedsbrev-input" id="nyhedsbrevEmail" placeholder="Din e-mailadresse" required>' +
+            '<button type="submit" class="nyhedsbrev-btn">Tilmeld & modtag mini-bog</button>' +
+            '<p class="nyhedsbrev-privacy">Ingen spam. Kun indhold med mening. Du kan altid afmelde dig.</p>' +
+          '</form>' +
+        '</div>';
+
+      var form = document.getElementById('nyhedsbrevForm');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('nyhedsbrevEmail').value.trim();
+        if (!email) return;
+        localStorage.setItem('fp_nyhedsbrev_email', email);
+        renderNyhedsbrev();
+      });
+    } else {
+      // Vis mini-bogen
+      container.innerHTML = buildMiniBog();
+    }
+  }
+
+  function buildMiniBog() {
+    // SVG illustrationer i appens stil
+    var ill1 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="160" rx="12" fill="var(--primary-pale)"/>' +
+      '<circle cx="120" cy="70" r="35" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
+      '<circle cx="100" cy="60" r="12" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
+      '<circle cx="140" cy="60" r="12" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
+      '<circle cx="110" cy="85" r="10" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
+      '<circle cx="130" cy="85" r="10" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
+      '<circle cx="120" cy="70" r="5" fill="var(--primary)" opacity="0.3"/>' +
+      '<path d="M85 70 Q80 55 90 48" stroke="var(--primary-light)" stroke-width="1" fill="none"/>' +
+      '<path d="M155 70 Q160 55 150 48" stroke="var(--primary-light)" stroke-width="1" fill="none"/>' +
+      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Familien som helhed</text>' +
+      '</svg>';
+
+    var ill2 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="160" rx="12" fill="var(--amber-bg)"/>' +
+      '<path d="M90 90 Q90 50 120 50 Q150 50 150 90" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
+      '<path d="M100 85 Q100 60 120 58 Q140 60 140 85" stroke="var(--accent)" stroke-width="1.2" fill="none" stroke-dasharray="4 3"/>' +
+      '<circle cx="120" cy="48" r="6" fill="var(--primary)" opacity="0.2"/>' +
+      '<line x1="120" y1="54" x2="120" y2="90" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="2 4"/>' +
+      '<circle cx="90" cy="92" r="4" fill="var(--accent)" opacity="0.4"/>' +
+      '<circle cx="150" cy="92" r="4" fill="var(--accent)" opacity="0.4"/>' +
+      '<circle cx="120" cy="92" r="4" fill="var(--primary)" opacity="0.4"/>' +
+      '<path d="M80 70 C70 65 70 80 80 78" stroke="var(--rose)" stroke-width="1" fill="none"/>' +
+      '<path d="M160 70 C170 65 170 80 160 78" stroke="var(--rose)" stroke-width="1" fill="none"/>' +
+      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Tryghedens bro</text>' +
+      '</svg>';
+
+    var ill3 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="160" rx="12" fill="var(--sage-bg)"/>' +
+      '<path d="M60 100 Q80 40 120 55 Q160 40 180 100" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
+      '<path d="M90 85 Q105 60 120 65 Q135 60 150 85" stroke="var(--sage)" stroke-width="1.2" fill="none"/>' +
+      '<circle cx="120" cy="55" r="8" stroke="var(--accent)" stroke-width="1" fill="var(--accent)" opacity="0.15"/>' +
+      '<path d="M112 55 L120 48 L128 55" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
+      '<line x1="75" y1="95" x2="85" y2="88" stroke="var(--primary-light)" stroke-width="0.8"/>' +
+      '<line x1="165" y1="95" x2="155" y2="88" stroke="var(--primary-light)" stroke-width="0.8"/>' +
+      '<path d="M100 100 C105 95 108 95 110 100" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
+      '<path d="M130 100 C135 95 138 95 140 100" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
+      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Kroppen husker</text>' +
+      '</svg>';
+
+    var ill4 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="160" rx="12" fill="var(--rose-bg)"/>' +
+      '<path d="M70 90 C70 60 95 45 120 60 C145 45 170 60 170 90" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
+      '<path d="M120 60 L120 95" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="3 3"/>' +
+      '<path d="M95 72 Q108 68 120 75 Q132 68 145 72" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
+      '<circle cx="95" cy="80" r="3" fill="var(--rose)" opacity="0.4"/>' +
+      '<circle cx="145" cy="80" r="3" fill="var(--rose)" opacity="0.4"/>' +
+      '<path d="M105 95 Q112 88 120 92 Q128 88 135 95" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
+      '<path d="M85 55 Q90 48 100 50" stroke="var(--primary-light)" stroke-width="0.8" fill="none"/>' +
+      '<path d="M155 55 Q150 48 140 50" stroke="var(--primary-light)" stroke-width="0.8" fill="none"/>' +
+      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Den nye fortælling</text>' +
+      '</svg>';
+
+    var ill5 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="160" rx="12" fill="var(--primary-pale)"/>' +
+      '<path d="M120 40 L120 50" stroke="var(--primary)" stroke-width="1.5"/>' +
+      '<circle cx="120" cy="65" r="15" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
+      '<path d="M120 80 L120 100" stroke="var(--primary)" stroke-width="1.2"/>' +
+      '<path d="M110 88 L120 80 L130 88" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
+      '<path d="M105 100 Q112 92 120 96 Q128 92 135 100" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
+      '<path d="M95 65 C85 55 85 75 95 68" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
+      '<path d="M145 65 C155 55 155 75 145 68" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
+      '<path d="M108 60 Q112 55 116 60" stroke="var(--primary)" stroke-width="0.8" fill="none"/>' +
+      '<path d="M124 60 Q128 55 132 60" stroke="var(--primary)" stroke-width="0.8" fill="none"/>' +
+      '<circle cx="120" cy="68" r="2" fill="var(--accent)" opacity="0.5"/>' +
+      '<path d="M70 50 Q80 45 90 50 Q100 45 110 50" stroke="var(--primary-light)" stroke-width="0.6" fill="none" opacity="0.5"/>' +
+      '<path d="M130 50 Q140 45 150 50 Q160 45 170 50" stroke="var(--primary-light)" stroke-width="0.6" fill="none" opacity="0.5"/>' +
+      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">At ånde frit</text>' +
+      '</svg>';
+
+    return '<div class="minibog">' +
+      '<div class="minibog-header">' +
+        '<div class="minibog-badge">Din gave</div>' +
+        '<h2 class="minibog-titel">Fem veje hjem</h2>' +
+        '<p class="minibog-author">af Rikke Veth</p>' +
+        '<p class="minibog-intro">En lille bog om de principper, der bærer mit arbejde med mennesker — og som måske kan bære dig et stykke af vejen.</p>' +
+      '</div>' +
+
+      // Kapitel 1
+      '<div class="minibog-kapitel">' +
+        ill1 +
+        '<h3 class="minibog-kap-titel">1. Se helheden — ikke symptomerne</h3>' +
+        '<p>Når en familie søger hjælp, er det sjældent én person, der har problemet. Det er hele systemet, der har fundet en balance, som ikke længere holder. Barnet, der slår. Moderen, der råber. Faderen, der forsvinder ind i sig selv. Hver enkelt gør det bedste, de kan — men summen af alles bedste bliver til kaos.</p>' +
+        '<p>Det første princip i mit arbejde er at se helheden. Ikke at finde synderen. Ikke at diagnosticere den, der larmer mest. Men at forstå, hvordan alle i familien er forbundet — og hvordan forandring ét sted skaber bevægelse alle steder.</p>' +
+        '<p>Forestil dig familien som et mobilt kunstværk, der hænger i loftet. Rør ved én del, og alting bevæger sig. Det er ikke svaghed. Det er sammenhæng. Og den sammenhæng er også jeres styrke — for det betyder, at selv små skridt kan flytte hele familien.</p>' +
+        '<p>Når jeg møder en familie for første gang, lytter jeg ikke kun til ordene. Jeg lytter til tavsheden mellem dem. Til de blikke, der udveksles. Til den krop, der strammer sig. Alt det fortæller mig noget om det system, jeg er inviteret ind i. Og det er i den helhedsforståelse, at forandringen begynder.</p>' +
+      '</div>' +
+
+      // Kapitel 2
+      '<div class="minibog-kapitel">' +
+        ill2 +
+        '<h3 class="minibog-kap-titel">2. Tryghed er fundamentet for alt</h3>' +
+        '<p>Intet menneske kan vokse, lære eller forandre sig, hvis det ikke føler sig trygt. Det gælder børn, der skal udvikle sig. Det gælder voksne, der skal turde se på deres mønstre. Og det gælder familier, der skal finde nye veje sammen.</p>' +
+        '<p>Mange af de familier, jeg arbejder med, har levet i utrygheds skygge i generationer. Forældrene voksede selv op uden den tryghed, de nu forsøger at give deres børn. Og det er umuligt at give noget, man aldrig selv har modtaget — medmindre nogen hjælper med at bygge broen.</p>' +
+        '<p>Tryghed er ikke fravær af problemer. Det er vissheden om, at der er nogen, der holder, også når det er svært. I terapien skaber vi et rum, hvor familien langsomt kan erfare, at det er muligt at være sammen uden fare. At konflikter kan rummes. At følelser er tilladte. Det lyder simpelt. For familier med traumatiske erfaringer er det revolutionerende.</p>' +
+        '<p>Som terapeut er mit vigtigste redskab ikke en metode. Det er min egen regulering — min evne til at forblive rolig, nærværende og forankret, også når stormen raser. For tryghed smitter. Og den smitter begge veje.</p>' +
+      '</div>' +
+
+      // Kapitel 3
+      '<div class="minibog-kapitel">' +
+        ill3 +
+        '<h3 class="minibog-kap-titel">3. Kroppen bærer historien</h3>' +
+        '<p>Vi tror, at vi tænker os til forandring. Men kroppen er hurtigere end tanken. Den husker, hvad sindet har forsøgt at glemme. Hjertebanken ved et bestemt tonefald. Spændingen i skuldrene, når døren smækker. Den flade vejrtrækning, der aldrig helt fylder lungerne.</p>' +
+        '<p>I mit arbejde har åndedrættet en central plads. Ikke som teknik eller trick, men som en direkte linje til nervesystemet. Når en forælder har levet i alarmberedskab i årevis, kan ingen samtale alene ændre det. Men åndedrættet kan. En langsom udånding aktiverer den del af nervesystemet, der signalerer tryghed. Det er fysiologi, ikke filosofi.</p>' +
+        '<p>For familier med traumatiske spor er denne kropslige vej afgørende. Børn, der ikke har ord for deres oplevelser, mærker alligevel alt i deres kroppe. Forældre, der rationelt godt ved, at faren er overstået, har kroppe, der stadig er i beredskab. Når vi hjælper kroppen med at lande, følger resten med.</p>' +
+        '<p>Jeg beder ofte familier om at mærke efter: Hvor holder du vejret? Hvor i kroppen sidder uroen? Ikke for at analysere, men for at anerkende. For kroppen fortjener at blive lyttet til — den har holdt dig i live indtil nu.</p>' +
+      '</div>' +
+
+      // Kapitel 4
+      '<div class="minibog-kapitel">' +
+        ill4 +
+        '<h3 class="minibog-kap-titel">4. Historien kan genfortælles</h3>' +
+        '<p>Enhver familie har en historie, den lever efter. "Vi er en familie, der ikke taler om følelser." "I vores familie klarer man sig selv." "Vi er dem, der altid har problemer." Disse fortællinger er ikke sandheder. De er historier — og historier kan genfortælles.</p>' +
+        '<p>Den narrative tilgang, som er kernen i mit arbejde, handler om at adskille personen fra problemet. Du er ikke en dårlig forælder — du er en forælder, der kæmper med svære følelser. Dit barn er ikke et problemet — dit barn kommunikerer noget vigtigt. Når vi eksternaliserer problemet, skabes der rum for at se alt det, der også er til stede: styrke, omsorg, modstandskraft og kærlighed.</p>' +
+        '<p>I de mest belastede familier, jeg møder, finder jeg altid øjeblikke af forbindelse. Et blik mellem mor og barn. En fars hånd på en skulder. Øjeblikke, der let overses i kaoset, men som rummer hele familiens potentiale for forandring. Narrativ terapi hjælper familien med at finde og forstørre disse øjeblikke, så de bliver den nye fortælling.</p>' +
+        '<p>Det kræver mod at genfortælle sin historie. Men det er en af de mest befriende oplevelser, et menneske kan have — at opdage, at man er mere end det, der skete med én.</p>' +
+      '</div>' +
+
+      // Kapitel 5
+      '<div class="minibog-kapitel">' +
+        ill5 +
+        '<h3 class="minibog-kap-titel">5. Mennesket før metoden</h3>' +
+        '<p>I en verden fuld af manualer, programmer og standardiserede forløb tror jeg på noget andet: at det vigtigste redskab i terapien er mødet mellem to mennesker. Ingen metode kan erstatte evnen til at se, hvem der sidder foran dig, og hvad netop dette menneske har brug for lige nu.</p>' +
+        '<p>Jeg bruger mange tilgange i mit arbejde — narrativ terapi, systemisk familieterapi, polyvagal teori, åndedrætsterapi, mentaliseringsbaseret behandling. Men ingen af dem er et mål i sig selv. De er redskaber, jeg vælger ud fra det menneske, jeg møder. Nogle familier har brug for at forstå deres mønstre. Andre har brug for at mærke deres krop. Nogle har brug for at tale. Andre har brug for stilhed.</p>' +
+        '<p>Det handler ikke om, hvad der er "evidensbaseret" i en abstrakt forstand. Det handler om, hvad der virker for lige præcis denne familie, i lige præcis denne situation, på lige præcis dette tidspunkt i deres liv. At turde lytte til sin intuition — som fagperson og som menneske — er ikke uprofessionelt. Det er det mest professionelle, man kan gøre.</p>' +
+        '<p>For bag alle modeller og metoder er der ét spørgsmål, der bærer det hele: Hvad har du brug for? Og bag svaret på det spørgsmål er der altid et menneske, der fortjener at blive mødt.</p>' +
+      '</div>' +
+
+      '<div class="minibog-footer">' +
+        '<p class="minibog-footer-text">Tak fordi du læste med. Disse fem principper er ikke bare teori — de er det, jeg bringer med mig hver dag, når jeg møder familier i mit terapilokale på Frederiksberg. Hvis noget resonerede med dig, er du altid velkommen til at række ud.</p>' +
+        '<p class="minibog-footer-sign">Med varme,<br><strong>Rikke Veth</strong><br>Familieterapeut · Familiepraxis</p>' +
+      '</div>' +
+    '</div>';
+  }
+
   // ---------- Menu ----------
   function openMenu() {
     sideMenu.classList.add('open');
@@ -723,6 +912,7 @@
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mapPin(15) + '</span>' + PRAKSIS_INFO.adresse + '</div>' +
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.hash(15) + '</span>CVR: ' + PRAKSIS_INFO.cvr + '</div>' +
       '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="menu-contact-item menu-contact-link"><span class="menu-contact-icon">' + IKONER.linkedin(15) + '</span>LinkedIn</a>' +
+      '<div class="menu-contact-item menu-contact-link menu-nyhedsbrev-link" id="menuNyhedsbrev"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>Tilmeld dig mit nyhedsbrev</div>' +
       '</div>';
 
     // Indstillinger
@@ -770,6 +960,15 @@
     if (favLink) {
       favLink.addEventListener('click', function () {
         showFavoritter();
+        closeMenu();
+      });
+    }
+
+    var nyhedsbrevLink = document.getElementById('menuNyhedsbrev');
+    if (nyhedsbrevLink) {
+      nyhedsbrevLink.addEventListener('click', function () {
+        renderNyhedsbrev();
+        showView('nyhedsbrev');
         closeMenu();
       });
     }
