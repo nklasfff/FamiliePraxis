@@ -941,7 +941,7 @@
     html += '<span class="kommune-forloeb-tag">§75</span>';
     html += '<h4>Familiebehandling</h4>';
     html += '</div>';
-    html += '<p>Familiebehandling er Rikkes kerneopgave og faglige ståsted. Hun arbejder der, hvor følelser, kommunikation og samspil går i hårdknude — i hjemmet, på praksis eller i bilen på vej til en samtale. Rikke møder både udsatte og ressourcestærke familier, fordi udfordringer kan være synlige eller skjulte.</p>';
+    html += '<p>Familiebehandling er Rikkes kerneopgave og faglige ståsted. Hun arbejder der, hvor følelser, kommunikation og samspil går i hårdknude — altid med respekt for familiens grænser, men med et lille <em>tryk på maven</em>, der skaber den bevægelse, der gør forandring mulig. Rikke møder både udsatte og ressourcestærke familier, i hjemmet, på praksis eller i bilen på vej til en samtale.</p>';
     html += '<div class="kommune-forloeb-detaljer">';
     html += '<span>8-16 sessioner</span><span>Hjemme eller praksis</span><span>Tilpasset rapportering</span>';
     html += '</div>';
@@ -1003,7 +1003,7 @@
     html += '<div class="kommune-bridge">';
     html += '<div class="kommune-bridge-inner">';
     html += '<h3 class="kommune-bridge-title">Se det faglige fundament</h3>';
-    html += '<p class="kommune-bridge-text">Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — et lille tryk på maven, der giver et indblik i, hvad familier møder i et forløb med Rikke.</p>';
+    html += '<p class="kommune-bridge-text">Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — og se, hvad familier møder i et forløb med Rikke.</p>';
     html += '<div class="kommune-bridge-btns">';
     html += '<button class="kommune-bridge-btn" data-goto="hjem">' + IKONER.leaf(20) + ' Cirkelmodellen</button>';
     html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' Nervesystemets trappe</button>';
