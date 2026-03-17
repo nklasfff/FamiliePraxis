@@ -330,6 +330,8 @@ body {
   pointer-events: none;
   transition: opacity 0.3s;
   padding-top: calc(20px + var(--safe-top));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .search-overlay.active {
