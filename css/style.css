@@ -633,24 +633,6 @@ body {
 }
 
 /* ---------- Welcome Section ---------- */
-.welcome-section {
-  padding: 16px 20px 0;
-}
-
-.welcome-card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  padding: 20px;
-  border-left: 4px solid var(--accent);
-  box-shadow: 0 2px 8px var(--shadow);
-}
-
-.welcome-text {
-  font-size: 0.92rem;
-  color: var(--text-light);
-  line-height: 1.65;
-}
-
 /* ---------- Views ---------- */
 .view {
   display: none;

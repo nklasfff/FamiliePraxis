@@ -170,7 +170,7 @@
   var perspektivBar = document.getElementById('perspektivBar');
   var perspektivLabel = document.getElementById('perspektivLabel');
   var perspektivSwitch = document.getElementById('perspektivSwitch');
-  var welcomeSection = document.getElementById('welcomeSection');
+  var heroDesc = document.getElementById('heroDesc');
   var bottomNav = document.getElementById('bottomNav');
   var sideMenu = document.getElementById('sideMenu');
   var menuOverlay = document.querySelector('.menu-overlay');
@@ -183,16 +183,20 @@
 
   // ---------- Init ----------
   function init() {
+    // Migrer gamle kommune-perspektiv til professionel
+    if (aktivPerspektiv === 'kommune') {
+      aktivPerspektiv = 'professionel';
+      localStorage.setItem('fp_perspektiv', 'professionel');
+      localStorage.setItem('fp_from_kommune', 'true');
+    }
     if (aktivPerspektiv) {
       hideOnboarding(true);
       updatePerspektivUI();
+      updateHeroDesc();
     }
     bindEvents();
     renderMenuContent();
     renderSearchTags();
-    if (isFirstVisit && aktivPerspektiv) {
-      showWelcome();
-    }
     if (aktivPerspektiv) {
       animateCircles();
       updateCircleTexts();
@@ -203,9 +207,6 @@
     renderMuligt();
     bindMuligtForm();
     drawConnectionLines();
-    if (aktivPerspektiv === 'kommune') {
-      renderKommune();
-    }
     renderMorgenCheckin();
   }
 
@@ -220,44 +221,49 @@
   }
 
   function selectPerspektiv(p) {
-    aktivPerspektiv = p;
-    localStorage.setItem('fp_perspektiv', p);
+    var isKommune = (p === 'kommune');
+    // Kommune er ikke et perspektiv — det er en side. Brug professionel indhold.
+    aktivPerspektiv = isKommune ? 'professionel' : p;
+    localStorage.setItem('fp_perspektiv', aktivPerspektiv);
+    if (isKommune) localStorage.setItem('fp_from_kommune', 'true');
     localStorage.setItem('fp_visited', 'true');
     isFirstVisit = true;
     hideOnboarding(false);
     updatePerspektivUI();
+    updateHeroDesc();
     animateCircles();
     updateCircleTexts();
     renderTrappen();
     renderTemaer();
     renderOevelser();
     renderMenuContent();
-    if (p === 'kommune') {
+    if (isKommune) {
       renderKommune();
       showView('kommune');
       document.querySelectorAll('.nav-btn').forEach(function (b) { b.classList.remove('active'); });
     } else {
-      showWelcome();
+      // Vis hjem med velkomsttekst
+      showView('hjem');
     }
   }
 
-  // Helper: get content perspective key (kommune uses professionel content)
+  // Helper: get content perspective key
   function contentPerspektiv() {
-    return aktivPerspektiv === 'kommune' ? 'professionel' : (aktivPerspektiv || 'privat');
+    return aktivPerspektiv || 'privat';
   }
 
   function updatePerspektivUI() {
-    var labels = { privat: 'Privat klient', professionel: 'Fagprofessionel', kommune: 'Kommune & samarbejde' };
+    var labels = { privat: 'Privat klient', professionel: 'Fagprofessionel' };
     perspektivLabel.textContent = labels[aktivPerspektiv] || 'Privat klient';
   }
 
-  function showWelcome() {
-    welcomeSection.style.display = 'block';
-    setTimeout(function () {
-      welcomeSection.style.opacity = '0';
-      welcomeSection.style.transition = 'opacity 1s';
-      setTimeout(function () { welcomeSection.style.display = 'none'; }, 1000);
-    }, 20000);
+  function updateHeroDesc() {
+    if (!heroDesc) return;
+    if (aktivPerspektiv === 'professionel') {
+      heroDesc.textContent = 'Velkommen. Her finder du det faglige fundament bag Rikkes arbejde — nervesystemet, tilknytning, kommunikation og de øvelser hun bruger i terapi med familier, par og individer. Brug appen som inspiration, opslagsværk eller som supplement til supervision.';
+    } else {
+      heroDesc.textContent = 'Velkommen. Denne app er dit rum — et stille sted, hvor du kan udforske det, der fylder i din familie, dit parforhold eller i dig selv. Tryk på en cirkel for at begynde, eller brug menuen til at finde øvelser, temaer og redskaber.';
+    }
   }
 
   // ---------- Morgen Check-in ----------
@@ -667,9 +673,9 @@
   function renderMenuContent() {
     var html = '';
 
-    // Perspektiv info + skift
-    var perspIkon = aktivPerspektiv === 'privat' ? IKONER.house(16) : aktivPerspektiv === 'kommune' ? IKONER.handshake(16) : IKONER.building(16);
-    var perspNavn = aktivPerspektiv === 'privat' ? 'Privat klient' : aktivPerspektiv === 'kommune' ? 'Kommune & samarbejde' : 'Fagprofessionel';
+    // Perspektiv info + skift (kun privat/professionel)
+    var perspIkon = aktivPerspektiv === 'privat' ? IKONER.house(16) : IKONER.building(16);
+    var perspNavn = aktivPerspektiv === 'privat' ? 'Privat klient' : 'Fagprofessionel';
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Dit perspektiv</div>' +
       '<div class="menu-info" style="margin-bottom:8px">' + perspIkon + ' ' + perspNavn + '</div>' +
@@ -691,7 +697,7 @@
       '<div class="menu-link" data-nav="temaer">Temaer</div>' +
       '<div class="menu-link" data-nav="oevelser">Øvelser</div>' +
       '<div class="menu-link" data-nav="muligt">Hvad er muligt lige nu?</div>' +
-      (aktivPerspektiv === 'kommune' ? '<div class="menu-link" data-nav="kommune">Samarbejde med Rikke</div>' : '') +
+      '<div class="menu-link" data-nav="kommune">' + IKONER.handshake(15) + ' Samarbejde med kommuner</div>' +
       '<div class="menu-link menu-link-favoritter" id="menuFavoritter">' + IKONER.bookmark(15) + ' Mine favoritter <span class="menu-favorit-badge" id="favoritBadge" style="' + (favCount > 0 ? '' : 'display:none') + '">' + favCount + '</span></div>' +
       '</div>';
 
@@ -725,16 +731,16 @@
     var switchBtn = document.getElementById('menuSwitchPerspektiv');
     if (switchBtn) {
       switchBtn.addEventListener('click', function () {
-        var cycle = { privat: 'professionel', professionel: 'kommune', kommune: 'privat' };
-        aktivPerspektiv = cycle[aktivPerspektiv] || 'privat';
+        // Kun to perspektiver: privat og professionel
+        aktivPerspektiv = aktivPerspektiv === 'privat' ? 'professionel' : 'privat';
         localStorage.setItem('fp_perspektiv', aktivPerspektiv);
         updatePerspektivUI();
+        updateHeroDesc();
         updateCircleTexts();
         renderTrappen();
         renderTemaer();
         renderMenuContent();
         if (aktivCirkel) renderCirkelDetail();
-        if (aktivPerspektiv === 'kommune') renderKommune();
         closeMenu();
       });
     }
@@ -1597,20 +1603,17 @@
       });
     });
 
-    // Perspektiv switch
+    // Perspektiv switch (kun privat/professionel)
     perspektivSwitch.addEventListener('click', function () {
-      var cycle = { privat: 'professionel', professionel: 'kommune', kommune: 'privat' };
-      aktivPerspektiv = cycle[aktivPerspektiv] || 'privat';
+      aktivPerspektiv = aktivPerspektiv === 'privat' ? 'professionel' : 'privat';
       localStorage.setItem('fp_perspektiv', aktivPerspektiv);
       updatePerspektivUI();
+      updateHeroDesc();
       updateCircleTexts();
       renderTrappen();
       renderTemaer();
       renderMenuContent();
       if (aktivCirkel) renderCirkelDetail();
-      if (aktivPerspektiv === 'kommune') {
-        renderKommune();
-      }
     });
 
     // Bottom nav
