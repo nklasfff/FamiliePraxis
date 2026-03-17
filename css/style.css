@@ -2479,6 +2479,222 @@ body {
   background: var(--rose-bg);
 }
 
+/* ---------- Nyhedsbrev & Mini-bog ---------- */
+.menu-nyhedsbrev-link {
+  cursor: pointer;
+  color: var(--primary);
+  font-weight: 500;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.nyhedsbrev-signup {
+  padding: 8px 0 40px;
+}
+
+.nyhedsbrev-hero {
+  text-align: center;
+  padding: 24px 16px 20px;
+}
+
+.nyhedsbrev-hero-icon {
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.nyhedsbrev-title {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.nyhedsbrev-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.nyhedsbrev-gave-preview {
+  background: var(--primary-pale);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 16px 16px 20px;
+  text-align: center;
+}
+
+.nyhedsbrev-gave-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.nyhedsbrev-gave-title {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.nyhedsbrev-gave-desc {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.nyhedsbrev-form {
+  padding: 0 20px;
+}
+
+.nyhedsbrev-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  background: var(--bg-card);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 12px;
+}
+
+.nyhedsbrev-input:focus {
+  border-color: var(--primary);
+}
+
+.nyhedsbrev-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nyhedsbrev-btn:hover {
+  background: var(--primary-dark);
+}
+
+.nyhedsbrev-privacy {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* Mini-bog */
+.minibog {
+  padding: 0 0 60px;
+}
+
+.minibog-header {
+  text-align: center;
+  padding: 24px 20px 28px;
+  background: linear-gradient(180deg, var(--primary-pale) 0%, var(--bg) 100%);
+  border-radius: 0 0 var(--radius) var(--radius);
+  margin-bottom: 8px;
+}
+
+.minibog-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 0.03em;
+}
+
+.minibog-titel {
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.minibog-author {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.minibog-intro {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.minibog-kapitel {
+  padding: 20px 20px 8px;
+  margin-bottom: 8px;
+}
+
+.minibog-kap-titel {
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--primary-dark);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.minibog-kapitel p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.bog-ill {
+  width: 100%;
+  max-width: 360px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: var(--radius);
+}
+
+.minibog-footer {
+  padding: 24px 20px;
+  margin-top: 12px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.minibog-footer-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.minibog-footer-sign {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+  font-style: italic;
+}
+
 /* ---------- Responsive ---------- */
 @media (min-width: 768px) {
   .cirkel-container {
