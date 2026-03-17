@@ -54,7 +54,8 @@
 
     // Navigation
     arrowBack:   function(s){ return svgWrap(s||18, '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'); },
-    chevUp:      function(s){ return svgWrap(s||16, '<polyline points="18 15 12 9 6 15"/>'); }
+    chevUp:      function(s){ return svgWrap(s||16, '<polyline points="18 15 12 9 6 15"/>'); },
+    chevDown:    function(s){ return svgWrap(s||16, '<polyline points="6 9 12 15 18 9"/>'); }
   };
 
   // ---------- State ----------
@@ -866,14 +867,37 @@
 
     var html = '';
 
-    // Hero
-    html += '<div class="kommune-hero">';
-    html += '<div class="kommune-hero-badge">Samarbejde</div>';
-    html += '<h2 class="kommune-hero-title">Sådan kan Rikke styrke jeres familiearbejde</h2>';
-    html += '<p class="kommune-hero-lead">Rikke Veth arbejder med de familier, hvor kompleksiteten er størst — intergenerationelle traumer, desorganiseret tilknytning, parentificering og kronisk stress. Her kan du udforske hendes tilgang og se, hvordan et samarbejde kan se ud.</p>';
+    // ===== TRIN 1: Velkomst-landing =====
+    html += '<div class="kommune-welcome">';
+    html += '<div class="kommune-welcome-inner">';
+    html += '<div class="kommune-welcome-medallion">';
+    html += '<div class="kommune-welcome-circle">' + IKONER.handshake(36) + '</div>';
+    html += '</div>';
+    html += '<h2 class="kommune-welcome-title">Velkommen</h2>';
+    html += '<p class="kommune-welcome-subtitle">Til dig, der overvejer et samarbejde med Rikke Veth</p>';
+    html += '<p class="kommune-welcome-text">Denne app er skabt til at vise dig Rikkes tilgang til familiebehandling — en integreret metode, der møder de familier, hvor kompleksiteten er størst.</p>';
+    html += '<p class="kommune-welcome-text">Nedenfor kan du læse om Rikkes metoder, samarbejdsformer og de familier, hun arbejder med. Du er også velkommen til at udforske hele appen — cirkelmodellen, temaer, øvelser og nervesystemets trappe — som giver et indblik i det faglige fundament bag Rikkes arbejde.</p>';
+    html += '<div class="kommune-welcome-scroll">';
+    html += '<button class="kommune-welcome-scroll-btn" id="kommuneScrollDown">' + IKONER.chevDown(20) + ' Læs mere om samarbejdet</button>';
+    html += '</div>';
+    html += '</div>';
     html += '</div>';
 
-    // What makes Rikke unique
+    // ===== TRIN 1.5: Quick-nav til resten af appen =====
+    html += '<div class="kommune-appnav">';
+    html += '<p class="kommune-appnav-label">Udforsk også Rikkes faglige univers</p>';
+    html += '<div class="kommune-appnav-grid">';
+    html += '<button class="kommune-appnav-btn" data-goto="hjem">' + IKONER.leaf(20) + '<span>Cirkelmodellen</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="trappen">' + IKONER.lightning(20) + '<span>Nervesystemets trappe</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="temaer">' + IKONER.chatBubble(20) + '<span>Temaer</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="oevelser">' + IKONER.wind(20) + '<span>Øvelser</span></button>';
+    html += '</div>';
+    html += '</div>';
+
+    // ===== TRIN 2: Rikkes tilgang (faglig præsentation) =====
+    html += '<div class="kommune-faglig" id="kommuneFaglig">';
+
+    // Section: What makes Rikke unique
     html += '<div class="kommune-section">';
     html += '<h3 class="kommune-section-title">Hvad adskiller Rikkes tilgang?</h3>';
     html += '<p class="kommune-text">De fleste familiebehandlere arbejder med én metode. Rikke integrerer flere — fordi de familier, hun møder, har brug for mere end ét perspektiv.</p>';
@@ -905,7 +929,7 @@
     html += '</div>';
     html += '</div>';
 
-    // Samarbejdsformer
+    // Section: Samarbejdsformer
     html += '<div class="kommune-section">';
     html += '<h3 class="kommune-section-title">Konkrete samarbejdsformer</h3>';
     html += '<p class="kommune-text">Rikke tilbyder fleksible forløb, der kan tilpasses jeres kommunes behov og de specifikke familier, I arbejder med.</p>';
@@ -959,7 +983,7 @@
     html += '</div>';
     html += '</div>';
 
-    // De familier Rikke møder
+    // Section: De familier Rikke møder
     html += '<div class="kommune-section">';
     html += '<h3 class="kommune-section-title">De familier Rikke arbejder med</h3>';
     html += '<p class="kommune-text">Rikkes speciale er familier, hvor standardtilgange ofte ikke rækker. Det er familier med:</p>';
@@ -973,17 +997,23 @@
     html += '</ul>';
     html += '</div>';
 
-    // Visual: circle model teaser
-    html += '<div class="kommune-section">';
-    html += '<h3 class="kommune-section-title">Rikkes helhedsmodel</h3>';
-    html += '<p class="kommune-text">Rikke arbejder med en cirkelmodel, der viser familiens syv kerneområder — og hvordan de alle påvirker hinanden. Det er den samme model, du kan udforske i denne app.</p>';
-    html += '<div class="kommune-explore-btn-wrap">';
-    html += '<button class="kommune-explore-btn" id="kommuneExploreBtn">Udforsk cirkelmodellen →</button>';
+    html += '</div>'; // end .kommune-faglig
+
+    // ===== Bro-sektion: Udforsk appen =====
+    html += '<div class="kommune-bridge">';
+    html += '<div class="kommune-bridge-inner">';
+    html += '<h3 class="kommune-bridge-title">Se det faglige fundament</h3>';
+    html += '<p class="kommune-bridge-text">Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — alt vist med fagligt perspektiv, så du kan se, hvad familier møder i et forløb med Rikke.</p>';
+    html += '<div class="kommune-bridge-btns">';
+    html += '<button class="kommune-bridge-btn" data-goto="hjem">' + IKONER.leaf(20) + ' Cirkelmodellen</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' Nervesystemets trappe</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="temaer">' + IKONER.chatBubble(20) + ' Temaer</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="oevelser">' + IKONER.wind(20) + ' Øvelser</button>';
     html += '</div>';
-    html += '<p class="kommune-text kommune-text-small">Du kan også udforske Temaer, Øvelser og Nervesystemets trappe via navigationen herunder — alt er tilgængeligt med fagligt perspektiv.</p>';
+    html += '</div>';
     html += '</div>';
 
-    // Contact CTA
+    // ===== Contact CTA =====
     html += '<div class="kommune-cta">';
     html += '<h3 class="kommune-cta-title">Klar til en samtale?</h3>';
     html += '<p class="kommune-cta-text">Rikke tager gerne en uforpligtende samtale om, hvordan et samarbejde kan se ud for jeres kommune.</p>';
@@ -996,13 +1026,21 @@
 
     container.innerHTML = html;
 
-    // Bind explore button
-    var exploreBtn = document.getElementById('kommuneExploreBtn');
-    if (exploreBtn) {
-      exploreBtn.addEventListener('click', function () {
-        showView('hjem');
+    // Bind: scroll-down button
+    var scrollBtn = document.getElementById('kommuneScrollDown');
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', function () {
+        var target = document.getElementById('kommuneFaglig');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
+
+    // Bind: all data-goto buttons (app navigation)
+    container.querySelectorAll('[data-goto]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        showView(this.getAttribute('data-goto'));
+      });
+    });
   }
 
   function showKommune() {
