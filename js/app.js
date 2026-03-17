@@ -471,7 +471,7 @@
     // Om Rikke
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Om terapeuten</div>' +
-      '<div class="menu-info" style="margin-bottom:10px">Rikke Veth er familieterapeut med praksis på Frederiksberg. Hun arbejder med familier, par og individer — og tilbyder åndedrætsterapi, familiebehandling og supervision til kommuner.</div>' +
+      '<div class="menu-info" style="margin-bottom:10px">Rikke Veth er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun tilbyder familieterapi, parterapi, individuel terapi og åndedrætsterapi for private — og familiebehandling, undersøgelser og supervision til kommuner. Hendes styrke ligger i at skabe udvikling, hvor følelser, kommunikation og samspil går i hårdknude.</div>' +
       '</div>';
 
     // Navigation
@@ -873,10 +873,10 @@
     html += '<div class="kommune-welcome-medallion">';
     html += '<div class="kommune-welcome-circle">' + IKONER.handshake(36) + '</div>';
     html += '</div>';
-    html += '<h2 class="kommune-welcome-title">Velkommen</h2>';
+    html += '<h2 class="kommune-welcome-title">Velkommen til et trygt rum for forandring</h2>';
     html += '<p class="kommune-welcome-subtitle">Til dig, der overvejer et samarbejde med Rikke Veth</p>';
-    html += '<p class="kommune-welcome-text">Denne app er skabt til at vise dig Rikkes tilgang til familiebehandling — en integreret metode, der møder de familier, hvor kompleksiteten er størst.</p>';
-    html += '<p class="kommune-welcome-text">Nedenfor kan du læse om Rikkes metoder, samarbejdsformer og de familier, hun arbejder med. Du er også velkommen til at udforske hele appen — cirkelmodellen, temaer, øvelser og nervesystemets trappe — som giver et indblik i det faglige fundament bag Rikkes arbejde.</p>';
+    html += '<p class="kommune-welcome-text">Rikke er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun integrerer narrativ-systemisk terapi, åndedrætsterapi, polyvagal forståelse og mentalisering — fordi de familier, hun møder, har brug for mere end ét perspektiv.</p>';
+    html += '<p class="kommune-welcome-text">Nedenfor kan du læse om Rikkes metoder og samarbejdsformer. Du er også velkommen til at udforske hele appen — cirkelmodellen, temaer, øvelser og nervesystemets trappe — som giver et indblik i det faglige fundament bag hendes arbejde.</p>';
     html += '<div class="kommune-welcome-scroll">';
     html += '<button class="kommune-welcome-scroll-btn" id="kommuneScrollDown">' + IKONER.chevDown(20) + ' Læs mere om samarbejdet</button>';
     html += '</div>';
@@ -912,7 +912,7 @@
     html += '<div class="kommune-card kommune-card-rose">';
     html += '<div class="kommune-card-icon">' + IKONER.lungs(24) + '</div>';
     html += '<h4>Åndedrætsterapi</h4>';
-    html += '<p>Mange udsatte forældre har et nervesystem i konstant alarmberedskab. Rikke bruger åndedrættet som direkte adgang til regulering — noget familien kan tage med hjem fra første session.</p>';
+    html += '<p>Mange udsatte forældre har et nervesystem i konstant alarmberedskab. Rikke bruger åndedrættet som direkte adgang til regulering — et lille <em>tryk på maven</em>, der blidt udvider det rum, familien kan være i.</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-amber">';
@@ -941,20 +941,20 @@
     html += '<span class="kommune-forloeb-tag">§75</span>';
     html += '<h4>Familiebehandling</h4>';
     html += '</div>';
-    html += '<p>Intensive forløb med hele familien — typisk 8-16 sessioner. Rikke arbejder i hjemmet eller på praksis med fokus på samspil, tilknytning og forældrekompetencer. Rapportering tilpasset kommunens behov.</p>';
+    html += '<p>Familiebehandling er Rikkes kerneopgave og faglige ståsted. Hun arbejder der, hvor følelser, kommunikation og samspil går i hårdknude — i hjemmet, på praksis eller i bilen på vej til en samtale. Rikke møder både udsatte og ressourcestærke familier, fordi udfordringer kan være synlige eller skjulte.</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>8-16 sessioner</span><span>Hjemme eller praksis</span><span>Skriftlig evaluering</span>';
+    html += '<span>8-16 sessioner</span><span>Hjemme eller praksis</span><span>Tilpasset rapportering</span>';
     html += '</div>';
     html += '</div>';
 
     html += '<div class="kommune-forloeb-item">';
     html += '<div class="kommune-forloeb-header">';
     html += '<span class="kommune-forloeb-tag">§50</span>';
-    html += '<h4>Familieundersøgelse</h4>';
+    html += '<h4>Undersøgelse & afdækning</h4>';
     html += '</div>';
-    html += '<p>Grundig undersøgelse af familiens dynamik, tilknytningsmønstre og ressourcer. Rikkes systemiske blik giver en helhedsforståelse, der rækker ud over standardskemaer — og som giver jer et solidt grundlag for videre indsats.</p>';
+    html += '<p>En målrettet, tidsafgrænset indsats i tæt samarbejde med familien og kommunen. Rikke afdækker ressourcer, udfordringer og dynamikker — med fuld transparens, så der aldrig forekommer oplysninger i rapporten, som familien ikke på forhånd er bekendt med.</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>4-8 uger</span><span>Observation & samtaler</span><span>Detaljeret rapport</span>';
+    html += '<span>Typisk 3 måneder</span><span>Hjemme & i netværk</span><span>Beslutningsgrundlag</span>';
     html += '</div>';
     html += '</div>';
 
@@ -963,7 +963,7 @@
     html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">Supervision</span>';
     html += '<h4>Faglig supervision & sparring</h4>';
     html += '</div>';
-    html += '<p>For jeres familierådgivere, sagsbehandlere eller plejefamilier. Rikke tilfører polyvagal forståelse og narrativ-systemisk tænkning til jeres eksisterende praksis — så I bedre kan forstå og støtte de familier, I arbejder med.</p>';
+    html += '<p>For socialrådgivere, familiebehandlere, pædagoger, psykologer, plejefamilier og tværfaglige teams. Rikke sammenligner familiearbejde med et vendespil — supervision er rummet, hvor I sammen vender brikkerne og ser sammenhængen, der giver nye perspektiver på fastlåste situationer.</p>';
     html += '<div class="kommune-forloeb-detaljer">';
     html += '<span>Enkelt eller fast aftale</span><span>Gruppe eller individuel</span><span>Fleksibel model</span>';
     html += '</div>';
@@ -971,12 +971,12 @@
 
     html += '<div class="kommune-forloeb-item">';
     html += '<div class="kommune-forloeb-header">';
-    html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">Akut</span>';
-    html += '<h4>Akut familieintervention</h4>';
+    html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">§75</span>';
+    html += '<h4>Støtte under anbringelse</h4>';
     html += '</div>';
-    html += '<p>Når en familie er i krise — anbringelse, vold, sammenbrud — kan Rikke gå ind med kort varsel og stabilisere familien. Fokus på nervesystemregulering og akut sikkerhed i relationen.</p>';
+    html += '<p>Når børn anbringes, bærer de ofte en skyld, der ikke er deres. Rikke støtter forældrene i at bearbejde sorg og afmagt, så samvær bliver roligt og forudsigeligt. Hun beskriver sin rolle som kaospilot — den, der binder samarbejdet sammen mellem hjem, anbringelsessted og myndighed, og sikrer arbejdsro for alle parter.</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>Kort varsel</span><span>Intensivt forløb</span><span>Krisestabilisering</span>';
+    html += '<span>Løbende forløb</span><span>Samvær & stabilitet</span><span>Tværfaglig koordinering</span>';
     html += '</div>';
     html += '</div>';
 
@@ -1003,7 +1003,7 @@
     html += '<div class="kommune-bridge">';
     html += '<div class="kommune-bridge-inner">';
     html += '<h3 class="kommune-bridge-title">Se det faglige fundament</h3>';
-    html += '<p class="kommune-bridge-text">Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — alt vist med fagligt perspektiv, så du kan se, hvad familier møder i et forløb med Rikke.</p>';
+    html += '<p class="kommune-bridge-text">Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — et lille tryk på maven, der giver et indblik i, hvad familier møder i et forløb med Rikke.</p>';
     html += '<div class="kommune-bridge-btns">';
     html += '<button class="kommune-bridge-btn" data-goto="hjem">' + IKONER.leaf(20) + ' Cirkelmodellen</button>';
     html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' Nervesystemets trappe</button>';
