@@ -810,6 +810,8 @@ body {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text);
+  flex: 1;
+  text-align: center;
 }
 
 .trappe-detail {
@@ -1305,9 +1307,10 @@ body {
 
 .dynamik-title {
   font-size: 1.5rem;
-  color: var(--text);
+  color: var(--primary);
   font-weight: 600;
   margin: 8px 0 16px;
+  text-align: center;
 }
 
 .dynamik-lead {
