@@ -103,7 +103,6 @@
         }
       });
     });
-    // Fade in connection lines after circles
     setTimeout(function () {
       var lines = document.getElementById('connectionLines');
       if (lines) {
@@ -131,12 +130,12 @@
   function drawConnectionLines() {
     var positions = {
       centrum: [260, 260],
-      relationer: [260, 110],
-      parterapi: [390, 185],
-      familie: [390, 335],
-      boern: [260, 410],
-      aandedraet: [130, 335],
-      individuel: [130, 185]
+      relationer: [260, 105],
+      parterapi: [400, 180],
+      familie: [400, 340],
+      boern: [260, 415],
+      aandedraet: [120, 340],
+      individuel: [120, 180]
     };
     var linesGroup = document.getElementById('connectionLines');
     if (!linesGroup) return;

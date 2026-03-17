@@ -686,13 +686,12 @@ body {
   fill: var(--primary-light);
   stroke: var(--primary);
   stroke-width: 1.5;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 .cirkel-group:hover .cirkel-outer {
   opacity: 1;
   filter: brightness(1.1);
-  transform-origin: center;
 }
 
 .cirkel-group:hover .cirkel-centrum {

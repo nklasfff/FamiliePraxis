@@ -6,10 +6,10 @@
 var PRAKSIS_INFO = {
   navn: 'Familiepraxis',
   terapeut: 'Rikke Veth',
-  titel: 'Familieterapeut',
+  titel: 'Familieterapeut · Narrativ-systemisk specialist · Åndedrætsterapeut',
   adresse: 'Amalievej 6, 1875 Frederiksberg C',
-  telefon: '+45 28 94 55 60',
-  email: 'info@familiepraxis.dk',
+  telefon: '+45 31 21 33 25',
+  email: 'rikke@familiepraxis.dk',
   cvr: '42689823',
   website: 'familiepraxis.dk'
 };
@@ -19,22 +19,22 @@ var PRAKSIS_INFO = {
 // ============================================================
 var CIRKEL_TEKSTER = {
   privat: {
-    centrum: ['Familien', 'i balance'],
-    relationer: ['Relationer', '& tilknytning'],
+    centrum: ['Familien', 'som helhed'],
+    relationer: ['Tilknytning', '& tryghed'],
     parterapi: ['Parforholdet', '& nærvær'],
-    familie: ['Familien', '& samspil'],
-    individuel: ['Dig selv', '& indre ro'],
-    aandedraet: ['Åndedræt', '& krop'],
-    boern: ['Børnene', '& trivsel']
+    familie: ['Samspil', '& mønstre'],
+    individuel: ['Dig selv', '& dine spor'],
+    aandedraet: ['Åndedræt', '& nervesystem'],
+    boern: ['Barnets', 'stemme']
   },
   professionel: {
-    centrum: ['Faglig', 'indsats'],
-    relationer: ['Relationel', 'forståelse'],
-    parterapi: ['Parforhold', '& dynamikker'],
+    centrum: ['Systemisk', 'helhedssyn'],
+    relationer: ['Tilknytning', '& mentalisering'],
+    parterapi: ['Forældrepar', '& alliance'],
     familie: ['Familie-', 'behandling'],
-    individuel: ['Individuel', 'behandling'],
-    aandedraet: ['Krop &', 'regulering'],
-    boern: ['Børne-', 'perspektivet']
+    individuel: ['Individuel', 'traumeterapi'],
+    aandedraet: ['Polyvagal', 'regulering'],
+    boern: ['Barnets', 'perspektiv']
   }
 };
 
@@ -42,13 +42,13 @@ var CIRKEL_TEKSTER = {
 // Cirkelnavne (lookup)
 // ============================================================
 var CIRKEL_NAVNE = {
-  centrum: 'Familien i balance',
-  relationer: 'Relationer & tilknytning',
+  centrum: 'Familien som helhed',
+  relationer: 'Tilknytning & tryghed',
   parterapi: 'Parforholdet',
-  familie: 'Familiesamspil',
-  individuel: 'Individuel terapi',
-  aandedraet: 'Åndedræt & krop',
-  boern: 'Børn & trivsel'
+  familie: 'Samspil & mønstre',
+  individuel: 'Dig selv & dine spor',
+  aandedraet: 'Åndedræt & nervesystem',
+  boern: 'Barnets stemme'
 };
 
 // ============================================================
@@ -57,83 +57,83 @@ var CIRKEL_NAVNE = {
 var CIRKLER = [
   {
     id: 'centrum',
-    titel: 'Familien i balance',
+    titel: 'Familien som helhed',
     ikon: '🌿',
     privat: {
       overblik: {
-        beskrivelse: 'Når familien er i balance, mærker alle medlemmer en grundlæggende tryghed. Det handler ikke om perfektion, men om at kunne rumme hinandens følelser og behov — også når livet er svært.',
+        beskrivelse: 'I en familie hænger alt sammen. Når ét medlem har det svært, mærker alle det — og når familien finder vej sammen, løfter det alle. At forstå familien som en helhed er det første skridt mod forandring.',
         punkter: [
-          'Tryghed som fundament for trivsel',
-          'At kunne tale om det svære',
-          'Plads til alle i familien',
-          'Fra konflikter til forbindelse'
+          'Alt i familien hænger sammen',
+          'Traumatiske spor påvirker hele familien',
+          'Forandring ét sted skaber bevægelse alle steder',
+          'Jeres historie rummer også jeres styrke'
         ],
-        tip: 'Start med at lægge mærke til de øjeblikke i hverdagen, hvor I faktisk lykkes som familie. Anerkend dem højt.'
+        tip: 'Prøv at se jeres udfordringer som noget, familien bærer sammen — ikke som ét menneskes problem. Det ændrer alt.'
       },
       dybde: [
-        'Familiens balance er ikke en statisk tilstand, men en levende proces. Det er evnen til at vende tilbage til forbindelse efter konflikter, at reparere brud og at holde fast i kærligheden — selv når den er svær at mærke.',
-        'Mange familier oplever perioder, hvor kommunikationen bryder sammen, og hvor medlemmerne trækker sig fra hinanden. Det kan ske i forbindelse med store forandringer som skilsmisse, sygdom, flytning eller konflikter. I de perioder har familien brug for hjælp til at finde tilbage til hinanden.',
-        'I familieterapien arbejder vi med at forstå de mønstre, der holder familien fast i negative spiraler. Vi udforsker, hvordan hvert familiemedlems historie og behov påvirker samspillet — og vi finder nye veje til at møde hinanden.',
-        'Når familien begynder at opleve, at konflikter kan løses uden at nogen går i stykker, vokser tilliden. Børnene mærker det. Forældrene mærker det. Der opstår en ny form for ro, som bærer familien videre.'
+        'Familier, der har levet med svære oplevelser — omsorgssvigt, vold, misbrug, psykisk sygdom eller kronisk stress — udvikler mønstre, der engang var nødvendige for at overleve. Men de samme mønstre kan holde familien fast, også når faren er overstået. At forstå det er begyndelsen på forandring.',
+        'Når vi ser familien som en helhed, opdager vi noget vigtigt: børnenes adfærd er ikke problemet — den er kommunikation. Et barn, der slår, råber eller trækker sig, fortæller os noget om, hvad det mærker i familien. Når vi lytter til den kommunikation, åbner der sig nye muligheder.',
+        'Mange familier har prøvet at løse problemerne ved at fokusere på ét familiemedlem — ofte barnet. Men fordi alt hænger sammen, er det sjældent nok. Familiebehandling ser på hele dynamikken: forældrenes egne historier, parforholdet, søskenderelationerne og de ydre belastninger.',
+        'At arbejde med familien som helhed kræver mod. Det betyder, at alle må se på deres egen rolle i samspillet — ikke for at finde skyld, men for at finde muligheder. Når en forælder tør se på sine egne sår, giver det barnet lov til at slippe de byrder, det har båret.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Familiebalance er det terapeutiske mål, hvor systemet fungerer godt nok til at rumme udvikling og udfordringer. Fagligt arbejder vi med familiens samlede kapacitet for regulering og tilknytning.',
+        beskrivelse: 'En narrativ-systemisk tilgang ser familien som et samlet system, hvor traumatiske erfaringer, tilknytningsmønstre og generationelle spor skaber den dynamik, vi møder. Intervention rettes mod helheden — ikke symptombæreren.',
         punkter: [
-          'Systemisk forståelse af familiedynamikker',
-          'Tilknytningsbaseret tilgang',
-          'Ressourcefokuseret intervention',
-          'Familiens reguleringskapacitet'
+          'Narrativ-systemisk helhedsforståelse',
+          'Intergenerationelle traumemønstre',
+          'Barnet som symptombærer for systemet',
+          'Menneskecentreret, ikke metodecentreret tilgang'
         ],
-        tip: 'Brug genogrammet som redskab til at synliggøre mønstre på tværs af generationer.'
+        tip: 'Det vigtigste redskab er din intuition for, hvad dette menneske har brug for. Metoden følger mennesket — ikke omvendt.'
       },
       dybde: [
-        'I det professionelle arbejde med familier er det afgørende at forstå familien som et system, hvor hvert medlem påvirker og påvirkes af helheden. En systemisk tilgang betyder, at vi ikke leder efter en enkelt årsag til problemerne, men udforsker de cirkulære processer, der opretholder dem.',
-        'Tilknytningsteori giver os et fundament for at forstå, hvorfor bestemte mønstre gentager sig i familier. Når vi kan identificere tilknytningsmønstrene — tryg, utryg-ambivalent, utryg-undgående eller desorganiseret — kan vi målrette vores intervention mod de specifikke behov.',
-        'Familiebehandling i kommunalt regi kræver en særlig opmærksomhed på samarbejdet med andre fagprofessionelle. Koordinering med socialrådgivere, skoler, institutioner og sundhedsvæsen er ofte en forudsætning for en vellykket indsats.',
-        'Dokumentation og evaluering af familiebehandlingen er centralt. Vi arbejder med løbende vurdering af familiens progression og tilpasser indsatsen efter familiens aktuelle behov og ressourcer.'
+        'I familiebehandling med udsatte familier er det afgørende at forstå, at familiens aktuelle vanskeligheder sjældent er opstået i et vakuum. Generationelle traumer, omsorgssvigt og belastende opvækstvilkår videreføres gennem tilknytningsmønstre, kropslige reaktioner og de historier, familien fortæller om sig selv.',
+        'Den narrativ-systemiske tilgang giver os mulighed for at arbejde med familiens selvforståelse. Ved at eksternalisere problemerne — adskille personen fra problemet — skabes rum for, at familien kan se sig selv som mere end deres vanskeligheder. Det er særligt vigtigt for familier, der har en lang historie i det kommunale system.',
+        'I komplekse sager med mange involverede fagprofessionelle er koordinering afgørende. Rollen som "kaospilot" — at navigere mellem socialrådgivere, skoler, institutioner, psykiatri og sundhedsvæsen — kræver evnen til at holde familiens perspektiv centralt, selv når systemets logik trækker i andre retninger.',
+        'Familieundersøgelser og §50-vurderinger kræver gennemsigtighed. Familien skal altid vide, hvad der skrives om dem, og have mulighed for at kommentere. Denne gennemsigtighed er ikke bare etisk korrekt — den styrker alliancen og øger behandlingens effektivitet.'
       ]
     }
   },
   {
     id: 'relationer',
-    titel: 'Relationer & tilknytning',
+    titel: 'Tilknytning & tryghed',
     ikon: '💛',
     privat: {
       overblik: {
-        beskrivelse: 'Vores tidligste relationer former den måde, vi møder verden på. At forstå dine tilknytningsmønstre er første skridt mod dybere og mere nærværende relationer.',
+        beskrivelse: 'Tryghed er fundamentet for alt. Den måde, du blev mødt på som barn, former den måde, du møder verden på i dag. At forstå dine tilknytningsmønstre er ikke at finde fejl — det er at finde vejen hjem til dig selv.',
         punkter: [
-          'Forstå dit tilknytningsmønster',
-          'Skab tryggere relationer',
-          'Bryd uhensigtsmæssige mønstre',
-          'Lær at bede om det, du har brug for'
+          'Dine mønstre har engang beskyttet dig',
+          'Utryg tilknytning kan heles',
+          'Tryghed skabes i relationer',
+          'Du kan give dit barn det, du selv manglede'
         ],
-        tip: 'Læg mærke til, hvad du gør, når du bliver usikker i en relation. Trækker du dig? Klynger du dig? Begge dele er naturlige strategier — men de kan ændres.'
+        tip: 'Når du reagerer uforholdsmæssigt stærkt i en relation, er det ofte et ekko fra noget ældre. Vær nysgerrig på det ekko — det fortæller dig noget vigtigt.'
       },
       dybde: [
-        'Tilknytning er den dybeste menneskelige drift — behovet for at høre til, at blive set og at være elsket. Fra vores første åndedrag søger vi forbindelse med dem omkring os, og den måde vi bliver mødt på former vores indre arbejdsmodeller for relationer resten af livet.',
-        'Mange af de udfordringer, vi oplever i vores voksne relationer, har rødder i de tidlige tilknytningserfaringer. Hvis du som barn lærte, at dine behov var for meget, eller at du måtte klare dig selv, bærer du sandsynligvis de strategier med dig ind i dine nuværende relationer.',
-        'I terapien arbejder vi med at gøre disse ubevidste mønstre bevidste. Når du kan se, at din tendens til at trække dig under konflikter er en overlevelsesstrategi fra barndommen — ikke en fejl ved dig — åbner der sig nye muligheder for forandring.',
-        'At ændre tilknytningsmønstre kræver tid og mod. Det handler om at turde vise sårbarhed, at øve sig i at blive i kontakten, også når det er ubehageligt, og langsomt at opbygge nye erfaringer af tryg forbindelse.'
+        'Tilknytning er ikke et valg — det er en biologisk nødvendighed. Fra fødslen søger vi forbindelse med dem, der skal beskytte os. Hvis den forbindelse var ustabil, uforudsigelig eller fraværende, lærer vores nervesystem at være på vagt. Det er ikke en fejl — det var den bedste strategi, du havde som barn.',
+        'I familier med traumatiske erfaringer ser vi ofte, at tilknytningsmønstrene går i arv. En forælder, der selv voksede op uden tryghed, kan have svært ved at give sit barn den ro, barnet har brug for — ikke fordi forælderen ikke vil, men fordi nervesystemet ikke har lært, hvordan tryghed føles.',
+        'Det gode budskab er, at tilknytningsmønstre kan ændres. Hjernen er plastisk hele livet. Gennem trygge relationer — med en partner, en ven, en terapeut — kan nye erfaringer langsomt overskrive de gamle. Det kræver tid og gentagne oplevelser af at blive mødt, men det er muligt.',
+        'For forældre i udsatte familier er det afgørende at forstå: du behøver ikke reparere hele din historie, før du kan være en god nok forælder. Selv små øjeblikke af ægte kontakt — et blik, en berøring, et "jeg er her" — gør en forskel for dit barn.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Tilknytningsteorien er fundamentet for vores forståelse af relationelle vanskeligheder. Vi arbejder med at kortlægge og transformere tilknytningsmønstre i den terapeutiske relation.',
+        beskrivelse: 'Tilknytning og mentalisering er de to bærende søjler i traumeinformeret familiebehandling. Vi kortlægger tilknytningsmønstre og styrker forældrenes kapacitet til at forstå barnets indre verden.',
         punkter: [
-          'Tilknytningsbaseret assessment',
-          'Mentaliseringsbaseret intervention',
-          'Relationel traumeforståelse',
-          'Circle of Security-principper'
+          'Circle of Security som ramme',
+          'Mentaliseringsbaseret behandling (MBT)',
+          'Desorganiseret tilknytning og trauma',
+          'Intergenerationel transmission af mønstre'
         ],
-        tip: 'Vær opmærksom på din egen tilknytningsstil som terapeut — den påvirker den terapeutiske alliance.'
+        tip: 'Forældrenes tilknytningshistorie er ofte nøglen til at forstå barnets symptomer. Spørg altid til forældrenes egen opvækst.'
       },
       dybde: [
-        'Tilknytningsteori, som udviklet af John Bowlby og videreført af Mary Ainsworth, Mary Main og mange andre, giver os en robust ramme for at forstå menneskelig udvikling og psykopatologi. I klinisk praksis bruger vi denne forståelse til at guide vores interventioner.',
-        'Mentalisering — evnen til at forstå adfærd i lyset af underliggende mentale tilstande — er tæt forbundet med tryg tilknytning. Når vi arbejder med familier, er et centralt mål at styrke forældrenes evne til at mentalisere omkring deres børns indre verden.',
-        'Relationelle traumer — gentagne krænkelser i tilknytningsrelationen — kræver en særlig terapeutisk tilgang. Her er den terapeutiske relation i sig selv et centralt redskab: terapeuten tilbyder en ny relationel erfaring, som gradvist kan udvide klientens tilknytningsrepræsentationer.',
-        'I supervision og faglig refleksion er det vigtigt at holde fokus på parallelprocesser: de mønstre, der udspiller sig i familien, har en tendens til at gentage sig i relationen mellem terapeut og familie, og mellem terapeut og supervisor.'
+        'I arbejdet med udsatte familier møder vi ofte desorganiseret tilknytning — det mønster, der opstår, når den person, der skal give tryghed, samtidig er kilden til frygt. Barnet fanges i et uløseligt paradoks, og de strategier, det udvikler, kan se ud som adfærdsproblemer, men er i virkeligheden overlevelsesstrategier.',
+        'Mentalisering — evnen til at se bag adfærden og forstå de følelser og intentioner, der driver den — er ofte svækket hos forældre, der selv har oplevet omsorgssvigt. Når vi styrker mentaliseringsevnen, styrker vi forælderens mulighed for at møde barnet med nysgerrighed frem for reaktivitet.',
+        'Circle of Security giver et konkret sprog for tilknytningsprocessen: barnet har brug for en sikker base at udforske fra og en sikker havn at vende tilbage til. Mange forældre i udsatte familier genkender smerteligt, at de selv manglede denne cirkel — og den erkendelse kan blive drivkraften for forandring.',
+        'I tværfagligt samarbejde er det vigtigt at formidle tilknytningsforståelsen til alle involverede — socialrådgivere, pædagoger, lærere. Når hele systemet omkring familien forstår barnets adfærd som tilknytningskommunikation, ændrer interventionerne karakter fra kontrol til omsorg.'
       ]
     }
   },
@@ -143,202 +143,202 @@ var CIRKLER = [
     ikon: '💜',
     privat: {
       overblik: {
-        beskrivelse: 'Parforholdet er den mest intense voksne tilknytningsrelation. Når det fungerer, er det en kilde til dyb tryghed og glæde. Når det halter, påvirker det alt andet i livet.',
+        beskrivelse: 'Parforholdet er familiens nerve. Når forældrene kæmper — med hinanden, med livet, med deres egne spor — mærker hele familien det. At tage sig af parforholdet er at tage sig af børnene.',
         punkter: [
-          'Forstå jeres negative dansetrin',
-          'Genopbyg tillid og nærhed',
-          'Lær at håndtere konflikter konstruktivt',
-          'Styrk den følelsesmæssige forbindelse'
+          'Jeres konflikter har dybere rødder',
+          'Begge parters historie spiller ind',
+          'Børnene mærker stemningen mellem jer',
+          'Det er aldrig for sent at finde tilbage'
         ],
-        tip: 'De fleste parkonflikter handler ikke om det, I skændes om. De handler om: "Er du der for mig? Betyder jeg noget for dig?"'
+        tip: 'Når I skændes, så prøv at stoppe op og spørge: "Hvad er det, jeg egentlig er bange for lige nu?" Svaret handler sjældent om opvasken.'
       },
       dybde: [
-        'Parforholdet rummer et paradoks: den person, der kan give os den dybeste tryghed, er også den person, der kan såre os mest. Det er denne sårbarhed, der gør parforholdet til livets mest transformerende — og mest udfordrende — relation.',
-        'De fleste par, der søger terapi, er fanget i negative interaktionsmønstre, som John Gottman og Sue Johnson har beskrevet indgående. Et typisk mønster er forfølger-undviger-dynamikken, hvor den ene part kræver kontakt, mens den anden trækker sig — og begge føler sig alene og misforstået.',
-        'I parterapien arbejder vi med at komme bag om de overfladiske konflikter og finde de dybere følelsesmæssige behov, der driver dem. Når partnerne kan dele deres sårbarhed — deres frygt for at blive forladt, deres længsel efter nærhed — ændrer samtalen karakter.',
-        'At genopbygge tillid efter et tillidsbrud er en af de sværeste, men også mest meningsfulde processer i et parforhold. Det kræver, at den ene part tager ansvar og viser ægte anger, mens den anden part langsomt tør åbne sig igen. Det er muligt — men det tager tid.'
+        'I familier med traumatiske erfaringer er parforholdet ofte under ekstra pres. Når begge partnere bærer på svære oplevelser fra deres egen opvækst, kan selv små konflikter udløse store følelser — fordi det, der aktiveres, er ældre end parforholdet.',
+        'Et typisk mønster er, at den ene søger kontakt, mens den anden trækker sig. Det ligner en konflikt om praktiske ting, men det handler altid om det samme spørgsmål: "Er du der for mig? Kan jeg stole på dig?" Når begge partnere bærer utryg tilknytning, kan dette mønster blive meget intenst.',
+        'For forældre i udsatte familier kompliceres parforholdet ofte af ydre pres: økonomi, boligsituation, kontakt med myndigheder, bekymring for børnene. Det er vigtigt at anerkende, at jeres vanskeligheder ikke kun handler om jeres relation — men også om de vilkår, I lever under.',
+        'At arbejde med parforholdet i en traumatiseret familie handler ikke om at blive det perfekte par. Det handler om at skabe nok tryghed mellem jer til, at børnene kan mærke det. Selv små skridt — at holde øjenkontakt, at sige "jeg er ked af det", at lytte uden at forsvare sig — kan ændre familiens klima.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Parterapi kræver en særlig kompetence i at navigere mellem to personers samtidige behov og at facilitere følelsesmæssig kontakt i en sikker ramme.',
+        beskrivelse: 'Forældrealliancen er afgørende for familiebehandlingens succes. I udsatte familier er parforholdet ofte belastet af individuelle traumer, ydre pres og systemisk involvering, hvilket kræver en integreret tilgang.',
         punkter: [
-          'EFT (Emotionally Focused Therapy)',
-          'Gottmans forskningsbaserede tilgang',
-          'Tilknytningsfokuseret parterapi',
-          'Arbejde med tillidsbrud og reparation'
+          'Forældrealliancen som behandlingsfokus',
+          'Traumeinformeret parterapi',
+          'Co-regulering mellem forældre',
+          'Parforholdet under ydre pres (myndigheder, økonomi)'
         ],
-        tip: 'Hold fokus på processen mellem parterne — ikke på indholdet i konflikten. Det er dansen, der skal ændres, ikke trinene.'
+        tip: 'I udsatte familier er parforholdet ofte det mest forsømte område. Styrk alliancen mellem forældrene, og du styrker hele systemet.'
       },
       dybde: [
-        'Emotionally Focused Therapy (EFT), udviklet af Sue Johnson, er en af de mest veldokumenterede tilgange til parterapi. EFT bygger på tilknytningsteori og arbejder med at identificere og transformere de negative interaktionscyklusser, der holder parret fast.',
-        'Gottmans forskning har identificeret fire kommunikationsmønstre — kritik, foragt, forsvar og stonewalling — som med stor præcision kan forudsige parforholdets overlevelse. I terapien arbejder vi aktivt med at erstatte disse mønstre med sundere alternativer.',
-        'Kulturelle og kønsmæssige faktorer spiller en væsentlig rolle i parforholdet. Som terapeut er det vigtigt at være opmærksom på, hvordan samfundsmæssige forventninger til køn, seksualitet og familieformer påvirker parrets dynamik og selvforståelse.',
-        'Supervision af parterapi bør inkludere refleksion over terapeutens egen parforholdshistorie og tilknytningsstil. Modoverføring er særligt intens i parterapi, fordi terapeutens egne relationelle erfaringer uundgåeligt aktiveres.'
+        'I kommunal familiebehandling er forældrealliancen ofte nøglen, men sjældent det direkte fokus. Når forældrene er i konstant konflikt — eller i tavs afkobling — kan selv den bedste børnefaglige indsats ikke kompensere. At adressere parforholdet er derfor en systemisk intervention, ikke et add-on.',
+        'Traumeinformeret parterapi med udsatte familier kræver forståelse for, at begge partneres nervesystemer er involveret. Når den ene partner er i sympatisk aktivering (kamp-flugt) og den anden i dorsal vagal (kollaps), er samtale meningsløs. Først når begge er regulerede, kan kontakt opstå.',
+        'I sammenbragte familier med traumehistorie er dynamikken ekstra kompleks: nye partnere skal navigere i loyalitetskonflikter, stedforælder-roller og børnenes sorg over den oprindelige familie. En narrativ tilgang kan hjælpe familien med at skabe en ny, fælles historie, der rummer alles oplevelser.',
+        'Når forældrene er separerede, ændres fokus fra parterapi til co-parenting. Her er målet ikke at redde parforholdet, men at etablere en funktionel forældrealliancealliance, hvor børnene ikke fanges i loyalitetskonflikter. §75-støtte kan være relevant, når en forælder har et barn anbragt.'
       ]
     }
   },
   {
     id: 'familie',
-    titel: 'Familiesamspil',
+    titel: 'Samspil & mønstre',
     ikon: '🏡',
     privat: {
       overblik: {
-        beskrivelse: 'Familiens samspil er den daglige dans mellem alle medlemmer. Små forandringer i mønstrene kan skabe store forandringer i hele familiens trivsel.',
+        beskrivelse: 'Hver familie har sine mønstre — måder at reagere på, roller der er fordelt, ting der ikke siges højt. Nogle mønstre beskytter. Andre holder jer fast. At se dem er første skridt mod at vælge dem om.',
         punkter: [
-          'Forstå jeres familiedynamik',
-          'Skab bedre kommunikation',
-          'Håndter forandringer sammen',
-          'Styrk familiens fællesskab'
+          'Mønstre går i arv — men kan brydes',
+          'Roller i familien kan ændres',
+          'Det usagte former samspillet',
+          'Nye veje kræver at alle bliver set'
         ],
-        tip: 'Familiemøder — selv 15 minutter om ugen — kan gøre en kæmpe forskel. Giv alle en stemme, også de mindste.'
+        tip: 'Prøv at lægge mærke til, hvad der sker lige FØR en konflikt eskalerer. Hvem gør hvad? Hvem tier? Det mønster fortæller jer noget vigtigt.'
       },
       dybde: [
-        'Hver familie har sin egen unikke kultur — sine egne ritualer, regler, roller og kommunikationsmønstre. Nogle af disse mønstre er bevidste valg, men mange er arvet fra tidligere generationer eller er opstået som reaktion på udfordringer, familien har mødt.',
-        'Når et barn mistrives, er det sjældent kun barnets problem. Det er oftest et signal om, at noget i familiens samspil behøver opmærksomhed. Barnet bærer symptomerne, men familien bærer dynamikken. Derfor er familiebehandling så effektiv.',
-        'Familier i forandring — efter skilsmisse, ved sammensatte familier, ved sygdom eller tab — har brug for at genforhandle roller og regler. Det kan være smertefuldt, men det rummer også muligheden for at skabe nye og bedre måder at være familie på.',
-        'At arbejde med familiens ressourcer er mindst lige så vigtigt som at adressere problemerne. Hver familie har styrker, traditioner og øjeblikke af forbindelse, som kan bruges som fundament for forandring.'
+        'I familier med traumatiske erfaringer udvikler der sig ofte faste roller: den, der passer på alle; den, der udadreagerer; den, der bliver usynlig; den, der holder sammen på det hele. Disse roller er ikke frit valgte — de er overlevelsesstrategier, der er vokset frem, fordi nogen måtte fylde de huller, der var.',
+        'Mønstre gentager sig på tværs af generationer. En mor, der selv var parentificeret som barn, kan ubevidst gøre sit barn til den, der passer på hende. En far, der voksede op med vold, kan enten gentage mønsteret eller trække sig helt fra konflikter. Begge dele påvirker familiens samspil.',
+        'Når en familie har mange professionelle omkring sig — socialrådgivere, familiebehandlere, pædagoger, lærere — kan det paradoksalt nok gøre samspillet mere forvirret. Familien kan føle sig overvåget, dømt eller handlingslammet. Det er vigtigt, at hjælpen giver familien mere handlekraft — ikke mindre.',
+        'At ændre familiens mønstre handler ikke om at gøre alt anderledes fra den ene dag til den anden. Det handler om at finde de små øjeblikke, hvor I allerede gør det, I gerne vil gøre mere af — og bygge videre derfra. Selv i de mest belastede familier er der øjeblikke af forbindelse og omsorg.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Familiesamspil analyseres systemisk med fokus på kommunikationsmønstre, grænser, hierarkier og alliancer. Intervention rettes mod systemet, ikke individet.',
+        beskrivelse: 'Familiens samspilsmønstre afdækkes narrativt og systemisk. Vi undersøger roller, alliancer, generationelle mønstre og de dominerende historier, familien lever efter — og hjælper familien med at finde alternative fortællinger.',
         punkter: [
-          'Strukturel familieterapi (Minuchin)',
-          'Narrativ familieterapi',
-          'Løsningsfokuseret tilgang',
-          'Familieundersøgelser (§50)'
+          'Narrativ eksternalisering af problemer',
+          'Parentificering og rolleforvirring',
+          'Generogrammer og generationelle mønstre',
+          '3-måneders familieundersøgelser'
         ],
-        tip: 'Brug cirkulære spørgsmål til at synliggøre relationelle mønstre for familien selv.'
+        tip: 'Spørg altid: "Hvis dette mønster havde en funktion engang — hvad beskyttede det familien mod?" Det åbner for forståelse frem for fordømmelse.'
       },
       dybde: [
-        'Den strukturelle familieterapi, som Salvador Minuchin udviklede, giver os redskaber til at forstå familiens organisation: grænser mellem subsystemer, hierarkier, koalitioner og alliancer. Når strukturen er dysfunktionel — f.eks. når et barn er parentificeret — kan vi intervenere direkte i strukturen.',
-        'Narrativ terapi tilbyder familien muligheden for at genfortælle sin historie. Ved at eksternalisere problemet ("problemet er problemet, personen er ikke problemet") skabes rum for, at familien kan finde alternative historier om sig selv — historier med mere handlekraft og håb.',
-        'I kommunalt regi udføres familieundersøgelser efter Servicelovens §50 som grundlag for afgørelser om foranstaltninger. Disse undersøgelser kræver en grundig og balanceret vurdering af familiens samlede situation, ressourcer og belastninger.',
-        'Samarbejde med familien — ikke bare om familien — er et centralt princip. Inddragelse af familiens eget perspektiv, ønsker og mål for behandlingen øger ikke bare effektiviteten, men er også en etisk forpligtelse.'
+        'Narrativ terapi er særligt velegnet i arbejdet med udsatte familier, fordi den adskiller personen fra problemet. Når vi eksternaliserer — "hvornår sniger vreden sig ind?" frem for "hvorfor er du vred?" — skabes et rum, hvor familien kan se problemet udefra og finde deres egen handlekraft.',
+        'I intensive familiebehandlingsforløb med hjemmebesøg ser vi samspilsmønstrene udfolde sig i familiens eget miljø. Det giver en helt anden adgang end samtaler på et kontor. Vi ser, hvem der sidder ved bordet, hvem der trækker sig, hvem der tager over — og vi kan intervenere i de faktiske situationer.',
+        '3-måneders familieundersøgelser kræver en systematisk kortlægning af familiens dynamik, ressourcer og belastninger. Genogrammet er et uundværligt redskab her: det synliggør mønstre på tværs af generationer og giver familien selv en visuel forståelse af, hvor deres historier kommer fra.',
+        'I det tværfaglige samarbejde er det vigtigt at holde fast i, at familiens mønstre ikke er patologi — de er tilpasninger til svære livsvilkår. Denne forståelse ændrer interventionen fra at ville "rette" familien til at ville styrke familiens egen kapacitet for forandring.'
       ]
     }
   },
   {
     id: 'individuel',
-    titel: 'Individuel terapi',
+    titel: 'Dig selv & dine spor',
     ikon: '🦋',
     privat: {
       overblik: {
-        beskrivelse: 'Individuel terapi er et rum, hvor du kan udforske dig selv i dit eget tempo. Her er plads til det, der er svært at sige højt, og til de følelser, der fylder mest.',
+        beskrivelse: 'Du bærer på spor fra dit liv — fra din opvækst, dine relationer, dine tab og dine kampe. Individuel terapi handler ikke om at fikse dig. Det handler om at stå mere solidt i det, du står i, og finde de ressourcer, du har glemt du har.',
         punkter: [
-          'Et trygt rum til selvudforskning',
-          'Arbejd med angst, stress eller depression',
-          'Forstå dine mønstre og reaktioner',
-          'Find tilbage til dig selv'
+          'Dine reaktioner giver mening',
+          'Traumer kan bearbejdes i dit tempo',
+          'Du er mere end din historie',
+          'At forstå din krop er at forstå dig selv'
         ],
-        tip: 'Det kræver mod at bede om hjælp. At du overvejer terapi, er allerede et tegn på styrke.'
+        tip: 'Du behøver ikke forstå alt, før du kan begynde at have det bedre. Nogle gange er det nok at mærke, at nogen lytter — virkelig lytter.'
       },
       dybde: [
-        'I individuel terapi er der plads til at stoppe op og lytte indad. Hverdagen giver sjældent rum til den slags fordybelse, og mange mennesker lever med en fornemmelse af, at noget er galt — uden helt at kunne sætte ord på hvad.',
-        'Terapi handler ikke om at få gode råd. Det handler om at få en tryg relation, hvor du kan udforske de dele af dig selv, du normalt holder skjult — også for dig selv. I den udforskning ligger nøglen til forandring.',
-        'Mange oplever, at de gentager de samme mønstre i forskellige relationer: vælger de forkerte partnere, siger ja når de mener nej, undgår konflikter eller eksploderer i vrede. Disse mønstre har engang tjent et formål, men de kan ændres, når de bliver bevidste.',
-        'Terapiens mål er ikke at gøre dig til et andet menneske, men at give dig flere valgmuligheder. Når du forstår, hvorfor du reagerer, som du gør, kan du begynde at vælge anderledes — og langsomt skabe det liv, der passer til dig.'
+        'Mange mennesker lever med en fornemmelse af, at noget er galt — uden at kunne sætte ord på hvad. Det kan vise sig som angst, udmattelse, vrede eller en følelse af tomhed. Ofte er det spor fra oplevelser, der aldrig blev bearbejdet — fordi der ikke var plads til det, eller fordi ingen spurgte.',
+        'I terapien møder jeg dig, hvor du er — med alt det, du bærer med dig. Det handler ikke om at løse problemer, men om at blive bedre til at holde det svære, forstå hvordan din krop reagerer, og langsomt finde mere plads indeni. Som Rikke siger: vi fikser ikke — vi skaber rum.',
+        'For forældre i udsatte familier er individuel terapi ofte et vigtigt supplement til familiebehandlingen. Dine egne ubearbejdede erfaringer — omsorgssvigt, vold, tab, ensomhed — påvirker din evne til at være nærværende med dine børn. At tage sig af sine egne sår er en gave til hele familien.',
+        'Traumebearbejdning foregår i faser: først skaber vi tryghed og stabilitet, så du har et fundament at stå på. Derefter kan vi langsomt nærme os det svære — i dit tempo, med respekt for dine grænser. Integration er det sidste skridt: at finde en ny plads til det, der skete, så det ikke længere styrer dit liv.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Individuel terapi i en familieterapeutisk kontekst holder altid fokus på individet-i-relation. Vi arbejder med intrapsykiske processer i lyset af det relationelle felt.',
+        beskrivelse: 'Individuel terapi i en familieterapeutisk kontekst holder altid fokus på individet-i-relation. Vi arbejder narrativt med klientens historie og somatisk med kroppens spor — altid med blik for det systemiske felt.',
         punkter: [
-          'Tilknytningsfokuseret individuel terapi',
-          'Traumebearbejdning',
-          'Affektregulering og mentalisering',
-          'Eksistentiel og fænomenologisk tilgang'
+          'Faseopdelt traumebehandling',
+          'Narrativ identitetsarbejde',
+          'Somatisk traumeterapi og åndedræt',
+          'PTSD, kompleks PTSD og C-PTSD'
         ],
-        tip: 'Husk at individuel terapi med én part i et par/familiesystem altid påvirker hele systemet. Overvej alliancespørgsmålet.'
+        tip: 'Stabilisering først — altid. En klient, der ikke er reguleret, kan ikke bearbejde. Giv kroppen forrang, når den er i alarmberedskab.'
       },
       dybde: [
-        'Individuel terapi i en systemisk ramme adskiller sig fra traditionel individuel terapi ved konsekvent at tænke individet i kontekst. Vi udforsker klientens indre verden, men altid med opmærksomhed på de relationelle kontekster, der har formet og fortsat former denne verden.',
-        'Traumebearbejdning kræver en faseopdelt tilgang: først stabilisering og ressourceopbygning, derefter bearbejdning af traumatiske erindringer, og endelig integration og ny orientering i livet. At springe stabiliseringsfasen over er en af de hyppigste fejl i traumeterapi.',
-        'Affektregulering — evnen til at opleve, tolerere og modulere følelser — er en kernekompetence, som udvikles i trygge relationer. Mange klienter har ikke lært denne kompetence i opvæksten og har brug for at udvikle den i den terapeutiske relation.',
-        'Supervision af individuel terapi bør fokusere på terapeutens brug af sig selv: Hvad sker der i den terapeutiske relation? Hvilke følelser aktiveres hos terapeuten? Og hvordan kan denne information bruges konstruktivt i terapien?'
+        'I arbejdet med klienter fra udsatte familier møder vi ofte kompleks PTSD: et mønster af symptomer, der stammer fra gentagne, langvarige traumatiske oplevelser i nære relationer. I modsætning til enkeltstående traumer kræver C-PTSD en langsommere, mere relationel tilgang, hvor den terapeutiske alliance i sig selv er helende.',
+        'Den narrative tilgang giver klienten mulighed for at genfortælle sin historie — ikke ved at ændre fakta, men ved at finde nye perspektiver. Når en kvinde, der har oplevet vold, kan se sin overlevelse som styrke i stedet for skam, ændrer hele selvforståelsen karakter.',
+        'Integration af somatisk terapi og åndedrætsterapi er central i traumebehandling. Kroppen bærer traumets aftryk i form af spændinger, åndedrætsrestriktioner og nervesystemets kroniske aktivering. Gennem kropslig bevidsthed og åndedrætsarbejde kan disse mønstre langsomt opløses.',
+        'I det tværfaglige felt er det vigtigt at sikre, at individuel terapi ikke modarbejder familiebehandlingen. Tæt koordinering med familiebehandleren og socialrådgiveren er nødvendig, samtidig med at klientens fortrolighed respekteres. Denne balance kræver erfaring og faglig integritet.'
       ]
     }
   },
   {
     id: 'aandedraet',
-    titel: 'Åndedræt & krop',
+    titel: 'Åndedræt & nervesystem',
     ikon: '🌬️',
     privat: {
       overblik: {
-        beskrivelse: 'Kroppen bærer alt det, vi ikke siger. Åndedrættet er den mest direkte vej til at regulere dit nervesystem og finde ro — også midt i stormen.',
+        beskrivelse: 'Dit nervesystem er som en indre alarm. Hos mennesker med traumatiske erfaringer står alarmen ofte på — også når der ikke er fare. Åndedrættet er den mest direkte vej til at fortælle din krop, at det er trygt nu.',
         punkter: [
-          'Lær dit nervesystem at kende',
-          'Brug åndedrættet som anker',
-          'Slip kropslige spændinger',
-          'Find ro i din krop'
+          'Dit nervesystem reagerer hurtigere end dine tanker',
+          'Stresset åndedræt holder dig i alarmberedskab',
+          'Roligt åndedræt signalerer tryghed til hjernen',
+          'Du kan lære at regulere dig selv'
         ],
-        tip: 'Prøv lige nu: Tag tre dybe vejrtrækninger, hvor du forlænger udåndingen. Mærk hvad der sker i din krop.'
+        tip: 'Prøv lige nu: Ånd ind i 4 tæller, ud i 6 tæller. Gør det tre gange. Mærk, hvordan kroppen svarer. Det er dit nervesystem, der skifter gear.'
       },
       dybde: [
-        'Åndedrættet er en bro mellem det bevidste og det ubevidste, mellem krop og sind. Det er den eneste autonome funktion, vi også kan styre bevidst — og det gør det til et kraftfuldt redskab for selvregulering.',
-        'Når vi er stressede eller angste, ændrer vores åndedræt sig: det bliver overfladisk, hurtigt, og flytter op i brystet. Denne ændring sender signal til hjernen om, at der er fare, hvilket forstærker stressresponsen i en negativ spiral. Ved bevidst at ændre åndedrættet kan vi bryde denne spiral.',
-        'Åndedrætsterapi går dybere end simple vejrtrækningsøvelser. Det handler om at møde de følelser og minder, der er lagret i kroppen, og langsomt at frigøre dem. Mange oplever, at dybe følelser — sorg, vrede, lettelse — kommer til overfladen under åndedrætsarbejde.',
-        'Kroppen husker det, sindet har glemt. Mange mennesker bærer på kropslige spændinger — i kæben, skuldrene, maven — som er udtryk for undertrykte følelser eller gamle beskyttelsesstrategier. Gennem kropsbevidsthed og åndedræt kan disse spændinger langsomt frigøres.'
+        'Åndedrættet er den eneste autonome funktion, du også kan styre bevidst. Det gør det til en direkte linje til dit nervesystem. Når du bevidst forlænger udåndingen, aktiverer du den del af nervesystemet, der signalerer tryghed — den vagusnerve, der fungerer som en stille strøm af kommunikation mellem krop og sind.',
+        'Mennesker, der har oplevet traumer, har ofte et åndedræt, der er stramt og overfladisk. Kroppen holder fast — i brystet, i mellemgulvet, i maven — fordi den stadig er i beredskab. Åndedrætsterapi handler ikke om at tvinge kroppen til at slappe af, men om langsomt at geninvitere tryghed ind i kroppen.',
+        'For familier med traumatiske erfaringer er kropslig regulering ekstra vigtigt. Når en forælder er i kronisk alarmberedskab, kan barnet mærke det — og barnets nervesystem følger med. At lære at regulere sit eget nervesystem er derfor en af de mest konkrete gaver, du kan give dine børn.',
+        'Åndedrætsterapi er ikke bare teknik — det er en vej ind til følelser, der har været låst inde i kroppen. Mange oplever, at sorg, lettelse eller gammel frygt frigøres under åndedrætsarbejde. Det er kroppens måde at slippe det, den har holdt fast i. Det kræver trygge rammer og en terapeut, der kan rumme det, der kommer.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Kropsligt orienteret terapi og åndedrætsterapi integrerer somatiske processer i den terapeutiske behandling. Vi arbejder med polyvagal teori og somatisk oplevelse.',
+        beskrivelse: 'Polyvagal teori og åndedrætsterapi udgør den kropslige dimension i traumeinformeret familiebehandling. Vi arbejder med nervesystemets tre tilstande og bruger åndedræt som klinisk intervention til regulering.',
         punkter: [
-          'Polyvagal teori (Stephen Porges)',
-          'Somatic Experiencing (Peter Levine)',
-          'Åndedrætsterapi som klinisk redskab',
-          'Kropslig regulering i familiebehandling'
+          'Polyvagal teori — tre tilstande i nervesystemet',
+          'Åndedrætsterapi (certificeret 2022-23)',
+          'Co-regulering i familiebehandling',
+          'NADA øreakupunktur som supplement'
         ],
-        tip: 'Inddrag kropslige interventioner tidligt i forløbet — de giver klienten konkrete redskaber til selvregulering mellem sessionerne.'
+        tip: 'Begynd altid med at aflæse klientens nervesystemtilstand. Er de i ventral vagal, sympatisk aktivering eller dorsal kollaps? Din intervention afhænger af svaret.'
       },
       dybde: [
-        'Stephen Porges\' polyvagale teori har revolutioneret vores forståelse af nervesystemets rolle i psykisk sundhed. Teorien beskriver tre hierarkiske tilstande: den ventrale vagus (social engagement og tryghed), det sympatiske system (kamp-flugt) og den dorsale vagus (kollaps og afkobling).',
-        'Peter Levines Somatic Experiencing bygger på observationen af, at dyr i naturen sjældent udvikler traumer, fordi de instinktivt gennemfører den fysiologiske cyklus af aktivering og afladning. Mennesker derimod "fryser" ofte i aktiveringstilstanden, hvilket lagrer traumet i kroppen.',
-        'Åndedrætsterapi som klinisk redskab kræver grundig uddannelse og supervision. Dybt åndedrætsarbejde kan aktivere stærke følelsesmæssige og fysiologiske reaktioner, og terapeuten skal kunne rumme og guide disse processer sikkert.',
-        'I familiebehandling kan kropslige interventioner bruges til at ændre dynamikken i rummet. Når en familie er i høj affekt, kan en simpel vejrtrækningsøvelse sammen skabe et fælles reguleringspunkt og åbne for ny kontakt.'
+        'Stephen Porges\' polyvagale teori giver os et præcist sprog for nervesystemets tre hierarkiske tilstande: ventral vagal (tryghed, social engagement), sympatisk (kamp-flugt, alarm) og dorsal vagal (kollaps, afkobling). I traumatiserede familier ser vi ofte, at nervesystemet er "fastlåst" i sympatisk aktivering eller dorsal kollaps.',
+        'Åndedrætsterapi som klinisk redskab starter med at observere klientens åndedræt: Hvor i kroppen trækker de vejret? Hvor dybt? Hvor hurtigt? Åndedrætsrestriktioner afslører, hvor kroppen holder fast — og giver os et kort over de somatiske spor af traumet.',
+        'Co-regulering — når én persons regulerede nervesystem hjælper en andens med at finde ro — er fundamentet for terapeutisk kontakt med traumatiserede familier. Terapeutens eget nervesystem er det vigtigste redskab. Derfor er egen kropslig praksis og supervision afgørende.',
+        'I familiebehandling kan kropslige interventioner bruges direkte i sessioner med hele familien. Når en samtale eskalerer, kan en fælles vejrtrækningsøvelse bryde eskaleringsmønsteret og skabe et nyt fælles udgangspunkt. NADA øreakupunktur kan supplere som reguleringsredskab, særligt ved stofmisbrug og angst.'
       ]
     }
   },
   {
     id: 'boern',
-    titel: 'Børn & trivsel',
+    titel: 'Barnets stemme',
     ikon: '🌱',
     privat: {
       overblik: {
-        beskrivelse: 'Børn kommunikerer med hele deres væsen. Når et barn mistrives, er det en invitation til at lytte dybere — til barnet, til familien og til de omstændigheder, barnet lever i.',
+        beskrivelse: 'Børns adfærd er aldrig tilfældig. Et barn, der slår, skriger, trækker sig eller tilpasser sig for meget, fortæller os noget vigtigt. Barnets adfærd er ikke problemet — den er kommunikation om, at noget i omgivelserne er svært.',
         punkter: [
-          'Forstå dit barns signaler',
-          'Styrk tilknytningen til dit barn',
-          'Hjælp dit barn med store følelser',
-          'Skab trygge rammer for udvikling'
+          'Adfærd er kommunikation — altid',
+          'Arbejd med omgivelserne, ikke kun barnet',
+          'Alle følelser er tilladte',
+          'Børn bærer familiens byrder — lad dem slippe'
         ],
-        tip: 'Børn har brug for at vide, at alle følelser er tilladte — også vrede, sorg og frygt. Det er adfærden, vi sætter grænser for, ikke følelserne.'
+        tip: 'Næste gang dit barn "opfører sig dårligt", prøv at spørge dig selv: "Hvad prøver mit barn at fortælle mig?" Det ændrer alt.'
       },
       dybde: [
-        'Børn er eksperter i at aflæse deres omgivelser. Længe før de har ord for det, mærker de stemninger, spændinger og forandringer i familien. Deres adfærd — hvad enten det er udadreageren, tilbagetrækning eller overdreven tilpasning — er altid meningsfuld kommunikation.',
-        'Tryg tilknytning er det vigtigste, vi kan give vores børn. Det handler ikke om at være perfekte forældre, men om at være "gode nok" — om at kunne rumme barnets følelser, at reparere brud i kontakten og at være en sikker base, hvorfra barnet kan udforske verden.',
-        'Når børn oplever skilsmisse, sygdom, tab eller andre svære livsbegivenheder, har de brug for hjælp til at forstå og bearbejde deres oplevelser. Børn har en tendens til at tage skyld og ansvar på sig, og de har brug for voksne, der hjælper dem med at sætte ord på det svære.',
-        'At hjælpe sit barn er også at hjælpe sig selv. Ofte opdager forældre i terapien, at barnets udfordringer spejler noget i deres egen historie — og at vejen til at støtte barnet går gennem deres egen bearbejdning og vækst.'
+        'Børn er eksperter i at aflæse deres omgivelser — langt bedre end de fleste voksne. De mærker spændinger, sorg, angst og vrede i familien, længe før nogen siger noget. Og fordi de ikke har ord for det, bruger de det, de har: deres krop og deres adfærd.',
+        'Et barn, der udadreagerer, er ikke et "svært barn" — det er et barn, der har det svært. Og oftest handler det ikke om barnet selv, men om det, barnet lever i. Uro i familien, forældrenes ubearbejdede traumer, konflikter, misbrug eller omsorgssvigt — barnet mærker det hele og reagerer på det.',
+        'For forældre kan det være smertefuldt at høre, at barnets vanskeligheder hænger sammen med familiens dynamik. Men det er også en befriende erkendelse: det betyder, at du ikke skal fikse dit barn. Du skal forstå, hvad dit barn fortæller dig — og arbejde med de omgivelser, barnet lever i.',
+        'Børn i udsatte familier bærer ofte byrder, der er alt for tunge for dem: de passer på yngre søskende, de trøster forældre, de forsøger at holde sammen på noget, der falder fra hinanden. Når vi giver forældrene støtte til at tage ansvaret tilbage, kan barnet endelig få lov til at være barn.'
       ]
     },
     professionel: {
       overblik: {
-        beskrivelse: 'Børneperspektivet er centralt i al familiebehandling. Vi arbejder med barnets stemme, barnets oplevelse og barnets ret til at blive hørt og forstået.',
+        beskrivelse: 'Barnets perspektiv er den centrale navigationsstjerne i al familiebehandling. Vi ser barnets adfærd som meningsfuld kommunikation og arbejder med omgivelserne — ikke symptombæreren.',
         punkter: [
-          'Børnesamtaler og børneinddragelse',
-          'Udviklingspsykologisk forståelse',
-          'Børn i udsatte positioner',
-          'Tværfagligt samarbejde om børn'
+          'Barnets adfærd som systemisk kommunikation',
+          'Børnesamtaler tilpasset alder og modenhed',
+          'Underretningspligt og myndighedssamarbejde',
+          'Anbragte børn og §75-støtte til forældre'
         ],
-        tip: 'Husk at barnets "symptomer" ofte er de bedste løsninger, barnet har kunnet finde i en svær situation. Respektér barnets strategi, mens du hjælper med at finde bedre alternativer.'
+        tip: 'Barnets "symptomer" er de bedste løsninger, barnet har kunnet finde. Respektér strategien — og arbejd med de omgivelser, der nødvendiggør den.'
       },
       dybde: [
-        'Barnets perspektiv skal altid inddrages — det er ikke bare god praksis, det er en rettighed forankret i FN\'s Børnekonvention. I familiebehandling betyder det, at vi aktivt opsøger barnets oplevelse og forståelse, tilpasset barnets alder og modenhed.',
-        'Udviklingspsykologisk viden er fundamentet for at forstå, hvad der er aldersvarende og hvad der er bekymrende. Et barns reaktioner skal altid vurderes i lyset af dets udviklingstrin — hvad der er normalt for en toårig, er anderledes end for en tiårig.',
-        'Børn i udsatte positioner — omsorgssvigt, vold, misbrug — kræver en særlig opmærksomhed og en koordineret indsats. Som behandler har vi underretningspligt, og vi skal kunne navigere mellem den terapeutiske relation og myndighedsansvaret.',
-        'Det tværfaglige samarbejde omkring udsatte børn er ofte komplekst og kan rumme mange modsatrettede perspektiver. At kunne facilitere og koordinere dette samarbejde er en vigtig kompetence for familieterapeuten.'
+        'I familiebehandling med udsatte familier er barnet ofte den, der henvises — men sjældent den, der har "problemet". Barnets symptomer — adfærdsvanskeligheder, skolefravær, selvskade, angst — er signaler om, at systemet omkring barnet er belastet. At behandle barnet alene uden at adressere familiens dynamik er sjældent effektivt.',
+        'Børnesamtaler i familiebehandling kræver særlig kompetence. Barnet skal opleve, at dets oplevelse tages alvorligt, uden at det pålægges ansvar for at løse familiens problemer. Med yngre børn bruger vi leg, tegning og fortælling som veje ind i barnets verden.',
+        'Underretningspligten er en realitet i arbejdet med udsatte familier. At navigere mellem den terapeutiske alliance og myndighedsansvaret kræver gennemsigtighed: familien skal altid vide, hvad der underrettes om og hvorfor. Denne åbenhed beskytter både barnet og den terapeutiske relation.',
+        'Ved anbringelser er §75-støtte til forældrene afgørende. Forældre, der mister omsorgen for deres barn, har brug for hjælp til at bearbejde sorg, skam og tab — og til at opbygge en ny relation til barnet inden for anbringelsens rammer. Denne indsats er ofte undervurderet, men kan gøre en afgørende forskel for barnets mulighed for at vende hjem.'
       ]
     }
   }
