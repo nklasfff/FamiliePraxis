@@ -456,6 +456,8 @@ body {
   justify-content: center;
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
   transition: opacity 0.6s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .onboarding-overlay.hiding {
@@ -465,7 +467,7 @@ body {
 
 .onboarding-content {
   text-align: center;
-  padding: 32px 28px;
+  padding: 32px 28px 48px;
   max-width: 440px;
 }
 
@@ -1355,6 +1357,288 @@ body {
   font-weight: 600;
   color: var(--text);
   margin-bottom: 12px;
+}
+
+/* ---------- Kommune & Samarbejde ---------- */
+.kommune-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.kommune-hero {
+  text-align: center;
+  padding: 24px 0 28px;
+}
+
+.kommune-hero-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.kommune-hero-title {
+  font-size: 1.5rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.kommune-hero-lead {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.kommune-section {
+  margin-bottom: 36px;
+}
+
+.kommune-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.kommune-text {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.kommune-text-small {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Method cards */
+.kommune-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.kommune-card {
+  border-radius: 14px;
+  padding: 18px 14px;
+  border: 1.5px solid transparent;
+}
+
+.kommune-card-sage { background: #E8F0EB; border-color: #C5D9CC; }
+.kommune-card-rose { background: #F3E6E9; border-color: #DCC4CA; }
+.kommune-card-amber { background: #F2ECE0; border-color: #DDD2BC; }
+.kommune-card-stone { background: #EDEBE8; border-color: #D5D1CC; }
+
+.kommune-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.kommune-card h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.kommune-card p {
+  font-size: 0.8rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Forløb items */
+.kommune-forloeb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.kommune-forloeb-item {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.kommune-forloeb-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.kommune-forloeb-tag {
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.kommune-forloeb-tag-alt {
+  background: var(--accent);
+}
+
+.kommune-forloeb-header h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.kommune-forloeb-item > p {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+
+.kommune-forloeb-detaljer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kommune-forloeb-detaljer span {
+  background: var(--primary-pale);
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+/* List */
+.kommune-list {
+  list-style: none;
+  margin: 0;
+}
+
+.kommune-list li {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 10px 0 10px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.kommune-list li:last-child { border-bottom: none; }
+
+.kommune-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Explore button */
+.kommune-explore-btn-wrap {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.kommune-explore-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 32px;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px var(--shadow-md);
+}
+
+.kommune-explore-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-md);
+}
+
+/* CTA */
+.kommune-cta {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.kommune-cta-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.kommune-cta-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.kommune-cta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.kommune-cta-btn {
+  display: block;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.kommune-cta-btn-primary {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.kommune-cta-btn-secondary {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+
+.kommune-cta-btn:hover {
+  transform: translateY(-1px);
+}
+
+.kommune-cta-cvr {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 8px;
 }
 
 .dynamik-to-top {

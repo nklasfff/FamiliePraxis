@@ -53,6 +53,9 @@
     renderMuligt();
     bindMuligtForm();
     drawConnectionLines();
+    if (aktivPerspektiv === 'kommune') {
+      renderKommune();
+    }
   }
 
   // ---------- Onboarding ----------
@@ -72,17 +75,29 @@
     isFirstVisit = true;
     hideOnboarding(false);
     updatePerspektivUI();
-    showWelcome();
     animateCircles();
     updateCircleTexts();
     renderTrappen();
     renderTemaer();
     renderOevelser();
     renderMenuContent();
+    if (p === 'kommune') {
+      renderKommune();
+      showView('kommune');
+      document.querySelectorAll('.nav-btn').forEach(function (b) { b.classList.remove('active'); });
+    } else {
+      showWelcome();
+    }
+  }
+
+  // Helper: get content perspective key (kommune uses professionel content)
+  function contentPerspektiv() {
+    return aktivPerspektiv === 'kommune' ? 'professionel' : (aktivPerspektiv || 'privat');
   }
 
   function updatePerspektivUI() {
-    perspektivLabel.textContent = aktivPerspektiv === 'privat' ? 'Privat klient' : 'Fagprofessionel';
+    var labels = { privat: 'Privat klient', professionel: 'Fagprofessionel', kommune: 'Kommune & samarbejde' };
+    perspektivLabel.textContent = labels[aktivPerspektiv] || 'Privat klient';
   }
 
   function showWelcome() {
@@ -116,7 +131,7 @@
 
   function updateCircleTexts() {
     if (!aktivPerspektiv) return;
-    var tekster = CIRKEL_TEKSTER[aktivPerspektiv];
+    var tekster = CIRKEL_TEKSTER[contentPerspektiv()];
     Object.keys(tekster).forEach(function (key) {
       var el1 = document.getElementById('txt' + capitalize(key) + '1');
       var el2 = document.getElementById('txt' + capitalize(key) + '2');
@@ -175,6 +190,7 @@
 
     // Scroll to top on view change
     if (appMain) appMain.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 
   // ---------- Cirkel Detail ----------
@@ -190,7 +206,7 @@
   function renderCirkelDetail() {
     var cirkel = CIRKLER.find(function (c) { return c.id === aktivCirkel; });
     if (!cirkel) return;
-    var p = aktivPerspektiv || 'privat';
+    var p = contentPerspektiv();
     var data = cirkel[p];
     var container = document.getElementById('cirkelDetaljeContent');
 
@@ -263,7 +279,7 @@
   function renderTrappen() {
     var container = document.getElementById('trappeContainer');
     if (!container) return;
-    var p = aktivPerspektiv || 'privat';
+    var p = contentPerspektiv();
     var html = '';
 
     TRAPPEN.forEach(function (trin) {
@@ -301,7 +317,7 @@
   function renderTemaer() {
     var grid = document.getElementById('temaGrid');
     if (!grid) return;
-    var p = aktivPerspektiv || 'privat';
+    var p = contentPerspektiv();
     var html = '';
 
     TEMA_INDHOLD.forEach(function (tema) {
@@ -388,7 +404,7 @@
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">Dit perspektiv</div>' +
       '<div class="menu-link" id="menuSwitchPerspektiv">' +
-      (aktivPerspektiv === 'privat' ? '🏠 Privat klient' : '🏛️ Fagprofessionel') +
+      (aktivPerspektiv === 'privat' ? '🏠 Privat klient' : aktivPerspektiv === 'kommune' ? '🤝 Kommune & samarbejde' : '🏛️ Fagprofessionel') +
       ' — tryk for at skifte</div></div>';
 
     // Om Rikke
@@ -404,6 +420,8 @@
       '<div class="menu-link" data-nav="trappen">Nervesystemets trappe</div>' +
       '<div class="menu-link" data-nav="temaer">Temaer</div>' +
       '<div class="menu-link" data-nav="oevelser">Øvelser</div>' +
+      '<div class="menu-link" data-nav="muligt">Hvad er muligt lige nu?</div>' +
+      (aktivPerspektiv === 'kommune' ? '<div class="menu-link" data-nav="kommune">Samarbejde med Rikke</div>' : '') +
       '</div>';
 
     // Kontakt
@@ -435,7 +453,8 @@
     var switchBtn = document.getElementById('menuSwitchPerspektiv');
     if (switchBtn) {
       switchBtn.addEventListener('click', function () {
-        aktivPerspektiv = aktivPerspektiv === 'privat' ? 'professionel' : 'privat';
+        var cycle = { privat: 'professionel', professionel: 'kommune', kommune: 'privat' };
+        aktivPerspektiv = cycle[aktivPerspektiv] || 'privat';
         localStorage.setItem('fp_perspektiv', aktivPerspektiv);
         updatePerspektivUI();
         updateCircleTexts();
@@ -500,7 +519,7 @@
     }
     var q = query.toLowerCase();
     var results = [];
-    var p = aktivPerspektiv || 'privat';
+    var p = contentPerspektiv();
 
     // Search circles
     CIRKLER.forEach(function (c) {
@@ -779,6 +798,158 @@
     });
   }
 
+  // ---------- Kommune & Samarbejde ----------
+  function renderKommune() {
+    var container = document.getElementById('kommuneContent');
+    if (!container) return;
+
+    var html = '';
+
+    // Hero
+    html += '<div class="kommune-hero">';
+    html += '<div class="kommune-hero-badge">Samarbejde</div>';
+    html += '<h2 class="kommune-hero-title">Sådan kan Rikke styrke jeres familiearbejde</h2>';
+    html += '<p class="kommune-hero-lead">Rikke Veth arbejder med de familier, hvor kompleksiteten er størst — intergenerationelle traumer, desorganiseret tilknytning, parentificering og kronisk stress. Her kan du udforske hendes tilgang og se, hvordan et samarbejde kan se ud.</p>';
+    html += '</div>';
+
+    // What makes Rikke unique
+    html += '<div class="kommune-section">';
+    html += '<h3 class="kommune-section-title">Hvad adskiller Rikkes tilgang?</h3>';
+    html += '<p class="kommune-text">De fleste familiebehandlere arbejder med én metode. Rikke integrerer flere — fordi de familier, hun møder, har brug for mere end ét perspektiv.</p>';
+
+    html += '<div class="kommune-cards">';
+    html += '<div class="kommune-card kommune-card-sage">';
+    html += '<div class="kommune-card-icon">🌿</div>';
+    html += '<h4>Narrativ-systemisk terapi</h4>';
+    html += '<p>Rikke arbejder med familiens fortælling — ikke kun symptomerne. Hun finder de historier, der fastholder familien i destruktive mønstre, og hjælper med at skabe nye fortællinger, der bærer.</p>';
+    html += '</div>';
+
+    html += '<div class="kommune-card kommune-card-rose">';
+    html += '<div class="kommune-card-icon">🫁</div>';
+    html += '<h4>Åndedrætsterapi</h4>';
+    html += '<p>Mange udsatte forældre har et nervesystem i konstant alarmberedskab. Rikke bruger åndedrættet som direkte adgang til regulering — noget familien kan tage med hjem fra første session.</p>';
+    html += '</div>';
+
+    html += '<div class="kommune-card kommune-card-amber">';
+    html += '<div class="kommune-card-icon">🧠</div>';
+    html += '<h4>Polyvagal forståelse</h4>';
+    html += '<p>Porges\' polyvagale teori giver Rikke et præcist sprog for, hvorfor forældre reagerer, som de gør. Det flytter fokus fra skyld til nervesystem — og åbner for reel forandring.</p>';
+    html += '</div>';
+
+    html += '<div class="kommune-card kommune-card-stone">';
+    html += '<div class="kommune-card-icon">👁️</div>';
+    html += '<h4>Mentalisering (MBT)</h4>';
+    html += '<p>Rikke hjælper forældre med at se deres barn som et selvstændigt menneske med egne følelser og behov — den grundlæggende kapacitet, der er forstyrret i udsatte familier.</p>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+
+    // Samarbejdsformer
+    html += '<div class="kommune-section">';
+    html += '<h3 class="kommune-section-title">Konkrete samarbejdsformer</h3>';
+    html += '<p class="kommune-text">Rikke tilbyder fleksible forløb, der kan tilpasses jeres kommunes behov og de specifikke familier, I arbejder med.</p>';
+
+    html += '<div class="kommune-forloeb">';
+
+    html += '<div class="kommune-forloeb-item">';
+    html += '<div class="kommune-forloeb-header">';
+    html += '<span class="kommune-forloeb-tag">§75</span>';
+    html += '<h4>Familiebehandling</h4>';
+    html += '</div>';
+    html += '<p>Intensive forløb med hele familien — typisk 8-16 sessioner. Rikke arbejder i hjemmet eller på praksis med fokus på samspil, tilknytning og forældrekompetencer. Rapportering tilpasset kommunens behov.</p>';
+    html += '<div class="kommune-forloeb-detaljer">';
+    html += '<span>8-16 sessioner</span><span>Hjemme eller praksis</span><span>Skriftlig evaluering</span>';
+    html += '</div>';
+    html += '</div>';
+
+    html += '<div class="kommune-forloeb-item">';
+    html += '<div class="kommune-forloeb-header">';
+    html += '<span class="kommune-forloeb-tag">§50</span>';
+    html += '<h4>Familieundersøgelse</h4>';
+    html += '</div>';
+    html += '<p>Grundig undersøgelse af familiens dynamik, tilknytningsmønstre og ressourcer. Rikkes systemiske blik giver en helhedsforståelse, der rækker ud over standardskemaer — og som giver jer et solidt grundlag for videre indsats.</p>';
+    html += '<div class="kommune-forloeb-detaljer">';
+    html += '<span>4-8 uger</span><span>Observation & samtaler</span><span>Detaljeret rapport</span>';
+    html += '</div>';
+    html += '</div>';
+
+    html += '<div class="kommune-forloeb-item">';
+    html += '<div class="kommune-forloeb-header">';
+    html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">Supervision</span>';
+    html += '<h4>Faglig supervision & sparring</h4>';
+    html += '</div>';
+    html += '<p>For jeres familierådgivere, sagsbehandlere eller plejefamilier. Rikke tilfører polyvagal forståelse og narrativ-systemisk tænkning til jeres eksisterende praksis — så I bedre kan forstå og støtte de familier, I arbejder med.</p>';
+    html += '<div class="kommune-forloeb-detaljer">';
+    html += '<span>Enkelt eller fast aftale</span><span>Gruppe eller individuel</span><span>Fleksibel model</span>';
+    html += '</div>';
+    html += '</div>';
+
+    html += '<div class="kommune-forloeb-item">';
+    html += '<div class="kommune-forloeb-header">';
+    html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">Akut</span>';
+    html += '<h4>Akut familieintervention</h4>';
+    html += '</div>';
+    html += '<p>Når en familie er i krise — anbringelse, vold, sammenbrud — kan Rikke gå ind med kort varsel og stabilisere familien. Fokus på nervesystemregulering og akut sikkerhed i relationen.</p>';
+    html += '<div class="kommune-forloeb-detaljer">';
+    html += '<span>Kort varsel</span><span>Intensivt forløb</span><span>Krisestabilisering</span>';
+    html += '</div>';
+    html += '</div>';
+
+    html += '</div>';
+    html += '</div>';
+
+    // De familier Rikke møder
+    html += '<div class="kommune-section">';
+    html += '<h3 class="kommune-section-title">De familier Rikke arbejder med</h3>';
+    html += '<p class="kommune-text">Rikkes speciale er familier, hvor standardtilgange ofte ikke rækker. Det er familier med:</p>';
+    html += '<ul class="kommune-list">';
+    html += '<li><strong>Intergenerationelle traumer</strong> — forældrene bærer selv ubearbejdede spor fra deres egen barndom, som ubevidst gentages i opdragelsen</li>';
+    html += '<li><strong>Desorganiseret tilknytning</strong> — barnet har lært, at den person, der skal give tryghed, også er kilden til frygt</li>';
+    html += '<li><strong>Parentificering</strong> — barnet har overtaget voksenrollen og bærer ansvar, det ikke kan bære</li>';
+    html += '<li><strong>Kompleks PTSD hos forældre</strong> — kronisk traumatisering der påvirker hele familiesystemet</li>';
+    html += '<li><strong>Anbringelsestruede børn</strong> — hvor den rigtige intervention på det rigtige tidspunkt kan gøre forskellen</li>';
+    html += '<li><strong>Højkonfliktskilsmisser</strong> — hvor børnene fanges i forældrenes kamp og mister deres stemme</li>';
+    html += '</ul>';
+    html += '</div>';
+
+    // Visual: circle model teaser
+    html += '<div class="kommune-section">';
+    html += '<h3 class="kommune-section-title">Rikkes helhedsmodel</h3>';
+    html += '<p class="kommune-text">Rikke arbejder med en cirkelmodel, der viser familiens syv kerneområder — og hvordan de alle påvirker hinanden. Det er den samme model, du kan udforske i denne app.</p>';
+    html += '<div class="kommune-explore-btn-wrap">';
+    html += '<button class="kommune-explore-btn" id="kommuneExploreBtn">Udforsk cirkelmodellen →</button>';
+    html += '</div>';
+    html += '<p class="kommune-text kommune-text-small">Du kan også udforske Temaer, Øvelser og Nervesystemets trappe via navigationen herunder — alt er tilgængeligt med fagligt perspektiv.</p>';
+    html += '</div>';
+
+    // Contact CTA
+    html += '<div class="kommune-cta">';
+    html += '<h3 class="kommune-cta-title">Klar til en samtale?</h3>';
+    html += '<p class="kommune-cta-text">Rikke tager gerne en uforpligtende samtale om, hvordan et samarbejde kan se ud for jeres kommune.</p>';
+    html += '<div class="kommune-cta-info">';
+    html += '<a href="tel:' + PRAKSIS_INFO.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">📞 Ring ' + PRAKSIS_INFO.telefon + '</a>';
+    html += '<a href="mailto:' + PRAKSIS_INFO.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">✉️ Skriv til ' + PRAKSIS_INFO.email + '</a>';
+    html += '</div>';
+    html += '<p class="kommune-cta-cvr">CVR: ' + PRAKSIS_INFO.cvr + ' · ' + PRAKSIS_INFO.adresse + '</p>';
+    html += '</div>';
+
+    container.innerHTML = html;
+
+    // Bind explore button
+    var exploreBtn = document.getElementById('kommuneExploreBtn');
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', function () {
+        showView('hjem');
+      });
+    }
+  }
+
+  function showKommune() {
+    renderKommune();
+    showView('kommune');
+    document.querySelectorAll('.nav-btn').forEach(function (b) { b.classList.remove('active'); });
+  }
+
   // ---------- Dynamik Side ----------
   function renderDynamik() {
     var container = document.getElementById('dynamikContent');
@@ -1004,7 +1175,7 @@
     html += '</div>';
 
     // Back to top
-    html += '<button class="dynamik-to-top" onclick="document.querySelector(\'.app-main\').scrollTo({top:0,behavior:\'smooth\'})">↑ Tilbage til toppen</button>';
+    html += '<button class="dynamik-to-top" onclick="window.scrollTo({top:0,behavior:\'smooth\'})">↑ Tilbage til toppen</button>';
 
     container.innerHTML = html;
   }
@@ -1026,7 +1197,8 @@
 
     // Perspektiv switch
     perspektivSwitch.addEventListener('click', function () {
-      aktivPerspektiv = aktivPerspektiv === 'privat' ? 'professionel' : 'privat';
+      var cycle = { privat: 'professionel', professionel: 'kommune', kommune: 'privat' };
+      aktivPerspektiv = cycle[aktivPerspektiv] || 'privat';
       localStorage.setItem('fp_perspektiv', aktivPerspektiv);
       updatePerspektivUI();
       updateCircleTexts();
