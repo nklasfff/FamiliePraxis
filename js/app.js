@@ -50,6 +50,8 @@
     renderTrappen();
     renderTemaer();
     renderOevelser();
+    renderMuligt();
+    bindMuligtForm();
     drawConnectionLines();
   }
 
@@ -170,6 +172,9 @@
     if (viewName !== 'cirkelDetalje') {
       aktivCirkel = null;
     }
+
+    // Scroll to top on view change
+    if (appMain) appMain.scrollTop = 0;
   }
 
   // ---------- Cirkel Detail ----------
@@ -598,6 +603,182 @@
     return div.innerHTML;
   }
 
+  // ---------- Hvad er muligt lige nu ----------
+  var MULIGT_DEFAULTS = [
+    { id: 'okonomi', titel: 'Økonomi', farve: 'amber', status: 'none', note: '' },
+    { id: 'boern', titel: 'Børnene', farve: 'sage', status: 'none', note: '' },
+    { id: 'folelser', titel: 'Følelser & relationer', farve: 'rose', status: 'none', note: '' },
+    { id: 'kommunen', titel: 'Kommunen & systemet', farve: 'stone', status: 'none', note: '' },
+    { id: 'bolig', titel: 'Bolig & hverdag', farve: 'amber', status: 'none', note: '' },
+    { id: 'krop', titel: 'Krop & helbred', farve: 'sage', status: 'none', note: '' }
+  ];
+
+  function getMuligtData() {
+    var saved = localStorage.getItem('fp_muligt');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return MULIGT_DEFAULTS.map(function (d) { return Object.assign({}, d); });
+  }
+
+  function saveMuligtData(data) {
+    localStorage.setItem('fp_muligt', JSON.stringify(data));
+  }
+
+  function renderMuligt() {
+    var board = document.getElementById('muligtBoard');
+    if (!board) return;
+    var data = getMuligtData();
+
+    var statusLabels = {
+      'none': '',
+      'working': 'Under arbejde',
+      'waiting': 'Vi venter',
+      'temp': 'For nu',
+      'done': 'Løst'
+    };
+
+    var statusIcons = {
+      'none': '<span class="muligt-check muligt-check-empty"></span>',
+      'working': '<span class="muligt-check muligt-check-working">⟳</span>',
+      'waiting': '<span class="muligt-check muligt-check-waiting">⏳</span>',
+      'temp': '<span class="muligt-check muligt-check-temp">✓</span>',
+      'done': '<span class="muligt-check muligt-check-done">✓</span>'
+    };
+
+    var html = '';
+    data.forEach(function (item, idx) {
+      var statusClass = 'muligt-status-' + item.status;
+      html += '<div class="muligt-card muligt-farve-' + item.farve + ' ' + statusClass + '" data-idx="' + idx + '">';
+      html += '<div class="muligt-card-header">';
+      html += '<div class="muligt-card-check" data-idx="' + idx + '">' + statusIcons[item.status] + '</div>';
+      html += '<h3 class="muligt-card-titel">' + item.titel + '</h3>';
+      html += '<button class="muligt-card-delete" data-idx="' + idx + '" title="Fjern">&times;</button>';
+      html += '</div>';
+      if (item.status !== 'none') {
+        html += '<div class="muligt-card-badge">' + statusLabels[item.status] + '</div>';
+      }
+      html += '<div class="muligt-card-note-wrap">';
+      html += '<textarea class="muligt-card-note" data-idx="' + idx + '" placeholder="Hvad kan vi gøre lige nu?" rows="2">' + (item.note || '') + '</textarea>';
+      html += '</div>';
+      html += '<div class="muligt-card-statuses">';
+      html += '<button class="muligt-status-btn' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working" title="Under arbejde">⟳</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting" title="Vi venter">⏳</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp" title="For nu — midlertidigt flueben">✓~</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done" title="Løst">✓</button>';
+      html += '</div>';
+      html += '</div>';
+    });
+
+    board.innerHTML = html;
+
+    // Bind events
+    board.querySelectorAll('.muligt-status-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = getMuligtData();
+        var i = parseInt(this.getAttribute('data-idx'));
+        var newStatus = this.getAttribute('data-status');
+        d[i].status = d[i].status === newStatus ? 'none' : newStatus;
+        saveMuligtData(d);
+        renderMuligt();
+      });
+    });
+
+    board.querySelectorAll('.muligt-card-note').forEach(function (ta) {
+      ta.addEventListener('input', function () {
+        var d = getMuligtData();
+        var i = parseInt(this.getAttribute('data-idx'));
+        d[i].note = this.value;
+        saveMuligtData(d);
+      });
+    });
+
+    board.querySelectorAll('.muligt-card-delete').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = getMuligtData();
+        var i = parseInt(this.getAttribute('data-idx'));
+        d.splice(i, 1);
+        saveMuligtData(d);
+        renderMuligt();
+      });
+    });
+
+    board.querySelectorAll('.muligt-card-check').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var d = getMuligtData();
+        var i = parseInt(this.getAttribute('data-idx'));
+        var order = ['none', 'working', 'waiting', 'temp', 'done'];
+        var cur = order.indexOf(d[i].status);
+        d[i].status = order[(cur + 1) % order.length];
+        saveMuligtData(d);
+        renderMuligt();
+      });
+    });
+  }
+
+  function bindMuligtForm() {
+    var addBtn = document.getElementById('muligtAddBtn');
+    var form = document.getElementById('muligtAddForm');
+    var input = document.getElementById('muligtInput');
+    var save = document.getElementById('muligtSave');
+    var cancel = document.getElementById('muligtCancel');
+    var colorPick = document.getElementById('muligtColorPick');
+    var selectedColor = 'sage';
+
+    if (!addBtn) return;
+
+    addBtn.addEventListener('click', function () {
+      form.style.display = 'block';
+      addBtn.style.display = 'none';
+      input.focus();
+      selectedColor = 'sage';
+      colorPick.querySelectorAll('.muligt-color-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === 0);
+      });
+    });
+
+    colorPick.querySelectorAll('.muligt-color-dot').forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        selectedColor = this.getAttribute('data-color');
+        colorPick.querySelectorAll('.muligt-color-dot').forEach(function (d) {
+          d.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+
+    save.addEventListener('click', function () {
+      var val = input.value.trim();
+      if (!val) return;
+      var d = getMuligtData();
+      d.push({
+        id: 'custom_' + Date.now(),
+        titel: val,
+        farve: selectedColor,
+        status: 'none',
+        note: ''
+      });
+      saveMuligtData(d);
+      input.value = '';
+      form.style.display = 'none';
+      addBtn.style.display = 'block';
+      renderMuligt();
+    });
+
+    cancel.addEventListener('click', function () {
+      input.value = '';
+      form.style.display = 'none';
+      addBtn.style.display = 'block';
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        save.click();
+      }
+    });
+  }
+
   // ---------- Dynamik Side ----------
   function renderDynamik() {
     var container = document.getElementById('dynamikContent');
@@ -821,6 +1002,9 @@
     html += '<p class="dynamik-text">Modellen giver dig en ramme for at forstå, hvorfor enkeltstående indsatser i §50-undersøgelser eller §75-støtte ofte når et loft. Når du kan se hele familiesystemet — ikke bare det symptom, familien er henvist med — kan du identificere, hvilke forbindelser der er belastet, og hvor reguleringen har brug for støtte.</p>';
     html += '<p class="dynamik-text">Det er fundamentet i Rikkes metode: narrativ-systemisk helhedsbehandling, hvor polyvagal forståelse, mentalisering og åndedrætsterapi integreres i arbejdet med udsatte familier. Det er også den tilgang, hun tilbyder i supervision og faglig sparring med kommuner.</p>';
     html += '</div>';
+
+    // Back to top
+    html += '<button class="dynamik-to-top" onclick="document.querySelector(\'.app-main\').scrollTo({top:0,behavior:\'smooth\'})">↑ Tilbage til toppen</button>';
 
     container.innerHTML = html;
   }
