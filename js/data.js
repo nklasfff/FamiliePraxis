@@ -351,128 +351,128 @@ var SAMMENHAENGE = [
   {
     fra: 'relationer',
     til: 'parterapi',
-    privat: 'Dine tilknytningsmønstre fra barndommen viser sig tydeligst i parforholdet. At forstå dem er nøglen til at bryde uhensigtsmæssige mønstre.',
-    professionel: 'Tilknytningsteori er fundamentet for EFT-parterapi. Parternes tilknytningsmønstre driver de negative interaktionscyklusser.'
+    privat: 'De tilknytningsmønstre, du bærer fra din barndom — måske utryghed, ambivalens eller undgåelse — aktiveres stærkest i dit parforhold. Når I bliver triggede af hinanden, er det ofte gamle sår, der taler. At forstå dette ændrer konflikten fra "du er problemet" til "vi bærer begge noget med os."',
+    professionel: 'I familier under pres driver uforløste tilknytningsmønstre ofte eskaleringen mellem forældrene. Mentaliseringsbaseret parterapi (MBT) kan hjælpe par med at se bag hinandens adfærd og genskabe den mentale kapacitet, som kronisk stress nedbryder.'
   },
   {
     fra: 'relationer',
     til: 'boern',
-    privat: 'Dit barns tilknytning formes af jeres relation. Ved at arbejde med din egen tilknytningshistorie kan du give dit barn en tryggere start.',
-    professionel: 'Intergenerationel transmission af tilknytningsmønstre er veldokumenteret. Forældrenes Adult Attachment Interview (AAI) forudsiger barnets tilknytningsmønster.'
+    privat: 'Dit barn arver ikke kun dine øjenfarve — det arver også dine tilknytningsmønstre. Hvis du selv voksede op med utryghed, kan det være svært at give dit barn den tryghed, du aldrig selv fik. Men her er det gode: bare det at du VED det, giver dig mulighed for at gøre det anderledes.',
+    professionel: 'Intergenerationel transmission af tilknytning er veldokumenteret i ACE-forskningen. Forældrens uforarbejdede traumer øger risikoen for desorganiseret tilknytning hos barnet. Circle of Security-interventioner kan bryde denne transmission.'
   },
   {
     fra: 'relationer',
     til: 'individuel',
-    privat: 'I individuel terapi kan du udforske dine relationelle mønstre i et trygt rum — og langsomt ændre dem indefra.',
-    professionel: 'Den terapeutiske relation er selv en tilknytningsrelation, som kan bruges til at give klienten korrigerende relationelle erfaringer.'
+    privat: 'Mange af dine relationelle mønstre blev skabt, før du havde ord for dem. I individuel terapi med narrativ tilgang kan du begynde at sætte ord på det ordløse — og langsomt skrive en ny historie om, hvem du er i relationer.',
+    professionel: 'I narrativ-systemisk individuel terapi arbejdes med at eksternalisere de dominerende historier om klientens relationelle identitet. Særligt for forældre med egne omsorgssvigt-erfaringer kan dette skabe rum for en alternativ forældrenarrativ.'
   },
   {
     fra: 'parterapi',
     til: 'familie',
-    privat: 'Parforholdet er familiens fundament. Når I som par finder tilbage til hinanden, mærker hele familien det.',
-    professionel: 'Forældrealliancen er en afgørende faktor for familiens funktion. Styrkelse af parforholdet har ofte positiv afsmitning på hele familiesystemet.'
+    privat: 'Jeres parforhold ER familiens nervesystem. Når I som par er i konstant kamp-eller-flugt, lever hele familien i alarmberedskab. Børn mærker spændingen mellem jer — også den I tror, I skjuler. Når I finder mere ro sammen, falder hele familiens stressniveau.',
+    professionel: 'Forældrealliancen er den primære organiserende kraft i familiesystemet. I udsatte familier, hvor parrelationen ofte er belastet af fattigdom, traumer eller systemisk pres, er styrkelse af forældrealliancen afgørende for hele familiens reguleringskapacitet.'
   },
   {
     fra: 'parterapi',
     til: 'boern',
-    privat: 'Børn er utroligt følsomme over for stemningen mellem forældrene. Jeres parforhold er en af de vigtigste faktorer for børnenes trivsel.',
-    professionel: 'Interparental konflikt er en af de stærkeste prædiktorer for børns mistrivsel — stærkere end selve skilsmissen.'
+    privat: 'Dine børn lærer om kærlighed ved at se jer to. Når I råber, lærer de, at konflikt er farligt. Når I reparerer, lærer de, at brud kan heles. Det vigtigste er ikke, at I aldrig skændes — men at børnene ser jer finde tilbage til hinanden.',
+    professionel: 'Interparental konflikt er en stærkere prædiktor for børns mistrivsel end selve familiesammenbruddet. I §50-undersøgelser bør forældrenes konfliktniveau og barnets eksponering for dette vurderes som selvstændig risikofaktor.'
   },
   {
     fra: 'familie',
     til: 'boern',
-    privat: 'Når familien finder nye og bedre måder at fungere på, mærker børnene det først. De blomstrer i trygge rammer.',
-    professionel: 'Familiebehandling er ofte den mest effektive intervention for børns mistrivsel, da den adresserer de systemiske faktorer, der opretholder problemet.'
+    privat: 'Når familien begynder at fungere på nye måder — med mere ro, mere lytning, mere plads til alle — er børnene de første, der reagerer. Deres adfærd er et spejl af familiens tilstand. Uro hos børnene er sjældent "barnets problem" — det er familiens signal.',
+    professionel: 'Barnets symptomer er ofte et systemisk signal. I familiebehandling efter §52 arbejdes med at flytte fokus fra det identificerede barn til de familiemønstre, der opretholder symptomerne — herunder parentificering, triangulering og usynlige loyalitetskonflikter.'
   },
   {
     fra: 'familie',
     til: 'individuel',
-    privat: 'Familiens mønstre lever videre i dig. Individuel terapi kan hjælpe dig med at sortere i, hvad du vil tage med — og hvad du vil gøre anderledes.',
-    professionel: 'Individuel terapi kan være nødvendig som supplement til familiebehandling, når et familiemedlems individuelle problematik kræver særskilt opmærksomhed.'
+    privat: 'Din families mønstre bor i dig — i din krop, dine reaktioner, dine automatiske tanker. "Sådan har vi altid gjort" er en sætning, der kan holde dig fanget. Individuel terapi giver dig rum til at sortere: hvad vil du beholde fra din familie, og hvad vil du lægge fra dig?',
+    professionel: 'Når familiebehandling afdækker dybt individuelle problematikker — f.eks. kompleks PTSD, dissociation eller aktiv selvskade — kan parallel individuel terapi med somatisk og narrativ tilgang være nødvendig for at stabilisere forælderen, så familiebehandlingen kan bære frugt.'
   },
   {
     fra: 'aandedraet',
     til: 'individuel',
-    privat: 'Åndedrættet er et kraftfuldt redskab i individuel terapi. Det hjælper dig med at komme i kontakt med følelser, du måske har lukket af for.',
-    professionel: 'Integration af kropslige interventioner i individuel terapi øger behandlingens effektivitet, særligt ved traumerelaterede tilstande.'
+    privat: 'Åndedrætsterapi åbner døre, som samtale alene ikke kan. Mange traumer sidder i kroppen som tilbageholdt åndedræt, spændinger i mellemgulvet, en konstant følelse af at holde vejret. Når du lærer at ånde frit, begynder kroppen langsomt at slippe det, den har holdt fast i.',
+    professionel: 'Åndedrætsterapi som supplement til narrativ-systemisk individuel terapi giver adgang til bottom-up-processer, som samtaleterapi alene ikke når. Særligt ved kompleks traumatisering, hvor kroppen holder traumeminder, kan åndedrætsarbejde facilitere somatisk integration.'
   },
   {
     fra: 'aandedraet',
     til: 'familie',
-    privat: 'Når I som familie lærer at regulere jer sammen — f.eks. gennem fælles vejrtrækningsøvelser — styrker det jeres forbindelse.',
-    professionel: 'Familiebaseret regulering er et kraftfuldt koncept: når familien lærer at co-regulere, styrkes familiens samlede kapacitet for at håndtere stress.'
+    privat: 'Når I som familie lærer at regulere jer sammen — ånde sammen, lande sammen — opbygger I en fælles kapacitet for at håndtere kriser. Det lyder simpelt, men for familier der har levet i konstant alarm, er det dybt transformerende at opdage, at I kan finde ro SAMMEN.',
+    professionel: 'Familiebaseret co-regulering bygger på polyvagal teori: når familiens voksne kan aktivere det ventrale vagale system, smitter det til børnene. I udsatte familier med kronisk dysregulering er fælles reguleringsøvelser et konkret redskab til at opbygge familiens "vindue of tolerance."'
   },
   {
     fra: 'aandedraet',
     til: 'boern',
-    privat: 'Børn tager hurtigt åndedrætsøvelser til sig. Det giver dem et konkret redskab til at håndtere store følelser.',
-    professionel: 'Kropslige reguleringsstrategier er særligt velegnede til børn, da de er konkrete og ikke kræver avanceret sproglig formåen.'
+    privat: 'Børn forstår kroppen bedre end ord. Når dit barn er overtaget af vrede, angst eller sorg, kan et enkelt åndedræt sammen gøre mere end hundrede forklaringer. Du behøver ikke sige "tag en dyb vejrtrækning" — du kan bare gøre det selv, og barnet vil følge.',
+    professionel: 'Kropslige reguleringsstrategier er særligt effektive for børn med traumehistorik, da traumet ofte sidder præverbalt. Polyvagalt informerede interventioner — langsom udånding, rytmisk bevægelse, co-reguleret åndedræt — kan nå børn, som verbale interventioner ikke når.'
   },
   {
     fra: 'centrum',
     til: 'relationer',
-    privat: 'Familiens balance hviler på de relationer, I har til hinanden. At styrke tilknytningen er at styrke familien.',
-    professionel: 'Familiebalance er i sin kerne et spørgsmål om tilknytningskvalitet mellem familiens medlemmer.'
+    privat: 'Familiens helhed hviler på kvaliteten af jeres tilknytning til hinanden. I familier med traumehistorik er tilknytningen ofte ambivalent — I elsker hinanden, men kan ikke altid mærke det. At styrke tilknytningen er at styrke hele familien.',
+    professionel: 'I systemisk perspektiv er familiens helhed mere end summen af individerne. Tilknytningskvaliteten mellem familiens medlemmer er den bærende struktur — og i udsatte familier er denne struktur ofte fragmenteret af traumer, tab og systemisk pres.'
   },
   {
     fra: 'centrum',
     til: 'parterapi',
-    privat: 'Parforholdet er familiens motor. Når I tager jer af jeres relation, tager I jer af hele familien.',
-    professionel: 'Forældreparrets relation er den primære organiserende kraft i familiesystemet.'
+    privat: 'Parforholdet er familiens rygrad. I familier under pres — fra økonomi, fra kommunen, fra jeres egne historier — er parforholdet det første, der lider. Men det er også det sted, hvor forandring har størst effekt på alle.',
+    professionel: 'Forældreparrets relation er den primære organiserende kraft i udsatte familier. Når parrelationen kollapser under systemisk pres, mister familien sin co-regulerende base. Parterapi bør ofte prioriteres parallelt med familiebehandling.'
   },
   {
     fra: 'centrum',
     til: 'familie',
-    privat: 'Familiens samspil er selve kernen i den balance, vi søger. Små justeringer i jeres daglige mønstre kan gøre en stor forskel.',
-    professionel: 'Systemisk intervention rettet mod familiens interaktionsmønstre er den mest direkte vej til at påvirke familiens samlede funktion.'
+    privat: 'Jeres familiemønstre — hvem der trøster, hvem der trækker sig, hvem der bærer mest — er ikke tilfældige. De er overlevelsesstrategier, I har udviklet sammen. At se dem tydeligt er ikke en dom — det er det første skridt mod at vælge nye mønstre.',
+    professionel: 'Systemisk familiebehandling afdækker de cirkulære interaktionsmønstre, der opretholder familiens dysfunktion. I udsatte familier er disse mønstre ofte beskyttelsesstrategier fra generationer af overlevelse — de skal forstås før de kan ændres.'
   },
   {
     fra: 'centrum',
     til: 'individuel',
-    privat: 'Din personlige trivsel er en del af familiens balance. Når du har det godt, har familien det bedre.',
-    professionel: 'Individets psykiske sundhed og familiens funktion er gensidigt afhængige — intervention på det ene niveau påvirker det andet.'
+    privat: 'Du er en del af din familie — men du er også dig selv. Mange forældre i pressede familier mister sig selv i rollen som omsorgsgiver, som brandslukker, som den der holder sammen. At tage dig af DIG er ikke egoisme — det er en forudsætning for at kunne bære andre.',
+    professionel: 'I udsatte familier er individets psykiske sundhed og familiens funktion dybt sammenflettet. Forældrens egne uforløste traumer påvirker mentaliseringskapaciteten og dermed hele familiens regulering. Individuel terapi kan være nødvendig for at genoprette forældrefunktionen.'
   },
   {
     fra: 'centrum',
     til: 'aandedraet',
-    privat: 'Kropslig regulering er fundamentet for familiens balance. Når du er reguleret, kan du bedre regulere dine relationer.',
-    professionel: 'Nervesystemets reguleringskapacitet er forudsætningen for relationel kapacitet — og dermed for familiens funktion.'
+    privat: 'Dit nervesystem er familiens fundament. Når du er dysreguleret — i konstant alarm, udmattet, afkoblet — mærker alle det. Åndedrætsarbejde og polyvagal regulering er ikke luksus. Det er det mest basale redskab til at genoprette familiens balance.',
+    professionel: 'Nervesystemets reguleringskapacitet er forudsætningen for mentalisering, tilknytning og samspil. I familier med kronisk stress er det ventrale vagale system ofte undertrykt. Polyvagalt informeret praksis bør integreres som fundament i enhver familieintervention.'
   },
   {
     fra: 'centrum',
     til: 'boern',
-    privat: 'Børnenes trivsel er det tydeligste barometer for familiens balance. Når børnene blomstrer, er familien på rette vej.',
-    professionel: 'Barnets trivsel er den ultimative indikator for familiebehandlingens effekt.'
+    privat: 'Dine børn er familiens barometer. Deres adfærd — uro, tilbagetrækning, vrede, klamren — fortæller noget om, hvordan familien har det. Det er ikke deres skyld, og det er ikke din skyld. Det er et signal om, at noget i systemet har brug for opmærksomhed.',
+    professionel: 'Barnets symptomer er i systemisk optik et signal om familiens tilstand. I §50-undersøgelser og §52-foranstaltninger bør barnets adfærd altid kontekstualiseres i familiens samlede belastning — herunder fattigdom, traumer, psykisk sygdom og systemisk pres.'
   },
   {
     fra: 'individuel',
     til: 'boern',
-    privat: 'Når du tager dig af din egen indre verden, giver du dit barn den gave at have en mere nærværende og reguleret forælder.',
-    professionel: 'Forældres individuelle terapi kan have betydelig positiv effekt på børns trivsel via forbedret forældrekapacitet.'
+    privat: 'Det bedste, du kan gøre for dit barn, er at tage dig af dine egne sår. Når du bearbejder din historie — din barndom, dine tab, din smerte — frigør du kapacitet til at være den forælder, dit barn har brug for. Ikke perfekt. Bare til stede.',
+    professionel: 'Forældres individuelle traumebearbejdning har direkte effekt på barnets tilknytningssikkerhed. Forskning i reflective functioning viser, at forældrens evne til at mentalisere egne oplevelser er den stærkeste prædiktor for barnets tilknytningsmønster.'
   },
   {
     fra: 'relationer',
     til: 'aandedraet',
-    privat: 'Kroppen reagerer i relationer. At lære at mærke og regulere dine kropslige reaktioner giver dig flere muligheder i mødet med andre.',
-    professionel: 'Somatiske markører i relationer giver vigtig diagnostisk information. Kroppens reaktioner afslører ofte tilknytningsmønstre, som ikke er verbalt tilgængelige.'
+    privat: 'Din krop husker, hvad dine relationer har gjort ved dig. Hjertebanken, når nogen hæver stemmen. Spænding i maven, når stemningen skifter. Disse reaktioner er dit nervesystems hukommelse. Gennem åndedrætsarbejde kan du lære at møde dem uden at blive overtaget af dem.',
+    professionel: 'Somatiske markører i relationer afslører tilknytningsmønstre, som ikke er verbalt tilgængelige. I narrativ-systemisk terapi kan kroppens reaktioner bruges som indgang til at udforske og eksternalisere de dominerende historier om klientens relationelle erfaringer.'
   },
   {
     fra: 'parterapi',
     til: 'individuel',
-    privat: 'Nogle gange har du brug for at sortere i dine egne følelser, før du kan møde din partner. Individuel terapi kan supplere parterapien.',
-    professionel: 'Kombination af parterapi og individuel terapi kan være indiceret, men kræver omhyggelig håndtering af fortrolighed og alliancer.'
+    privat: 'Nogle gange rammer parforholdet noget i dig, der er ældre end jeres relation. Måske reagerer du på din partner, som du reagerede på din far. Individuel terapi kan hjælpe dig med at sortere: hvad handler om os — og hvad handler om MIG og min historie?',
+    professionel: 'I udsatte familier er parrelationen ofte belastet af begge parters traumehistorik. Når parterapi afdækker individuel traumatisering — f.eks. omsorgssvigt, vold eller tab — kan parallel individuel terapi med somatisk tilgang være nødvendig for at stabilisere inden pararbejdet kan fortsætte.'
   },
   {
     fra: 'parterapi',
     til: 'aandedraet',
-    privat: 'At lære at regulere dig selv midt i en konflikt med din partner er en af de vigtigste færdigheder. Åndedrættet er din hurtigste vej til ro.',
-    professionel: 'Parterapi med integration af somatiske interventioner kan hjælpe par med at bryde eskaleringsmønstre ved at aktivere den ventrale vagus.'
+    privat: 'Når konflikten eskalerer, lukker din hjerne ned. Du kan ikke lytte, ikke mentalisere, ikke mærke din partner. Dit nervesystem har overtaget. Vagus-åndedræt midt i konflikten — bare 30 sekunder — kan åbne dit vindue igen og gøre det muligt at møde din partner som menneske i stedet for som trussel.',
+    professionel: 'Polyvagalt informeret parterapi integrerer somatisk regulering direkte i sessionen. Når par lærer at genkende og regulere deres autonome arousal, kan de forblive i mentaliseringsposition længere — hvilket er forudsætningen for produktivt pararbejde.'
   },
   {
     fra: 'individuel',
     til: 'aandedraet',
-    privat: 'I individuel terapi kan du gå dybere med åndedrætsarbejdet og udforske, hvad kroppen fortæller dig om dine følelser og din historie.',
-    professionel: 'Kombination af samtaleterapi og kropslig terapi giver adgang til både top-down og bottom-up processer i traumebehandling.'
+    privat: 'Mange traumatiske oplevelser sidder i kroppen som fastfrosne tilstande — tilbageholdt åndedræt, kroniske spændinger, en følelse af at være låst. Åndedrætsterapi i individuel terapi kan nænsomt begynde at tø disse tilstande op — ikke ved at tvinge, men ved at invitere kroppen til langsomt at slippe.',
+    professionel: 'Integration af åndedrætsterapi i individuel traumebehandling giver adgang til både top-down og bottom-up processer. For klienter med kompleks PTSD, hvor dissociation og somatiske flashbacks er fremtrædende, kan åndedrætsarbejde være den mest skånsomme indgang til traumematerialet.'
   }
 ];
 
