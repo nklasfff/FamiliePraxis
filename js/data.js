@@ -1041,6 +1041,116 @@ var MORGEN_CHECKIN = [
   }
 ];
 
+// ============================================================
+// Trappen — Forstå dit nervesystem (uddybende afsnit)
+// ============================================================
+var TRAPPEN_FORSTAELSE = {
+  privat: {
+    titel: 'Forstå dit nervesystem som forælder',
+    afsnit: [
+      {
+        undertitel: 'Hvorfor dit barn reagerer på DIT nervesystem',
+        tekst: 'Børn har ikke et færdigudviklet nervesystem. De låner dit. Når du er rolig, kan dit barn finde ro. Når du er i alarm, går dit barn i alarm — ikke fordi det har forstået situationen, men fordi dets krop aflæser din. Det kaldes co-regulering, og det er den mest grundlæggende mekanisme i forældreskabet. Det betyder, at det vigtigste du kan gøre for dit barn i en presset situation, er at regulere dig selv først. Ikke fordi dine følelser er forkerte — men fordi dit barn har brug for at låne din ro, før det kan finde sin egen.'
+      },
+      {
+        undertitel: 'Dine reaktioner er ikke din skyld — men de er dit ansvar',
+        tekst: 'Hvis du voksede op i en familie med uforudsigelighed, vold, omsorgssvigt eller fravær, har dit nervesystem lært at være på vagt. Det er ikke en fejl — det var en overlevelsesstrategi. Men den strategi kan gøre det svært at være den forælder, du gerne vil være. Når dit barn skriger, og du mærker raseriet vælte op, er det ofte ikke dit barn, du reagerer på — det er et ekko fra din egen historie. At forstå det er ikke en undskyldning. Det er begyndelsen på at vælge anderledes.'
+      },
+      {
+        undertitel: 'Regulering kommer før samtale',
+        tekst: 'Mange forældre prøver at tale med deres børn, når alle stadig er i alarm. Men hjernen kan ikke lytte, når nervesystemet er i kamp-eller-flugt. Det er biologisk umuligt. Derfor er rækkefølgen afgørende: først regulering (åndedræt, grounding, pause), så kontakt (øjenkontakt, berøring, nærvær), og først til sidst samtale. Trappen hjælper dig med at genkende, hvor du er — så du ved, hvad der er muligt lige nu. Nogle dage er svaret bare: overlev. Og det er nok.'
+      }
+    ]
+  },
+  professionel: {
+    titel: 'Nervesystemet i familiebehandling',
+    afsnit: [
+      {
+        undertitel: 'Co-regulering som fundament for intervention',
+        tekst: 'Stephen Porges\' polyvagale teori beskriver, hvordan det autonome nervesystem organiserer sig hierarkisk: ventral vagal (social engagement), sympatisk (kamp-flugt) og dorsal vagal (immobilisering). I familiebehandling med udsatte familier er denne forståelse central, fordi forældrenes reguleringskapacitet direkte former barnets nervesystemudvikling. Når en forælder kronisk befinder sig i sympatisk eller dorsal vagal tilstand, mangler barnet den co-regulerende funktion, der er forudsætningen for tryg tilknytning. Terapeutens primære opgave er ofte at fungere som co-regulerende nervesystem for forælderen — som derefter kan videreføre denne regulering til barnet.'
+      },
+      {
+        undertitel: 'Intergenerationel transmission af dysregulering',
+        tekst: 'ACE-forskningen (Felitti & Anda) dokumenterer, at belastende barndomsoplevelser har kumulativ effekt på nervesystemets grundindstilling. Forældre med høj ACE-score har ofte et nervesystem, der er kalibreret til fare — det tolker neutrale signaler som truende (neuroception). Daniel Siegels "Window of Tolerance"-model er klinisk nyttig: vi kortlægger familiemedlemmernes tolerancevinduer og arbejder målrettet med at udvide dem. Judith Hermans faseopdeling — sikkerhed, bearbejdning, integration — gælder også nervesystemet: regulering er altid fase 1.'
+      },
+      {
+        undertitel: 'Bottom-up før top-down',
+        tekst: 'I traumeinformeret familiebehandling er rækkefølgen afgørende: kropslig regulering (bottom-up) før kognitiv bearbejdning (top-down). Bessel van der Kolks "The Body Keeps the Score" understreger, at traumatiske erfaringer lagres somatisk og ikke kan tilgås udelukkende gennem samtale. I praksis betyder det: vagusnerve-aktivering, åndedrætsinstrukter og somatisk grounding skal integreres i hver session — ikke som supplement, men som fundament. Trappen bruges klinisk til at etablere et fælles sprog med familien om reguleringstilstande og til at identificere, hvornår interventioner er mulige.'
+      }
+    ]
+  }
+};
+
+// ============================================================
+// Trappen — Familie-effekt per tilstand
+// ============================================================
+var TRAPPEN_FAMILIE_EFFEKT = {
+  1: {
+    privat: {
+      titel: 'Hvad mærker familien, når du er tryg?',
+      barn: 'Dit barn slapper af. Det tør udforske, lege og komme til dig, når det har brug for det. Børn aflæser din ro hurtigere end dine ord — og de begynder at spejle den.',
+      partner: 'Jeres samtaler bliver lettere. I kan lytte til hinanden uden at gå i forsvar. Selv de svære emner kan rummes, når begge nervesystemer er i tryghed.',
+      familie: 'Hele familiens tempo sænkes. Der er plads til pauser, til humor, til bare at være sammen uden formål. Det er i disse øjeblikke, forbindelsen styrkes.'
+    },
+    professionel: {
+      titel: 'Systemisk effekt af ventral vagal tilstand',
+      barn: 'Barnets sociale engagementsystem aktiveres spejlneuronalt: tryg forælder → trygt barn. Tilknytningsadfærd (udforske/vende tilbage) fungerer optimalt. Mentaliseringsevne er tilgængelig.',
+      partner: 'Forældrealliancen styrkes: co-regulering mellem partnere muliggør konstruktiv konfliktløsning og samarbejde om forældreopgaven. Affektiv afstemning er tilgængelig.',
+      familie: 'Systemet som helhed er i homeostase. Kommunikationsmønstre er fleksible, roller er forhandlingsbare, og familiens narrative identitet kan udvikles. Det optimale vindue for terapeutisk intervention.'
+    }
+  },
+  2: {
+    privat: {
+      titel: 'Hvad mærker familien, når du er i alarm?',
+      barn: 'Dit barn mærker det øjeblikkeligt. Nogle børn bliver stille og usynlige — de har lært, at det er sikrest. Andre eskalerer, fordi de prøver at "nå dig" gennem din alarm. Begge dele er tilknytningsadfærd.',
+      partner: 'Jeres kommunikation bliver hård eller forsvinder. Den ene angriber, den anden trækker sig. Det ligner en konflikt om praktiske ting — men det handler om: "Er du der for mig? Kan jeg nå dig?"',
+      familie: 'Stemningen i hjemmet bliver elektrisk. Alle er på vagt. Selv de gode stunder er skrøbelige, fordi alle venter på den næste eskalering. Rutiner brydes, tålmodighed forsvinder.'
+    },
+    professionel: {
+      titel: 'Systemisk effekt af sympatisk aktivering',
+      barn: 'Barnets neuroception registrerer fare: tilknytningssystemet aktiveres i protest- eller fortvivlelsesmode. Adfærd som klæben, udadreageren eller tilbagetrækning er reguleringsstrategier — ikke "problemadfærd."',
+      partner: 'Pursuer-withdrawer-dynamik intensiveres. Når én partner er i sympatisk arousal, trigges den andens nervesystem — negativ interaktionscyklus etableres. Mentalisering kompromitteres bilateralt.',
+      familie: 'Systemet skifter til overlevelsesmodus: kommunikation reduceres til imperativ form, rollefleksibilitet forsvinder, og parentificeringsrisiko øges. Børn overtager reguleringsansvar for forældre.'
+    }
+  },
+  3: {
+    privat: {
+      titel: 'Hvad mærker familien, når du er lukket ned?',
+      barn: 'Dit barn mærker dit fravær — også selvom du er fysisk til stede. Nogle børn prøver desperat at vække dig: de råber, kaster, provokerer. Andre giver op og trækker sig ind i sig selv. Begge dele er et barn, der savner sin forælder.',
+      partner: 'Din partner kan opleve dig som ligeglad eller kold — men det er ikke ligegyldighed. Det er overbelastning. Misforståelsen kan skabe dyb ensomhed hos begge parter.',
+      familie: 'Familien mister sin forbindelse. Alle er i samme rum, men ingen er rigtigt til stede. Rutiner holdes måske i gang på overfladen, men den emotionelle kontakt er brudt. Børnene begynder at klare sig selv.'
+    },
+    professionel: {
+      titel: 'Systemisk effekt af dorsal vagal tilstand',
+      barn: 'Barnets tilknytningssystem er i crisis: tilknytningsfiguren er fysisk tilgængelig men emotionelt utilgængelig. Dette er kernen i desorganiseret tilknytning — frygt uden løsning. Barnets egne strategier (hyperaktivering eller deaktivering) konsolideres.',
+      partner: 'Partner oplever emotionel utilgængelighed: forsøg på kontakt mødes med affladning eller fravær. Kan tolkes som afvisning og trigge partners eget tilknytningssystem. Risiko for parallel isolation.',
+      familie: 'Systemet fragmenterer: familiemedlemmer opererer som isolerede enheder. Emotional neglect — ikke gennem intention, men gennem kapacitetssvigt. Særligt risikabelt for yngre børn, hvis tilknytningsudvikling kræver aktiv emotionel tilgængelighed.'
+    }
+  }
+};
+
+// ============================================================
+// Trappen — Mønster-refleksioner (baseret på tracking-data)
+// ============================================================
+var TRAPPEN_MOENSTRE = {
+  privat: {
+    mestTryg: 'Du har mest været i tryghedszonen. Det er et godt fundament — hold fast i det, der bringer dig derhen. Læg mærke til, hvad der gør forskellen på de dage.',
+    mestAlarm: 'Du har mest været i alarm denne periode. Det er ikke forkert — det er information. Dit nervesystem fortæller dig, at der er noget, der presser. Hvad ville der ske, hvis du gav dig selv 5 minutters åndedræt, hver gang du mærker det?',
+    mestNedlukning: 'Du har mest været i nedlukning. Det fortæller, at belastningen har været høj — måske længere end du selv har lagt mærke til. Vær blid med dig selv. Små skridt: mærk fødderne, drik noget varmt, opsøg et andet menneske. Du behøver ikke løse noget — bare at komme lidt tilbage til kroppen.',
+    blandtMoenster: 'Du har bevæget dig mellem tilstandene. Det er faktisk sundt — det viser, at dit nervesystem kan skifte. Læg mærke til, hvad der bringer dig op, og hvad der bringer dig ned. De mønstre er nøglen.',
+    forFaa: 'Du har kun mærket ind få gange. Det er helt okay — der er ingen krav her. Jo oftere du mærker ind, jo tydeligere bliver mønsteret. Prøv at gøre det til en del af din morgen.',
+    ingenData: 'Du har ikke mærket ind endnu. Prøv det — det tager 5 sekunder. Over tid giver det dig et billede af, hvor dit nervesystem befinder sig i hverdagen.'
+  },
+  professionel: {
+    mestTryg: 'Klienten befinder sig overvejende i ventral vagal tilstand — det terapeutiske vindue er åbent. Overvej at intensivere narrativt arbejde og mentaliseringsøvelser i denne periode.',
+    mestAlarm: 'Klienten er overvejende i sympatisk aktivering. Prioritér reguleringsinterventioner (polyvagal, somatisk) over samtalebaseret bearbejdning. Udforsk hvad der opretholder den kroniske aktivering — ydre stressorer eller retraumatisering?',
+    mestNedlukning: 'Klienten er overvejende i dorsal vagal tilstand. Gå forsigtigt: bottom-up interventioner, sensorisk stimulering, gradueret aktivering. Undersøg om der er aktiv fare i klientens liv, der opretholder immobiliseringsresponsen.',
+    blandtMoenster: 'Klienten oscillerer mellem tilstande — tolerancevinduet er smalt men fleksibelt. Fokus på at udvide vinduet: psychoedukation om nervesystemet, reguleringsøvelser og konsolidering af tryghedsøjeblikke.',
+    forFaa: 'Utilstrækkelig data til mønsteranalyse. Opfordr klienten til daglig registrering — det øger selv-awareness og giver klinisk relevant data.',
+    ingenData: 'Ingen registreringer. Introducer Trappen som psykoedukativt værktøj og opfordr til daglig brug mellem sessioner.'
+  }
+};
+
 // Hilsner baseret på ugedag og årstid
 var MORGEN_HILSNER = {
   mandag: 'Ny uge. Du behøver ikke have en plan — bare et næste skridt.',
