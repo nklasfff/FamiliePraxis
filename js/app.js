@@ -2145,23 +2145,23 @@
     html += '<p class="dynamik-svg-caption">' + (isEn ? 'Unprocessed traces from the past pull the entire family system toward them' : 'Ubearbejdede spor fra fortiden trækker hele familiesystemet mod sig') + '</p>';
     html += '</div>';
 
-    html += '<p class="dynamik-text">Lad os se nærmere på hvad der sker, når ét specifikt område er under pres — for eksempel ubearbejdede spor fra en forælders egen barndom.</p>';
-    html += '<p class="dynamik-text">Traumet bliver ikke i sin egen cirkel. Det udvider sig. Det fylder mere. Og i takt med at det vokser, trækker det alle andre områder ud af deres naturlige position:</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'Let\'s look more closely at what happens when one specific area is under pressure — for example, unprocessed traces from a parent\'s own childhood.' : 'Lad os se nærmere på hvad der sker, når ét specifikt område er under pres — for eksempel ubearbejdede spor fra en forælders egen barndom.') + '</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'The trauma doesn\'t stay in its own circle. It expands. It takes up more space. And as it grows, it pulls all other areas out of their natural position:' : 'Traumet bliver ikke i sin egen cirkel. Det udvider sig. Det fylder mere. Og i takt med at det vokser, trækker det alle andre områder ud af deres naturlige position:') + '</p>';
 
     html += '<ul class="dynamik-list">';
-    html += '<li><strong>Tilknytning & tryghed:</strong> Barnets tilknytning bliver utryg. Forælderen kan ikke give den ro, barnet har brug for, fordi forælderens eget nervesystem er i alarmberedskab. Barnet tilpasser sig — bliver enten usynligt eller uroligt.</li>';
-    html += '<li><strong>Parforholdet:</strong> Partneren oplever en mur eller en eksplosivitet, der ikke handler om dem — men om noget, der skete for længe siden. Nærhed bliver svær. Konflikter eskalerer, fordi nervesystemerne ikke kan mødes.</li>';
-    html += '<li><strong>Samspil & mønstre:</strong> Familiens mønstre stivner. De samme konflikter gentager sig. Rollerne låser sig fast — én tager ansvar, én trækker sig, børnene navigerer i et minefelt, de ikke har sprog for.</li>';
-    html += '<li><strong>Barnets stemme:</strong> Barnet mister sin stemme. I en familie, hvor en forælder bærer uforløste traumer, lærer barnet at læse stemninger frem for at mærke sig selv. Det er parentificering — barnet bliver den følelsesmæssige voksen.</li>';
-    html += '<li><strong>Åndedræt & nervesystem:</strong> Åndedrættet bliver overfladisk. Kroppen holder. Nervesystemet sidder fast i sympatisk aktivering eller dorsal nedlukning — og det smitter fra forælder til barn, fra barn til forælder.</li>';
+    html += '<li><strong>' + (isEn ? 'Attachment & security:' : 'Tilknytning & tryghed:') + '</strong> ' + (isEn ? 'The child\'s attachment becomes insecure. The parent cannot provide the calm the child needs, because the parent\'s own nervous system is on high alert. The child adapts — becoming either invisible or restless.' : 'Barnets tilknytning bliver utryg. Forælderen kan ikke give den ro, barnet har brug for, fordi forælderens eget nervesystem er i alarmberedskab. Barnet tilpasser sig — bliver enten usynligt eller uroligt.') + '</li>';
+    html += '<li><strong>' + (isEn ? 'The couple:' : 'Parforholdet:') + '</strong> ' + (isEn ? 'The partner encounters a wall or an explosiveness that isn\'t about them — but about something that happened long ago. Closeness becomes difficult. Conflicts escalate because the nervous systems can\'t meet.' : 'Partneren oplever en mur eller en eksplosivitet, der ikke handler om dem — men om noget, der skete for længe siden. Nærhed bliver svær. Konflikter eskalerer, fordi nervesystemerne ikke kan mødes.') + '</li>';
+    html += '<li><strong>' + (isEn ? 'Interaction & patterns:' : 'Samspil & mønstre:') + '</strong> ' + (isEn ? 'The family\'s patterns stiffen. The same conflicts repeat themselves. Roles lock into place — one takes responsibility, one withdraws, the children navigate a minefield they have no words for.' : 'Familiens mønstre stivner. De samme konflikter gentager sig. Rollerne låser sig fast — én tager ansvar, én trækker sig, børnene navigerer i et minefelt, de ikke har sprog for.') + '</li>';
+    html += '<li><strong>' + (isEn ? 'The child\'s voice:' : 'Barnets stemme:') + '</strong> ' + (isEn ? 'The child loses its voice. In a family where a parent carries unresolved trauma, the child learns to read moods rather than sense itself. This is parentification — the child becomes the emotional adult.' : 'Barnet mister sin stemme. I en familie, hvor en forælder bærer uforløste traumer, lærer barnet at læse stemninger frem for at mærke sig selv. Det er parentificering — barnet bliver den følelsesmæssige voksen.') + '</li>';
+    html += '<li><strong>' + (isEn ? 'Breathing & nervous system:' : 'Åndedræt & nervesystem:') + '</strong> ' + (isEn ? 'Breathing becomes shallow. The body holds. The nervous system is stuck in sympathetic activation or dorsal shutdown — and it spreads from parent to child, from child to parent.' : 'Åndedrættet bliver overfladisk. Kroppen holder. Nervesystemet sidder fast i sympatisk aktivering eller dorsal nedlukning — og det smitter fra forælder til barn, fra barn til forælder.') + '</li>';
     html += '</ul>';
 
-    html += '<p class="dynamik-text">Det er ikke svaghed. Det er nervesystemets og familiesystemets forsøg på at overleve. Men prisen er, at hele systemets balance går tabt.</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'It is not weakness. It is the nervous system\'s and the family system\'s attempt to survive. But the cost is that the entire system\'s balance is lost.' : 'Det er ikke svaghed. Det er nervesystemets og familiesystemets forsøg på at overleve. Men prisen er, at hele systemets balance går tabt.') + '</p>';
     html += '</div>';
 
     // === SECTION 4: Multiple areas ===
     html += '<div class="dynamik-section">';
-    html += '<h3 class="dynamik-section-title">Når flere områder belastes samtidig</h3>';
+    html += '<h3 class="dynamik-section-title">' + (isEn ? 'When multiple areas are burdened simultaneously' : 'Når flere områder belastes samtidig') + '</h3>';
 
     html += '<div class="dynamik-svg-wrap">';
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
