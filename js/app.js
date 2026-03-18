@@ -2352,6 +2352,14 @@
       searchInput.focus();
     });
 
+    // Luk-knap i søgning
+    document.getElementById('searchCloseBtn').addEventListener('click', closeSearch);
+
+    // Luk søgning ved klik udenfor søgefeltet
+    searchOverlay.addEventListener('click', function (e) {
+      if (e.target === searchOverlay) closeSearch();
+    });
+
     // Close search on Escape
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {

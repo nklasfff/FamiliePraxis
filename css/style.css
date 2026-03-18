@@ -402,6 +402,22 @@ body {
   display: block;
 }
 
+.search-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 2px;
+  margin-left: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.search-close-btn:hover {
+  color: var(--text);
+}
+
 .search-tags {
   display: flex;
   flex-wrap: wrap;
