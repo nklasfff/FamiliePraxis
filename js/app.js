@@ -1742,24 +1742,24 @@
     html += '<div class="kommune-welcome-medallion">';
     html += '<div class="kommune-welcome-circle">' + IKONER.handshake(36) + '</div>';
     html += '</div>';
-    html += '<h2 class="kommune-welcome-title">Velkommen til et trygt rum for forandring</h2>';
-    html += '<p class="kommune-welcome-subtitle">Til dig, der overvejer et samarbejde med Rikke Veth</p>';
-    html += '<p class="kommune-welcome-text">Rikke er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun integrerer narrativ-systemisk terapi, åndedrætsterapi, polyvagal forståelse og mentalisering — fordi de familier, hun møder, har brug for mere end ét perspektiv.</p>';
-    html += '<p class="kommune-welcome-text">Nedenfor kan du læse om Rikkes metoder og samarbejdsformer. Du er også velkommen til at udforske hele appen — cirkelmodellen, temaer, øvelser og nervesystemets trappe — som giver et indblik i det faglige fundament bag hendes arbejde.</p>';
+    html += '<h2 class="kommune-welcome-title">' + (isEn ? 'Welcome to a safe space for change' : 'Velkommen til et trygt rum for forandring') + '</h2>';
+    html += '<p class="kommune-welcome-subtitle">' + (isEn ? 'For those considering a collaboration with Rikke Veth' : 'Til dig, der overvejer et samarbejde med Rikke Veth') + '</p>';
+    html += '<p class="kommune-welcome-text">' + (isEn ? 'Rikke is a family therapist with many years of experience working with vulnerable families and children. She integrates narrative-systemic therapy, breathwork, polyvagal understanding, and mentalization — because the families she meets need more than one perspective.' : 'Rikke er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun integrerer narrativ-systemisk terapi, åndedrætsterapi, polyvagal forståelse og mentalisering — fordi de familier, hun møder, har brug for mere end ét perspektiv.') + '</p>';
+    html += '<p class="kommune-welcome-text">' + (isEn ? 'Below you can read about Rikke\'s methods and forms of collaboration. You\'re also welcome to explore the entire app — the circle model, themes, exercises, and the nervous system staircase — which gives insight into the clinical foundation behind her work.' : 'Nedenfor kan du læse om Rikkes metoder og samarbejdsformer. Du er også velkommen til at udforske hele appen — cirkelmodellen, temaer, øvelser og nervesystemets trappe — som giver et indblik i det faglige fundament bag hendes arbejde.') + '</p>';
     html += '<div class="kommune-welcome-scroll">';
-    html += '<button class="kommune-welcome-scroll-btn" id="kommuneScrollDown">' + IKONER.chevDown(20) + ' Læs mere om samarbejdet</button>';
+    html += '<button class="kommune-welcome-scroll-btn" id="kommuneScrollDown">' + IKONER.chevDown(20) + ' ' + (isEn ? 'Read more about the collaboration' : 'Læs mere om samarbejdet') + '</button>';
     html += '</div>';
     html += '</div>';
     html += '</div>';
 
     // ===== TRIN 1.5: Quick-nav til resten af appen =====
     html += '<div class="kommune-appnav">';
-    html += '<p class="kommune-appnav-label">Udforsk også Rikkes faglige univers</p>';
+    html += '<p class="kommune-appnav-label">' + (isEn ? 'Also explore Rikke\'s professional universe' : 'Udforsk også Rikkes faglige univers') + '</p>';
     html += '<div class="kommune-appnav-grid">';
-    html += '<button class="kommune-appnav-btn" data-goto="hjem">' + IKONER.leaf(20) + '<span>Cirkelmodellen</span></button>';
-    html += '<button class="kommune-appnav-btn" data-goto="trappen">' + IKONER.lightning(20) + '<span>Nervesystemets trappe</span></button>';
-    html += '<button class="kommune-appnav-btn" data-goto="temaer">' + IKONER.chatBubble(20) + '<span>Temaer</span></button>';
-    html += '<button class="kommune-appnav-btn" data-goto="oevelser">' + IKONER.wind(20) + '<span>Øvelser</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="hjem">' + IKONER.leaf(20) + '<span>' + (isEn ? 'The circle model' : 'Cirkelmodellen') + '</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="trappen">' + IKONER.lightning(20) + '<span>' + (isEn ? 'Nervous system staircase' : 'Nervesystemets trappe') + '</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="temaer">' + IKONER.chatBubble(20) + '<span>' + (isEn ? 'Themes' : 'Temaer') + '</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="oevelser">' + IKONER.wind(20) + '<span>' + (isEn ? 'Exercises' : 'Øvelser') + '</span></button>';
     html += '</div>';
     html += '</div>';
 
@@ -1768,84 +1768,84 @@
 
     // Section: What makes Rikke unique
     html += '<div class="kommune-section">';
-    html += '<h3 class="kommune-section-title">Hvad adskiller Rikkes tilgang?</h3>';
-    html += '<p class="kommune-text">De fleste familiebehandlere arbejder med én metode. Rikke integrerer flere — fordi de familier, hun møder, har brug for mere end ét perspektiv.</p>';
+    html += '<h3 class="kommune-section-title">' + (isEn ? 'What sets Rikke\'s approach apart?' : 'Hvad adskiller Rikkes tilgang?') + '</h3>';
+    html += '<p class="kommune-text">' + (isEn ? 'Most family therapists work with one method. Rikke integrates several — because the families she meets need more than one perspective.' : 'De fleste familiebehandlere arbejder med én metode. Rikke integrerer flere — fordi de familier, hun møder, har brug for mere end ét perspektiv.') + '</p>';
 
     html += '<div class="kommune-cards">';
     html += '<div class="kommune-card kommune-card-sage">';
     html += '<div class="kommune-card-icon">' + IKONER.leaf(24) + '</div>';
-    html += '<h4>Narrativ-systemisk terapi</h4>';
-    html += '<p>Rikke arbejder med familiens fortælling — ikke kun symptomerne. Hun finder de historier, der fastholder familien i destruktive mønstre, og hjælper med at skabe nye fortællinger, der bærer.</p>';
+    html += '<h4>' + (isEn ? 'Narrative-systemic therapy' : 'Narrativ-systemisk terapi') + '</h4>';
+    html += '<p>' + (isEn ? 'Rikke works with the family\'s narrative — not just the symptoms. She finds the stories that keep the family locked in destructive patterns, and helps create new narratives that carry.' : 'Rikke arbejder med familiens fortælling — ikke kun symptomerne. Hun finder de historier, der fastholder familien i destruktive mønstre, og hjælper med at skabe nye fortællinger, der bærer.') + '</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-rose">';
     html += '<div class="kommune-card-icon">' + IKONER.lungs(24) + '</div>';
-    html += '<h4>Åndedrætsterapi</h4>';
-    html += '<p>Mange udsatte forældre har et nervesystem i konstant alarmberedskab. Rikke bruger åndedrættet som direkte adgang til regulering — et lille <em>tryk på maven</em>, der blidt udvider det rum, familien kan være i.</p>';
+    html += '<h4>' + (isEn ? 'Breathwork' : 'Åndedrætsterapi') + '</h4>';
+    html += '<p>' + (isEn ? 'Many vulnerable parents have a nervous system on constant high alert. Rikke uses breathing as direct access to regulation — a gentle <em>push on the belly</em> that softly expands the space the family can inhabit.' : 'Mange udsatte forældre har et nervesystem i konstant alarmberedskab. Rikke bruger åndedrættet som direkte adgang til regulering — et lille <em>tryk på maven</em>, der blidt udvider det rum, familien kan være i.') + '</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-amber">';
     html += '<div class="kommune-card-icon">' + IKONER.brain(24) + '</div>';
-    html += '<h4>Polyvagal forståelse</h4>';
-    html += '<p>Porges\' polyvagale teori giver Rikke et præcist sprog for, hvorfor forældre reagerer, som de gør. Det flytter fokus fra skyld til nervesystem — og åbner for reel forandring.</p>';
+    html += '<h4>' + (isEn ? 'Polyvagal understanding' : 'Polyvagal forståelse') + '</h4>';
+    html += '<p>' + (isEn ? 'Porges\' polyvagal theory gives Rikke a precise language for why parents react the way they do. It shifts focus from blame to the nervous system — and opens the door to real change.' : 'Porges\' polyvagale teori giver Rikke et præcist sprog for, hvorfor forældre reagerer, som de gør. Det flytter fokus fra skyld til nervesystem — og åbner for reel forandring.') + '</p>';
     html += '</div>';
 
     html += '<div class="kommune-card kommune-card-stone">';
     html += '<div class="kommune-card-icon">' + IKONER.eye(24) + '</div>';
-    html += '<h4>Mentalisering (MBT)</h4>';
-    html += '<p>Rikke hjælper forældre med at se deres barn som et selvstændigt menneske med egne følelser og behov — den grundlæggende kapacitet, der er forstyrret i udsatte familier.</p>';
+    html += '<h4>' + (isEn ? 'Mentalization (MBT)' : 'Mentalisering (MBT)') + '</h4>';
+    html += '<p>' + (isEn ? 'Rikke helps parents see their child as an independent person with their own feelings and needs — the fundamental capacity that is disrupted in vulnerable families.' : 'Rikke hjælper forældre med at se deres barn som et selvstændigt menneske med egne følelser og behov — den grundlæggende kapacitet, der er forstyrret i udsatte familier.') + '</p>';
     html += '</div>';
     html += '</div>';
     html += '</div>';
 
     // Section: Samarbejdsformer
     html += '<div class="kommune-section">';
-    html += '<h3 class="kommune-section-title">Konkrete samarbejdsformer</h3>';
-    html += '<p class="kommune-text">Rikke tilbyder fleksible forløb, der kan tilpasses jeres kommunes behov og de specifikke familier, I arbejder med.</p>';
+    html += '<h3 class="kommune-section-title">' + (isEn ? 'Specific forms of collaboration' : 'Konkrete samarbejdsformer') + '</h3>';
+    html += '<p class="kommune-text">' + (isEn ? 'Rikke offers flexible programs that can be adapted to your municipality\'s needs and the specific families you work with.' : 'Rikke tilbyder fleksible forløb, der kan tilpasses jeres kommunes behov og de specifikke familier, I arbejder med.') + '</p>';
 
     html += '<div class="kommune-forloeb">';
 
     html += '<div class="kommune-forloeb-item">';
     html += '<div class="kommune-forloeb-header">';
     html += '<span class="kommune-forloeb-tag">§75</span>';
-    html += '<h4>Familiebehandling</h4>';
+    html += '<h4>' + (isEn ? 'Family treatment' : 'Familiebehandling') + '</h4>';
     html += '</div>';
-    html += '<p>Familiebehandling er Rikkes kerneopgave og faglige ståsted. Hun arbejder der, hvor følelser, kommunikation og samspil går i hårdknude — altid med respekt for familiens grænser, men med et lille <em>tryk på maven</em>, der skaber den bevægelse, der gør forandring mulig. Rikke møder både udsatte og ressourcestærke familier, i hjemmet, på praksis eller i bilen på vej til en samtale.</p>';
+    html += '<p>' + (isEn ? 'Family treatment is Rikke\'s core task and professional foundation. She works where emotions, communication, and interaction reach a deadlock — always with respect for the family\'s boundaries, but with a gentle <em>push on the belly</em> that creates the movement that makes change possible. Rikke meets both vulnerable and resourceful families, at home, at the practice, or in the car on the way to a session.' : 'Familiebehandling er Rikkes kerneopgave og faglige ståsted. Hun arbejder der, hvor følelser, kommunikation og samspil går i hårdknude — altid med respekt for familiens grænser, men med et lille <em>tryk på maven</em>, der skaber den bevægelse, der gør forandring mulig. Rikke møder både udsatte og ressourcestærke familier, i hjemmet, på praksis eller i bilen på vej til en samtale.') + '</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>8-16 sessioner</span><span>Hjemme eller praksis</span><span>Tilpasset rapportering</span>';
+    html += '<span>' + (isEn ? '8-16 sessions' : '8-16 sessioner') + '</span><span>' + (isEn ? 'Home or practice' : 'Hjemme eller praksis') + '</span><span>' + (isEn ? 'Tailored reporting' : 'Tilpasset rapportering') + '</span>';
     html += '</div>';
     html += '</div>';
 
     html += '<div class="kommune-forloeb-item">';
     html += '<div class="kommune-forloeb-header">';
     html += '<span class="kommune-forloeb-tag">§50</span>';
-    html += '<h4>Undersøgelse & afdækning</h4>';
+    html += '<h4>' + (isEn ? 'Assessment & investigation' : 'Undersøgelse & afdækning') + '</h4>';
     html += '</div>';
-    html += '<p>En målrettet, tidsafgrænset indsats i tæt samarbejde med familien og kommunen. Rikke afdækker ressourcer, udfordringer og dynamikker — med fuld transparens, så der aldrig forekommer oplysninger i rapporten, som familien ikke på forhånd er bekendt med.</p>';
+    html += '<p>' + (isEn ? 'A targeted, time-limited effort in close collaboration with the family and the municipality. Rikke identifies resources, challenges, and dynamics — with full transparency, so no information appears in the report that the family isn\'t already aware of.' : 'En målrettet, tidsafgrænset indsats i tæt samarbejde med familien og kommunen. Rikke afdækker ressourcer, udfordringer og dynamikker — med fuld transparens, så der aldrig forekommer oplysninger i rapporten, som familien ikke på forhånd er bekendt med.') + '</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>Typisk 3 måneder</span><span>Hjemme & i netværk</span><span>Beslutningsgrundlag</span>';
+    html += '<span>' + (isEn ? 'Typically 3 months' : 'Typisk 3 måneder') + '</span><span>' + (isEn ? 'Home & network' : 'Hjemme & i netværk') + '</span><span>' + (isEn ? 'Decision basis' : 'Beslutningsgrundlag') + '</span>';
     html += '</div>';
     html += '</div>';
 
     html += '<div class="kommune-forloeb-item">';
     html += '<div class="kommune-forloeb-header">';
     html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">Supervision</span>';
-    html += '<h4>Faglig supervision & sparring</h4>';
+    html += '<h4>' + (isEn ? 'Professional supervision & consultation' : 'Faglig supervision & sparring') + '</h4>';
     html += '</div>';
-    html += '<p>For socialrådgivere, familiebehandlere, pædagoger, psykologer, plejefamilier og tværfaglige teams. Rikke sammenligner familiearbejde med et vendespil — supervision er rummet, hvor I sammen vender brikkerne og ser sammenhængen, der giver nye perspektiver på fastlåste situationer.</p>';
+    html += '<p>' + (isEn ? 'For social workers, family therapists, educators, psychologists, foster families, and interdisciplinary teams. Rikke compares family work to a memory game — supervision is the space where you turn the pieces together and see the connections that offer new perspectives on stuck situations.' : 'For socialrådgivere, familiebehandlere, pædagoger, psykologer, plejefamilier og tværfaglige teams. Rikke sammenligner familiearbejde med et vendespil — supervision er rummet, hvor I sammen vender brikkerne og ser sammenhængen, der giver nye perspektiver på fastlåste situationer.') + '</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>Enkelt eller fast aftale</span><span>Gruppe eller individuel</span><span>Fleksibel model</span>';
+    html += '<span>' + (isEn ? 'Single or ongoing' : 'Enkelt eller fast aftale') + '</span><span>' + (isEn ? 'Group or individual' : 'Gruppe eller individuel') + '</span><span>' + (isEn ? 'Flexible model' : 'Fleksibel model') + '</span>';
     html += '</div>';
     html += '</div>';
 
     html += '<div class="kommune-forloeb-item">';
     html += '<div class="kommune-forloeb-header">';
     html += '<span class="kommune-forloeb-tag kommune-forloeb-tag-alt">§75</span>';
-    html += '<h4>Støtte under anbringelse</h4>';
+    html += '<h4>' + (isEn ? 'Support during placement' : 'Støtte under anbringelse') + '</h4>';
     html += '</div>';
-    html += '<p>Når børn anbringes, bærer de ofte en skyld, der ikke er deres. Rikke støtter forældrene i at bearbejde sorg og afmagt, så samvær bliver roligt og forudsigeligt. Hun beskriver sin rolle som kaospilot — den, der binder samarbejdet sammen mellem hjem, anbringelsessted og myndighed, og sikrer arbejdsro for alle parter.</p>';
+    html += '<p>' + (isEn ? 'When children are placed in care, they often carry a guilt that isn\'t theirs. Rikke supports the parents in processing grief and powerlessness, so that visits become calm and predictable. She describes her role as a chaos pilot — the one who holds the collaboration together between home, placement, and authorities, ensuring peace of mind for all parties.' : 'Når børn anbringes, bærer de ofte en skyld, der ikke er deres. Rikke støtter forældrene i at bearbejde sorg og afmagt, så samvær bliver roligt og forudsigeligt. Hun beskriver sin rolle som kaospilot — den, der binder samarbejdet sammen mellem hjem, anbringelsessted og myndighed, og sikrer arbejdsro for alle parter.') + '</p>';
     html += '<div class="kommune-forloeb-detaljer">';
-    html += '<span>Løbende forløb</span><span>Samvær & stabilitet</span><span>Tværfaglig koordinering</span>';
+    html += '<span>' + (isEn ? 'Ongoing program' : 'Løbende forløb') + '</span><span>' + (isEn ? 'Visits & stability' : 'Samvær & stabilitet') + '</span><span>' + (isEn ? 'Interdisciplinary coordination' : 'Tværfaglig koordinering') + '</span>';
     html += '</div>';
     html += '</div>';
 
@@ -1854,15 +1854,15 @@
 
     // Section: De familier Rikke møder
     html += '<div class="kommune-section">';
-    html += '<h3 class="kommune-section-title">De familier Rikke arbejder med</h3>';
-    html += '<p class="kommune-text">Rikkes speciale er familier, hvor standardtilgange ofte ikke rækker. Det er familier med:</p>';
+    html += '<h3 class="kommune-section-title">' + (isEn ? 'The families Rikke works with' : 'De familier Rikke arbejder med') + '</h3>';
+    html += '<p class="kommune-text">' + (isEn ? 'Rikke\'s specialty is families where standard approaches often fall short. These are families with:' : 'Rikkes speciale er familier, hvor standardtilgange ofte ikke rækker. Det er familier med:') + '</p>';
     html += '<ul class="kommune-list">';
-    html += '<li><strong>Intergenerationelle traumer</strong> — forældrene bærer selv ubearbejdede spor fra deres egen barndom, som ubevidst gentages i opdragelsen</li>';
-    html += '<li><strong>Desorganiseret tilknytning</strong> — barnet har lært, at den person, der skal give tryghed, også er kilden til frygt</li>';
-    html += '<li><strong>Parentificering</strong> — barnet har overtaget voksenrollen og bærer ansvar, det ikke kan bære</li>';
-    html += '<li><strong>Kompleks PTSD hos forældre</strong> — kronisk traumatisering der påvirker hele familiesystemet</li>';
-    html += '<li><strong>Anbringelsestruede børn</strong> — hvor den rigtige intervention på det rigtige tidspunkt kan gøre forskellen</li>';
-    html += '<li><strong>Højkonfliktskilsmisser</strong> — hvor børnene fanges i forældrenes kamp og mister deres stemme</li>';
+    html += '<li><strong>' + (isEn ? 'Intergenerational trauma' : 'Intergenerationelle traumer') + '</strong> — ' + (isEn ? 'the parents themselves carry unprocessed traces from their own childhood, unconsciously repeated in parenting' : 'forældrene bærer selv ubearbejdede spor fra deres egen barndom, som ubevidst gentages i opdragelsen') + '</li>';
+    html += '<li><strong>' + (isEn ? 'Disorganized attachment' : 'Desorganiseret tilknytning') + '</strong> — ' + (isEn ? 'the child has learned that the person who should provide safety is also the source of fear' : 'barnet har lært, at den person, der skal give tryghed, også er kilden til frygt') + '</li>';
+    html += '<li><strong>' + (isEn ? 'Parentification' : 'Parentificering') + '</strong> — ' + (isEn ? 'the child has taken on the adult role and carries responsibility it cannot bear' : 'barnet har overtaget voksenrollen og bærer ansvar, det ikke kan bære') + '</li>';
+    html += '<li><strong>' + (isEn ? 'Complex PTSD in parents' : 'Kompleks PTSD hos forældre') + '</strong> — ' + (isEn ? 'chronic traumatization affecting the entire family system' : 'kronisk traumatisering der påvirker hele familiesystemet') + '</li>';
+    html += '<li><strong>' + (isEn ? 'Children at risk of placement' : 'Anbringelsestruede børn') + '</strong> — ' + (isEn ? 'where the right intervention at the right time can make the difference' : 'hvor den rigtige intervention på det rigtige tidspunkt kan gøre forskellen') + '</li>';
+    html += '<li><strong>' + (isEn ? 'High-conflict divorces' : 'Højkonfliktskilsmisser') + '</strong> — ' + (isEn ? 'where children are caught in their parents\' battle and lose their voice' : 'hvor børnene fanges i forældrenes kamp og mister deres stemme') + '</li>';
     html += '</ul>';
     html += '</div>';
 
@@ -1871,25 +1871,25 @@
     // ===== Bro-sektion: Udforsk appen =====
     html += '<div class="kommune-bridge">';
     html += '<div class="kommune-bridge-inner">';
-    html += '<h3 class="kommune-bridge-title">Se det faglige fundament</h3>';
-    html += '<p class="kommune-bridge-text">Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — og se, hvad familier møder i et forløb med Rikke.</p>';
+    html += '<h3 class="kommune-bridge-title">' + (isEn ? 'See the clinical foundation' : 'Se det faglige fundament') + '</h3>';
+    html += '<p class="kommune-bridge-text">' + (isEn ? 'This app is the same tool Rikke shares with her clients. Explore the circle model, the nervous system staircase, themes, and exercises — and see what families encounter in a program with Rikke.' : 'Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — og se, hvad familier møder i et forløb med Rikke.') + '</p>';
     html += '<div class="kommune-bridge-btns">';
-    html += '<button class="kommune-bridge-btn" data-goto="hjem">' + IKONER.leaf(20) + ' Cirkelmodellen</button>';
-    html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' Nervesystemets trappe</button>';
-    html += '<button class="kommune-bridge-btn" data-goto="temaer">' + IKONER.chatBubble(20) + ' Temaer</button>';
-    html += '<button class="kommune-bridge-btn" data-goto="oevelser">' + IKONER.wind(20) + ' Øvelser</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="hjem">' + IKONER.leaf(20) + ' ' + (isEn ? 'The circle model' : 'Cirkelmodellen') + '</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' ' + (isEn ? 'Nervous system staircase' : 'Nervesystemets trappe') + '</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="temaer">' + IKONER.chatBubble(20) + ' ' + (isEn ? 'Themes' : 'Temaer') + '</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="oevelser">' + IKONER.wind(20) + ' ' + (isEn ? 'Exercises' : 'Øvelser') + '</button>';
     html += '</div>';
     html += '</div>';
     html += '</div>';
 
     // ===== Contact CTA =====
     html += '<div class="kommune-cta">';
-    html += '<h3 class="kommune-cta-title">Klar til en samtale?</h3>';
-    html += '<p class="kommune-cta-text">Rikke tager gerne en uforpligtende samtale om, hvordan et samarbejde kan se ud for jeres kommune.</p>';
+    html += '<h3 class="kommune-cta-title">' + (isEn ? 'Ready for a conversation?' : 'Klar til en samtale?') + '</h3>';
+    html += '<p class="kommune-cta-text">' + (isEn ? 'Rikke is happy to have a non-binding conversation about how a collaboration could look for your municipality.' : 'Rikke tager gerne en uforpligtende samtale om, hvordan et samarbejde kan se ud for jeres kommune.') + '</p>';
     html += '<div class="kommune-cta-info">';
-    html += '<a href="tel:' + info.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">' + IKONER.phone(18) + ' Ring ' + info.telefon + '</a>';
-    html += '<a href="mailto:' + info.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">' + IKONER.mail(18) + ' Skriv til ' + info.email + '</a>';
-    html += '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="kommune-cta-btn kommune-cta-btn-linkedin">' + IKONER.linkedin(18) + ' Se Rikkes LinkedIn</a>';
+    html += '<a href="tel:' + info.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">' + IKONER.phone(18) + ' ' + (isEn ? 'Call' : 'Ring') + ' ' + info.telefon + '</a>';
+    html += '<a href="mailto:' + info.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">' + IKONER.mail(18) + ' ' + (isEn ? 'Write to' : 'Skriv til') + ' ' + info.email + '</a>';
+    html += '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="kommune-cta-btn kommune-cta-btn-linkedin">' + IKONER.linkedin(18) + ' ' + (isEn ? 'See Rikke\'s LinkedIn' : 'Se Rikkes LinkedIn') + '</a>';
     html += '</div>';
     html += '<p class="kommune-cta-cvr">CVR: ' + info.cvr + ' · ' + info.adresse + '</p>';
     html += '</div>';
@@ -2222,9 +2222,9 @@
 
     // === For the professional ===
     html += '<div class="dynamik-callout dynamik-callout-prof">';
-    html += '<h3 class="dynamik-callout-title">For dig som fagprofessionel</h3>';
-    html += '<p class="dynamik-text">Modellen giver dig en ramme for at forstå, hvorfor enkeltstående indsatser i §50-undersøgelser eller §75-støtte ofte når et loft. Når du kan se hele familiesystemet — ikke bare det symptom, familien er henvist med — kan du identificere, hvilke forbindelser der er belastet, og hvor reguleringen har brug for støtte.</p>';
-    html += '<p class="dynamik-text">Det er fundamentet i Rikkes metode: narrativ-systemisk helhedsbehandling, hvor polyvagal forståelse, mentalisering og åndedrætsterapi integreres i arbejdet med udsatte familier. Det er også den tilgang, hun tilbyder i supervision og faglig sparring med kommuner.</p>';
+    html += '<h3 class="dynamik-callout-title">' + (isEn ? 'For you as a professional' : 'For dig som fagprofessionel') + '</h3>';
+    html += '<p class="dynamik-text">' + (isEn ? 'The model gives you a framework for understanding why isolated interventions in child welfare assessments or family support often hit a ceiling. When you can see the entire family system — not just the symptom the family was referred with — you can identify which connections are strained and where regulation needs support.' : 'Modellen giver dig en ramme for at forstå, hvorfor enkeltstående indsatser i §50-undersøgelser eller §75-støtte ofte når et loft. Når du kan se hele familiesystemet — ikke bare det symptom, familien er henvist med — kan du identificere, hvilke forbindelser der er belastet, og hvor reguleringen har brug for støtte.') + '</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'This is the foundation of Rikke\'s method: narrative-systemic whole-family treatment, where polyvagal understanding, mentalization and breathwork are integrated into the work with vulnerable families. It is also the approach she offers in supervision and professional consultation with municipalities.' : 'Det er fundamentet i Rikkes metode: narrativ-systemisk helhedsbehandling, hvor polyvagal forståelse, mentalisering og åndedrætsterapi integreres i arbejdet med udsatte familier. Det er også den tilgang, hun tilbyder i supervision og faglig sparring med kommuner.') + '</p>';
     html += '</div>';
 
     // Back to top
