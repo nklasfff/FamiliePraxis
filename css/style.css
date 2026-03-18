@@ -1527,7 +1527,7 @@ body {
 }
 
 .oevelse-card.active .oevelse-steps {
-  max-height: 900px;
+  max-height: 3000px;
 }
 
 .oevelse-steps-inner {
@@ -1566,6 +1566,430 @@ body {
   font-size: 0.88rem;
   color: var(--text);
   line-height: 1.55;
+}
+
+/* ---------- Øvelse-farvekoder ---------- */
+.oevelse-farve-sage .oevelse-header { border-left: 3px solid var(--sage); }
+.oevelse-farve-amber .oevelse-header { border-left: 3px solid var(--amber); }
+.oevelse-farve-rose .oevelse-header { border-left: 3px solid var(--rose); }
+
+.oevelse-step-sage { background: var(--sage-bg); color: var(--sage); }
+.oevelse-step-amber { background: var(--amber-bg); color: var(--amber); }
+.oevelse-step-rose { background: var(--rose-bg); color: var(--rose); }
+
+.oevelse-done { opacity: 0.7; }
+.oevelse-done.active { opacity: 1; }
+
+.oevelse-done-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #2C5F5C;
+  background: #B8D4C4;
+  padding: 1px 8px;
+  border-radius: 8px;
+}
+
+.oevelse-header-content { flex: 1; }
+
+.oevelse-intro-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.oevelse-card.active .oevelse-intro-wrap {
+  max-height: 500px;
+}
+
+.oevelse-intro-wrap .oevelse-intro {
+  padding: 0 20px 14px;
+}
+
+/* ---------- Øvelse-progression ---------- */
+.oevelse-progression {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.oevelse-progression-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.oevelse-progression-seg {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+}
+
+.oevelse-progression-seg.sage { background: var(--sage); }
+.oevelse-progression-seg.amber { background: var(--amber); }
+.oevelse-progression-seg.rose { background: var(--rose); }
+.oevelse-progression-seg.tom { background: var(--border); opacity: 0.3; }
+
+.oevelse-progression-tekst {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Trin-for-trin visning ---------- */
+.oevelse-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border: 1.5px solid var(--sage);
+  border-radius: 20px;
+  background: var(--sage-bg);
+  color: var(--sage);
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.oevelse-start-btn:hover {
+  background: var(--sage);
+  color: #fff;
+}
+
+.oevelse-trin-fokus {
+  padding: 20px 0;
+}
+
+.oevelse-trin-nr {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.oevelse-trin-tekst {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.oevelse-trin-nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.oevelse-trin-btn {
+  padding: 8px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-card);
+  font-size: 0.82rem;
+  font-family: inherit;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.oevelse-trin-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.oevelse-trin-next {
+  background: var(--sage);
+  color: #fff;
+  border-color: var(--sage);
+}
+
+.oevelse-trin-next:hover {
+  background: #5A7D60;
+  border-color: #5A7D60;
+  color: #fff;
+}
+
+.oevelse-trin-done {
+  background: #2C5F5C;
+  color: #fff;
+  border-color: #2C5F5C;
+}
+
+.oevelse-trin-done:hover {
+  background: #1E4744;
+  border-color: #1E4744;
+  color: #fff;
+}
+
+/* ---------- Gennemført-knap ---------- */
+.oevelse-gennemfoert-wrap {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.oevelse-gennemfoert-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg);
+  font-size: 0.78rem;
+  font-family: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.oevelse-gennemfoert-btn:hover {
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+.oevelse-gennemfoert-btn.active {
+  background: #2C5F5C;
+  color: #fff;
+  border-color: #2C5F5C;
+}
+
+/* ---------- Øvelses-refleksion ---------- */
+.oevelse-refl-sektion {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.oevelse-refl-titel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.oevelse-refl-item {
+  margin-bottom: 14px;
+}
+
+.oevelse-refl-spg {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.oevelse-refl-svar {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 10px 14px;
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  resize: vertical;
+  line-height: 1.6;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.oevelse-refl-svar:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+
+.oevelse-refl-svar::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* ---------- Dagens refleksion ---------- */
+.refl-dagens-sektion {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 20px;
+  margin-bottom: 16px;
+  border-left: 3px solid var(--amber);
+}
+
+.refl-dagens-header {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.refl-dagens-spg {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.refl-dagens-skriv {
+  position: relative;
+}
+
+.refl-dagens-svar {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 14px 16px;
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  resize: vertical;
+  line-height: 1.65;
+  min-height: 80px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.refl-dagens-svar:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.refl-dagens-svar::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.refl-gemt-feedback {
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  font-size: 0.72rem;
+  color: var(--sage);
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+/* ---------- Journal ---------- */
+.refl-journal-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.refl-journal-btn:hover {
+  border-color: var(--amber);
+}
+
+.refl-journal-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.refl-journal-sektion {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.refl-journal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.refl-journal-titel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.refl-journal-luk {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 4px 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.refl-journal-tom {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.refl-journal-dato {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 12px 0 6px;
+  border-top: 1px solid var(--border);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.refl-journal-dato:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.refl-journal-entry {
+  margin-bottom: 14px;
+}
+
+.refl-journal-spg {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.refl-journal-svar {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  white-space: pre-wrap;
 }
 
 /* ---------- Cirkel Detail View ---------- */
