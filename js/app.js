@@ -499,8 +499,11 @@
   function getTrappen() { return aktivSprog === 'en' && typeof TRAPPEN_EN !== 'undefined' ? TRAPPEN_EN : TRAPPEN; }
   function getCirkelTekster() { return aktivSprog === 'en' && typeof CIRKEL_TEKSTER_EN !== 'undefined' ? CIRKEL_TEKSTER_EN : CIRKEL_TEKSTER; }
   function getCirkelNavne() { return aktivSprog === 'en' && typeof CIRKEL_NAVNE_EN !== 'undefined' ? CIRKEL_NAVNE_EN : CIRKEL_NAVNE; }
+  function getTrappenForstaelse() { return aktivSprog === 'en' && typeof TRAPPEN_FORSTAELSE_EN !== 'undefined' ? TRAPPEN_FORSTAELSE_EN : TRAPPEN_FORSTAELSE; }
   function getMorgenCheckin() { return aktivSprog === 'en' && typeof MORGEN_CHECKIN_EN !== 'undefined' ? MORGEN_CHECKIN_EN : MORGEN_CHECKIN; }
   function getMorgenHilsner() { return aktivSprog === 'en' && typeof MORGEN_HILSNER_EN !== 'undefined' ? MORGEN_HILSNER_EN : MORGEN_HILSNER; }
+  function getTrappenFamilieEffekt() { return aktivSprog === 'en' && typeof TRAPPEN_FAMILIE_EFFEKT_EN !== 'undefined' ? TRAPPEN_FAMILIE_EFFEKT_EN : TRAPPEN_FAMILIE_EFFEKT; }
+  function getTrappenMoenstre() { return aktivSprog === 'en' && typeof TRAPPEN_MOENSTRE_EN !== 'undefined' ? TRAPPEN_MOENSTRE_EN : TRAPPEN_MOENSTRE; }
   function getMuligtDefaults() { return aktivSprog === 'en' && typeof MULIGT_DEFAULTS_EN !== 'undefined' ? MULIGT_DEFAULTS_EN : MULIGT_DEFAULTS; }
   function getPraksisInfo() { return aktivSprog === 'en' && typeof PRAKSIS_INFO_EN !== 'undefined' ? PRAKSIS_INFO_EN : PRAKSIS_INFO; }
 
@@ -1342,7 +1345,7 @@
 
     // Mønster-refleksion
     var moensterId = beregnMoenster();
-    var moenstre = TRAPPEN_MOENSTRE[p];
+    var moenstre = getTrappenMoenstre()[p];
     if (moenstre && moenstre[moensterId]) {
       html += '<div class="trappe-moenster-refleksion">' + moenstre[moensterId] + '</div>';
     }
@@ -1369,7 +1372,7 @@
       html += '</ul>';
 
       // Familie-effekt
-      var effekt = TRAPPEN_FAMILIE_EFFEKT[trin.trin];
+      var effekt = getTrappenFamilieEffekt()[trin.trin];
       if (effekt && effekt[p]) {
         var fe = effekt[p];
         html += '<div class="trappe-section-title trappe-familie-titel">' + t('familieEffekt') + '</div>';
@@ -1384,7 +1387,7 @@
     });
 
     // === Forstå dit nervesystem ===
-    var forstaelse = TRAPPEN_FORSTAELSE[p];
+    var forstaelse = getTrappenForstaelse()[p];
     if (forstaelse) {
       html += '<div class="trappe-forstaelse-sektion">';
       html += '<div class="trappe-forstaelse-titel">' + forstaelse.titel + '</div>';
