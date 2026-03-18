@@ -3881,14 +3881,28 @@ body {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 0 0 var(--radius) var(--radius);
   }
 
   .bottom-nav {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  /* Tynd grøn ramme langs siderne */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 700px;
+    margin: 0 auto;
+    border-left: 1.5px solid var(--primary);
+    border-right: 1.5px solid var(--primary);
+    pointer-events: none;
+    z-index: 150;
   }
 
   .cirkel-container {
