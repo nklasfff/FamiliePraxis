@@ -73,6 +73,229 @@
   var aktivTema = null;
   var aktivTrin = null;
   var isFirstVisit = !localStorage.getItem('fp_visited');
+  var aktivSprog = localStorage.getItem('fp_sprog') || 'da';
+
+  // ---------- i18n ----------
+  var UI = {
+    da: {
+      // Perspektiver
+      perspPrivat: 'Privat klient',
+      perspProf: 'Fagprofessionel',
+      skiftPerspektiv: 'Skift perspektiv',
+      // Hero
+      heroPrivat: 'Velkommen. Denne app er dit rum — et stille sted, hvor du kan udforske det, der fylder i din familie, dit parforhold eller i dig selv. Tryk på en cirkel for at begynde, eller brug menuen til at finde øvelser, temaer og redskaber.',
+      heroProf: 'Velkommen. Her finder du det faglige fundament bag Rikkes arbejde — nervesystemet, tilknytning, kommunikation og de øvelser hun bruger i terapi med familier, par og individer. Brug appen som inspiration, opslagsværk eller som supplement til supervision.',
+      // Tabs
+      overblik: 'Overblik',
+      fordybelse: 'Fordybelse',
+      sammenhaenge: 'Sammenhænge',
+      tip: 'Tip',
+      // Trappen
+      kropsSignaler: 'Kropslige signaler',
+      handlinger: 'Handlinger',
+      // Temaer
+      relateradeOmraader: 'Relaterede områder',
+      // Menu
+      ditPerspektiv: 'Dit perspektiv',
+      omTerapeuten: 'Om terapeuten',
+      omRikke: 'Rikke Veth er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun tilbyder familieterapi, parterapi, individuel terapi og åndedrætsterapi for private — og familiebehandling, undersøgelser og supervision til kommuner. Hendes styrke ligger i at skabe udvikling, hvor følelser, kommunikation og samspil går i hårdknude.',
+      navigation: 'Navigation',
+      hjem: 'Hjem',
+      trappen: 'Nervesystemets trappe',
+      temaer: 'Temaer',
+      oevelser: 'Øvelser',
+      muligt: 'Hvad er muligt lige nu?',
+      kommune: 'Samarbejde med kommuner',
+      favoritter: 'Mine favoritter',
+      kontakt: 'Kontakt',
+      nyhedsbrev: 'Tilmeld dig mit nyhedsbrev',
+      indstillinger: 'Indstillinger',
+      dagligPaamindelse: 'Daglig påmindelse',
+      morgenCheckin: 'Morgen check-in',
+      ugentligOpsummering: 'Ugentlig opsummering',
+      privatlivTitel: 'Privatliv & data',
+      privatlivTekst: 'Denne app gemmer kun data lokalt på din enhed. Ingen sporing, ingen cookies, ingen tredjeparter.',
+      sprog: 'Sprog',
+      // Favoritter
+      gemtSom: 'Gem',
+      gemt: 'Gemt',
+      del: 'Del',
+      kopieret: 'Kopieret',
+      fjernFavorit: 'Fjern fra favoritter',
+      gemFavorit: 'Gem som favorit',
+      ingenFavoritter: 'Du har ikke gemt noget endnu.',
+      favoritHint: 'Gem når du finder indhold, du vil vende tilbage til.',
+      favoritGemt: 'Gemt',
+      oevelse: 'Øvelse',
+      fordybelseFav: 'Fordybelse',
+      nervesystemet: 'Nervesystemet',
+      // Søgning
+      soegPlaceholder: 'Søg i alt indhold...',
+      soegTags: ['Tilknytning', 'Åndedræt', 'Parforhold', 'Børn', 'Traume', 'Grænser', 'Stress', 'Sorg', 'Kommunikation', 'Nervesystem'],
+      ingenResultater: 'Ingen resultater for',
+      cirkel: 'Cirkel',
+      tema: 'Tema',
+      soegOevelse: 'Øvelse',
+      soegNervesystem: 'Nervesystem',
+      soegSammenhaeng: 'Sammenhæng',
+      ingenSammenhaenge: 'Ingen sammenhænge fundet.',
+      // Muligt
+      underArbejde: 'Under arbejde',
+      viVenter: 'Vi venter',
+      forNu: 'For nu',
+      loest: 'Løst',
+      muligtPlaceholder: 'Hvad kan vi gøre lige nu?',
+      fjern: 'Fjern',
+      // Onboarding
+      onboardingTekst: 'Velkommen. Denne app guider dig gennem familieterapiens kernebegreber — med øvelser, viden og refleksion.',
+      onboardingSpg: 'Hvem er du?',
+      privatKlient: 'Jeg er privat klient',
+      privatKlientDesc: 'Familie, par eller individuel',
+      fagprofessionel: 'Jeg er fagprofessionel',
+      fagprofessionelDesc: 'Socialrådgiver, behandler, pædagog',
+      samarbejde: 'Jeg overvejer et samarbejde',
+      samarbejdeDesc: 'Kommune, institution eller organisation',
+      // Dynamik
+      dynamikTitel: 'Dynamikken bag cirkelmodellen',
+      // Nyhedsbrev
+      nyhedsbrevTitel: 'Rikkes Nyhedsbrev',
+      nyhedsbrevSubtitel: 'Modtag indsigt, øvelser og refleksioner om familieliv, relationer og nervesystemet — direkte fra Rikke.',
+      nyhedsbrevGaveBadge: 'Gave ved tilmelding',
+      nyhedsbrevGaveTitel: 'Rytmen i alt — et personligt brev fra Rikke Veth',
+      nyhedsbrevGaveDesc: 'Fra trommeslager til terapeut. Rikke fortæller om sin rejse — fra scenen til terapilokalet — og de fem ting, musikken lærte hende om at møde mennesker. Med fem illustrationer.',
+      nyhedsbrevPlaceholder: 'Din e-mailadresse',
+      nyhedsbrevBtn: 'Tilmeld & modtag mini-bog',
+      nyhedsbrevPrivacy: 'Ingen spam. Kun indhold med mening. Du kan altid afmelde dig.',
+      // Diverse
+      tilbage: 'Tilbage',
+      viewTitles: {
+        trappen: 'Nervesystemets trappe',
+        temaer: 'Hverdagens udfordringer',
+        oevelser: 'Øvelser',
+        muligt: 'Hvad er muligt lige nu?',
+        favoritter: 'Mine favoritter'
+      },
+      viewDescs: {
+        trappen: 'Dit nervesystem har tre tilstande. At forstå dem er det første skridt mod at regulere dem — for dig selv og din familie.',
+        temaer: 'Familielivet rummer mange udfordringer. Her kan du læse om de temaer, der ofte fylder — og finde forståelse og redskaber.',
+        oevelser: 'Praktiske øvelser du kan bruge derhjemme — baseret på narrativ terapi, polyvagal teori og mentaliseringsbaseret behandling.',
+        muligt: 'Ikke alt kan løses på én gang. Her kan du holde styr på hvad der fylder — og markere hvad der er muligt lige nu.',
+        favoritter: 'Indhold du har gemt til senere. Tryk på et element for at gå til det.'
+      },
+      shareFrom: 'Fra Familiepraxis-appen'
+    },
+    en: {
+      perspPrivat: 'Private client',
+      perspProf: 'Professional',
+      skiftPerspektiv: 'Switch perspective',
+      heroPrivat: 'Welcome. This app is your space — a quiet place to explore what weighs on your family, your relationship, or within yourself. Tap a circle to begin, or use the menu to find exercises, themes, and tools.',
+      heroProf: 'Welcome. Here you\'ll find the clinical foundation behind Rikke\'s work — the nervous system, attachment, communication, and the exercises she uses in therapy with families, couples, and individuals. Use the app for inspiration, reference, or as a complement to supervision.',
+      overblik: 'Overview',
+      fordybelse: 'Deep dive',
+      sammenhaenge: 'Connections',
+      tip: 'Tip',
+      kropsSignaler: 'Body signals',
+      handlinger: 'Actions',
+      relateradeOmraader: 'Related areas',
+      ditPerspektiv: 'Your perspective',
+      omTerapeuten: 'About the therapist',
+      omRikke: 'Rikke Veth is a family therapist with many years of experience working with vulnerable families and children. She offers family therapy, couples therapy, individual therapy, and breathwork for private clients — and family treatment, assessments, and supervision for municipalities. Her strength lies in creating growth where emotions, communication, and interaction have reached a deadlock.',
+      navigation: 'Navigation',
+      hjem: 'Home',
+      trappen: 'The nervous system staircase',
+      temaer: 'Themes',
+      oevelser: 'Exercises',
+      muligt: 'What\'s possible right now?',
+      kommune: 'Municipal collaboration',
+      favoritter: 'My bookmarks',
+      kontakt: 'Contact',
+      nyhedsbrev: 'Subscribe to my newsletter',
+      indstillinger: 'Settings',
+      dagligPaamindelse: 'Daily reminder',
+      morgenCheckin: 'Morning check-in',
+      ugentligOpsummering: 'Weekly summary',
+      privatlivTitel: 'Privacy & data',
+      privatlivTekst: 'This app only stores data locally on your device. No tracking, no cookies, no third parties.',
+      sprog: 'Language',
+      gemtSom: 'Save',
+      gemt: 'Saved',
+      del: 'Share',
+      kopieret: 'Copied',
+      fjernFavorit: 'Remove from bookmarks',
+      gemFavorit: 'Save as bookmark',
+      ingenFavoritter: 'You haven\'t saved anything yet.',
+      favoritHint: 'Tap Save when you find content you want to return to.',
+      favoritGemt: 'Saved',
+      oevelse: 'Exercise',
+      fordybelseFav: 'Deep dive',
+      nervesystemet: 'Nervous system',
+      soegPlaceholder: 'Search all content...',
+      soegTags: ['Attachment', 'Breathing', 'Couples', 'Children', 'Trauma', 'Boundaries', 'Stress', 'Grief', 'Communication', 'Nervous system'],
+      ingenResultater: 'No results for',
+      cirkel: 'Circle',
+      tema: 'Theme',
+      soegOevelse: 'Exercise',
+      soegNervesystem: 'Nervous system',
+      soegSammenhaeng: 'Connection',
+      ingenSammenhaenge: 'No connections found.',
+      underArbejde: 'Work in progress',
+      viVenter: 'Waiting',
+      forNu: 'For now',
+      loest: 'Resolved',
+      muligtPlaceholder: 'What can we do right now?',
+      fjern: 'Remove',
+      onboardingTekst: 'Welcome. This app guides you through the core concepts of family therapy — with exercises, knowledge, and reflection.',
+      onboardingSpg: 'Who are you?',
+      privatKlient: 'I\'m a private client',
+      privatKlientDesc: 'Family, couple, or individual',
+      fagprofessionel: 'I\'m a professional',
+      fagprofessionelDesc: 'Social worker, therapist, educator',
+      samarbejde: 'I\'m considering a collaboration',
+      samarbejdeDesc: 'Municipality, institution, or organisation',
+      dynamikTitel: 'The dynamics behind the circle model',
+      nyhedsbrevTitel: 'Rikke\'s Newsletter',
+      nyhedsbrevSubtitel: 'Receive insights, exercises, and reflections on family life, relationships, and the nervous system — straight from Rikke.',
+      nyhedsbrevGaveBadge: 'Gift with subscription',
+      nyhedsbrevGaveTitel: 'The Rhythm in Everything — a personal letter from Rikke Veth',
+      nyhedsbrevGaveDesc: 'From drummer to therapist. Rikke shares her journey — from the stage to the therapy room — and the five things music taught her about meeting people. With five illustrations.',
+      nyhedsbrevPlaceholder: 'Your email address',
+      nyhedsbrevBtn: 'Subscribe & receive mini-book',
+      nyhedsbrevPrivacy: 'No spam. Only meaningful content. You can unsubscribe at any time.',
+      tilbage: 'Back',
+      viewTitles: {
+        trappen: 'The nervous system staircase',
+        temaer: 'Everyday challenges',
+        oevelser: 'Exercises',
+        muligt: 'What\'s possible right now?',
+        favoritter: 'My bookmarks'
+      },
+      viewDescs: {
+        trappen: 'Your nervous system has three states. Understanding them is the first step toward regulating them — for yourself and your family.',
+        temaer: 'Family life holds many challenges. Here you can explore the themes that often carry the most weight — and find understanding and tools.',
+        oevelser: 'Practical exercises you can use at home — grounded in narrative therapy, polyvagal theory, and mentalization-based treatment.',
+        muligt: 'Not everything can be solved at once. Here you can keep track of what weighs on you — and mark what\'s possible right now.',
+        favoritter: 'Content you\'ve saved for later. Tap an item to go to it.'
+      },
+      shareFrom: 'From the Familiepraxis app'
+    }
+  };
+
+  function t(key) {
+    return UI[aktivSprog][key] || UI.da[key] || key;
+  }
+
+  // Data accessors — return English data if available and selected
+  function getCirkler() { return aktivSprog === 'en' && typeof CIRKLER_EN !== 'undefined' ? CIRKLER_EN : CIRKLER; }
+  function getSammenhaenge() { return aktivSprog === 'en' && typeof SAMMENHAENGE_EN !== 'undefined' ? SAMMENHAENGE_EN : SAMMENHAENGE; }
+  function getTemaIndhold() { return aktivSprog === 'en' && typeof TEMA_INDHOLD_EN !== 'undefined' ? TEMA_INDHOLD_EN : TEMA_INDHOLD; }
+  function getOevelser() { return aktivSprog === 'en' && typeof OEVELSER_EN !== 'undefined' ? OEVELSER_EN : OEVELSER; }
+  function getTrappen() { return aktivSprog === 'en' && typeof TRAPPEN_EN !== 'undefined' ? TRAPPEN_EN : TRAPPEN; }
+  function getCirkelTekster() { return aktivSprog === 'en' && typeof CIRKEL_TEKSTER_EN !== 'undefined' ? CIRKEL_TEKSTER_EN : CIRKEL_TEKSTER; }
+  function getCirkelNavne() { return aktivSprog === 'en' && typeof CIRKEL_NAVNE_EN !== 'undefined' ? CIRKEL_NAVNE_EN : CIRKEL_NAVNE; }
+  function getMorgenCheckin() { return aktivSprog === 'en' && typeof MORGEN_CHECKIN_EN !== 'undefined' ? MORGEN_CHECKIN_EN : MORGEN_CHECKIN; }
+  function getMorgenHilsner() { return aktivSprog === 'en' && typeof MORGEN_HILSNER_EN !== 'undefined' ? MORGEN_HILSNER_EN : MORGEN_HILSNER; }
+  function getMuligtDefaults() { return aktivSprog === 'en' && typeof MULIGT_DEFAULTS_EN !== 'undefined' ? MULIGT_DEFAULTS_EN : MULIGT_DEFAULTS; }
+  function getPraksisInfo() { return aktivSprog === 'en' && typeof PRAKSIS_INFO_EN !== 'undefined' ? PRAKSIS_INFO_EN : PRAKSIS_INFO; }
 
   // ---------- Favoritter ----------
   function getFavoritter() {
@@ -103,11 +326,11 @@
   function buildActionBar(type, id, titel, shareText) {
     var saved = isFavorit(type, id);
     return '<div class="action-bar" data-action-type="' + type + '" data-action-id="' + id + '" data-action-titel="' + escapeAttr(titel) + '" data-action-share="' + escapeAttr(shareText || titel) + '">' +
-      '<button class="action-btn action-btn-save' + (saved ? ' active' : '') + '" title="' + (saved ? 'Fjern fra favoritter' : 'Gem som favorit') + '">' +
+      '<button class="action-btn action-btn-save' + (saved ? ' active' : '') + '" title="' + (saved ? t('fjernFavorit') : t('gemFavorit')) + '">' +
       (saved ? IKONER.bookmarkFill(16) : IKONER.bookmark(16)) +
-      '<span>' + (saved ? 'Gemt' : 'Gem') + '</span></button>' +
-      '<button class="action-btn action-btn-share" title="Del">' +
-      IKONER.share(16) + '<span>Del</span></button>' +
+      '<span>' + (saved ? t('gemt') : t('gemtSom')) + '</span></button>' +
+      '<button class="action-btn action-btn-share" title="' + t('del') + '">' +
+      IKONER.share(16) + '<span>' + t('del') + '</span></button>' +
       '</div>';
   }
 
@@ -127,8 +350,8 @@
         e.stopPropagation();
         var added = toggleFavorit(type, id, titel);
         this.classList.toggle('active', added);
-        this.innerHTML = (added ? IKONER.bookmarkFill(16) : IKONER.bookmark(16)) + '<span>' + (added ? 'Gemt' : 'Gem') + '</span>';
-        this.title = added ? 'Fjern fra favoritter' : 'Gem som favorit';
+        this.innerHTML = (added ? IKONER.bookmarkFill(16) : IKONER.bookmark(16)) + '<span>' + (added ? t('gemt') : t('gemtSom')) + '</span>';
+        this.title = added ? t('fjernFavorit') : t('gemFavorit');
         // Update menu badge
         updateFavoritBadge();
       });
@@ -137,20 +360,20 @@
       shareBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         if (navigator.share) {
-          navigator.share({ title: 'Familiepraxis — ' + titel, text: shareText, url: window.location.href });
+          navigator.share({ title: 'Familiepraxis \u2014 ' + titel, text: shareText, url: window.location.href });
         } else {
           // Fallback: copy text
           var ta = document.createElement('textarea');
-          ta.value = titel + '\n\n' + shareText + '\n\nFra Familiepraxis-appen';
+          ta.value = titel + '\n\n' + shareText + '\n\n' + t('shareFrom');
           document.body.appendChild(ta);
           ta.select();
           document.execCommand('copy');
           document.body.removeChild(ta);
           // Visual feedback
           var span = this.querySelector('span');
-          span.textContent = 'Kopieret';
+          span.textContent = t('kopieret');
           var self = this;
-          setTimeout(function() { span.textContent = 'Del'; }, 1500);
+          setTimeout(function() { span.textContent = t('del'); }, 1500);
         }
       });
     });
@@ -208,6 +431,7 @@
     bindMuligtForm();
     drawConnectionLines();
     renderMorgenCheckin();
+    if (aktivSprog !== 'da') updateViewTexts();
   }
 
   // ---------- Onboarding ----------
@@ -237,6 +461,7 @@
     renderTemaer();
     renderOevelser();
     renderMenuContent();
+    if (aktivSprog !== 'da') updateViewTexts();
     if (isKommune) {
       renderKommune();
       showView('kommune');
@@ -253,17 +478,13 @@
   }
 
   function updatePerspektivUI() {
-    var labels = { privat: 'Privat klient', professionel: 'Fagprofessionel' };
-    perspektivLabel.textContent = labels[aktivPerspektiv] || 'Privat klient';
+    var label = aktivPerspektiv === 'professionel' ? t('perspProf') : t('perspPrivat');
+    perspektivLabel.textContent = label;
   }
 
   function updateHeroDesc() {
     if (!heroDesc) return;
-    if (aktivPerspektiv === 'professionel') {
-      heroDesc.textContent = 'Velkommen. Her finder du det faglige fundament bag Rikkes arbejde — nervesystemet, tilknytning, kommunikation og de øvelser hun bruger i terapi med familier, par og individer. Brug appen som inspiration, opslagsværk eller som supplement til supervision.';
-    } else {
-      heroDesc.textContent = 'Velkommen. Denne app er dit rum — et stille sted, hvor du kan udforske det, der fylder i din familie, dit parforhold eller i dig selv. Tryk på en cirkel for at begynde, eller brug menuen til at finde øvelser, temaer og redskaber.';
-    }
+    heroDesc.textContent = aktivPerspektiv === 'professionel' ? t('heroProf') : t('heroPrivat');
   }
 
   // ---------- Morgen Check-in ----------
@@ -295,16 +516,18 @@
     var now = new Date();
     var start = new Date(now.getFullYear(), 0, 0);
     var dayOfYear = Math.floor((now - start) / 86400000);
-    var variantIndex = dayOfYear % MORGEN_CHECKIN.length;
-    var variant = MORGEN_CHECKIN[variantIndex];
+    var checkinData = getMorgenCheckin();
+    var variantIndex = dayOfYear % checkinData.length;
+    var variant = checkinData[variantIndex];
 
     // Get greeting based on day of week + season
+    var hilsnerData = getMorgenHilsner();
     var dage = ['soendag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'loerdag'];
     var dagKey = dage[now.getDay()];
     var maaned = now.getMonth(); // 0-11
     var saesonKey = maaned >= 2 && maaned <= 4 ? 'foraar' : maaned >= 5 && maaned <= 7 ? 'sommer' : maaned >= 8 && maaned <= 10 ? 'efteraar' : 'vinter';
     // Alternate between day greeting and season greeting
-    var hilsen = dayOfYear % 2 === 0 ? MORGEN_HILSNER[dagKey] : MORGEN_HILSNER[saesonKey];
+    var hilsen = dayOfYear % 2 === 0 ? hilsnerData[dagKey] : hilsnerData[saesonKey];
 
     // Render question state
     var html = '<div class="morgen-inner">';
@@ -366,6 +589,31 @@
     });
   }
 
+  function updateViewTexts() {
+    var titles = t('viewTitles');
+    var descs = t('viewDescs');
+    var mappings = [
+      { view: 'Trappen', key: 'trappen' },
+      { view: 'Temaer', key: 'temaer' },
+      { view: 'Oevelser', key: 'oevelser' },
+      { view: 'Muligt', key: 'muligt' },
+      { view: 'Favoritter', key: 'favoritter' }
+    ];
+    mappings.forEach(function (m) {
+      var section = document.getElementById('view' + m.view);
+      if (!section) return;
+      var titleEl = section.querySelector('.view-title');
+      var descEl = section.querySelector('.view-desc');
+      if (titleEl && titles[m.key]) titleEl.textContent = titles[m.key];
+      if (descEl && descs[m.key]) descEl.textContent = descs[m.key];
+    });
+    // Update search placeholder
+    var si = document.getElementById('searchInput');
+    if (si) si.placeholder = t('soegPlaceholder');
+    // Update search tags
+    renderSearchTags();
+  }
+
   // ---------- Circle Diagram ----------
   function animateCircles() {
     var groups = document.querySelectorAll('.cirkel-group');
@@ -388,7 +636,7 @@
 
   function updateCircleTexts() {
     if (!aktivPerspektiv) return;
-    var tekster = CIRKEL_TEKSTER[contentPerspektiv()];
+    var tekster = getCirkelTekster()[contentPerspektiv()];
     Object.keys(tekster).forEach(function (key) {
       var el1 = document.getElementById('txt' + capitalize(key) + '1');
       var el2 = document.getElementById('txt' + capitalize(key) + '2');
@@ -490,7 +738,8 @@
   }
 
   function renderCirkelDetail() {
-    var cirkel = CIRKLER.find(function (c) { return c.id === aktivCirkel; });
+    var cirkler = getCirkler();
+    var cirkel = cirkler.find(function (c) { return c.id === aktivCirkel; });
     if (!cirkel) return;
     var p = contentPerspektiv();
     var data = cirkel[p];
@@ -503,9 +752,9 @@
 
     // Tabs
     html += '<div class="cirkel-tabs">' +
-      '<button class="cirkel-tab' + (aktivTab === 'overblik' ? ' active' : '') + '" data-tab="overblik">Overblik</button>' +
-      '<button class="cirkel-tab' + (aktivTab === 'fordybelse' ? ' active' : '') + '" data-tab="fordybelse">Fordybelse</button>' +
-      '<button class="cirkel-tab' + (aktivTab === 'sammenhaenge' ? ' active' : '') + '" data-tab="sammenhaenge">Sammenhænge</button>' +
+      '<button class="cirkel-tab' + (aktivTab === 'overblik' ? ' active' : '') + '" data-tab="overblik">' + t('overblik') + '</button>' +
+      '<button class="cirkel-tab' + (aktivTab === 'fordybelse' ? ' active' : '') + '" data-tab="fordybelse">' + t('fordybelse') + '</button>' +
+      '<button class="cirkel-tab' + (aktivTab === 'sammenhaenge' ? ' active' : '') + '" data-tab="sammenhaenge">' + t('sammenhaenge') + '</button>' +
       '</div>';
 
     // Tab content
@@ -518,22 +767,24 @@
         html += '<li>' + p + '</li>';
       });
       html += '</ul>';
-      html += '<div class="cirkel-tip"><div class="cirkel-tip-label">Tip</div>' + data.overblik.tip + '</div>';
+      html += '<div class="cirkel-tip"><div class="cirkel-tip-label">' + t('tip') + '</div>' + data.overblik.tip + '</div>';
     } else if (aktivTab === 'fordybelse') {
       data.dybde.forEach(function (afsnit) {
         html += '<p class="cirkel-dybde-afsnit">' + afsnit + '</p>';
       });
       html += buildActionBar('fordybelse', aktivCirkel, cirkel.titel + ' — Fordybelse', data.dybde.join('\n\n'));
     } else if (aktivTab === 'sammenhaenge') {
-      var relationer = SAMMENHAENGE.filter(function (s) {
+      var sammenhaengeData = getSammenhaenge();
+      var cirkelNavne = getCirkelNavne();
+      var relationer = sammenhaengeData.filter(function (s) {
         return s.fra === aktivCirkel || s.til === aktivCirkel;
       });
       if (relationer.length === 0) {
-        html += '<p class="cirkel-beskrivelse">Ingen sammenhænge fundet.</p>';
+        html += '<p class="cirkel-beskrivelse">' + t('ingenSammenhaenge') + '</p>';
       } else {
         relationer.forEach(function (s) {
           var otherId = s.fra === aktivCirkel ? s.til : s.fra;
-          var otherName = CIRKEL_NAVNE[otherId] || otherId;
+          var otherName = cirkelNavne[otherId] || otherId;
           var tekst = s[p] || s.privat;
           html += '<div class="sammenhaeng-card" data-goto="' + otherId + '">' +
             '<div class="sammenhaeng-label">↔ ' + otherName + '</div>' +
@@ -570,7 +821,7 @@
     var p = contentPerspektiv();
     var html = '';
 
-    TRAPPEN.forEach(function (trin) {
+    getTrappen().forEach(function (trin) {
       var data = trin[p];
       var isActive = aktivTrin === trin.trin;
       html += '<div class="trappe-trin' + (isActive ? ' active' : '') + '" data-trin="' + trin.trin + '">' +
@@ -580,11 +831,11 @@
         '</div>' +
         '<div class="trappe-detail"><div class="trappe-detail-inner">' +
         '<p class="trappe-beskrivelse">' + data.beskrivelse + '</p>' +
-        '<div class="trappe-section-title">Kropslige signaler</div>' +
+        '<div class="trappe-section-title">' + t('kropsSignaler') + '</div>' +
         '<ul class="trappe-list">';
       data.kropsSignaler.forEach(function (s) { html += '<li>' + s + '</li>'; });
       html += '</ul>' +
-        '<div class="trappe-section-title">Handlinger</div>' +
+        '<div class="trappe-section-title">' + t('handlinger') + '</div>' +
         '<ul class="trappe-list">';
       data.handlinger.forEach(function (h) { html += '<li>' + h + '</li>'; });
       html += '</ul>' + buildActionBar('trappen', trin.navn, trin.navn, data.beskrivelse) + '</div></div></div>';
@@ -610,7 +861,8 @@
     var p = contentPerspektiv();
     var html = '';
 
-    TEMA_INDHOLD.forEach(function (tema) {
+    var cirkelNavne = getCirkelNavne();
+    getTemaIndhold().forEach(function (tema) {
       var data = tema[p];
       var isActive = aktivTema === tema.id;
       html += '<div class="tema-card' + (isActive ? ' active' : '') + '" data-tema="' + tema.id + '">' +
@@ -619,10 +871,10 @@
         '<div class="tema-intro">' + data.intro + '</div>' +
         '<div class="tema-expanded"><div class="tema-expanded-inner">' +
         '<p class="tema-tekst">' + data.tekst + '</p>' +
-        '<div class="tema-cirkler-label">Relaterede områder</div>' +
+        '<div class="tema-cirkler-label">' + t('relateradeOmraader') + '</div>' +
         '<div class="tema-cirkel-tags">';
       data.cirkler.forEach(function (c) {
-        html += '<span class="tema-cirkel-tag">' + (CIRKEL_NAVNE[c] || c) + '</span>';
+        html += '<span class="tema-cirkel-tag">' + (cirkelNavne[c] || c) + '</span>';
       });
       html += '</div></div></div></div>';
     });
@@ -644,7 +896,7 @@
     if (!list) return;
     var html = '';
 
-    OEVELSER.forEach(function (oev, idx) {
+    getOevelser().forEach(function (oev, idx) {
       var isActive = list.querySelector('.oevelse-card.active[data-idx="' + idx + '"]') !== null;
       html += '<div class="oevelse-card" data-idx="' + idx + '">' +
         '<div class="oevelse-header">' +
@@ -696,18 +948,18 @@
                 '<rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/>' +
               '</svg>' +
             '</div>' +
-            '<h2 class="nyhedsbrev-title">Rikkes Nyhedsbrev</h2>' +
-            '<p class="nyhedsbrev-subtitle">Modtag indsigt, øvelser og refleksioner om familieliv, relationer og nervesystemet — direkte fra Rikke.</p>' +
+            '<h2 class="nyhedsbrev-title">' + t('nyhedsbrevTitel') + '</h2>' +
+            '<p class="nyhedsbrev-subtitle">' + t('nyhedsbrevSubtitel') + '</p>' +
           '</div>' +
           '<div class="nyhedsbrev-gave-preview">' +
-            '<div class="nyhedsbrev-gave-badge">Gave ved tilmelding</div>' +
-            '<h3 class="nyhedsbrev-gave-title">Rytmen i alt — et personligt brev fra Rikke Veth</h3>' +
-            '<p class="nyhedsbrev-gave-desc">Fra trommeslager til terapeut. Rikke fortæller om sin rejse — fra scenen til terapilokalet — og de fem ting, musikken lærte hende om at møde mennesker. Med fem illustrationer.</p>' +
+            '<div class="nyhedsbrev-gave-badge">' + t('nyhedsbrevGaveBadge') + '</div>' +
+            '<h3 class="nyhedsbrev-gave-title">' + t('nyhedsbrevGaveTitel') + '</h3>' +
+            '<p class="nyhedsbrev-gave-desc">' + t('nyhedsbrevGaveDesc') + '</p>' +
           '</div>' +
           '<form class="nyhedsbrev-form" id="nyhedsbrevForm">' +
-            '<input type="email" class="nyhedsbrev-input" id="nyhedsbrevEmail" placeholder="Din e-mailadresse" required>' +
-            '<button type="submit" class="nyhedsbrev-btn">Tilmeld & modtag mini-bog</button>' +
-            '<p class="nyhedsbrev-privacy">Ingen spam. Kun indhold med mening. Du kan altid afmelde dig.</p>' +
+            '<input type="email" class="nyhedsbrev-input" id="nyhedsbrevEmail" placeholder="' + t('nyhedsbrevPlaceholder') + '" required>' +
+            '<button type="submit" class="nyhedsbrev-btn">' + t('nyhedsbrevBtn') + '</button>' +
+            '<p class="nyhedsbrev-privacy">' + t('nyhedsbrevPrivacy') + '</p>' +
           '</form>' +
         '</div>';
 
@@ -721,7 +973,7 @@
       });
     } else {
       // Vis mini-bogen
-      container.innerHTML = buildMiniBog();
+      container.innerHTML = aktivSprog === 'en' ? buildMiniBogEN() : buildMiniBog();
     }
   }
 
@@ -842,6 +1094,81 @@
     '</div>';
   }
 
+  function buildMiniBogEN() {
+    var ill1 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="120" rx="12" fill="var(--primary-pale)"/><circle cx="120" cy="60" r="10" stroke="var(--primary)" stroke-width="1.5" fill="none"/><circle cx="120" cy="60" r="22" stroke="var(--primary)" stroke-width="1" fill="none" opacity="0.6"/><circle cx="120" cy="60" r="34" stroke="var(--primary)" stroke-width="0.8" fill="none" opacity="0.35"/><circle cx="120" cy="60" r="46" stroke="var(--primary)" stroke-width="0.5" fill="none" opacity="0.15"/></svg>';
+    var ill2 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="120" rx="12" fill="var(--amber-bg)"/><line x1="105" y1="30" x2="105" y2="90" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><line x1="135" y1="30" x2="135" y2="90" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/><circle cx="120" cy="60" r="3" fill="var(--primary)" opacity="0.3"/></svg>';
+    var ill3 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="120" rx="12" fill="var(--sage-bg)"/><path d="M50 45 Q95 30 120 45 Q145 60 190 45" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M50 60 Q95 45 120 60 Q145 75 190 60" stroke="var(--primary)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M50 75 Q95 60 120 75 Q145 90 190 75" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>';
+    var ill4 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="120" rx="12" fill="var(--rose-bg)"/><path d="M88 40 A35 35 0 0 1 152 40" stroke="var(--rose)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M152 80 A35 35 0 0 1 88 80" stroke="var(--primary)" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="88" cy="60" r="2.5" fill="var(--rose)" opacity="0.5"/><circle cx="152" cy="60" r="2.5" fill="var(--primary)" opacity="0.5"/></svg>';
+    var ill5 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="120" rx="12" fill="var(--primary-pale)"/><line x1="120" y1="95" x2="120" y2="55" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><path d="M120 55 Q110 40 100 35 Q115 40 120 55" stroke="var(--primary)" stroke-width="1.2" fill="var(--primary)" opacity="0.15"/><path d="M120 65 Q130 50 140 45 Q125 52 120 65" stroke="var(--sage)" stroke-width="1.2" fill="var(--sage)" opacity="0.15"/></svg>';
+
+    return '<div class="minibog">' +
+      '<div class="minibog-header">' +
+        '<div class="minibog-badge">Your gift</div>' +
+        '<h2 class="minibog-titel">The Rhythm in Everything</h2>' +
+        '<p class="minibog-author">A personal letter by Rikke Veth</p>' +
+        '<p class="minibog-intro">From the pulse of the drum kit to the silence of the therapy room. About what music taught me \u2014 and what children taught me after that.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        '<p class="minibog-aabning">Dear you.</p>' +
+        '<p>I don\u2019t know who you are. Perhaps you\u2019re a parent lying awake at night wondering if you\u2019re doing well enough. Perhaps you\u2019re a professional carrying other people\u2019s heavy stories home with you. Or perhaps you\u2019re simply a person looking for something that makes sense.</p>' +
+        '<p>I want to tell you something. Not a theory. Not a method. A story \u2014 my story \u2014 and the five things it taught me about meeting people.</p>' +
+        '<p>It starts with a drum.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        ill1 +
+        '<h3 class="minibog-kap-titel">Everything has a rhythm</h3>' +
+        '<p>When I was young, I was a drummer. Not casually \u2014 it was everything I was. I played with some of the best bands in Denmark, and there was something about it that gripped me deeper than the music itself. It was the <em>interplay</em>. The feeling of sitting behind the drums and sensing the whole band breathing together.</p>' +
+        '<p>A drummer doesn\u2019t control the music. She listens. She feels where the others are heading, and then she meets them there. Sometimes the rhythm needs to carry. Other times it needs to pull back. It takes something no music theory can teach you: the ability to feel the room.</p>' +
+        '<p>Many years later, I sit in my therapy room with a family that has hit a wall. And suddenly I recognise it. The family has a rhythm \u2014 just like a band. When one person speaks, the other falls silent. When the child acts out, the mother withdraws. There\u2019s a pattern. Not chaos. Pattern. And just like music: you can\u2019t change the rhythm until you\u2019ve heard it.</p>' +
+        '<p>That was the first thing the drums taught me: everything has a rhythm. Even pain. Even families. And change begins with listening to the rhythm that\u2019s already there.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        ill2 +
+        '<h3 class="minibog-kap-titel">The pause is the most important beat</h3>' +
+        '<p>In music, it isn\u2019t the notes that create feeling. It\u2019s the pauses. The silence between the beats. The emptiness that gives the next beat its power. Every drummer knows: what you <em>don\u2019t</em> play matters just as much as what you do.</p>' +
+        '<p>It took me years to understand that the same holds true when you\u2019re sitting across from a child who won\u2019t speak. An eight-year-old boy who pulls his hood down over his eyes and stares at the floor. Once, I would have asked questions. Tried to find a way in. Now I know: the pause is the way in. To bear the silence. To let it last. To show the child that I can hold the space, even when it\u2019s empty.</p>' +
+        '<p>Many of the children I meet have never experienced an adult who simply was there without wanting anything. Without judging, instructing, or fixing. Just being there. That experience isn\u2019t nothing. For a child who has lived amid noise and turmoil, it\u2019s everything.</p>' +
+        '<p>In a band, I learned to play the pause. In the therapy room, I learned that the pause is where trust grows.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        ill3 +
+        '<h3 class="minibog-kap-titel">The body knows first</h3>' +
+        '<p>When you play drums, you don\u2019t think. You feel. Your hands and feet know what to do before your brain can form the thought. Music lives in the body \u2014 in the muscles, in the breath, in the pulse that synchronises with the others in the band.</p>' +
+        '<p>It took me a long time to understand that the same is true for pain. Trauma doesn\u2019t live in the head. It lives in the body. In the breath that never quite lets go. In the shoulders that are always up by the ears. In the stomach that clenches when a voice becomes just a shade too loud.</p>' +
+        '<p>I once met a fourteen-year-old girl who couldn\u2019t find words for what had happened in her family. But her body could. Her breathing became shallow and rapid when we neared the difficult things. Her hands clenched. That wasn\u2019t resistance. It was her body telling its story. And when we began listening to the body instead of insisting on words, something opened.</p>' +
+        '<p>Breathwork is the most direct path to the nervous system. I knew this from music \u2014 to breathe with the rhythm, to let the body find its pulse. Now I use it every day: helping people find the breath that tells their body it\u2019s safe now. That the danger has passed. That they may land.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        ill4 +
+        '<h3 class="minibog-kap-titel">The story behind the noise</h3>' +
+        '<p>In a band, there\u2019s always someone playing too loud. And the inexperienced reaction is irritation. But a good musician asks: <em>why</em> is he playing too loud? Is he insecure? Can\u2019t he hear himself? Is the monitor broken? The problem is rarely what it looks like.</p>' +
+        '<p>The same is true for children. The child who hits, shouts, or overturns the furniture \u2014 the child everyone is tired of \u2014 that child is playing too loud because they can\u2019t hear themselves. Because nobody has listened to what they\u2019re actually trying to say. The behaviour isn\u2019t the problem. The behaviour is communication.</p>' +
+        '<p>I remember a nine-year-old boy. The school\u2019s \u201Cdifficult child.\u201D Three welfare reports. Two school changes. Everyone had focused on his anger. No one had asked what lay beneath it. When I finally sat with him \u2014 after weeks of quiet drawing and the pauses that made him feel safe \u2014 he said something I\u2019ll never forget: \u201CI shout because it\u2019s the only thing loud enough for someone to hear.\u201D</p>' +
+        '<p>Every family has a story it lives by. \u201CWe\u2019re a family that doesn\u2019t talk about feelings.\u201D \u201CIn our family, you manage on your own.\u201D Those stories aren\u2019t truths \u2014 they\u2019re narratives. And narratives can be rewritten. When we help a child find a new story about themselves, we don\u2019t just change the child. We change the whole family\u2019s score.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        ill5 +
+        '<h3 class="minibog-kap-titel">The person before the score</h3>' +
+        '<p>The best gigs I ever played were the ones where we set the score aside. Where we stopped thinking about what we <em>should</em> play and simply listened to each other. Where technique vanished and only the music remained.</p>' +
+        '<p>That\u2019s the last and most important thing music taught me: the person comes before the method. Always. I\u2019ve read the books. I know the theories. Narrative therapy, systemic family therapy, polyvagal regulation, mentalization-based treatment. These are my tools, and they\u2019re good ones. But they aren\u2019t what heals.</p>' +
+        '<p>What heals is the encounter. The moment when another human being feels truly seen. Not as a diagnosis, a case, or a problem \u2014 but as a person. No manual can create that moment. It happens when I set the score aside and simply stay present with what is.</p>' +
+        '<p>For the children and young people who are at the heart of this work, that\u2019s often the single most important thing: an adult who sees them as who they are \u2014 not as who they\u2019ve been made into. An adult who believes that behind all the noise, all the silence, all the pain, there is a person who simply wants to be heard.</p>' +
+      '</div>' +
+
+      '<div class="minibog-footer">' +
+        '<p class="minibog-footer-text">I put the drumsticks down many years ago. But the rhythm never left. It still beats \u2014 in every meeting, in every breath, in every moment of silence that slowly fills with trust.</p>' +
+        '<p class="minibog-footer-text">If you know a child who is playing too loud \u2014 or too quietly \u2014 know that there is a story behind it. And that story can have a new chapter.</p>' +
+        '<p class="minibog-footer-sign">With warmth from the therapy room in Frederiksberg,<br><strong>Rikke Veth</strong><br>Family Therapist \u00b7 Familiepraxis</p>' +
+      '</div>' +
+    '</div>';
+  }
+
   // ---------- Menu ----------
   function openMenu() {
     sideMenu.classList.add('open');
@@ -856,57 +1183,67 @@
   function renderMenuContent() {
     var html = '';
 
+    var info = getPraksisInfo();
+
     // Perspektiv info + skift (kun privat/professionel)
     var perspIkon = aktivPerspektiv === 'privat' ? IKONER.house(16) : IKONER.building(16);
-    var perspNavn = aktivPerspektiv === 'privat' ? 'Privat klient' : 'Fagprofessionel';
+    var perspNavn = aktivPerspektiv === 'privat' ? t('perspPrivat') : t('perspProf');
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title">Dit perspektiv</div>' +
+      '<div class="menu-section-title">' + t('ditPerspektiv') + '</div>' +
       '<div class="menu-info" style="margin-bottom:8px">' + perspIkon + ' ' + perspNavn + '</div>' +
-      '<div class="menu-link" id="menuSwitchPerspektiv">' + IKONER.arrowLeftRight(15) + ' Skift perspektiv</div></div>';
+      '<div class="menu-link" id="menuSwitchPerspektiv">' + IKONER.arrowLeftRight(15) + ' ' + t('skiftPerspektiv') + '</div></div>';
 
     // Om Rikke
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title" style="text-align:center">Om terapeuten</div>' +
+      '<div class="menu-section-title" style="text-align:center">' + t('omTerapeuten') + '</div>' +
       '<div style="text-align:center;margin-bottom:12px"><img src="img/rikke-veth.png" alt="Rikke Veth" class="menu-terapeut-foto"></div>' +
-      '<div class="menu-info" style="margin-bottom:10px">Rikke Veth er familieterapeut med mange års erfaring i arbejdet med udsatte familier og børn. Hun tilbyder familieterapi, parterapi, individuel terapi og åndedrætsterapi for private — og familiebehandling, undersøgelser og supervision til kommuner. Hendes styrke ligger i at skabe udvikling, hvor følelser, kommunikation og samspil går i hårdknude.</div>' +
+      '<div class="menu-info" style="margin-bottom:10px">' + t('omRikke') + '</div>' +
       '</div>';
 
     // Navigation
     var favCount = getFavoritter().length;
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title">Navigation</div>' +
-      '<div class="menu-link" data-nav="hjem">Hjem</div>' +
-      '<div class="menu-link" data-nav="trappen">Nervesystemets trappe</div>' +
-      '<div class="menu-link" data-nav="temaer">Temaer</div>' +
-      '<div class="menu-link" data-nav="oevelser">Øvelser</div>' +
-      '<div class="menu-link" data-nav="muligt">Hvad er muligt lige nu?</div>' +
-      '<div class="menu-link" data-nav="kommune">' + IKONER.handshake(15) + ' Samarbejde med kommuner</div>' +
-      '<div class="menu-link menu-link-favoritter" id="menuFavoritter">' + IKONER.bookmark(15) + ' Mine favoritter <span class="menu-favorit-badge" id="favoritBadge" style="' + (favCount > 0 ? '' : 'display:none') + '">' + favCount + '</span></div>' +
+      '<div class="menu-section-title">' + t('navigation') + '</div>' +
+      '<div class="menu-link" data-nav="hjem">' + t('hjem') + '</div>' +
+      '<div class="menu-link" data-nav="trappen">' + t('trappen') + '</div>' +
+      '<div class="menu-link" data-nav="temaer">' + t('temaer') + '</div>' +
+      '<div class="menu-link" data-nav="oevelser">' + t('oevelser') + '</div>' +
+      '<div class="menu-link" data-nav="muligt">' + t('muligt') + '</div>' +
+      '<div class="menu-link" data-nav="kommune">' + IKONER.handshake(15) + ' ' + t('kommune') + '</div>' +
+      '<div class="menu-link menu-link-favoritter" id="menuFavoritter">' + IKONER.bookmark(15) + ' ' + t('favoritter') + ' <span class="menu-favorit-badge" id="favoritBadge" style="' + (favCount > 0 ? '' : 'display:none') + '">' + favCount + '</span></div>' +
       '</div>';
 
     // Kontakt
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title">Kontakt</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.phone(15) + '</span>' + PRAKSIS_INFO.telefon + '</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + PRAKSIS_INFO.email + '</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mapPin(15) + '</span>' + PRAKSIS_INFO.adresse + '</div>' +
-      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.hash(15) + '</span>CVR: ' + PRAKSIS_INFO.cvr + '</div>' +
+      '<div class="menu-section-title">' + t('kontakt') + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.phone(15) + '</span>' + info.telefon + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + info.email + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mapPin(15) + '</span>' + info.adresse + '</div>' +
+      '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.hash(15) + '</span>CVR: ' + info.cvr + '</div>' +
       '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="menu-contact-item menu-contact-link"><span class="menu-contact-icon">' + IKONER.linkedin(15) + '</span>LinkedIn</a>' +
-      '<div class="menu-contact-item menu-contact-link menu-nyhedsbrev-link" id="menuNyhedsbrev"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>Tilmeld dig mit nyhedsbrev</div>' +
+      '<div class="menu-contact-item menu-contact-link menu-nyhedsbrev-link" id="menuNyhedsbrev"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + t('nyhedsbrev') + '</div>' +
       '</div>';
+
+    // Sprog
+    html += '<div class="menu-section">' +
+      '<div class="menu-section-title">' + t('sprog') + '</div>' +
+      '<div class="menu-lang-switch">' +
+      '<button class="menu-lang-btn' + (aktivSprog === 'da' ? ' active' : '') + '" data-lang="da">Dansk</button>' +
+      '<button class="menu-lang-btn' + (aktivSprog === 'en' ? ' active' : '') + '" data-lang="en">English</button>' +
+      '</div></div>';
 
     // Indstillinger
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title">Indstillinger</div>' +
-      buildToggle('Daglig påmindelse', 'fp_daily') +
-      buildToggle('Morgen check-in', 'fp_morning') +
-      buildToggle('Ugentlig opsummering', 'fp_weekly') +
+      '<div class="menu-section-title">' + t('indstillinger') + '</div>' +
+      buildToggle(t('dagligPaamindelse'), 'fp_daily') +
+      buildToggle(t('morgenCheckin'), 'fp_morning') +
+      buildToggle(t('ugentligOpsummering'), 'fp_weekly') +
       '</div>';
 
     // Privatliv
     html += '<div class="menu-section">' +
-      '<div class="menu-section-title">Privatliv & data</div>' +
-      '<div class="menu-info">Denne app gemmer kun data lokalt på din enhed. Ingen sporing, ingen cookies, ingen tredjeparter.</div>' +
+      '<div class="menu-section-title">' + t('privatlivTitel') + '</div>' +
+      '<div class="menu-info">' + t('privatlivTekst') + '</div>' +
       '</div>';
 
     menuBody.innerHTML = html;
@@ -952,6 +1289,29 @@
         closeMenu();
       });
     }
+
+    // Language switch
+    menuBody.querySelectorAll('[data-lang]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var newLang = this.getAttribute('data-lang');
+        if (newLang === aktivSprog) return;
+        aktivSprog = newLang;
+        localStorage.setItem('fp_sprog', aktivSprog);
+        // Re-render everything
+        updatePerspektivUI();
+        updateHeroDesc();
+        updateCircleTexts();
+        renderTrappen();
+        renderTemaer();
+        renderOevelser();
+        renderMuligt();
+        renderMorgenCheckin();
+        renderMenuContent();
+        updateViewTexts();
+        if (aktivCirkel) renderCirkelDetail();
+        closeMenu();
+      });
+    });
   }
 
   function buildToggle(label, key) {
@@ -976,7 +1336,7 @@
   }
 
   function renderSearchTags() {
-    var tags = ['Tilknytning', 'Åndedræt', 'Parforhold', 'Børn', 'Traume', 'Grænser', 'Stress', 'Sorg', 'Kommunikation', 'Nervesystem'];
+    var tags = t('soegTags');
     var html = '';
     tags.forEach(function (tag) {
       html += '<button class="search-tag">' + tag + '</button>';
@@ -1001,15 +1361,17 @@
     var results = [];
     var p = contentPerspektiv();
 
+    var cirkelNavne = getCirkelNavne();
+
     // Search circles
-    CIRKLER.forEach(function (c) {
+    getCirkler().forEach(function (c) {
       var data = c[p];
       var match = c.titel.toLowerCase().indexOf(q) >= 0 ||
         data.overblik.beskrivelse.toLowerCase().indexOf(q) >= 0 ||
         data.dybde.join(' ').toLowerCase().indexOf(q) >= 0;
       if (match) {
         results.push({
-          type: 'Cirkel',
+          type: t('cirkel'),
           titel: (IKONER[c.ikon] ? IKONER[c.ikon](16) : '') + ' ' + c.titel,
           snippet: data.overblik.beskrivelse.substring(0, 120) + '...',
           action: function () { closeSearch(); showCirkelDetail(c.id); }
@@ -1018,14 +1380,14 @@
     });
 
     // Search themes
-    TEMA_INDHOLD.forEach(function (t) {
-      var data = t[p];
-      var match = t.titel.toLowerCase().indexOf(q) >= 0 ||
+    getTemaIndhold().forEach(function (tm) {
+      var data = tm[p];
+      var match = tm.titel.toLowerCase().indexOf(q) >= 0 ||
         data.tekst.toLowerCase().indexOf(q) >= 0;
       if (match) {
         results.push({
-          type: 'Tema',
-          titel: (IKONER[t.ikon] ? IKONER[t.ikon](16) : '') + ' ' + t.titel,
+          type: t('tema'),
+          titel: (IKONER[tm.ikon] ? IKONER[tm.ikon](16) : '') + ' ' + tm.titel,
           snippet: data.intro,
           action: function () { closeSearch(); showView('temaer'); }
         });
@@ -1033,12 +1395,12 @@
     });
 
     // Search exercises
-    OEVELSER.forEach(function (o) {
+    getOevelser().forEach(function (o) {
       var match = o.titel.toLowerCase().indexOf(q) >= 0 ||
         o.intro.toLowerCase().indexOf(q) >= 0;
       if (match) {
         results.push({
-          type: 'Øvelse',
+          type: t('soegOevelse'),
           titel: o.titel,
           snippet: o.intro,
           action: function () { closeSearch(); showView('oevelser'); }
@@ -1047,12 +1409,12 @@
     });
 
     // Search trappe
-    TRAPPEN.forEach(function (t) {
-      var data = t[p];
-      if (t.navn.toLowerCase().indexOf(q) >= 0 || data.beskrivelse.toLowerCase().indexOf(q) >= 0) {
+    getTrappen().forEach(function (tr) {
+      var data = tr[p];
+      if (tr.navn.toLowerCase().indexOf(q) >= 0 || data.beskrivelse.toLowerCase().indexOf(q) >= 0) {
         results.push({
-          type: 'Nervesystem',
-          titel: t.navn,
+          type: t('soegNervesystem'),
+          titel: tr.navn,
           snippet: data.beskrivelse.substring(0, 120) + '...',
           action: function () { closeSearch(); showView('trappen'); }
         });
@@ -1060,12 +1422,12 @@
     });
 
     // Search sammenhænge
-    SAMMENHAENGE.forEach(function (s) {
+    getSammenhaenge().forEach(function (s) {
       var tekst = s[p] || s.privat;
       if (tekst.toLowerCase().indexOf(q) >= 0) {
         results.push({
-          type: 'Sammenhæng',
-          titel: (CIRKEL_NAVNE[s.fra] || s.fra) + ' ↔ ' + (CIRKEL_NAVNE[s.til] || s.til),
+          type: t('soegSammenhaeng'),
+          titel: (cirkelNavne[s.fra] || s.fra) + ' \u2194 ' + (cirkelNavne[s.til] || s.til),
           snippet: tekst.substring(0, 120) + '...',
           action: function () { closeSearch(); showCirkelDetail(s.fra); }
         });
@@ -1075,7 +1437,7 @@
     // Render
     var html = '';
     if (results.length === 0) {
-      html = '<p style="color:var(--text-muted);text-align:center;padding:32px 0;">Ingen resultater for "' + escapeHtml(query) + '"</p>';
+      html = '<p style="color:var(--text-muted);text-align:center;padding:32px 0;">' + t('ingenResultater') + ' "' + escapeHtml(query) + '"</p>';
     } else {
       results.forEach(function (r, i) {
         html += '<div class="search-result-card" data-result="' + i + '">' +
@@ -1117,7 +1479,7 @@
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
     }
-    return MULIGT_DEFAULTS.map(function (d) { return Object.assign({}, d); });
+    return getMuligtDefaults().map(function (d) { return Object.assign({}, d); });
   }
 
   function saveMuligtData(data) {
@@ -1131,10 +1493,10 @@
 
     var statusLabels = {
       'none': '',
-      'working': 'Under arbejde',
-      'waiting': 'Vi venter',
-      'temp': 'For nu',
-      'done': 'Løst'
+      'working': t('underArbejde'),
+      'waiting': t('viVenter'),
+      'temp': t('forNu'),
+      'done': t('loest')
     };
 
     var statusIcons = {
@@ -1152,19 +1514,19 @@
       html += '<div class="muligt-card-header">';
       html += '<div class="muligt-card-check" data-idx="' + idx + '">' + statusIcons[item.status] + '</div>';
       html += '<h3 class="muligt-card-titel">' + item.titel + '</h3>';
-      html += '<button class="muligt-card-delete" data-idx="' + idx + '" title="Fjern">&times;</button>';
+      html += '<button class="muligt-card-delete" data-idx="' + idx + '" title="' + t('fjern') + '">&times;</button>';
       html += '</div>';
       if (item.status !== 'none') {
         html += '<div class="muligt-card-badge">' + statusLabels[item.status] + '</div>';
       }
       html += '<div class="muligt-card-note-wrap">';
-      html += '<textarea class="muligt-card-note" data-idx="' + idx + '" placeholder="Hvad kan vi gøre lige nu?" rows="2">' + (item.note || '') + '</textarea>';
+      html += '<textarea class="muligt-card-note" data-idx="' + idx + '" placeholder="' + t('muligtPlaceholder') + '" rows="2">' + (item.note || '') + '</textarea>';
       html += '</div>';
       html += '<div class="muligt-card-statuses">';
-      html += '<button class="muligt-status-btn' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working" title="Under arbejde">' + IKONER.refresh(14) + '</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting" title="Vi venter">' + IKONER.hourglass(14) + '</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp" title="For nu — midlertidigt">' + IKONER.check(14) + '</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done" title="Løst">' + IKONER.checkCircle(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working" title="' + t('underArbejde') + '">' + IKONER.refresh(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting" title="' + t('viVenter') + '">' + IKONER.hourglass(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp" title="' + t('forNu') + '">' + IKONER.check(14) + '</button>';
+      html += '<button class="muligt-status-btn' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done" title="' + t('loest') + '">' + IKONER.checkCircle(14) + '</button>';
       html += '</div>';
       html += '</div>';
     });
@@ -1282,6 +1644,7 @@
   function renderKommune() {
     var container = document.getElementById('kommuneContent');
     if (!container) return;
+    var info = getPraksisInfo();
 
     var html = '';
 
@@ -1436,11 +1799,11 @@
     html += '<h3 class="kommune-cta-title">Klar til en samtale?</h3>';
     html += '<p class="kommune-cta-text">Rikke tager gerne en uforpligtende samtale om, hvordan et samarbejde kan se ud for jeres kommune.</p>';
     html += '<div class="kommune-cta-info">';
-    html += '<a href="tel:' + PRAKSIS_INFO.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">' + IKONER.phone(18) + ' Ring ' + PRAKSIS_INFO.telefon + '</a>';
-    html += '<a href="mailto:' + PRAKSIS_INFO.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">' + IKONER.mail(18) + ' Skriv til ' + PRAKSIS_INFO.email + '</a>';
+    html += '<a href="tel:' + info.telefon.replace(/\s/g, '') + '" class="kommune-cta-btn kommune-cta-btn-primary">' + IKONER.phone(18) + ' Ring ' + info.telefon + '</a>';
+    html += '<a href="mailto:' + info.email + '" class="kommune-cta-btn kommune-cta-btn-secondary">' + IKONER.mail(18) + ' Skriv til ' + info.email + '</a>';
     html += '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="kommune-cta-btn kommune-cta-btn-linkedin">' + IKONER.linkedin(18) + ' Se Rikkes LinkedIn</a>';
     html += '</div>';
-    html += '<p class="kommune-cta-cvr">CVR: ' + PRAKSIS_INFO.cvr + ' · ' + PRAKSIS_INFO.adresse + '</p>';
+    html += '<p class="kommune-cta-cvr">CVR: ' + info.cvr + ' · ' + info.adresse + '</p>';
     html += '</div>';
 
     container.innerHTML = html;
@@ -1471,13 +1834,13 @@
     if (fav.length === 0) {
       container.innerHTML = '<div class="favoritter-empty">' +
         '<div class="favoritter-empty-icon">' + IKONER.bookmark(32) + '</div>' +
-        '<p>Du har ikke gemt noget endnu.</p>' +
-        '<p class="favoritter-empty-hint">Tryk på ' + IKONER.bookmark(14) + ' Gem når du finder indhold, du vil vende tilbage til.</p>' +
+        '<p>' + t('ingenFavoritter') + '</p>' +
+        '<p class="favoritter-empty-hint">' + IKONER.bookmark(14) + ' ' + t('favoritHint') + '</p>' +
         '</div>';
       return;
     }
 
-    var typeLabels = { oevelse: 'Øvelse', fordybelse: 'Fordybelse', trappen: 'Nervesystemet' };
+    var typeLabels = { oevelse: t('oevelse'), fordybelse: t('fordybelseFav'), trappen: t('nervesystemet') };
     var typeIcons = { oevelse: IKONER.wind(16), fordybelse: IKONER.leaf(16), trappen: IKONER.lightning(16) };
 
     // Group by type
@@ -1495,9 +1858,9 @@
         html += '<div class="favoritter-item" data-fav-type="' + f.type + '" data-fav-id="' + escapeAttr(f.id) + '">' +
           '<div class="favoritter-item-info">' +
           '<div class="favoritter-item-titel">' + f.titel + '</div>' +
-          '<div class="favoritter-item-dato">Gemt ' + f.dato + '</div>' +
+          '<div class="favoritter-item-dato">' + t('favoritGemt') + ' ' + f.dato + '</div>' +
           '</div>' +
-          '<button class="favoritter-item-remove" data-fav-type="' + f.type + '" data-fav-id="' + escapeAttr(f.id) + '" title="Fjern">&times;</button>' +
+          '<button class="favoritter-item-remove" data-fav-type="' + f.type + '" data-fav-id="' + escapeAttr(f.id) + '" title="' + t('fjern') + '">&times;</button>' +
           '</div>';
       });
       html += '</div>';
@@ -1789,6 +2152,27 @@
 
   // ---------- Event Binding ----------
   function bindEvents() {
+    // Onboarding language switch
+    document.querySelectorAll('[data-onb-lang]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = this.getAttribute('data-onb-lang');
+        aktivSprog = lang;
+        localStorage.setItem('fp_sprog', lang);
+        document.querySelectorAll('[data-onb-lang]').forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        // Update onboarding texts
+        var el = function(id) { return document.getElementById(id); };
+        if (el('onbTekst')) el('onbTekst').textContent = t('onboardingTekst');
+        if (el('onbSpg')) el('onbSpg').textContent = t('onboardingSpg');
+        if (el('onbPrivatLabel')) el('onbPrivatLabel').textContent = t('privatKlient');
+        if (el('onbPrivatDesc')) el('onbPrivatDesc').textContent = t('privatKlientDesc');
+        if (el('onbProfLabel')) el('onbProfLabel').textContent = t('fagprofessionel');
+        if (el('onbProfDesc')) el('onbProfDesc').textContent = t('fagprofessionelDesc');
+        if (el('onbKomLabel')) el('onbKomLabel').textContent = t('samarbejde');
+        if (el('onbKomDesc')) el('onbKomDesc').textContent = t('samarbejdeDesc');
+      });
+    });
+
     // Onboarding buttons
     document.querySelectorAll('.onboarding-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

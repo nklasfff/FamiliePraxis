@@ -69,23 +69,27 @@
       </div>
       <h1 class="onboarding-title">Familiepraxis</h1>
       <p class="onboarding-subtitle">Rikke Veth · Familieterapeut</p>
-      <p class="onboarding-text">Velkommen. Denne app guider dig gennem familieterapiens kernebegreber — med øvelser, viden og refleksion.</p>
-      <p class="onboarding-text">Hvem er du?</p>
+      <div class="onboarding-lang" id="onboardingLang">
+        <button class="onboarding-lang-btn active" data-onb-lang="da">Dansk</button>
+        <button class="onboarding-lang-btn" data-onb-lang="en">English</button>
+      </div>
+      <p class="onboarding-text" id="onbTekst">Velkommen. Denne app guider dig gennem familieterapiens kernebegreber — med øvelser, viden og refleksion.</p>
+      <p class="onboarding-text" id="onbSpg">Hvem er du?</p>
       <div class="onboarding-buttons">
         <button class="onboarding-btn" data-perspektiv="privat">
           <span class="onboarding-btn-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-          <span class="onboarding-btn-label">Jeg er privat klient</span>
-          <span class="onboarding-btn-desc">Familie, par eller individuel</span>
+          <span class="onboarding-btn-label" id="onbPrivatLabel">Jeg er privat klient</span>
+          <span class="onboarding-btn-desc" id="onbPrivatDesc">Familie, par eller individuel</span>
         </button>
         <button class="onboarding-btn" data-perspektiv="professionel">
           <span class="onboarding-btn-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><path d="M9 22v-4h6v4"/></svg></span>
-          <span class="onboarding-btn-label">Jeg er fagprofessionel</span>
-          <span class="onboarding-btn-desc">Supervision, sparring eller kollegial viden</span>
+          <span class="onboarding-btn-label" id="onbProfLabel">Jeg er fagprofessionel</span>
+          <span class="onboarding-btn-desc" id="onbProfDesc">Supervision, sparring eller kollegial viden</span>
         </button>
         <button class="onboarding-btn" data-perspektiv="kommune">
           <span class="onboarding-btn-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11h3a2 2 0 0 0 0-4h-3.5L14 4.5 11.5 7 8 4H4a2 2 0 0 0 0 4h3"/><path d="M7 11l3.5 3.5L14 11l3 3"/><path d="M10.5 14.5L8 17l3 3 5-5"/></svg></span>
-          <span class="onboarding-btn-label">Kommune & samarbejde</span>
-          <span class="onboarding-btn-desc">Jeg overvejer et samarbejde med Rikke</span>
+          <span class="onboarding-btn-label" id="onbKomLabel">Kommune & samarbejde</span>
+          <span class="onboarding-btn-desc" id="onbKomDesc">Jeg overvejer et samarbejde med Rikke</span>
         </button>
       </div>
     </div>
@@ -309,6 +313,7 @@
   </nav>
 
   <script src="js/data.js"></script>
+  <script src="js/data-en.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
