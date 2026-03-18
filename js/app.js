@@ -2260,6 +2260,7 @@
         this.classList.add('active');
         // Update onboarding texts
         var el = function(id) { return document.getElementById(id); };
+        if (el('onbSubtitle')) el('onbSubtitle').textContent = 'Rikke Veth · ' + t('terapeutTitel');
         if (el('onbTekst')) el('onbTekst').textContent = t('onboardingTekst');
         if (el('onbSpg')) el('onbSpg').textContent = t('onboardingSpg');
         if (el('onbPrivatLabel')) el('onbPrivatLabel').textContent = t('privatKlient');
