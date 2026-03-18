@@ -262,6 +262,14 @@
       refleksionTemaRelationel: 'Relationel bevidsthed',
       refleksionTemaSystemisk: 'Systemisk blik',
       refleksionTemaSelvomsorg: 'Selvomsorg',
+      tidligereRefleksioner: 'Tidligere refleksioner',
+      dinProcesOverskrift: 'Din proces',
+      dinProcesIntro: 'Et overblik over hvad du har udforsket — øvelser du har prøvet og tanker du har skrevet ned.',
+      procesOevelserLabel: 'Øvelser du har prøvet',
+      procesGangeGennemfoert: '{count} gange',
+      procesRefleksionerSkrevet: '{count} refleksioner skrevet',
+      procesRefleksionerLabel: 'Dine refleksioner',
+      procesVisJournal: 'Se hele journalen',
       // Trappen — mærk ind & mønster
       maerkInd: 'Mærk ind',
       maerkIndSpg: 'Hvor er du lige nu?',
@@ -449,6 +457,14 @@
       refleksionTemaRelationel: 'Relational awareness',
       refleksionTemaSystemisk: 'Systemic perspective',
       refleksionTemaSelvomsorg: 'Self-care',
+      tidligereRefleksioner: 'Earlier reflections',
+      dinProcesOverskrift: 'Your process',
+      dinProcesIntro: 'An overview of what you\'ve explored — exercises you\'ve tried and thoughts you\'ve written down.',
+      procesOevelserLabel: 'Exercises you\'ve tried',
+      procesGangeGennemfoert: '{count} times',
+      procesRefleksionerSkrevet: '{count} reflections written',
+      procesRefleksionerLabel: 'Your reflections',
+      procesVisJournal: 'View full journal',
       // Trappen — check in & pattern
       maerkInd: 'Check in',
       maerkIndSpg: 'Where are you right now?',
@@ -710,34 +726,82 @@
 
   // ---------- Øvelses-progression ----------
   function getOevelsesDone() {
-    try { return JSON.parse(localStorage.getItem('fp_oevelsesDone') || '[]'); } catch(e) { return []; }
+    try { return JSON.parse(localStorage.getItem('fp_oevelsesDone2') || '[]'); } catch(e) { return []; }
   }
 
   function saveOevelsesDone(list) {
-    localStorage.setItem('fp_oevelsesDone', JSON.stringify(list));
+    localStorage.setItem('fp_oevelsesDone2', JSON.stringify(list));
   }
 
   function toggleOevelseDone(id) {
     var done = getOevelsesDone();
-    var idx = done.indexOf(id);
-    if (idx >= 0) { done.splice(idx, 1); } else { done.push(id); }
+    var idag = new Date().toISOString().slice(0, 10);
+    // Fjern hvis allerede markeret i dag, ellers tilføj
+    var dagIdx = -1;
+    for (var i = 0; i < done.length; i++) {
+      if (done[i].id === id && done[i].dato === idag) { dagIdx = i; break; }
+    }
+    if (dagIdx >= 0) {
+      done.splice(dagIdx, 1);
+    } else {
+      done.push({ id: id, dato: idag });
+    }
     saveOevelsesDone(done);
-    return idx < 0;
+    return dagIdx < 0;
   }
 
   function isOevelseDone(id) {
-    return getOevelsesDone().indexOf(id) >= 0;
+    var done = getOevelsesDone();
+    for (var i = 0; i < done.length; i++) {
+      if (done[i].id === id) return true;
+    }
+    return false;
   }
 
-  // Øvelses-refleksionssvar (efter øvelse)
-  function getOevelseRefleksionSvar(oevelseId) {
-    try { return JSON.parse(localStorage.getItem('fp_oevRefl_' + oevelseId) || '{}'); } catch(e) { return {}; }
+  function getOevelseHistorik(id) {
+    var done = getOevelsesDone();
+    var hist = [];
+    for (var i = 0; i < done.length; i++) {
+      if (done[i].id === id) hist.push(done[i].dato);
+    }
+    return hist;
   }
 
-  function saveOevelseRefleksionSvar(oevelseId, idx, svar) {
-    var data = getOevelseRefleksionSvar(oevelseId);
-    data[idx] = svar;
-    localStorage.setItem('fp_oevRefl_' + oevelseId, JSON.stringify(data));
+  function getUnikkeOevelserDone() {
+    var done = getOevelsesDone();
+    var set = {};
+    done.forEach(function(d) { set[d.id] = true; });
+    return Object.keys(set);
+  }
+
+  // Øvelses-refleksionssvar — kumulativ tidslinje
+  function getOevelseRefleksioner(oevelseId) {
+    try { return JSON.parse(localStorage.getItem('fp_oevRefl2_' + oevelseId) || '[]'); } catch(e) { return []; }
+  }
+
+  function saveOevelseRefleksion(oevelseId, spoergsmaalsIdx, svar) {
+    var refleksioner = getOevelseRefleksioner(oevelseId);
+    var idag = new Date().toISOString().slice(0, 10);
+    // Find eller opret dagens entry
+    var dagEntry = null;
+    for (var i = 0; i < refleksioner.length; i++) {
+      if (refleksioner[i].dato === idag) { dagEntry = refleksioner[i]; break; }
+    }
+    if (!dagEntry) {
+      dagEntry = { dato: idag, svar: {} };
+      refleksioner.push(dagEntry);
+    }
+    dagEntry.svar[spoergsmaalsIdx] = svar;
+    localStorage.setItem('fp_oevRefl2_' + oevelseId, JSON.stringify(refleksioner));
+  }
+
+  function getDagensOevelseRefleksion(oevelseId) {
+    var refleksioner = getOevelseRefleksioner(oevelseId);
+    var idag = new Date().toISOString().slice(0, 10);
+    for (var i = 0; i < refleksioner.length; i++) {
+      if (refleksioner[i].dato === idag) return refleksioner[i].svar || {};
+    }
+    return {};
   }
 
   // Farvekoder for øvelses-typer baseret på cirkel
@@ -1476,19 +1540,7 @@
       descEl.textContent = p === 'professionel' ? t('oevelserIntroProf') : t('oevelserIntroPrivat');
     }
 
-    // === Progression ===
-    if (done.length > 0) {
-      html += '<div class="oevelse-progression">' +
-        '<div class="oevelse-progression-bar">';
-      oevelser.forEach(function(oev) {
-        var isDone = done.indexOf(oev.id) >= 0;
-        var farve = OEVELSE_FARVER[oev.cirkel] || 'sage';
-        html += '<div class="oevelse-progression-seg ' + (isDone ? farve : 'tom') + '"></div>';
-      });
-      html += '</div>' +
-        '<div class="oevelse-progression-tekst">' + t('oevelseProgression').replace('{done}', done.length).replace('{total}', oevelser.length) + '</div>' +
-        '</div>';
-    }
+    // (Progression er flyttet til "Din proces" i bunden)
 
     // === Øvelseskort ===
     oevelser.forEach(function (oev, idx) {
@@ -1542,18 +1594,47 @@
         });
       }
 
-      // Refleksion efter øvelsen
+      // Refleksion efter øvelsen — kumulativ
       var refl = OEVELSE_REFLEKSIONER[oev.id];
       if (refl && refl[p]) {
-        var reflSvar = getOevelseRefleksionSvar(oev.id);
+        var allRefl = getOevelseRefleksioner(oev.id);
+        var dagsSvar = getDagensOevelseRefleksion(oev.id);
+
         html += '<div class="oevelse-refl-sektion">';
         html += '<div class="oevelse-refl-titel">' + t('oevelseRefleksion') + '</div>';
+
+        // Dagens skrivefelter
         refl[p].forEach(function(spg, si) {
           html += '<div class="oevelse-refl-item">';
           html += '<div class="oevelse-refl-spg">' + spg + '</div>';
-          html += '<textarea class="oevelse-refl-svar" data-oev="' + oev.id + '" data-refl-idx="' + si + '" placeholder="' + t('refleksionPlaceholder') + '" rows="2">' + (reflSvar[si] || '') + '</textarea>';
+          html += '<textarea class="oevelse-refl-svar" data-oev="' + oev.id + '" data-refl-idx="' + si + '" placeholder="' + t('refleksionPlaceholder') + '" rows="2">' + (dagsSvar[si] || '') + '</textarea>';
           html += '</div>';
         });
+
+        // Tidligere refleksioner (tidslinje)
+        var tidligereRefl = allRefl.filter(function(r) {
+          return r.dato !== new Date().toISOString().slice(0, 10);
+        });
+        if (tidligereRefl.length > 0) {
+          html += '<div class="oevelse-refl-tidslinje">';
+          html += '<div class="oevelse-refl-tidslinje-titel">' + t('tidligereRefleksioner') + '</div>';
+          tidligereRefl.slice().reverse().forEach(function(entry) {
+            var d = new Date(entry.dato);
+            var dagNavn = t('dagLabels')[(d.getDay() + 6) % 7];
+            var maanedNavn = t('maanedNavne')[d.getMonth()];
+            html += '<div class="oevelse-refl-dato">' + dagNavn + ' ' + d.getDate() + '. ' + maanedNavn + '</div>';
+            refl[p].forEach(function(spg, si) {
+              if (entry.svar && entry.svar[si]) {
+                html += '<div class="oevelse-refl-historik">';
+                html += '<div class="oevelse-refl-historik-spg">' + spg + '</div>';
+                html += '<div class="oevelse-refl-historik-svar">' + entry.svar[si] + '</div>';
+                html += '</div>';
+              }
+            });
+          });
+          html += '</div>';
+        }
+
         html += '</div>';
       }
 
@@ -1570,6 +1651,9 @@
 
     // === Refleksions-sektion (efter øvelserne) ===
     html += renderRefleksionsSektion(p);
+
+    // === Din proces (helt i bunden) ===
+    html += renderDinProces(p);
 
     list.innerHTML = html;
 
@@ -1629,7 +1713,7 @@
         var rIdx = parseInt(this.getAttribute('data-refl-idx'));
         var val = this.value;
         clearTimeout(timeout);
-        timeout = setTimeout(function() { saveOevelseRefleksionSvar(oevId, rIdx, val); }, 500);
+        timeout = setTimeout(function() { saveOevelseRefleksion(oevId, rIdx, val); }, 500);
       });
     });
 
@@ -1698,20 +1782,6 @@
     html += '<p class="refl-sektion-intro">' + (p === 'professionel' ? t('refleksionerIntroProf') : t('refleksionerIntroPrivat')) + '</p>';
     html += '</div>';
 
-    // Journal-knap
-    var journal = getRefleksionJournal();
-    if (journal.length > 0) {
-      html += '<button class="refl-journal-btn" id="journalToggle">' +
-        IKONER.bookmark(14) + ' ' + t('minJournal') +
-        '<span class="refl-journal-count">' + t('refleksionAntal').replace('{count}', journal.length) + '</span>' +
-        '</button>';
-    }
-
-    // Journal (skjult til toggled)
-    if (visJournal && journal.length > 0) {
-      html += renderJournal(journal);
-    }
-
     // Gruppér spørgsmål per tema
     var temaer = {};
     var temaRaekkefoelge = [];
@@ -1723,13 +1793,12 @@
       temaer[s.tema].push(s);
     });
 
-    // Vis 3 spørgsmål ad gangen: ét fra hvert tema, roteret dagligt
+    // Vis ét spørgsmål per tema, roteret dagligt
     var idag = new Date();
     var dagNr = Math.floor(idag.getTime() / (1000 * 60 * 60 * 24));
 
-    temaRaekkefoelge.forEach(function(tema, temaIdx) {
+    temaRaekkefoelge.forEach(function(tema) {
       var temaSpg = temaer[tema];
-      // Vælg ét spørgsmål per tema, rotér dagligt
       var valgt = temaSpg[dagNr % temaSpg.length];
       var svar = getDagensRefleksionSvar(valgt.id);
       var temaKey = REFL_TEMA_KEYS[tema] || tema;
@@ -1744,6 +1813,117 @@
       html += '</div>';
       html += '</div>';
     });
+
+    return html;
+  }
+
+  // ---------- Din proces ----------
+  function renderDinProces(p) {
+    var oevelser = getOevelser();
+    var done = getOevelsesDone();
+    var journal = getRefleksionJournal();
+    var unikke = getUnikkeOevelserDone();
+
+    // Vis kun hvis der er noget at vise
+    if (done.length === 0 && journal.length === 0) return '';
+
+    var html = '';
+
+    // Adskillelse
+    html += '<div class="refl-sektion-divider">';
+    html += '<div class="refl-sektion-linje"></div>';
+    html += '<h3 class="refl-sektion-overskrift">' + t('dinProcesOverskrift') + '</h3>';
+    html += '<p class="refl-sektion-intro">' + t('dinProcesIntro') + '</p>';
+    html += '</div>';
+
+    // Øvelses-tidslinje
+    if (done.length > 0) {
+      html += '<div class="proces-oevelser">';
+      html += '<div class="proces-label">' + t('procesOevelserLabel') + '</div>';
+
+      // Gruppér per øvelse
+      var oevMap = {};
+      oevelser.forEach(function(oev) { oevMap[oev.id] = oev; });
+
+      var perOevelse = {};
+      done.forEach(function(d) {
+        if (!perOevelse[d.id]) perOevelse[d.id] = [];
+        perOevelse[d.id].push(d.dato);
+      });
+
+      Object.keys(perOevelse).forEach(function(oevId) {
+        var oev = oevMap[oevId];
+        if (!oev) return;
+        var datoer = perOevelse[oevId];
+        var farve = OEVELSE_FARVER[oev.cirkel] || 'sage';
+        var reflAntal = getOevelseRefleksioner(oevId).length;
+
+        html += '<div class="proces-oevelse-item">';
+        html += '<div class="proces-oevelse-dot ' + farve + '"></div>';
+        html += '<div class="proces-oevelse-info">';
+        html += '<div class="proces-oevelse-titel">' + oev.titel + '</div>';
+
+        if (datoer.length === 1) {
+          var d = new Date(datoer[0]);
+          var dagNavn = t('dagLabels')[(d.getDay() + 6) % 7];
+          var maanedNavn = t('maanedNavne')[d.getMonth()];
+          html += '<div class="proces-oevelse-dato">' + dagNavn + ' ' + d.getDate() + '. ' + maanedNavn + '</div>';
+        } else {
+          html += '<div class="proces-oevelse-dato">' + t('procesGangeGennemfoert').replace('{count}', datoer.length) + '</div>';
+        }
+
+        if (reflAntal > 0) {
+          html += '<div class="proces-oevelse-refl">' + t('procesRefleksionerSkrevet').replace('{count}', reflAntal) + '</div>';
+        }
+
+        html += '</div></div>';
+      });
+
+      html += '</div>';
+    }
+
+    // Refleksions-overblik: tematisk
+    if (journal.length > 0) {
+      html += '<div class="proces-refleksioner">';
+      html += '<div class="proces-label">' + t('procesRefleksionerLabel') + '</div>';
+
+      // Tæl per tema
+      var temaTaeller = {};
+      journal.forEach(function(entry) {
+        // Find temaet for dette spørgsmål
+        var spgData = null;
+        var allSpg = (REFLEKSIONER[p] || REFLEKSIONER.privat);
+        for (var i = 0; i < allSpg.length; i++) {
+          if (allSpg[i].id === entry.spoergsmaalId) { spgData = allSpg[i]; break; }
+        }
+        if (spgData) {
+          var temaKey = REFL_TEMA_KEYS[spgData.tema] || spgData.tema;
+          var temaNavn = t(temaKey) || spgData.tema;
+          temaTaeller[temaNavn] = (temaTaeller[temaNavn] || 0) + 1;
+        }
+      });
+
+      // Vis tema-bobler
+      html += '<div class="proces-tema-overblik">';
+      Object.keys(temaTaeller).forEach(function(tema) {
+        html += '<span class="proces-tema-boble">' + tema + ' <span class="proces-tema-antal">' + temaTaeller[tema] + '</span></span>';
+      });
+      html += '</div>';
+
+      html += '<div class="proces-refleksion-total">' + t('refleksionAntal').replace('{count}', journal.length) + '</div>';
+
+      // Journal-knap
+      html += '<button class="refl-journal-btn" id="journalToggle">' +
+        IKONER.bookmark(14) + ' ' + t('procesVisJournal') +
+        '</button>';
+
+      // Journal (skjult til toggled)
+      if (visJournal) {
+        html += renderJournal(journal);
+      }
+
+      html += '</div>';
+    }
 
     return html;
   }

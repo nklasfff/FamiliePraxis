@@ -1606,37 +1606,6 @@ body {
   padding: 0 20px 14px;
 }
 
-/* ---------- Øvelse-progression ---------- */
-.oevelse-progression {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1.5px solid var(--border);
-  padding: 14px 18px;
-  margin-bottom: 16px;
-}
-
-.oevelse-progression-bar {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 8px;
-}
-
-.oevelse-progression-seg {
-  flex: 1;
-  height: 5px;
-  border-radius: 3px;
-}
-
-.oevelse-progression-seg.sage { background: var(--sage); }
-.oevelse-progression-seg.amber { background: var(--amber); }
-.oevelse-progression-seg.rose { background: var(--rose); }
-.oevelse-progression-seg.tom { background: var(--border); opacity: 0.3; }
-
-.oevelse-progression-tekst {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
 /* ---------- Trin-for-trin visning ---------- */
 .oevelse-start-btn {
   display: inline-flex;
@@ -1912,6 +1881,154 @@ body {
   color: var(--sage);
   font-weight: 600;
   transition: opacity 0.3s;
+}
+
+/* ---------- Øvelses-refleksions-tidslinje ---------- */
+.oevelse-refl-tidslinje {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+
+.oevelse-refl-tidslinje-titel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.oevelse-refl-dato {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.oevelse-refl-historik {
+  margin-bottom: 8px;
+}
+
+.oevelse-refl-historik-spg {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+
+.oevelse-refl-historik-svar {
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.5;
+  padding: 6px 10px;
+  background: var(--bg);
+  border-radius: 6px;
+  white-space: pre-wrap;
+}
+
+/* ---------- Din proces ---------- */
+.proces-oevelser,
+.proces-refleksioner {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+
+.proces-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.proces-oevelse-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.proces-oevelse-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.proces-oevelse-item:first-child {
+  padding-top: 0;
+}
+
+.proces-oevelse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.proces-oevelse-dot.sage { background: var(--sage); }
+.proces-oevelse-dot.amber { background: var(--amber); }
+.proces-oevelse-dot.rose { background: var(--rose); }
+
+.proces-oevelse-info {
+  flex: 1;
+}
+
+.proces-oevelse-titel {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.proces-oevelse-dato {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.proces-oevelse-refl {
+  font-size: 0.72rem;
+  color: var(--sage);
+  margin-top: 2px;
+}
+
+.proces-tema-overblik {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.proces-tema-boble {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+.proces-tema-antal {
+  font-weight: 600;
+  color: var(--amber);
+  font-size: 0.72rem;
+}
+
+.proces-refleksion-total {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
 }
 
 /* ---------- Journal ---------- */
