@@ -1732,6 +1732,7 @@
     var container = document.getElementById('kommuneContent');
     if (!container) return;
     var info = getPraksisInfo();
+    var isEn = aktivSprog === 'en';
 
     var html = '';
 
@@ -2047,14 +2048,14 @@
     html += '<p class="dynamik-svg-caption">' + (isEn ? 'The system in balance — all areas support each other' : 'Systemet i balance — alle områder støtter hinanden') + '</p>';
     html += '</div>';
 
-    html += '<p class="dynamik-text">Når familien fungerer, arbejder alle syv dimensioner sammen i en gensidig vekselvirkning. I narrativ-systemisk forståelse er det den tilstand hvor familiens fortælling bærer alle medlemmer — hvor hver stemme har plads, og hvor relationer er fleksible nok til at rumme konflikter uden at bryde sammen.</p>';
-    html += '<p class="dynamik-text">I denne tilstand er tilknytningen tryg. Parforholdet bærer. Barnet mærker at det er set og hørt. Åndedrættet er dybt og frit. Og de mønstre, der præger samspillet, er bløde nok til at tillade forandring. Familiens nervesystem — det fælles reguleringssystem — kører i et roligt, stabilt gear.</p>';
-    html += '<p class="dynamik-text">Læg mærke til figuren. Symmetrien. De lige afstande. Forbindelseslinjerne der fordeler sig jævnt. Du kan se det med det samme — her er noget der fungerer. Symmetrien afspejler et system i harmoni.</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'When the family functions well, all seven dimensions work together in mutual interaction. In a narrative-systemic understanding, this is the state where the family\'s story carries all members — where each voice has space, and where relationships are flexible enough to contain conflicts without breaking down.' : 'Når familien fungerer, arbejder alle syv dimensioner sammen i en gensidig vekselvirkning. I narrativ-systemisk forståelse er det den tilstand hvor familiens fortælling bærer alle medlemmer — hvor hver stemme har plads, og hvor relationer er fleksible nok til at rumme konflikter uden at bryde sammen.') + '</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'In this state, attachment is secure. The couple carries. The child feels seen and heard. Breathing is deep and free. And the patterns that shape interaction are soft enough to allow change. The family\'s nervous system — the shared regulation system — runs in a calm, steady gear.' : 'I denne tilstand er tilknytningen tryg. Parforholdet bærer. Barnet mærker at det er set og hørt. Åndedrættet er dybt og frit. Og de mønstre, der præger samspillet, er bløde nok til at tillade forandring. Familiens nervesystem — det fælles reguleringssystem — kører i et roligt, stabilt gear.') + '</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'Notice the figure. The symmetry. The even distances. The connection lines distributed evenly. You can see it immediately — something is working here. The symmetry reflects a system in harmony.' : 'Læg mærke til figuren. Symmetrien. De lige afstande. Forbindelseslinjerne der fordeler sig jævnt. Du kan se det med det samme — her er noget der fungerer. Symmetrien afspejler et system i harmoni.') + '</p>';
     html += '</div>';
 
     // === SECTION 2: Under pressure ===
     html += '<div class="dynamik-section">';
-    html += '<h3 class="dynamik-section-title">Når systemet er under pres</h3>';
+    html += '<h3 class="dynamik-section-title">' + (isEn ? 'When the system is under pressure' : 'Når systemet er under pres') + '</h3>';
 
     html += '<div class="dynamik-svg-wrap">';
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
@@ -2073,15 +2074,15 @@
     html += '</g>';
     html += '<circle cx="270" cy="255" r="68" fill="#fff"/>';
     html += '<circle cx="270" cy="255" r="68" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
-    html += '<text x="270" y="247" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Familien</text>';
-    html += '<text x="270" y="267" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">som helhed</text>';
+    html += '<text x="270" y="247" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">' + (isEn ? 'The family' : 'Familien') + '</text>';
+    html += '<text x="270" y="267" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">' + (isEn ? 'as a whole' : 'som helhed') + '</text>';
     var presCircles = [
-      {x:240,y:100,r:48,l1:'Tilknytning',l2:'& tryghed',op:'0.7'},
-      {x:405,y:165,r:44,l1:'Parforholdet',l2:'& nærvær',op:'0.65'},
-      {x:380,y:355,r:62,l1:'Samspil',l2:'& mønstre',op:'0.9'},
-      {x:280,y:420,r:50,l1:'Barnets',l2:'stemme',op:'0.75'},
-      {x:115,y:310,r:58,l1:'Åndedræt &',l2:'nervesystem',op:'0.85'},
-      {x:145,y:200,r:42,l1:'Dig selv',l2:'& dine spor',op:'0.6'}
+      {x:240,y:100,r:48,l1:(isEn?'Attachment':'Tilknytning'),l2:(isEn?'& security':'& tryghed'),op:'0.7'},
+      {x:405,y:165,r:44,l1:(isEn?'The couple':'Parforholdet'),l2:(isEn?'& presence':'& nærvær'),op:'0.65'},
+      {x:380,y:355,r:62,l1:(isEn?'Interaction':'Samspil'),l2:(isEn?'& patterns':'& mønstre'),op:'0.9'},
+      {x:280,y:420,r:50,l1:(isEn?'The child\'s':'Barnets'),l2:(isEn?'voice':'stemme'),op:'0.75'},
+      {x:115,y:310,r:58,l1:(isEn?'Breathing &':'Åndedræt &'),l2:(isEn?'nervous system':'nervesystem'),op:'0.85'},
+      {x:145,y:200,r:42,l1:(isEn?'Yourself':'Dig selv'),l2:(isEn?'& your traces':'& dine spor'),op:'0.6'}
     ];
     presCircles.forEach(function(c){
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#fff"/>';
@@ -2090,17 +2091,17 @@
       html += '<text x="'+c.x+'" y="'+(c.y+10)+'" fill="#fff" font-family="Georgia,serif" font-size="12" text-anchor="middle">'+c.l2+'</text>';
     });
     html += '</svg>';
-    html += '<p class="dynamik-svg-caption">Systemet under pres — symmetrien er brudt</p>';
+    html += '<p class="dynamik-svg-caption">' + (isEn ? 'The system under pressure — the symmetry is broken' : 'Systemet under pres — symmetrien er brudt') + '</p>';
     html += '</div>';
 
-    html += '<p class="dynamik-text">Men livet ser ikke altid sådan ud. Stress, traumer, anbringelser, skilsmisse, vold, misbrug, kronisk pres fra kommunale systemer — alt dette trækker familien ud af balance. Og det sker ikke isoleret. Når ét område belastes, mærker alle de andre det.</p>';
-    html += '<p class="dynamik-text">Se på figuren. Sammenlign den med den forrige. Symmetrien er brudt. Nogle cirkler er trukket tættere sammen, andre skubbet fra hinanden. Cirklerne har ændret størrelse — nogle er svundet ind, andre vokset. Det er præcis sådan det føles i en familie under pres.</p>';
-    html += '<p class="dynamik-text">Noget er skævt. Noget sidder fast. Du kan mærke det i kroppen, i samspillet ved aftenbordet, i den måde I taler til hinanden på — men det er svært at sætte fingeren på, hvad det egentlig er. Og det er fordi det ikke er ét enkelt problem. Det er hele familiesystemet der er trukket ud af sin naturlige balance.</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'But life doesn\'t always look like this. Stress, trauma, placements, divorce, violence, abuse, chronic pressure from municipal systems — all of this pulls the family out of balance. And it doesn\'t happen in isolation. When one area is burdened, all the others feel it.' : 'Men livet ser ikke altid sådan ud. Stress, traumer, anbringelser, skilsmisse, vold, misbrug, kronisk pres fra kommunale systemer — alt dette trækker familien ud af balance. Og det sker ikke isoleret. Når ét område belastes, mærker alle de andre det.') + '</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'Look at the figure. Compare it with the previous one. The symmetry is broken. Some circles are pulled closer together, others pushed apart. The circles have changed size — some have shrunk, others grown. That is exactly how it feels in a family under pressure.' : 'Se på figuren. Sammenlign den med den forrige. Symmetrien er brudt. Nogle cirkler er trukket tættere sammen, andre skubbet fra hinanden. Cirklerne har ændret størrelse — nogle er svundet ind, andre vokset. Det er præcis sådan det føles i en familie under pres.') + '</p>';
+    html += '<p class="dynamik-text">' + (isEn ? 'Something is off. Something is stuck. You can feel it in your body, in the interaction at the dinner table, in the way you speak to each other — but it\'s hard to pinpoint what it actually is. And that\'s because it\'s not one single problem. It\'s the entire family system that has been pulled out of its natural balance.' : 'Noget er skævt. Noget sidder fast. Du kan mærke det i kroppen, i samspillet ved aftenbordet, i den måde I taler til hinanden på — men det er svært at sætte fingeren på, hvad det egentlig er. Og det er fordi det ikke er ét enkelt problem. Det er hele familiesystemet der er trukket ud af sin naturlige balance.') + '</p>';
     html += '</div>';
 
     // === SECTION 3: One area dominates ===
     html += '<div class="dynamik-section">';
-    html += '<h3 class="dynamik-section-title">Når ét område dominerer</h3>';
+    html += '<h3 class="dynamik-section-title">' + (isEn ? 'When one area dominates' : 'Når ét område dominerer') + '</h3>';
 
     html += '<div class="dynamik-svg-wrap">';
     html += '<svg viewBox="0 0 520 520" class="dynamik-svg">';
@@ -2119,20 +2120,20 @@
     html += '</g>';
     html += '<circle cx="280" cy="260" r="65" fill="#fff"/>';
     html += '<circle cx="280" cy="260" r="65" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
-    html += '<text x="280" y="252" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Familien</text>';
-    html += '<text x="280" y="272" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">som helhed</text>';
+    html += '<text x="280" y="252" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">' + (isEn ? 'The family' : 'Familien') + '</text>';
+    html += '<text x="280" y="272" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">' + (isEn ? 'as a whole' : 'som helhed') + '</text>';
     // Big "individuel" circle — white mask first
     html += '<circle cx="100" cy="165" r="78" fill="#fff"/>';
     html += '<circle cx="100" cy="165" r="78" fill="#9E6B7B" stroke="#7D5563" stroke-width="2" opacity="0.85"/>';
-    html += '<text x="100" y="155" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">Ubearbejdede</text>';
-    html += '<text x="100" y="175" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">spor</text>';
+    html += '<text x="100" y="155" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">' + (isEn ? 'Unprocessed' : 'Ubearbejdede') + '</text>';
+    html += '<text x="100" y="175" fill="#fff" font-family="Georgia,serif" font-size="14" text-anchor="middle" font-weight="600">' + (isEn ? 'traces' : 'spor') + '</text>';
     // Other circles - smaller, pulled toward trauma
     var domCircles = [
-      {x:255,y:115,r:42,l1:'Tilknytning',l2:'& tryghed',op:'0.6'},
-      {x:395,y:200,r:40,l1:'Parforholdet',l2:'& nærvær',op:'0.55'},
-      {x:370,y:350,r:48,l1:'Samspil',l2:'& mønstre',op:'0.7'},
-      {x:260,y:415,r:44,l1:'Barnets',l2:'stemme',op:'0.65'},
-      {x:120,y:320,r:46,l1:'Åndedræt &',l2:'nervesystem',op:'0.7'}
+      {x:255,y:115,r:42,l1:(isEn?'Attachment':'Tilknytning'),l2:(isEn?'& security':'& tryghed'),op:'0.6'},
+      {x:395,y:200,r:40,l1:(isEn?'The couple':'Parforholdet'),l2:(isEn?'& presence':'& nærvær'),op:'0.55'},
+      {x:370,y:350,r:48,l1:(isEn?'Interaction':'Samspil'),l2:(isEn?'& patterns':'& mønstre'),op:'0.7'},
+      {x:260,y:415,r:44,l1:(isEn?'The child\'s':'Barnets'),l2:(isEn?'voice':'stemme'),op:'0.65'},
+      {x:120,y:320,r:46,l1:(isEn?'Breathing &':'Åndedræt &'),l2:(isEn?'nervous system':'nervesystem'),op:'0.7'}
     ];
     domCircles.forEach(function(c){
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#fff"/>';
@@ -2141,7 +2142,7 @@
       html += '<text x="'+c.x+'" y="'+(c.y+8)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l2+'</text>';
     });
     html += '</svg>';
-    html += '<p class="dynamik-svg-caption">Ubearbejdede spor fra fortiden trækker hele familiesystemet mod sig</p>';
+    html += '<p class="dynamik-svg-caption">' + (isEn ? 'Unprocessed traces from the past pull the entire family system toward them' : 'Ubearbejdede spor fra fortiden trækker hele familiesystemet mod sig') + '</p>';
     html += '</div>';
 
     html += '<p class="dynamik-text">Lad os se nærmere på hvad der sker, når ét specifikt område er under pres — for eksempel ubearbejdede spor fra en forælders egen barndom.</p>';
