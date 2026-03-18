@@ -59,6 +59,9 @@
 
     // Social
     linkedin:    function(s){ return svgWrap(s||16, '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>'); },
+    globe:       function(s){ return svgWrap(s||16, '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/>'); },
+    share:       function(s){ return svgWrap(s||16, '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>'); },
+    trash:       function(s){ return svgWrap(s||16, '<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>'); },
 
     // Favoritter
     bookmark:    function(s){ return svgWrap(s||18, '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>'); },
@@ -115,6 +118,12 @@
       ugentligOpsummering: 'Ugentlig opsummering',
       privatlivTitel: 'Privatliv & data',
       privatlivTekst: 'Denne app gemmer kun data lokalt på din enhed. Ingen sporing, ingen cookies, ingen tredjeparter.',
+      hjemmeside: 'Hjemmeside',
+      nulstilData: 'Nulstil alle data',
+      nulstilBekraeft: 'Er du sikker? Dette sletter alle dine gemte data, favoritter og indstillinger. Det kan ikke fortrydes.',
+      nulstilFaerdig: 'Alle data er nulstillet.',
+      delApp: 'Del FamiliePraxis',
+      delAppTekst: 'FamiliePraxis — en app til familier under pres. Prøv den her:',
       sprog: 'Sprog',
       // Favoritter
       gemtSom: 'Gem',
@@ -166,6 +175,7 @@
       nyhedsbrevPlaceholder: 'Din e-mailadresse',
       nyhedsbrevBtn: 'Tilmeld & modtag mini-bog',
       nyhedsbrevPrivacy: 'Ingen spam. Kun indhold med mening. Du kan altid afmelde dig.',
+      nyhedsbrevConsent: 'Ja, jeg vil gerne modtage nyhedsbrev fra Rikke med indsigt om familieliv og relationer. Jeg kan til enhver tid afmelde mig.',
       // Diverse
       tilbage: 'Tilbage',
       heroTitel: 'Relationer der bærer',
@@ -233,6 +243,12 @@
       ugentligOpsummering: 'Weekly summary',
       privatlivTitel: 'Privacy & data',
       privatlivTekst: 'This app only stores data locally on your device. No tracking, no cookies, no third parties.',
+      hjemmeside: 'Website',
+      nulstilData: 'Reset all data',
+      nulstilBekraeft: 'Are you sure? This will delete all your saved data, bookmarks, and settings. This cannot be undone.',
+      nulstilFaerdig: 'All data has been reset.',
+      delApp: 'Share FamiliePraxis',
+      delAppTekst: 'FamiliePraxis — an app for families under pressure. Try it here:',
       sprog: 'Language',
       gemtSom: 'Save',
       gemt: 'Saved',
@@ -278,6 +294,7 @@
       nyhedsbrevPlaceholder: 'Your email address',
       nyhedsbrevBtn: 'Subscribe & receive mini-book',
       nyhedsbrevPrivacy: 'No spam. Only meaningful content. You can unsubscribe at any time.',
+      nyhedsbrevConsent: 'Yes, I would like to receive Rikke\'s newsletter with insights on family life and relationships. I can unsubscribe at any time.',
       tilbage: 'Back',
       heroTitel: 'Relationships that carry',
       dynamikLinkTekst: 'Understand the dynamics — how everything affects each other',
@@ -1045,6 +1062,10 @@
           '</div>' +
           '<form class="nyhedsbrev-form" id="nyhedsbrevForm">' +
             '<input type="email" class="nyhedsbrev-input" id="nyhedsbrevEmail" placeholder="' + t('nyhedsbrevPlaceholder') + '" required>' +
+            '<label class="nyhedsbrev-consent-label" for="nyhedsbrevConsent">' +
+              '<input type="checkbox" id="nyhedsbrevConsent" class="nyhedsbrev-consent-check" required>' +
+              '<span class="nyhedsbrev-consent-text">' + t('nyhedsbrevConsent') + '</span>' +
+            '</label>' +
             '<button type="submit" class="nyhedsbrev-btn">' + t('nyhedsbrevBtn') + '</button>' +
             '<p class="nyhedsbrev-privacy">' + t('nyhedsbrevPrivacy') + '</p>' +
           '</form>' +
@@ -1307,6 +1328,7 @@
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + info.email + '</div>' +
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.mapPin(15) + '</span>' + info.adresse + '</div>' +
       '<div class="menu-contact-item"><span class="menu-contact-icon">' + IKONER.hash(15) + '</span>CVR: ' + info.cvr + '</div>' +
+      '<a href="https://www.familiepraxis.dk" target="_blank" rel="noopener" class="menu-contact-item menu-contact-link"><span class="menu-contact-icon">' + IKONER.globe(15) + '</span>' + t('hjemmeside') + '</a>' +
       '<a href="https://linkedin.com/in/rikke-veth-63940b8" target="_blank" rel="noopener" class="menu-contact-item menu-contact-link"><span class="menu-contact-icon">' + IKONER.linkedin(15) + '</span>LinkedIn</a>' +
       '<div class="menu-contact-item menu-contact-link menu-nyhedsbrev-link" id="menuNyhedsbrev"><span class="menu-contact-icon">' + IKONER.mail(15) + '</span>' + t('nyhedsbrev') + '</div>' +
       '</div>';
@@ -1332,6 +1354,15 @@
       '<div class="menu-section-title">' + t('privatlivTitel') + '</div>' +
       '<div class="menu-info">' + t('privatlivTekst') + '</div>' +
       '</div>';
+
+    // Del app & nulstil
+    html += '<div class="menu-section menu-section-actions">' +
+      '<div class="menu-action-btn" id="menuDelApp">' + IKONER.share(15) + ' ' + t('delApp') + '</div>' +
+      '<div class="menu-action-btn menu-action-danger" id="menuNulstil">' + IKONER.trash(15) + ' ' + t('nulstilData') + '</div>' +
+      '</div>';
+
+    // Version
+    html += '<div class="menu-version">FamiliePraxis v1.0</div>';
 
     menuBody.innerHTML = html;
 
@@ -1374,6 +1405,38 @@
         renderNyhedsbrev();
         showView('nyhedsbrev');
         closeMenu();
+      });
+    }
+
+    // Del app
+    var delBtn = document.getElementById('menuDelApp');
+    if (delBtn) {
+      delBtn.addEventListener('click', function () {
+        var url = 'https://www.familiepraxis.dk';
+        var text = t('delAppTekst') + ' ' + url;
+        if (navigator.share) {
+          navigator.share({ title: 'FamiliePraxis', text: t('delAppTekst'), url: url });
+        } else {
+          navigator.clipboard.writeText(text).then(function () {
+            alert(aktivSprog === 'en' ? 'Link copied!' : 'Link kopieret!');
+          });
+        }
+      });
+    }
+
+    // Nulstil data
+    var nulstilBtn = document.getElementById('menuNulstil');
+    if (nulstilBtn) {
+      nulstilBtn.addEventListener('click', function () {
+        if (!confirm(t('nulstilBekraeft'))) return;
+        var keys = [];
+        for (var i = 0; i < localStorage.length; i++) {
+          var key = localStorage.key(i);
+          if (key && key.indexOf('fp_') === 0) keys.push(key);
+        }
+        keys.forEach(function (k) { localStorage.removeItem(k); });
+        alert(t('nulstilFaerdig'));
+        location.reload();
       });
     }
 
@@ -2344,6 +2407,14 @@
       searchClear.classList.remove('visible');
       searchResults.innerHTML = '';
       searchInput.focus();
+    });
+
+    // Luk-knap i søgning
+    document.getElementById('searchCloseBtn').addEventListener('click', closeSearch);
+
+    // Luk søgning ved klik udenfor søgefeltet
+    searchOverlay.addEventListener('click', function (e) {
+      if (e.target === searchOverlay) closeSearch();
     });
 
     // Close search on Escape
