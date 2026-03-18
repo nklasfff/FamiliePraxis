@@ -1818,60 +1818,87 @@ body {
   font-style: italic;
 }
 
-/* ---------- Dagens refleksion ---------- */
-.refl-dagens-sektion {
+/* ---------- Refleksions-sektion ---------- */
+.refl-sektion-divider {
+  text-align: center;
+  margin: 36px 0 24px;
+  padding-top: 12px;
+}
+
+.refl-sektion-linje {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 24px;
+}
+
+.refl-sektion-overskrift {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+}
+
+.refl-sektion-intro {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.55;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.refl-kort {
   background: var(--bg-card);
   border-radius: var(--radius);
   border: 1.5px solid var(--border);
-  padding: 20px;
-  margin-bottom: 16px;
-  border-left: 3px solid var(--amber);
+  padding: 18px 20px;
+  margin-bottom: 14px;
 }
 
-.refl-dagens-header {
-  font-size: 0.72rem;
+.refl-kort-tema {
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--amber);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.refl-dagens-spg {
-  font-size: 1.05rem;
+.refl-kort-spg {
+  font-size: 0.95rem;
   color: var(--text);
-  line-height: 1.6;
-  margin-bottom: 16px;
+  line-height: 1.55;
+  margin-bottom: 12px;
   font-style: italic;
 }
 
-.refl-dagens-skriv {
+.refl-kort-skriv {
   position: relative;
 }
 
-.refl-dagens-svar {
+.refl-svar-textarea {
   width: 100%;
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg);
-  padding: 14px 16px;
+  padding: 12px 14px;
   font-family: Georgia, serif;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text);
   resize: vertical;
-  line-height: 1.65;
-  min-height: 80px;
+  line-height: 1.6;
+  min-height: 60px;
   transition: border-color 0.2s;
   box-sizing: border-box;
 }
 
-.refl-dagens-svar:focus {
+.refl-svar-textarea:focus {
   outline: none;
   border-color: var(--amber);
 }
 
-.refl-dagens-svar::placeholder {
+.refl-svar-textarea::placeholder {
   color: var(--text-muted);
   opacity: 0.5;
   font-style: italic;

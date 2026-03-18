@@ -236,12 +236,11 @@
       oevelserOgRefleksioner: 'Øvelser & Refleksioner',
       oevelserIntroPrivat: 'Her finder du øvelser fra Rikkes terapeutiske værktøjskasse — og refleksionsspørgsmål, der hjælper dig med at mærke efter. Øvelserne kan bruges alene, med din partner eller med hele familien. Refleksionerne er dine — et stille rum til at tænke, skrive og følge din egen proces.',
       oevelserIntroProf: 'Øvelser baseret på polyvagal teori, narrativ terapi og mentaliseringsbaseret behandling — samt refleksionsspørgsmål til faglig selviagttagelse. Brug øvelserne med klienter eller til egen træning. Refleksionerne understøtter supervision og klinisk selvindsigt.',
-      dagensRefleksion: 'Dagens refleksion',
       refleksionPlaceholder: 'Skriv dine tanker her...',
       refleksionGemt: 'Gemt',
       minJournal: 'Min journal',
       lukJournal: 'Luk journal',
-      ingenRefleksioner: 'Du har ikke skrevet noget endnu. Begynd med dagens spørgsmål — dine ord er kun for dig.',
+      ingenRefleksioner: 'Du har ikke skrevet noget endnu. Begynd med et spørgsmål nedenfor — dine ord er kun for dig.',
       refleksionAntal: '{count} refleksioner',
       oevelseGennemfoert: 'Gennemført',
       oevelseTrin: 'Trin',
@@ -251,6 +250,18 @@
       oevelseFaerdig: 'Færdig',
       oevelseRefleksion: 'Refleksion efter øvelsen',
       oevelseProgression: '{done} af {total} øvelser gennemført',
+      refleksionerOverskrift: 'Refleksioner',
+      refleksionerIntroPrivat: 'Spørgsmål der inviterer dig til at se din hverdag fra nye vinkler — med blik for forbindelse, styrke og de små forandringer.',
+      refleksionerIntroProf: 'Faglige refleksioner der understøtter din praksis — fra systemisk tænkning og relationel bevidsthed til din egen selvomsorg.',
+      refleksionTemaForbindelse: 'Forbindelse',
+      refleksionTemaMoenstre: 'Mønstre',
+      refleksionTemaStyrke: 'Styrke',
+      refleksionTemaRo: 'Ro & krop',
+      refleksionTemaPerspektiv: 'Perspektiv',
+      refleksionTemaFaglig: 'Faglig refleksion',
+      refleksionTemaRelationel: 'Relationel bevidsthed',
+      refleksionTemaSystemisk: 'Systemisk blik',
+      refleksionTemaSelvomsorg: 'Selvomsorg',
       // Trappen — mærk ind & mønster
       maerkInd: 'Mærk ind',
       maerkIndSpg: 'Hvor er du lige nu?',
@@ -412,12 +423,11 @@
       oevelserOgRefleksioner: 'Exercises & Reflections',
       oevelserIntroPrivat: 'Here you\'ll find exercises from Rikke\'s therapeutic toolbox — and reflection questions to help you tune in. The exercises can be done alone, with your partner, or with the whole family. The reflections are yours — a quiet space to think, write, and follow your own process.',
       oevelserIntroProf: 'Exercises based on polyvagal theory, narrative therapy, and mentalization-based treatment — plus reflection questions for clinical self-observation. Use the exercises with clients or for your own training. Reflections support supervision and clinical self-insight.',
-      dagensRefleksion: 'Today\'s reflection',
       refleksionPlaceholder: 'Write your thoughts here...',
       refleksionGemt: 'Saved',
       minJournal: 'My journal',
       lukJournal: 'Close journal',
-      ingenRefleksioner: 'You haven\'t written anything yet. Start with today\'s question — your words are only for you.',
+      ingenRefleksioner: 'You haven\'t written anything yet. Start with a question below — your words are only for you.',
       refleksionAntal: '{count} reflections',
       oevelseGennemfoert: 'Completed',
       oevelseTrin: 'Step',
@@ -427,6 +437,18 @@
       oevelseFaerdig: 'Done',
       oevelseRefleksion: 'Reflection after the exercise',
       oevelseProgression: '{done} of {total} exercises completed',
+      refleksionerOverskrift: 'Reflections',
+      refleksionerIntroPrivat: 'Questions that invite you to see your everyday life from new angles — with an eye for connection, strength, and the small changes.',
+      refleksionerIntroProf: 'Professional reflections that support your practice — from systemic thinking and relational awareness to your own self-care.',
+      refleksionTemaForbindelse: 'Connection',
+      refleksionTemaMoenstre: 'Patterns',
+      refleksionTemaStyrke: 'Strength',
+      refleksionTemaRo: 'Calm & body',
+      refleksionTemaPerspektiv: 'Perspective',
+      refleksionTemaFaglig: 'Professional reflection',
+      refleksionTemaRelationel: 'Relational awareness',
+      refleksionTemaSystemisk: 'Systemic perspective',
+      refleksionTemaSelvomsorg: 'Self-care',
       // Trappen — check in & pattern
       maerkInd: 'Check in',
       maerkIndSpg: 'Where are you right now?',
@@ -1454,23 +1476,6 @@
       descEl.textContent = p === 'professionel' ? t('oevelserIntroProf') : t('oevelserIntroPrivat');
     }
 
-    // === Dagens refleksion ===
-    html += renderDagensRefleksion();
-
-    // === Journal-knap ===
-    var journal = getRefleksionJournal();
-    if (journal.length > 0) {
-      html += '<button class="refl-journal-btn" id="journalToggle">' +
-        IKONER.bookmark(14) + ' ' + t('minJournal') +
-        '<span class="refl-journal-count">' + t('refleksionAntal').replace('{count}', journal.length) + '</span>' +
-        '</button>';
-    }
-
-    // === Journal (skjult til toggled) ===
-    if (visJournal && journal.length > 0) {
-      html += renderJournal(journal);
-    }
-
     // === Progression ===
     if (done.length > 0) {
       html += '<div class="oevelse-progression">' +
@@ -1563,6 +1568,9 @@
       html += '</div></div></div>';
     });
 
+    // === Refleksions-sektion (efter øvelserne) ===
+    html += renderRefleksionsSektion(p);
+
     list.innerHTML = html;
 
     // === Event bindings ===
@@ -1625,24 +1633,23 @@
       });
     });
 
-    // Dagens refleksion — skriv
-    var reflTextarea = list.querySelector('.refl-dagens-svar');
-    if (reflTextarea) {
-      var reflTimeout;
-      reflTextarea.addEventListener('input', function() {
+    // Refleksions-svar (bunden)
+    list.querySelectorAll('.refl-svar-textarea').forEach(function(ta) {
+      var timeout;
+      ta.addEventListener('input', function() {
         var spgId = this.getAttribute('data-refl-id');
         var spgTekst = this.getAttribute('data-refl-tekst');
         var val = this.value;
-        clearTimeout(reflTimeout);
-        reflTimeout = setTimeout(function() { gemRefleksion(spgId, spgTekst, val); }, 500);
+        clearTimeout(timeout);
+        timeout = setTimeout(function() { gemRefleksion(spgId, spgTekst, val); }, 500);
         // Vis "Gemt" feedback
-        var feedback = list.querySelector('.refl-gemt-feedback');
-        if (feedback) {
-          feedback.style.opacity = '1';
-          setTimeout(function() { feedback.style.opacity = '0'; }, 1500);
+        var fb = this.parentNode.querySelector('.refl-gemt-feedback');
+        if (fb) {
+          fb.style.opacity = '1';
+          setTimeout(function() { fb.style.opacity = '0'; }, 1500);
         }
       });
-    }
+    });
 
     // Journal toggle
     var journalBtn = document.getElementById('journalToggle');
@@ -1654,20 +1661,90 @@
       });
     }
 
+    // Journal luk
+    var journalLuk = document.getElementById('journalLuk');
+    if (journalLuk) {
+      journalLuk.addEventListener('click', function(e) {
+        e.stopPropagation();
+        visJournal = false;
+        renderOevelser();
+      });
+    }
+
     bindActionBars(list);
   }
 
-  function renderDagensRefleksion() {
-    var spg = getDagensRefleksion();
-    var svar = getDagensRefleksionSvar(spg.id);
-    var html = '<div class="refl-dagens-sektion">';
-    html += '<div class="refl-dagens-header">' + t('dagensRefleksion') + '</div>';
-    html += '<div class="refl-dagens-spg">' + spg.tekst + '</div>';
-    html += '<div class="refl-dagens-skriv">';
-    html += '<textarea class="refl-dagens-svar" data-refl-id="' + spg.id + '" data-refl-tekst="' + escapeAttr(spg.tekst) + '" placeholder="' + t('refleksionPlaceholder') + '" rows="4">' + (svar || '') + '</textarea>';
-    html += '<div class="refl-gemt-feedback" style="opacity:0">' + t('refleksionGemt') + '</div>';
+  // Tema-nøgle → oversættelsesnøgle mapping
+  var REFL_TEMA_KEYS = {
+    'forbindelse': 'refleksionTemaForbindelse',
+    'mønstre': 'refleksionTemaMoenstre',
+    'styrke': 'refleksionTemaStyrke',
+    'ro': 'refleksionTemaRo',
+    'perspektiv': 'refleksionTemaPerspektiv',
+    'faglig refleksion': 'refleksionTemaFaglig',
+    'relationel bevidsthed': 'refleksionTemaRelationel',
+    'systemisk blik': 'refleksionTemaSystemisk',
+    'selvomsorg': 'refleksionTemaSelvomsorg'
+  };
+
+  function renderRefleksionsSektion(p) {
+    var spg = REFLEKSIONER[p] || REFLEKSIONER.privat;
+    var html = '';
+
+    // Centreret overskrift med separator
+    html += '<div class="refl-sektion-divider">';
+    html += '<div class="refl-sektion-linje"></div>';
+    html += '<h3 class="refl-sektion-overskrift">' + t('refleksionerOverskrift') + '</h3>';
+    html += '<p class="refl-sektion-intro">' + (p === 'professionel' ? t('refleksionerIntroProf') : t('refleksionerIntroPrivat')) + '</p>';
     html += '</div>';
-    html += '</div>';
+
+    // Journal-knap
+    var journal = getRefleksionJournal();
+    if (journal.length > 0) {
+      html += '<button class="refl-journal-btn" id="journalToggle">' +
+        IKONER.bookmark(14) + ' ' + t('minJournal') +
+        '<span class="refl-journal-count">' + t('refleksionAntal').replace('{count}', journal.length) + '</span>' +
+        '</button>';
+    }
+
+    // Journal (skjult til toggled)
+    if (visJournal && journal.length > 0) {
+      html += renderJournal(journal);
+    }
+
+    // Gruppér spørgsmål per tema
+    var temaer = {};
+    var temaRaekkefoelge = [];
+    spg.forEach(function(s) {
+      if (!temaer[s.tema]) {
+        temaer[s.tema] = [];
+        temaRaekkefoelge.push(s.tema);
+      }
+      temaer[s.tema].push(s);
+    });
+
+    // Vis 3 spørgsmål ad gangen: ét fra hvert tema, roteret dagligt
+    var idag = new Date();
+    var dagNr = Math.floor(idag.getTime() / (1000 * 60 * 60 * 24));
+
+    temaRaekkefoelge.forEach(function(tema, temaIdx) {
+      var temaSpg = temaer[tema];
+      // Vælg ét spørgsmål per tema, rotér dagligt
+      var valgt = temaSpg[dagNr % temaSpg.length];
+      var svar = getDagensRefleksionSvar(valgt.id);
+      var temaKey = REFL_TEMA_KEYS[tema] || tema;
+      var temaNavn = t(temaKey) || tema;
+
+      html += '<div class="refl-kort">';
+      html += '<div class="refl-kort-tema">' + temaNavn + '</div>';
+      html += '<div class="refl-kort-spg">' + valgt.tekst + '</div>';
+      html += '<div class="refl-kort-skriv">';
+      html += '<textarea class="refl-svar-textarea" data-refl-id="' + valgt.id + '" data-refl-tekst="' + escapeAttr(valgt.tekst) + '" placeholder="' + t('refleksionPlaceholder') + '" rows="3">' + (svar || '') + '</textarea>';
+      html += '<div class="refl-gemt-feedback" style="opacity:0">' + t('refleksionGemt') + '</div>';
+      html += '</div>';
+      html += '</div>';
+    });
+
     return html;
   }
 

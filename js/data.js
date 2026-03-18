@@ -795,43 +795,44 @@ var OEVELSE_REFLEKSIONER = {
 // ============================================================
 var REFLEKSIONER = {
   privat: [
-    { id: 'r01', tekst: 'Hvornår følte du dig sidst virkelig set af nogen i din familie?', tema: 'tilknytning' },
-    { id: 'r02', tekst: 'Hvad ville du ønske, din partner vidste om dig lige nu — som du ikke har sagt højt?', tema: 'parforhold' },
-    { id: 'r03', tekst: 'Tænk på en situation i denne uge, hvor du reagerede stærkere, end situationen kaldte på. Hvad handlede det egentlig om?', tema: 'nervesystem' },
-    { id: 'r04', tekst: 'Hvad lærte du om kærlighed, da du selv var barn? Hvad vil du gerne gøre anderledes?', tema: 'generationer' },
-    { id: 'r05', tekst: 'Hvis dit barn kunne se indeni dig lige nu — hvad ville det se?', tema: 'forælder' },
-    { id: 'r06', tekst: 'Hvad er den modigste ting, du har gjort for din familie — som ingen lagde mærke til?', tema: 'styrke' },
-    { id: 'r07', tekst: 'Hvornår er det sværest at bede om hjælp? Hvad holder dig tilbage?', tema: 'sårbarhed' },
-    { id: 'r08', tekst: 'Hvordan ville din dag se ud, hvis du var lige så tålmodig med dig selv, som du prøver at være med dit barn?', tema: 'selvomsorg' },
-    { id: 'r09', tekst: 'Er der et mønster i din familie, du kan mærke gentager sig — noget du genkender fra din egen barndom?', tema: 'generationer' },
-    { id: 'r10', tekst: 'Hvad har du brug for lige nu — som du ikke har givet dig selv lov til?', tema: 'behov' },
-    { id: 'r11', tekst: 'Tænk på et øjeblik i denne uge, hvor I virkelig var forbundet som familie. Hvad gjorde forskellen?', tema: 'forbindelse' },
-    { id: 'r12', tekst: 'Hvis frygten ikke var der — hvad ville du så gøre anderledes i morgen?', tema: 'mod' },
-    { id: 'r13', tekst: 'Hvad er den historie, du fortæller dig selv om dig som forælder? Er den sand — eller er den bare gammel?', tema: 'narrativ' },
-    { id: 'r14', tekst: 'Hvornår har du sidst grædt? Hvad skete der bagefter?', tema: 'følelser' },
-    { id: 'r15', tekst: 'Tænk på en person, der har troet på dig — også når du ikke selv gjorde det. Hvad ville de sige til dig nu?', tema: 'ressourcer' },
-    { id: 'r16', tekst: 'Hvad ville dit barn sige, hvis du spurgte: "Hvornår er jeg bedst som forælder?"', tema: 'forælder' },
-    { id: 'r17', tekst: 'Er der noget, du bærer på, som du aldrig har sagt højt? Hvad ville der ske, hvis du skrev det ned?', tema: 'hemmeligheder' },
-    { id: 'r18', tekst: 'Hvad er forskellen på den forælder, du gerne vil være — og den, du er? Er kløften så stor, som det føles?', tema: 'selvbillede' },
-    { id: 'r19', tekst: 'Hvornår føler du dig mest alene? Hvad ville hjælpe?', tema: 'ensomhed' },
-    { id: 'r20', tekst: 'Hvad er én ting, der er bedre i dag end for et år siden — også selvom det er småt?', tema: 'håb' },
-    { id: 'r21', tekst: 'Hvis du skulle beskrive stemningen i dit hjem med ét ord — hvad ville det være? Hvad ønsker du, det var?', tema: 'familie' }
+    // Forbindelse
+    { id: 'r01', tekst: 'Hvad skaber mest forbindelse i din familie — og hvornår sker det?', tema: 'forbindelse' },
+    { id: 'r02', tekst: 'Hvem i dit liv får dig til at føle dig mest som dig selv?', tema: 'forbindelse' },
+    { id: 'r03', tekst: 'Hvad gør I som familie, når det er allerbedst?', tema: 'forbindelse' },
+    // Mønstre
+    { id: 'r04', tekst: 'Hvad er noget, du gerne vil gøre anderledes end dine egne forældre? Hvad vil du tage med videre?', tema: 'mønstre' },
+    { id: 'r05', tekst: 'Hvornår reagerer du mest automatisk — og hvad ville du ønske, du gjorde i stedet?', tema: 'mønstre' },
+    { id: 'r06', tekst: 'Er der noget i jeres hverdag, der gentager sig, og som du godt kunne tænke dig at ændre?', tema: 'mønstre' },
+    // Styrke
+    { id: 'r07', tekst: 'Hvad har du klaret i dit liv, som du godt kan være stolt af — også selvom det ikke var perfekt?', tema: 'styrke' },
+    { id: 'r08', tekst: 'Hvad ville dit barn sige, du er rigtig god til som forælder?', tema: 'styrke' },
+    { id: 'r09', tekst: 'Hvornår i denne uge mærkede du, at du håndterede noget godt? Hvad gjorde du?', tema: 'styrke' },
+    // Ro & krop
+    { id: 'r10', tekst: 'Hvad hjælper dig med at finde ro — og hvornår gør du det?', tema: 'ro' },
+    { id: 'r11', tekst: 'Hvordan kan du mærke i kroppen, om du har en god dag eller en svær dag?', tema: 'ro' },
+    { id: 'r12', tekst: 'Hvad ville du gøre mere af, hvis du havde én ekstra time til dig selv om ugen?', tema: 'ro' },
+    // Perspektiv
+    { id: 'r13', tekst: 'Hvad er én ting, der er bedre i dag end for et halvt år siden — også selvom det er småt?', tema: 'perspektiv' },
+    { id: 'r14', tekst: 'Hvad ønsker du for din familie om et år? Hvad er ét lille skridt i den retning?', tema: 'perspektiv' },
+    { id: 'r15', tekst: 'Hvis en god ven beskrev din familie — hvad ville de fremhæve, som du måske overser?', tema: 'perspektiv' }
   ],
   professionel: [
-    { id: 'rp01', tekst: 'Hvilken familie eller klient har du tænkt mest på denne uge — og hvad er det, der fylder?', tema: 'refleksion' },
-    { id: 'rp02', tekst: 'Hvornår mærkede du sidst dit eget nervesystem aktivere i en session? Hvad triggede det?', tema: 'selvregulering' },
-    { id: 'rp03', tekst: 'Er der en klient, du har svært ved at mentalisere? Hvad gør det svært?', tema: 'mentalisering' },
-    { id: 'rp04', tekst: 'Hvilke mønstre fra din egen familiehistorie genkendte du i dit arbejde denne uge?', tema: 'modoverføring' },
-    { id: 'rp05', tekst: 'Hvornår oplevede du sidst en reparation i en terapeutisk relation? Hvad gjorde den mulig?', tema: 'alliance' },
-    { id: 'rp06', tekst: 'Er der en intervention, du undgår — og hvad ligger bag undgåelsen?', tema: 'faglig udvikling' },
-    { id: 'rp07', tekst: 'Hvordan ville du beskrive din egen tilknytningsstil — og hvordan påvirker den dit terapeutiske arbejde?', tema: 'selvindsigt' },
-    { id: 'rp08', tekst: 'Hvad er det sværeste ved at arbejde med udsatte familier? Hvad holder dig i det?', tema: 'motivation' },
-    { id: 'rp09', tekst: 'Tænk på en session, der gik godt denne uge. Hvad gjorde DU, der bidrog til det?', tema: 'faglig styrke' },
-    { id: 'rp10', tekst: 'Hvornår har du sidst søgt supervision — og hvad holdt dig fra det, hvis det er længe siden?', tema: 'supervision' },
-    { id: 'rp11', tekst: 'Er der en familie, hvor du er gået i stå? Hvad ville en systemisk supervisor foreslå?', tema: 'fastlåsthed' },
-    { id: 'rp12', tekst: 'Hvad er forskellen på empati og overidentifikation i dit arbejde? Hvor går grænsen for dig?', tema: 'grænser' },
-    { id: 'rp13', tekst: 'Hvilken teoretisk tilgang har du brug for at fordybe dig i lige nu — og hvorfor netop den?', tema: 'faglig udvikling' },
-    { id: 'rp14', tekst: 'Hvordan sørger du for din egen regulering mellem sessioner? Er det nok?', tema: 'selvomsorg' }
+    // Faglig refleksion
+    { id: 'rp01', tekst: 'Hvilken teoretisk tilgang har du brugt mest denne uge — og virkede den, som du forventede?', tema: 'faglig refleksion' },
+    { id: 'rp02', tekst: 'Hvad er det vigtigste, du har lært af en klient i den seneste tid?', tema: 'faglig refleksion' },
+    { id: 'rp03', tekst: 'Hvilken intervention overraskede dig positivt denne uge?', tema: 'faglig refleksion' },
+    // Relationel bevidsthed
+    { id: 'rp04', tekst: 'Hvordan påvirker din egen baggrund den måde, du møder familier på?', tema: 'relationel bevidsthed' },
+    { id: 'rp05', tekst: 'Hvornår i denne uge var du mest nærværende i en session — og hvad gjorde forskellen?', tema: 'relationel bevidsthed' },
+    { id: 'rp06', tekst: 'Er der en familie, du synes fungerer særligt godt med? Hvad handler det om?', tema: 'relationel bevidsthed' },
+    // Systemisk blik
+    { id: 'rp07', tekst: 'Hvilke mønstre ser du gå igen på tværs af de familier, du arbejder med?', tema: 'systemisk blik' },
+    { id: 'rp08', tekst: 'Hvis du kunne ændre én ting i det system, familierne befinder sig i — hvad ville det være?', tema: 'systemisk blik' },
+    { id: 'rp09', tekst: 'Hvornår har du sidst set et gennembrud — og hvad muliggjorde det?', tema: 'systemisk blik' },
+    // Selvomsorg
+    { id: 'rp10', tekst: 'Hvad gør du for at passe på dig selv mellem sessioner? Er det nok?', tema: 'selvomsorg' },
+    { id: 'rp11', tekst: 'Hvornår har du sidst søgt sparring eller supervision — og hvad fik du ud af det?', tema: 'selvomsorg' },
+    { id: 'rp12', tekst: 'Hvad giver dig energi i dit arbejde — og hvad dræner?', tema: 'selvomsorg' }
   ]
 };
 
