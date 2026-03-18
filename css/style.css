@@ -329,6 +329,42 @@ body {
 }
 .menu-contact-link:hover { opacity: 0.8; }
 
+.menu-section-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--primary-pale);
+  color: var(--primary);
+  transition: opacity 0.2s;
+}
+
+.menu-action-btn:hover { opacity: 0.8; }
+
+.menu-action-danger {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.menu-version {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+  padding: 12px 0 8px;
+}
+
 /* ---------- Search Overlay ---------- */
 .search-overlay {
   position: fixed;
