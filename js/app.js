@@ -166,6 +166,7 @@
       nyhedsbrevPlaceholder: 'Din e-mailadresse',
       nyhedsbrevBtn: 'Tilmeld & modtag mini-bog',
       nyhedsbrevPrivacy: 'Ingen spam. Kun indhold med mening. Du kan altid afmelde dig.',
+      nyhedsbrevConsent: 'Ja, jeg vil gerne modtage nyhedsbrev fra Rikke med indsigt om familieliv og relationer. Jeg kan til enhver tid afmelde mig.',
       // Diverse
       tilbage: 'Tilbage',
       heroTitel: 'Relationer der bærer',
@@ -278,6 +279,7 @@
       nyhedsbrevPlaceholder: 'Your email address',
       nyhedsbrevBtn: 'Subscribe & receive mini-book',
       nyhedsbrevPrivacy: 'No spam. Only meaningful content. You can unsubscribe at any time.',
+      nyhedsbrevConsent: 'Yes, I would like to receive Rikke\'s newsletter with insights on family life and relationships. I can unsubscribe at any time.',
       tilbage: 'Back',
       heroTitel: 'Relationships that carry',
       dynamikLinkTekst: 'Understand the dynamics — how everything affects each other',
@@ -1045,6 +1047,10 @@
           '</div>' +
           '<form class="nyhedsbrev-form" id="nyhedsbrevForm">' +
             '<input type="email" class="nyhedsbrev-input" id="nyhedsbrevEmail" placeholder="' + t('nyhedsbrevPlaceholder') + '" required>' +
+            '<label class="nyhedsbrev-consent-label" for="nyhedsbrevConsent">' +
+              '<input type="checkbox" id="nyhedsbrevConsent" class="nyhedsbrev-consent-check" required>' +
+              '<span class="nyhedsbrev-consent-text">' + t('nyhedsbrevConsent') + '</span>' +
+            '</label>' +
             '<button type="submit" class="nyhedsbrev-btn">' + t('nyhedsbrevBtn') + '</button>' +
             '<p class="nyhedsbrev-privacy">' + t('nyhedsbrevPrivacy') + '</p>' +
           '</form>' +

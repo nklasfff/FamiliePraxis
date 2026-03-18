@@ -2643,6 +2643,29 @@ body {
   background: var(--primary-dark);
 }
 
+.nyhedsbrev-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 4px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nyhedsbrev-consent-check {
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.nyhedsbrev-consent-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
 .nyhedsbrev-privacy {
   text-align: center;
   font-size: 0.78rem;
