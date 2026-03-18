@@ -1002,7 +1002,7 @@ body {
 }
 
 .trappe-trin.active .trappe-detail {
-  max-height: 800px;
+  max-height: 2000px;
 }
 
 .trappe-detail-inner {
@@ -1044,6 +1044,321 @@ body {
   left: 0;
   color: var(--text-muted);
   font-weight: bold;
+}
+
+/* ---------- Trappe: Mærk ind ---------- */
+.trappe-maerk-ind-sektion {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.trappe-maerk-ind-titel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.trappe-maerk-ind-knapper {
+  display: flex;
+  gap: 8px;
+}
+
+.trappe-maerk-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.trappe-maerk-btn:hover { box-shadow: 0 2px 8px var(--shadow); }
+
+.trappe-maerk-btn.sage:hover, .trappe-maerk-btn.sage.valgt { background: var(--sage-bg); border-color: var(--sage); }
+.trappe-maerk-btn.amber:hover, .trappe-maerk-btn.amber.valgt { background: var(--amber-bg); border-color: var(--amber); }
+.trappe-maerk-btn.rose:hover, .trappe-maerk-btn.rose.valgt { background: var(--rose-bg); border-color: var(--rose); }
+
+.trappe-maerk-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.trappe-maerk-dot.sage { background: var(--sage); }
+.trappe-maerk-dot.amber { background: var(--amber); }
+.trappe-maerk-dot.rose { background: var(--rose); }
+
+.trappe-maerk-btn.valgt .trappe-maerk-dot { transform: scale(1.2); }
+
+.trappe-maerk-label {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.trappe-maerk-check {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.trappe-maerk-note-wrap {
+  margin-top: 14px;
+}
+
+.trappe-maerk-note {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-size: 0.85rem;
+  color: var(--text);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.trappe-maerk-note:focus { border-color: var(--sage); }
+
+.trappe-maerk-bekraeft {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* ---------- Trappe: Mønster-visning ---------- */
+.trappe-moenster-sektion {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.trappe-moenster-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.trappe-moenster-titel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trappe-moenster-toggle {
+  font-size: 0.78rem;
+  color: var(--sage);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Uge-grid */
+.trappe-uge-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.trappe-uge-dag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.trappe-uge-dag.idag .trappe-uge-label {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.trappe-uge-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.trappe-uge-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.trappe-uge-dot.sage { background: var(--sage); }
+.trappe-uge-dot.amber { background: var(--amber); }
+.trappe-uge-dot.rose { background: var(--rose); }
+.trappe-uge-dot.tom { background: var(--border); opacity: 0.4; }
+
+.trappe-uge-dag.idag .trappe-uge-dot {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--text-muted);
+}
+
+/* Måned-grid */
+.trappe-maaned-titel {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.trappe-maaned-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.trappe-maaned-header {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+.trappe-maaned-celle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 3px 0;
+}
+
+.trappe-maaned-celle.idag {
+  background: rgba(0,0,0,0.03);
+  border-radius: 6px;
+}
+
+.trappe-maaned-dag {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.trappe-maaned-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.trappe-maaned-dot.sage { background: var(--sage); }
+.trappe-maaned-dot.amber { background: var(--amber); }
+.trappe-maaned-dot.rose { background: var(--rose); }
+.trappe-maaned-dot.tom { background: var(--border); opacity: 0.25; }
+
+.trappe-maaned-celle.tom { visibility: hidden; }
+
+/* Mønster-refleksion */
+.trappe-moenster-refleksion {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--sage-bg);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.6;
+  border-left: 3px solid var(--sage);
+}
+
+/* ---------- Trappe: Familie-effekt ---------- */
+.trappe-familie-titel {
+  margin-top: 20px;
+}
+
+.trappe-familie-effekt {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.trappe-fe-item {
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--border);
+}
+
+.trappe-fe-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.trappe-fe-item p {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- Trappe: Forstå dit nervesystem ---------- */
+.trappe-forstaelse-sektion {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 24px 20px;
+  margin-top: 16px;
+}
+
+.trappe-forstaelse-titel {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.trappe-forstaelse-afsnit {
+  margin-bottom: 20px;
+}
+
+.trappe-forstaelse-afsnit:last-child {
+  margin-bottom: 0;
+}
+
+.trappe-forstaelse-undertitel {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.trappe-forstaelse-afsnit p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin: 0;
 }
 
 /* ---------- Tema Grid ---------- */

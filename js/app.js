@@ -75,6 +75,7 @@
   var aktivTab = 'overblik';
   var aktivTema = null;
   var aktivTrin = null;
+  var trappeVisning = 'uge'; // 'uge' eller 'maaned'
   var isFirstVisit = !localStorage.getItem('fp_visited');
   var aktivSprog = localStorage.getItem('fp_sprog') || 'da';
 
@@ -209,7 +210,26 @@
         muligt: 'Ikke alt kan løses på én gang. Her kan du holde styr på hvad der fylder — og markere hvad der er muligt lige nu.',
         favoritter: 'Indhold du har gemt til senere. Tryk på et element for at gå til det.'
       },
-      shareFrom: 'Fra Familiepraxis-appen'
+      shareFrom: 'Fra Familiepraxis-appen',
+      // Trappen — mærk ind & mønster
+      maerkInd: 'Mærk ind',
+      maerkIndSpg: 'Hvor er du lige nu?',
+      maerkIndNote: 'Kort note (valgfrit)',
+      maerkIndNotePlaceholder: 'Fx "Møde med kommunen" eller "God morgen med børnene"',
+      maerkIndGemt: 'Registreret',
+      maerkIndAendreBtn: 'Ændr',
+      ditMoenster: 'Dit mønster',
+      denneUge: 'Denne uge',
+      denneMaaned: 'Denne måned',
+      seMaaned: 'Se hele måneden',
+      seUge: 'Se ugen',
+      familieEffekt: 'Hvad mærker familien?',
+      familieEffektBarn: 'Dit barn',
+      familieEffektPartner: 'Din partner',
+      familieEffektFamilie: 'Hele familien',
+      forstaaNervesystemet: 'Forstå dit nervesystem',
+      dagLabels: ['Ma', 'Ti', 'On', 'To', 'Fr', 'Lø', 'Sø'],
+      maanedNavne: ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December']
     },
     en: {
       perspPrivat: 'Private client',
@@ -327,7 +347,26 @@
         muligt: 'Not everything can be solved at once. Here you can keep track of what weighs on you — and mark what\'s possible right now.',
         favoritter: 'Content you\'ve saved for later. Tap an item to go to it.'
       },
-      shareFrom: 'From the Familiepraxis app'
+      shareFrom: 'From the Familiepraxis app',
+      // Trappen — check in & pattern
+      maerkInd: 'Check in',
+      maerkIndSpg: 'Where are you right now?',
+      maerkIndNote: 'Short note (optional)',
+      maerkIndNotePlaceholder: 'E.g. "Meeting at school" or "Good morning with the kids"',
+      maerkIndGemt: 'Registered',
+      maerkIndAendreBtn: 'Change',
+      ditMoenster: 'Your pattern',
+      denneUge: 'This week',
+      denneMaaned: 'This month',
+      seMaaned: 'See full month',
+      seUge: 'See week',
+      familieEffekt: 'What does your family feel?',
+      familieEffektBarn: 'Your child',
+      familieEffektPartner: 'Your partner',
+      familieEffektFamilie: 'Your whole family',
+      forstaaNervesystemet: 'Understand your nervous system',
+      dagLabels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+      maanedNavne: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     }
   };
 
@@ -437,6 +476,91 @@
     badge.textContent = count;
     badge.style.display = count > 0 ? 'inline-flex' : 'none';
   }
+
+  // ---------- Trappe-tracking (mærk ind) ----------
+  function getTrappeLog() {
+    try { return JSON.parse(localStorage.getItem('fp_trappeLog') || '[]'); } catch(e) { return []; }
+  }
+
+  function saveTrappeLog(log) {
+    localStorage.setItem('fp_trappeLog', JSON.stringify(log));
+  }
+
+  function maerkInd(trin, note) {
+    var log = getTrappeLog();
+    var idag = new Date().toISOString().slice(0, 10);
+    var tid = new Date().toTimeString().slice(0, 5);
+    // Erstat hvis allerede mærket ind i dag, ellers tilføj
+    var fundet = false;
+    log.forEach(function(entry, i) {
+      if (entry.dato === idag) { log[i] = { dato: idag, trin: trin, note: note || '', tid: tid }; fundet = true; }
+    });
+    if (!fundet) log.push({ dato: idag, trin: trin, note: note || '', tid: tid });
+    saveTrappeLog(log);
+  }
+
+  function getDagensCheckin() {
+    var idag = new Date().toISOString().slice(0, 10);
+    var log = getTrappeLog();
+    for (var i = 0; i < log.length; i++) {
+      if (log[i].dato === idag) return log[i];
+    }
+    return null;
+  }
+
+  function getUgeData() {
+    var dage = [];
+    var idag = new Date();
+    var dagIdx = (idag.getDay() + 6) % 7; // mandag = 0
+    var log = getTrappeLog();
+    for (var i = 0; i < 7; i++) {
+      var d = new Date(idag);
+      d.setDate(d.getDate() - dagIdx + i);
+      var datoStr = d.toISOString().slice(0, 10);
+      var entry = null;
+      log.forEach(function(e) { if (e.dato === datoStr) entry = e; });
+      dage.push({ dato: datoStr, dagNr: i, entry: entry, erIdag: datoStr === idag.toISOString().slice(0, 10) });
+    }
+    return dage;
+  }
+
+  function getMaanedData() {
+    var idag = new Date();
+    var aar = idag.getFullYear();
+    var maaned = idag.getMonth();
+    var foersteDag = new Date(aar, maaned, 1);
+    var sidsteDag = new Date(aar, maaned + 1, 0);
+    var startOffset = (foersteDag.getDay() + 6) % 7; // mandag = 0
+    var log = getTrappeLog();
+    var dage = [];
+    // Tomme felter før månedens start
+    for (var i = 0; i < startOffset; i++) dage.push(null);
+    for (var d = 1; d <= sidsteDag.getDate(); d++) {
+      var datoStr = aar + '-' + String(maaned + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+      var entry = null;
+      log.forEach(function(e) { if (e.dato === datoStr) entry = e; });
+      dage.push({ dato: datoStr, dag: d, entry: entry, erIdag: datoStr === idag.toISOString().slice(0, 10) });
+    }
+    return { aar: aar, maaned: maaned, dage: dage };
+  }
+
+  function beregnMoenster() {
+    var log = getTrappeLog();
+    if (log.length === 0) return 'ingenData';
+    if (log.length < 3) return 'forFaa';
+    // Se på de seneste 7 registreringer
+    var seneste = log.slice(-7);
+    var tael = { 1: 0, 2: 0, 3: 0 };
+    seneste.forEach(function(e) { tael[e.trin] = (tael[e.trin] || 0) + 1; });
+    var total = seneste.length;
+    if (tael[1] >= total * 0.5) return 'mestTryg';
+    if (tael[2] >= total * 0.5) return 'mestAlarm';
+    if (tael[3] >= total * 0.5) return 'mestNedlukning';
+    return 'blandtMoenster';
+  }
+
+  var TRIN_FARVER = { 1: 'sage', 2: 'amber', 3: 'rose' };
+  var TRIN_NAVNE_KORT = { 1: 'Tryg', 2: 'Alarm', 3: 'Ned' };
 
   // ---------- DOM refs ----------
   var onboarding = document.getElementById('onboarding');
@@ -925,6 +1049,51 @@
     var p = contentPerspektiv();
     var html = '';
 
+    // === Mærk ind ===
+    var dagensCheckin = getDagensCheckin();
+    html += '<div class="trappe-maerk-ind-sektion">';
+    html += '<div class="trappe-maerk-ind-titel">' + t('maerkIndSpg') + '</div>';
+    html += '<div class="trappe-maerk-ind-knapper">';
+    getTrappen().forEach(function(trin) {
+      var erValgt = dagensCheckin && dagensCheckin.trin === trin.trin;
+      html += '<button class="trappe-maerk-btn ' + trin.farve + (erValgt ? ' valgt' : '') + '" data-maerk-trin="' + trin.trin + '">' +
+        '<span class="trappe-maerk-dot ' + trin.farve + '"></span>' +
+        '<span class="trappe-maerk-label">' + trin.navn + '</span>' +
+        (erValgt ? '<span class="trappe-maerk-check">' + IKONER.bookmarkFill(12) + '</span>' : '') +
+        '</button>';
+    });
+    html += '</div>';
+    // Note-felt (vises kun efter valg)
+    if (dagensCheckin) {
+      html += '<div class="trappe-maerk-note-wrap">' +
+        '<input type="text" class="trappe-maerk-note" placeholder="' + t('maerkIndNotePlaceholder') + '" value="' + escapeAttr(dagensCheckin.note || '') + '" data-maerk-note />' +
+        '<div class="trappe-maerk-bekraeft">' + t('maerkIndGemt') + ' · ' + dagensCheckin.tid + '</div>' +
+        '</div>';
+    }
+    html += '</div>';
+
+    // === Mønster-visning ===
+    html += '<div class="trappe-moenster-sektion">';
+    html += '<div class="trappe-moenster-header">';
+    html += '<div class="trappe-moenster-titel">' + t('ditMoenster') + '</div>';
+    html += '<button class="trappe-moenster-toggle">' + (trappeVisning === 'uge' ? t('seMaaned') : t('seUge')) + '</button>';
+    html += '</div>';
+
+    if (trappeVisning === 'uge') {
+      html += renderUgeVisning();
+    } else {
+      html += renderMaanedVisning();
+    }
+
+    // Mønster-refleksion
+    var moensterId = beregnMoenster();
+    var moenstre = TRAPPEN_MOENSTRE[p];
+    if (moenstre && moenstre[moensterId]) {
+      html += '<div class="trappe-moenster-refleksion">' + moenstre[moensterId] + '</div>';
+    }
+    html += '</div>';
+
+    // === De tre tilstande ===
     getTrappen().forEach(function (trin) {
       var data = trin[p];
       var isActive = aktivTrin === trin.trin;
@@ -942,20 +1111,127 @@
         '<div class="trappe-section-title">' + t('handlinger') + '</div>' +
         '<ul class="trappe-list">';
       data.handlinger.forEach(function (h) { html += '<li>' + h + '</li>'; });
-      html += '</ul>' + buildActionBar('trappen', trin.navn, trin.navn, data.beskrivelse) + '</div></div></div>';
+      html += '</ul>';
+
+      // Familie-effekt
+      var effekt = TRAPPEN_FAMILIE_EFFEKT[trin.trin];
+      if (effekt && effekt[p]) {
+        var fe = effekt[p];
+        html += '<div class="trappe-section-title trappe-familie-titel">' + t('familieEffekt') + '</div>';
+        html += '<div class="trappe-familie-effekt">';
+        html += '<div class="trappe-fe-item"><div class="trappe-fe-label">' + t('familieEffektBarn') + '</div><p>' + fe.barn + '</p></div>';
+        html += '<div class="trappe-fe-item"><div class="trappe-fe-label">' + t('familieEffektPartner') + '</div><p>' + fe.partner + '</p></div>';
+        html += '<div class="trappe-fe-item"><div class="trappe-fe-label">' + t('familieEffektFamilie') + '</div><p>' + fe.familie + '</p></div>';
+        html += '</div>';
+      }
+
+      html += buildActionBar('trappen', trin.navn, trin.navn, data.beskrivelse) + '</div></div></div>';
     });
+
+    // === Forstå dit nervesystem ===
+    var forstaelse = TRAPPEN_FORSTAELSE[p];
+    if (forstaelse) {
+      html += '<div class="trappe-forstaelse-sektion">';
+      html += '<div class="trappe-forstaelse-titel">' + forstaelse.titel + '</div>';
+      forstaelse.afsnit.forEach(function(afsnit) {
+        html += '<div class="trappe-forstaelse-afsnit">';
+        html += '<div class="trappe-forstaelse-undertitel">' + afsnit.undertitel + '</div>';
+        html += '<p>' + afsnit.tekst + '</p>';
+        html += '</div>';
+      });
+      html += '</div>';
+    }
 
     container.innerHTML = html;
 
+    // === Event bindings ===
+    // Mærk-ind knapper
+    container.querySelectorAll('.trappe-maerk-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var trinNum = parseInt(this.getAttribute('data-maerk-trin'));
+        var noteInput = container.querySelector('.trappe-maerk-note');
+        var note = noteInput ? noteInput.value : '';
+        maerkInd(trinNum, note);
+        renderTrappen();
+      });
+    });
+
+    // Note-felt: gem ved ændring
+    var noteInput = container.querySelector('[data-maerk-note]');
+    if (noteInput) {
+      var noteTimeout;
+      noteInput.addEventListener('input', function() {
+        var val = this.value;
+        clearTimeout(noteTimeout);
+        noteTimeout = setTimeout(function() {
+          var checkin = getDagensCheckin();
+          if (checkin) maerkInd(checkin.trin, val);
+        }, 500);
+      });
+    }
+
+    // Mønster-toggle
+    var toggleBtn = container.querySelector('.trappe-moenster-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        trappeVisning = trappeVisning === 'uge' ? 'maaned' : 'uge';
+        renderTrappen();
+      });
+    }
+
+    // Trin-kort (åbn/luk)
     container.querySelectorAll('.trappe-trin').forEach(function (trin) {
       trin.addEventListener('click', function (e) {
-        if (e.target.closest('.action-bar')) return;
+        if (e.target.closest('.action-bar') || e.target.closest('.trappe-maerk-btn') || e.target.closest('.trappe-moenster-toggle') || e.target.closest('.trappe-maerk-note')) return;
         var trinNum = parseInt(this.getAttribute('data-trin'));
         aktivTrin = aktivTrin === trinNum ? null : trinNum;
         renderTrappen();
       });
     });
     bindActionBars(container);
+  }
+
+  function renderUgeVisning() {
+    var dage = getUgeData();
+    var labels = t('dagLabels');
+    var html = '<div class="trappe-uge-grid">';
+    dage.forEach(function(dag, i) {
+      var farveClass = dag.entry ? TRIN_FARVER[dag.entry.trin] : 'tom';
+      var erIdag = dag.erIdag ? ' idag' : '';
+      html += '<div class="trappe-uge-dag' + erIdag + '">';
+      html += '<div class="trappe-uge-label">' + labels[i] + '</div>';
+      html += '<div class="trappe-uge-dot ' + farveClass + '" title="' + (dag.entry ? dag.entry.note || '' : '') + '"></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function renderMaanedVisning() {
+    var data = getMaanedData();
+    var labels = t('dagLabels');
+    var maanedNavn = t('maanedNavne')[data.maaned];
+    var html = '<div class="trappe-maaned-titel">' + maanedNavn + ' ' + data.aar + '</div>';
+    html += '<div class="trappe-maaned-grid">';
+    // Dag-labels
+    labels.forEach(function(l) { html += '<div class="trappe-maaned-header">' + l + '</div>'; });
+    // Dage
+    data.dage.forEach(function(dag) {
+      if (dag === null) {
+        html += '<div class="trappe-maaned-celle tom"></div>';
+      } else {
+        var farveClass = dag.entry ? TRIN_FARVER[dag.entry.trin] : 'tom';
+        var erIdag = dag.erIdag ? ' idag' : '';
+        html += '<div class="trappe-maaned-celle' + erIdag + '">' +
+          '<span class="trappe-maaned-dag">' + dag.dag + '</span>' +
+          '<span class="trappe-maaned-dot ' + farveClass + '"></span>' +
+          '</div>';
+      }
+    });
+    html += '</div>';
+    return html;
   }
 
   // ---------- Temaer ----------
