@@ -220,18 +220,37 @@
       viewTitles: {
         trappen: 'Nervesystemets trappe',
         temaer: 'Hverdagens udfordringer',
-        oevelser: 'Øvelser',
+        oevelser: 'Øvelser & Refleksioner',
         muligt: 'Hvad er muligt lige nu?',
         favoritter: 'Mine favoritter'
       },
       viewDescs: {
         trappen: 'Dit nervesystem har tre tilstande. At forstå dem er det første skridt mod at regulere dem — for dig selv og din familie.',
         temaer: 'Familielivet rummer mange udfordringer. Her kan du læse om de temaer, der ofte fylder — og finde forståelse og redskaber.',
-        oevelser: 'Praktiske øvelser du kan bruge derhjemme — baseret på narrativ terapi, polyvagal teori og mentaliseringsbaseret behandling.',
+        oevelser: '',
         muligt: 'Ikke alt kan løses på én gang. Her kan du holde styr på hvad der fylder — og markere hvad der er muligt lige nu.',
         favoritter: 'Indhold du har gemt til senere. Tryk på et element for at gå til det.'
       },
       shareFrom: 'Fra Familiepraxis-appen',
+      // Øvelser & Refleksioner
+      oevelserOgRefleksioner: 'Øvelser & Refleksioner',
+      oevelserIntroPrivat: 'Her finder du øvelser fra Rikkes terapeutiske værktøjskasse — og refleksionsspørgsmål, der hjælper dig med at mærke efter. Øvelserne kan bruges alene, med din partner eller med hele familien. Refleksionerne er dine — et stille rum til at tænke, skrive og følge din egen proces.',
+      oevelserIntroProf: 'Øvelser baseret på polyvagal teori, narrativ terapi og mentaliseringsbaseret behandling — samt refleksionsspørgsmål til faglig selviagttagelse. Brug øvelserne med klienter eller til egen træning. Refleksionerne understøtter supervision og klinisk selvindsigt.',
+      dagensRefleksion: 'Dagens refleksion',
+      refleksionPlaceholder: 'Skriv dine tanker her...',
+      refleksionGemt: 'Gemt',
+      minJournal: 'Min journal',
+      lukJournal: 'Luk journal',
+      ingenRefleksioner: 'Du har ikke skrevet noget endnu. Begynd med dagens spørgsmål — dine ord er kun for dig.',
+      refleksionAntal: '{count} refleksioner',
+      oevelseGennemfoert: 'Gennemført',
+      oevelseTrin: 'Trin',
+      oevelseNaeste: 'Næste',
+      oevelseForrige: 'Forrige',
+      oevelseStart: 'Start øvelse',
+      oevelseFaerdig: 'Færdig',
+      oevelseRefleksion: 'Refleksion efter øvelsen',
+      oevelseProgression: '{done} af {total} øvelser gennemført',
       // Trappen — mærk ind & mønster
       maerkInd: 'Mærk ind',
       maerkIndSpg: 'Hvor er du lige nu?',
@@ -377,18 +396,37 @@
       viewTitles: {
         trappen: 'The nervous system staircase',
         temaer: 'Everyday challenges',
-        oevelser: 'Exercises',
+        oevelser: 'Exercises & Reflections',
         muligt: 'What\'s possible right now?',
         favoritter: 'My bookmarks'
       },
       viewDescs: {
         trappen: 'Your nervous system has three states. Understanding them is the first step toward regulating them — for yourself and your family.',
         temaer: 'Family life holds many challenges. Here you can explore the themes that often carry the most weight — and find understanding and tools.',
-        oevelser: 'Practical exercises you can use at home — grounded in narrative therapy, polyvagal theory, and mentalization-based treatment.',
+        oevelser: '',
         muligt: 'Not everything can be solved at once. Here you can keep track of what weighs on you — and mark what\'s possible right now.',
         favoritter: 'Content you\'ve saved for later. Tap an item to go to it.'
       },
       shareFrom: 'From the Familiepraxis app',
+      // Exercises & Reflections
+      oevelserOgRefleksioner: 'Exercises & Reflections',
+      oevelserIntroPrivat: 'Here you\'ll find exercises from Rikke\'s therapeutic toolbox — and reflection questions to help you tune in. The exercises can be done alone, with your partner, or with the whole family. The reflections are yours — a quiet space to think, write, and follow your own process.',
+      oevelserIntroProf: 'Exercises based on polyvagal theory, narrative therapy, and mentalization-based treatment — plus reflection questions for clinical self-observation. Use the exercises with clients or for your own training. Reflections support supervision and clinical self-insight.',
+      dagensRefleksion: 'Today\'s reflection',
+      refleksionPlaceholder: 'Write your thoughts here...',
+      refleksionGemt: 'Saved',
+      minJournal: 'My journal',
+      lukJournal: 'Close journal',
+      ingenRefleksioner: 'You haven\'t written anything yet. Start with today\'s question — your words are only for you.',
+      refleksionAntal: '{count} reflections',
+      oevelseGennemfoert: 'Completed',
+      oevelseTrin: 'Step',
+      oevelseNaeste: 'Next',
+      oevelseForrige: 'Previous',
+      oevelseStart: 'Start exercise',
+      oevelseFaerdig: 'Done',
+      oevelseRefleksion: 'Reflection after the exercise',
+      oevelseProgression: '{done} of {total} exercises completed',
       // Trappen — check in & pattern
       maerkInd: 'Check in',
       maerkIndSpg: 'Where are you right now?',
@@ -602,6 +640,96 @@
 
   var TRIN_FARVER = { 1: 'sage', 2: 'amber', 3: 'rose' };
   var TRIN_NAVNE_KORT = { 1: 'Tryg', 2: 'Alarm', 3: 'Ned' };
+
+  // ---------- Refleksions-journal ----------
+  function getRefleksionJournal() {
+    try { return JSON.parse(localStorage.getItem('fp_refleksionJournal') || '[]'); } catch(e) { return []; }
+  }
+
+  function saveRefleksionJournal(journal) {
+    localStorage.setItem('fp_refleksionJournal', JSON.stringify(journal));
+  }
+
+  function gemRefleksion(spoergsmaalId, spoergsmaalTekst, svar) {
+    var journal = getRefleksionJournal();
+    var idag = new Date().toISOString().slice(0, 10);
+    // Opdater hvis allerede skrevet i dag til dette spørgsmål
+    var fundet = false;
+    journal.forEach(function(entry, i) {
+      if (entry.dato === idag && entry.spoergsmaalId === spoergsmaalId) {
+        journal[i].svar = svar;
+        fundet = true;
+      }
+    });
+    if (!fundet) {
+      journal.push({ dato: idag, spoergsmaalId: spoergsmaalId, spoergsmaal: spoergsmaalTekst, svar: svar });
+    }
+    saveRefleksionJournal(journal);
+  }
+
+  function getDagensRefleksionSvar(spoergsmaalId) {
+    var idag = new Date().toISOString().slice(0, 10);
+    var journal = getRefleksionJournal();
+    for (var i = 0; i < journal.length; i++) {
+      if (journal[i].dato === idag && journal[i].spoergsmaalId === spoergsmaalId) return journal[i].svar;
+    }
+    return '';
+  }
+
+  function getDagensRefleksion() {
+    var p = contentPerspektiv();
+    var spg = REFLEKSIONER[p] || REFLEKSIONER.privat;
+    // Rotér baseret på dags-nummer (stabil per dag)
+    var idag = new Date();
+    var dagNr = Math.floor(idag.getTime() / (1000 * 60 * 60 * 24));
+    var idx = dagNr % spg.length;
+    return spg[idx];
+  }
+
+  // ---------- Øvelses-progression ----------
+  function getOevelsesDone() {
+    try { return JSON.parse(localStorage.getItem('fp_oevelsesDone') || '[]'); } catch(e) { return []; }
+  }
+
+  function saveOevelsesDone(list) {
+    localStorage.setItem('fp_oevelsesDone', JSON.stringify(list));
+  }
+
+  function toggleOevelseDone(id) {
+    var done = getOevelsesDone();
+    var idx = done.indexOf(id);
+    if (idx >= 0) { done.splice(idx, 1); } else { done.push(id); }
+    saveOevelsesDone(done);
+    return idx < 0;
+  }
+
+  function isOevelseDone(id) {
+    return getOevelsesDone().indexOf(id) >= 0;
+  }
+
+  // Øvelses-refleksionssvar (efter øvelse)
+  function getOevelseRefleksionSvar(oevelseId) {
+    try { return JSON.parse(localStorage.getItem('fp_oevRefl_' + oevelseId) || '{}'); } catch(e) { return {}; }
+  }
+
+  function saveOevelseRefleksionSvar(oevelseId, idx, svar) {
+    var data = getOevelseRefleksionSvar(oevelseId);
+    data[idx] = svar;
+    localStorage.setItem('fp_oevRefl_' + oevelseId, JSON.stringify(data));
+  }
+
+  // Farvekoder for øvelses-typer baseret på cirkel
+  var OEVELSE_FARVER = {
+    'aandedraet': 'sage',
+    'boern': 'sage',
+    'individuel': 'amber',
+    'parterapi': 'rose',
+    'familie': 'rose',
+    'relationer': 'amber'
+  };
+
+  var visJournal = false;
+  var aktivOevelseTrin = {}; // { oevelseIdx: trinNr } for trin-for-trin
 
   // ---------- DOM refs ----------
   var onboarding = document.getElementById('onboarding');
@@ -1315,41 +1443,264 @@
   function renderOevelser() {
     var list = document.getElementById('oevelseList');
     if (!list) return;
+    var p = contentPerspektiv();
+    var oevelser = getOevelser();
+    var done = getOevelsesDone();
     var html = '';
 
-    getOevelser().forEach(function (oev, idx) {
-      var isActive = list.querySelector('.oevelse-card.active[data-idx="' + idx + '"]') !== null;
-      html += '<div class="oevelse-card" data-idx="' + idx + '">' +
-        '<div class="oevelse-header">' +
-        '<div>' +
-        '<div class="oevelse-title">' + oev.titel + '</div>' +
-        '<div class="oevelse-meta">' + oev.tid + ' · ' + oev.sted + '</div>' +
-        '<div class="oevelse-intro">' + oev.intro + '</div>' +
-        '</div>' +
-        '<span class="oevelse-chevron">▼</span>' +
-        '</div>' +
-        '<div class="oevelse-steps"><div class="oevelse-steps-inner">';
-      oev.trin.forEach(function (trin, i) {
-        html += '<div class="oevelse-step">' +
-          '<div class="oevelse-step-num">' + (i + 1) + '</div>' +
-          '<div class="oevelse-step-text">' + trin + '</div>' +
-          '</div>';
+    // Opdater intro-tekst baseret på perspektiv
+    var descEl = document.querySelector('#viewOevelser .view-desc');
+    if (descEl) {
+      descEl.textContent = p === 'professionel' ? t('oevelserIntroProf') : t('oevelserIntroPrivat');
+    }
+
+    // === Dagens refleksion ===
+    html += renderDagensRefleksion();
+
+    // === Journal-knap ===
+    var journal = getRefleksionJournal();
+    if (journal.length > 0) {
+      html += '<button class="refl-journal-btn" id="journalToggle">' +
+        IKONER.bookmark(14) + ' ' + t('minJournal') +
+        '<span class="refl-journal-count">' + t('refleksionAntal').replace('{count}', journal.length) + '</span>' +
+        '</button>';
+    }
+
+    // === Journal (skjult til toggled) ===
+    if (visJournal && journal.length > 0) {
+      html += renderJournal(journal);
+    }
+
+    // === Progression ===
+    if (done.length > 0) {
+      html += '<div class="oevelse-progression">' +
+        '<div class="oevelse-progression-bar">';
+      oevelser.forEach(function(oev) {
+        var isDone = done.indexOf(oev.id) >= 0;
+        var farve = OEVELSE_FARVER[oev.cirkel] || 'sage';
+        html += '<div class="oevelse-progression-seg ' + (isDone ? farve : 'tom') + '"></div>';
       });
+      html += '</div>' +
+        '<div class="oevelse-progression-tekst">' + t('oevelseProgression').replace('{done}', done.length).replace('{total}', oevelser.length) + '</div>' +
+        '</div>';
+    }
+
+    // === Øvelseskort ===
+    oevelser.forEach(function (oev, idx) {
+      var isActive = list.querySelector('.oevelse-card.active[data-idx="' + idx + '"]') !== null;
+      var farve = OEVELSE_FARVER[oev.cirkel] || 'sage';
+      var isDone = isOevelseDone(oev.id);
+      var trinNr = aktivOevelseTrin[idx]; // undefined = vis alle, tal = vis ét
+
+      html += '<div class="oevelse-card oevelse-farve-' + farve + (isDone ? ' oevelse-done' : '') + '" data-idx="' + idx + '">' +
+        '<div class="oevelse-header">' +
+        '<div class="oevelse-header-content">' +
+        '<div class="oevelse-title">' + oev.titel + '</div>' +
+        '<div class="oevelse-meta">' +
+        '<span class="oevelse-tid">' + oev.tid + '</span> · ' + oev.sted +
+        (isDone ? ' · <span class="oevelse-done-badge">' + t('oevelseGennemfoert') + '</span>' : '') +
+        '</div>' +
+        '</div>' +
+        '<span class="oevelse-chevron">' + IKONER.chevDown(14) + '</span>' +
+        '</div>' +
+
+        // Intro (altid synlig)
+        '<div class="oevelse-intro-wrap"><div class="oevelse-intro">' + oev.intro + '</div></div>' +
+
+        // Steps (skjulet til aktiv)
+        '<div class="oevelse-steps"><div class="oevelse-steps-inner">';
+
+      // Trin-for-trin visning
+      if (typeof trinNr === 'number') {
+        // Vis ét trin
+        html += '<div class="oevelse-trin-fokus">';
+        html += '<div class="oevelse-trin-nr">' + t('oevelseTrin') + ' ' + (trinNr + 1) + ' / ' + oev.trin.length + '</div>';
+        html += '<div class="oevelse-trin-tekst">' + oev.trin[trinNr] + '</div>';
+        html += '<div class="oevelse-trin-nav">';
+        if (trinNr > 0) {
+          html += '<button class="oevelse-trin-btn" data-idx="' + idx + '" data-goto="' + (trinNr - 1) + '">' + t('oevelseForrige') + '</button>';
+        }
+        if (trinNr < oev.trin.length - 1) {
+          html += '<button class="oevelse-trin-btn oevelse-trin-next" data-idx="' + idx + '" data-goto="' + (trinNr + 1) + '">' + t('oevelseNaeste') + '</button>';
+        } else {
+          html += '<button class="oevelse-trin-btn oevelse-trin-done" data-idx="' + idx + '" data-goto="done">' + t('oevelseFaerdig') + '</button>';
+        }
+        html += '</div></div>';
+      } else {
+        // Vis alle trin (standard)
+        html += '<button class="oevelse-start-btn" data-idx="' + idx + '">' + IKONER.wind(14) + ' ' + t('oevelseStart') + '</button>';
+        oev.trin.forEach(function (trin, i) {
+          html += '<div class="oevelse-step">' +
+            '<div class="oevelse-step-num oevelse-step-' + farve + '">' + (i + 1) + '</div>' +
+            '<div class="oevelse-step-text">' + trin + '</div>' +
+            '</div>';
+        });
+      }
+
+      // Refleksion efter øvelsen
+      var refl = OEVELSE_REFLEKSIONER[oev.id];
+      if (refl && refl[p]) {
+        var reflSvar = getOevelseRefleksionSvar(oev.id);
+        html += '<div class="oevelse-refl-sektion">';
+        html += '<div class="oevelse-refl-titel">' + t('oevelseRefleksion') + '</div>';
+        refl[p].forEach(function(spg, si) {
+          html += '<div class="oevelse-refl-item">';
+          html += '<div class="oevelse-refl-spg">' + spg + '</div>';
+          html += '<textarea class="oevelse-refl-svar" data-oev="' + oev.id + '" data-refl-idx="' + si + '" placeholder="' + t('refleksionPlaceholder') + '" rows="2">' + (reflSvar[si] || '') + '</textarea>';
+          html += '</div>';
+        });
+        html += '</div>';
+      }
+
+      // Gennemført-markering + action bar
+      html += '<div class="oevelse-gennemfoert-wrap">';
+      html += '<button class="oevelse-gennemfoert-btn' + (isDone ? ' active' : '') + '" data-oev-id="' + oev.id + '">' +
+        (isDone ? IKONER.checkCircle(14) : IKONER.check(14)) + ' ' + t('oevelseGennemfoert') +
+        '</button>';
+      html += '</div>';
+
       html += buildActionBar('oevelse', oev.titel, oev.titel, oev.intro + '\n\n' + oev.trin.join('\n'));
       html += '</div></div></div>';
     });
 
     list.innerHTML = html;
 
+    // === Event bindings ===
+
+    // Kort åbn/luk
     list.querySelectorAll('.oevelse-card').forEach(function (card) {
-      card.addEventListener('click', function (e) {
-        if (e.target.closest('.action-bar')) return; // Don't toggle card when clicking action bar
-        var wasActive = this.classList.contains('active');
+      card.querySelector('.oevelse-header').addEventListener('click', function (e) {
+        var wasActive = card.classList.contains('active');
         list.querySelectorAll('.oevelse-card').forEach(function (c) { c.classList.remove('active'); });
-        if (!wasActive) this.classList.add('active');
+        if (!wasActive) card.classList.add('active');
       });
     });
+
+    // Start trin-for-trin
+    list.querySelectorAll('.oevelse-start-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var idx = parseInt(this.getAttribute('data-idx'));
+        aktivOevelseTrin[idx] = 0;
+        renderOevelser();
+      });
+    });
+
+    // Trin-navigation
+    list.querySelectorAll('.oevelse-trin-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var idx = parseInt(this.getAttribute('data-idx'));
+        var goto = this.getAttribute('data-goto');
+        if (goto === 'done') {
+          delete aktivOevelseTrin[idx];
+          // Marker som gennemført
+          var oev = getOevelser()[idx];
+          if (oev && !isOevelseDone(oev.id)) toggleOevelseDone(oev.id);
+        } else {
+          aktivOevelseTrin[idx] = parseInt(goto);
+        }
+        renderOevelser();
+      });
+    });
+
+    // Gennemført-knap
+    list.querySelectorAll('.oevelse-gennemfoert-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleOevelseDone(this.getAttribute('data-oev-id'));
+        renderOevelser();
+      });
+    });
+
+    // Refleksionssvar (efter øvelse)
+    list.querySelectorAll('.oevelse-refl-svar').forEach(function(ta) {
+      var timeout;
+      ta.addEventListener('input', function() {
+        var oevId = this.getAttribute('data-oev');
+        var rIdx = parseInt(this.getAttribute('data-refl-idx'));
+        var val = this.value;
+        clearTimeout(timeout);
+        timeout = setTimeout(function() { saveOevelseRefleksionSvar(oevId, rIdx, val); }, 500);
+      });
+    });
+
+    // Dagens refleksion — skriv
+    var reflTextarea = list.querySelector('.refl-dagens-svar');
+    if (reflTextarea) {
+      var reflTimeout;
+      reflTextarea.addEventListener('input', function() {
+        var spgId = this.getAttribute('data-refl-id');
+        var spgTekst = this.getAttribute('data-refl-tekst');
+        var val = this.value;
+        clearTimeout(reflTimeout);
+        reflTimeout = setTimeout(function() { gemRefleksion(spgId, spgTekst, val); }, 500);
+        // Vis "Gemt" feedback
+        var feedback = list.querySelector('.refl-gemt-feedback');
+        if (feedback) {
+          feedback.style.opacity = '1';
+          setTimeout(function() { feedback.style.opacity = '0'; }, 1500);
+        }
+      });
+    }
+
+    // Journal toggle
+    var journalBtn = document.getElementById('journalToggle');
+    if (journalBtn) {
+      journalBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        visJournal = !visJournal;
+        renderOevelser();
+      });
+    }
+
     bindActionBars(list);
+  }
+
+  function renderDagensRefleksion() {
+    var spg = getDagensRefleksion();
+    var svar = getDagensRefleksionSvar(spg.id);
+    var html = '<div class="refl-dagens-sektion">';
+    html += '<div class="refl-dagens-header">' + t('dagensRefleksion') + '</div>';
+    html += '<div class="refl-dagens-spg">' + spg.tekst + '</div>';
+    html += '<div class="refl-dagens-skriv">';
+    html += '<textarea class="refl-dagens-svar" data-refl-id="' + spg.id + '" data-refl-tekst="' + escapeAttr(spg.tekst) + '" placeholder="' + t('refleksionPlaceholder') + '" rows="4">' + (svar || '') + '</textarea>';
+    html += '<div class="refl-gemt-feedback" style="opacity:0">' + t('refleksionGemt') + '</div>';
+    html += '</div>';
+    html += '</div>';
+    return html;
+  }
+
+  function renderJournal(journal) {
+    var html = '<div class="refl-journal-sektion">';
+    html += '<div class="refl-journal-header">';
+    html += '<div class="refl-journal-titel">' + t('minJournal') + '</div>';
+    html += '<button class="refl-journal-luk" id="journalLuk">' + t('lukJournal') + '</button>';
+    html += '</div>';
+
+    if (journal.length === 0) {
+      html += '<div class="refl-journal-tom">' + t('ingenRefleksioner') + '</div>';
+    } else {
+      // Vis i omvendt kronologisk rækkefølge
+      var sorted = journal.slice().reverse();
+      var currentDato = '';
+      sorted.forEach(function(entry) {
+        if (entry.dato !== currentDato) {
+          currentDato = entry.dato;
+          var d = new Date(entry.dato);
+          var dagNavn = t('dagLabels')[(d.getDay() + 6) % 7];
+          var maanedNavn = t('maanedNavne')[d.getMonth()];
+          html += '<div class="refl-journal-dato">' + dagNavn + ' ' + d.getDate() + '. ' + maanedNavn + '</div>';
+        }
+        html += '<div class="refl-journal-entry">';
+        html += '<div class="refl-journal-spg">' + entry.spoergsmaal + '</div>';
+        html += '<div class="refl-journal-svar">' + entry.svar + '</div>';
+        html += '</div>';
+      });
+    }
+
+    html += '</div>';
+    return html;
   }
 
   // ---------- Nyhedsbrev ----------

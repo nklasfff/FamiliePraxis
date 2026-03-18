@@ -753,6 +753,89 @@ var OEVELSER = [
 ];
 
 // ============================================================
+// Øvelsesrefleksioner (spørgsmål efter hver øvelse)
+// ============================================================
+var OEVELSE_REFLEKSIONER = {
+  'vagus-aanding': {
+    privat: ['Hvad lagde du mærke til i kroppen, da du skiftede til den lange udånding?', 'Hvornår på dagen ville denne øvelse gøre mest forskel for dig?'],
+    professionel: ['Hvilken effekt observerede du på din egen reguleringskapacitet?', 'Hvordan ville du tilpasse denne øvelse til en forælder med begrænset kropsbevidsthed?']
+  },
+  'co-regulering': {
+    privat: ['Hvordan reagerede dit barn, da du blev stille i stedet for at tale?', 'Hvad var det sværeste ved at blive i det — uden at "løse" noget?'],
+    professionel: ['Hvilke tilknytningsstrategier observerede du hos barnet under øvelsen?', 'Hvordan påvirkede din egen reguleringstilstand barnets respons?']
+  },
+  'narrativ-livslinje': {
+    privat: ['Hvilket øjeblik under linjen overraskede dig mest?', 'Hvad ville du ønske, at du kunne fortælle dit yngre jeg om de styrker, du fandt?'],
+    professionel: ['Hvilke alternative fortællinger dukkede op, som klienten ikke selv havde set?', 'Hvor ser du potentiale for "re-authoring" i denne families narrativ?']
+  },
+  'mentalisering-par': {
+    privat: ['Hvad overraskede dig ved din partners svar?', 'Hvornår i hverdagen kunne I bruge denne form for lytning — uden at det behøver være en øvelse?'],
+    professionel: ['Hvor brød mentaliseringen sammen, og hvad triggede det?', 'Hvilke præ-mentaliserende tilstande (konkret, psykisk ækvivalens, pretend mode) observerede du?']
+  },
+  'familiekort': {
+    privat: ['Var der noget i opstillingen, der overraskede dig?', 'Hvis du lavede kortet igen om et halvt år — hvad håber du ville se anderledes ud?'],
+    professionel: ['Hvilke systemiske mønstre blev synlige gennem familiemedlemmernes forskellige opstillinger?', 'Var der tegn på parentificering, koalitioner eller triangulering?']
+  },
+  'tryghedscirkel-barn': {
+    privat: ['Hvad mærkede du i dig selv, da dit barn vendte tilbage til dig?', 'Er der situationer i hverdagen, hvor du kan øve dig i at være "havnen" — bare ved at blive?'],
+    professionel: ['Hvilken tilknytningsstrategi udviste barnet (sikker, undgående, ambivalent, desorganiseret)?', 'Hvordan reagerede forælderen på barnets tilbagevendingsadfærd?']
+  },
+  'somatisk-landing': {
+    privat: ['Hvilken del af kroppen "svarede" først, da du landede i den?', 'Hvad overraskede dig mest ved at mærke efter i stedet for at tænke?'],
+    professionel: ['Hvilke somatiske markører identificerede du hos dig selv under øvelsen?', 'Hvordan ville du guide en klient med dissociative tendenser gennem denne øvelse?']
+  },
+  'generationsbrev': {
+    privat: ['Hvad var det sværeste at skrive — og hvad lettede mest?', 'Hvis dit barn læste dette brev som voksen, hvad ville du håbe, de tog med sig?'],
+    professionel: ['Hvilke intergenerationelle mønstre blev tydelige gennem brevskrivningen?', 'Hvor ser du mulighed for at bryde den transgenerationelle transmission?']
+  }
+};
+
+// ============================================================
+// Daglige refleksionsspørgsmål (pulje til rotation)
+// ============================================================
+var REFLEKSIONER = {
+  privat: [
+    { id: 'r01', tekst: 'Hvornår følte du dig sidst virkelig set af nogen i din familie?', tema: 'tilknytning' },
+    { id: 'r02', tekst: 'Hvad ville du ønske, din partner vidste om dig lige nu — som du ikke har sagt højt?', tema: 'parforhold' },
+    { id: 'r03', tekst: 'Tænk på en situation i denne uge, hvor du reagerede stærkere, end situationen kaldte på. Hvad handlede det egentlig om?', tema: 'nervesystem' },
+    { id: 'r04', tekst: 'Hvad lærte du om kærlighed, da du selv var barn? Hvad vil du gerne gøre anderledes?', tema: 'generationer' },
+    { id: 'r05', tekst: 'Hvis dit barn kunne se indeni dig lige nu — hvad ville det se?', tema: 'forælder' },
+    { id: 'r06', tekst: 'Hvad er den modigste ting, du har gjort for din familie — som ingen lagde mærke til?', tema: 'styrke' },
+    { id: 'r07', tekst: 'Hvornår er det sværest at bede om hjælp? Hvad holder dig tilbage?', tema: 'sårbarhed' },
+    { id: 'r08', tekst: 'Hvordan ville din dag se ud, hvis du var lige så tålmodig med dig selv, som du prøver at være med dit barn?', tema: 'selvomsorg' },
+    { id: 'r09', tekst: 'Er der et mønster i din familie, du kan mærke gentager sig — noget du genkender fra din egen barndom?', tema: 'generationer' },
+    { id: 'r10', tekst: 'Hvad har du brug for lige nu — som du ikke har givet dig selv lov til?', tema: 'behov' },
+    { id: 'r11', tekst: 'Tænk på et øjeblik i denne uge, hvor I virkelig var forbundet som familie. Hvad gjorde forskellen?', tema: 'forbindelse' },
+    { id: 'r12', tekst: 'Hvis frygten ikke var der — hvad ville du så gøre anderledes i morgen?', tema: 'mod' },
+    { id: 'r13', tekst: 'Hvad er den historie, du fortæller dig selv om dig som forælder? Er den sand — eller er den bare gammel?', tema: 'narrativ' },
+    { id: 'r14', tekst: 'Hvornår har du sidst grædt? Hvad skete der bagefter?', tema: 'følelser' },
+    { id: 'r15', tekst: 'Tænk på en person, der har troet på dig — også når du ikke selv gjorde det. Hvad ville de sige til dig nu?', tema: 'ressourcer' },
+    { id: 'r16', tekst: 'Hvad ville dit barn sige, hvis du spurgte: "Hvornår er jeg bedst som forælder?"', tema: 'forælder' },
+    { id: 'r17', tekst: 'Er der noget, du bærer på, som du aldrig har sagt højt? Hvad ville der ske, hvis du skrev det ned?', tema: 'hemmeligheder' },
+    { id: 'r18', tekst: 'Hvad er forskellen på den forælder, du gerne vil være — og den, du er? Er kløften så stor, som det føles?', tema: 'selvbillede' },
+    { id: 'r19', tekst: 'Hvornår føler du dig mest alene? Hvad ville hjælpe?', tema: 'ensomhed' },
+    { id: 'r20', tekst: 'Hvad er én ting, der er bedre i dag end for et år siden — også selvom det er småt?', tema: 'håb' },
+    { id: 'r21', tekst: 'Hvis du skulle beskrive stemningen i dit hjem med ét ord — hvad ville det være? Hvad ønsker du, det var?', tema: 'familie' }
+  ],
+  professionel: [
+    { id: 'rp01', tekst: 'Hvilken familie eller klient har du tænkt mest på denne uge — og hvad er det, der fylder?', tema: 'refleksion' },
+    { id: 'rp02', tekst: 'Hvornår mærkede du sidst dit eget nervesystem aktivere i en session? Hvad triggede det?', tema: 'selvregulering' },
+    { id: 'rp03', tekst: 'Er der en klient, du har svært ved at mentalisere? Hvad gør det svært?', tema: 'mentalisering' },
+    { id: 'rp04', tekst: 'Hvilke mønstre fra din egen familiehistorie genkendte du i dit arbejde denne uge?', tema: 'modoverføring' },
+    { id: 'rp05', tekst: 'Hvornår oplevede du sidst en reparation i en terapeutisk relation? Hvad gjorde den mulig?', tema: 'alliance' },
+    { id: 'rp06', tekst: 'Er der en intervention, du undgår — og hvad ligger bag undgåelsen?', tema: 'faglig udvikling' },
+    { id: 'rp07', tekst: 'Hvordan ville du beskrive din egen tilknytningsstil — og hvordan påvirker den dit terapeutiske arbejde?', tema: 'selvindsigt' },
+    { id: 'rp08', tekst: 'Hvad er det sværeste ved at arbejde med udsatte familier? Hvad holder dig i det?', tema: 'motivation' },
+    { id: 'rp09', tekst: 'Tænk på en session, der gik godt denne uge. Hvad gjorde DU, der bidrog til det?', tema: 'faglig styrke' },
+    { id: 'rp10', tekst: 'Hvornår har du sidst søgt supervision — og hvad holdt dig fra det, hvis det er længe siden?', tema: 'supervision' },
+    { id: 'rp11', tekst: 'Er der en familie, hvor du er gået i stå? Hvad ville en systemisk supervisor foreslå?', tema: 'fastlåsthed' },
+    { id: 'rp12', tekst: 'Hvad er forskellen på empati og overidentifikation i dit arbejde? Hvor går grænsen for dig?', tema: 'grænser' },
+    { id: 'rp13', tekst: 'Hvilken teoretisk tilgang har du brug for at fordybe dig i lige nu — og hvorfor netop den?', tema: 'faglig udvikling' },
+    { id: 'rp14', tekst: 'Hvordan sørger du for din egen regulering mellem sessioner? Er det nok?', tema: 'selvomsorg' }
+  ]
+};
+
+// ============================================================
 // Tilstande (nervesystem-trappe)
 // ============================================================
 var TRAPPEN = [
