@@ -2179,16 +2179,16 @@
     html += '</g>';
     html += '<circle cx="265" cy="265" r="62" fill="#fff"/>';
     html += '<circle cx="265" cy="265" r="62" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
-    html += '<text x="265" y="257" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">Familien</text>';
-    html += '<text x="265" y="277" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">som helhed</text>';
+    html += '<text x="265" y="257" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">' + (isEn ? 'The family' : 'Familien') + '</text>';
+    html += '<text x="265" y="277" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle" font-weight="600">' + (isEn ? 'as a whole' : 'som helhed') + '</text>';
     // Multiple enlarged circles with warm color — white mask first
     var mulCircles = [
-      {x:220,y:95,r:52,l1:'Tilknytning',l2:'& tryghed',fill:'#B8956A',stroke:'#9E7A55',op:'0.85'},
-      {x:410,y:175,r:42,l1:'Parforholdet',l2:'& nærvær',fill:'#3A7A76',stroke:'#2C5F5C',op:'0.55'},
-      {x:395,y:360,r:68,l1:'Samspil',l2:'& mønstre',fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'},
-      {x:240,y:430,r:38,l1:'Barnets',l2:'stemme',fill:'#3A7A76',stroke:'#2C5F5C',op:'0.5'},
-      {x:100,y:340,r:60,l1:'Åndedræt &',l2:'nervesystem',fill:'#B8956A',stroke:'#9E7A55',op:'0.8'},
-      {x:110,y:170,r:70,l1:'Dig selv',l2:'& dine spor',fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'}
+      {x:220,y:95,r:52,l1:(isEn?'Attachment':'Tilknytning'),l2:(isEn?'& security':'& tryghed'),fill:'#B8956A',stroke:'#9E7A55',op:'0.85'},
+      {x:410,y:175,r:42,l1:(isEn?'The couple':'Parforholdet'),l2:(isEn?'& presence':'& nærvær'),fill:'#3A7A76',stroke:'#2C5F5C',op:'0.55'},
+      {x:395,y:360,r:68,l1:(isEn?'Interaction':'Samspil'),l2:(isEn?'& patterns':'& mønstre'),fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'},
+      {x:240,y:430,r:38,l1:(isEn?'The child\'s':'Barnets'),l2:(isEn?'voice':'stemme'),fill:'#3A7A76',stroke:'#2C5F5C',op:'0.5'},
+      {x:100,y:340,r:60,l1:(isEn?'Breathing &':'Åndedræt &'),l2:(isEn?'nervous system':'nervesystem'),fill:'#B8956A',stroke:'#9E7A55',op:'0.8'},
+      {x:110,y:170,r:70,l1:(isEn?'Yourself':'Dig selv'),l2:(isEn?'& your traces':'& dine spor'),fill:'#9E6B7B',stroke:'#7D5563',op:'0.85'}
     ];
     mulCircles.forEach(function(c){
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="'+c.r+'" fill="#fff"/>';
@@ -2197,7 +2197,7 @@
       html += '<text x="'+c.x+'" y="'+(c.y+8)+'" fill="#fff" font-family="Georgia,serif" font-size="11" text-anchor="middle">'+c.l2+'</text>';
     });
     html += '</svg>';
-    html += '<p class="dynamik-svg-caption">Flere områder under pres — systemet trækkes i flere retninger</p>';
+    html += '<p class="dynamik-svg-caption">' + (isEn ? 'Multiple areas under pressure — the system is pulled in several directions' : 'Flere områder under pres — systemet trækkes i flere retninger') + '</p>';
     html += '</div>';
 
     html += '<p class="dynamik-text">I virkeligheden er det sjældent kun ét område, der er belastet. En familie med intergenerationelle traumer har ofte også forstyrrede tilknytningsmønstre OG et parforhold under pres OG et barn der reagerer OG et nervesystem der sidder fast i alarmberedskab. Hvert presset område forstærker de andre.</p>';
