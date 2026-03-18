@@ -701,8 +701,8 @@
           '</div>' +
           '<div class="nyhedsbrev-gave-preview">' +
             '<div class="nyhedsbrev-gave-badge">Gave ved tilmelding</div>' +
-            '<h3 class="nyhedsbrev-gave-title">Fem veje hjem — en mini-bog af Rikke Veth</h3>' +
-            '<p class="nyhedsbrev-gave-desc">En eksklusiv mini-bog på 1.200 ord, hvor Rikke deler de fem principper, der bærer hele hendes arbejde med mennesker. Med fem originale illustrationer.</p>' +
+            '<h3 class="nyhedsbrev-gave-title">Rytmen i alt — et personligt brev fra Rikke Veth</h3>' +
+            '<p class="nyhedsbrev-gave-desc">Fra trommeslager til terapeut. Rikke fortæller om sin rejse — fra scenen til terapilokalet — og de fem ting, musikken lærte hende om at møde mennesker. Med fem illustrationer.</p>' +
           '</div>' +
           '<form class="nyhedsbrev-form" id="nyhedsbrevForm">' +
             '<input type="email" class="nyhedsbrev-input" id="nyhedsbrevEmail" placeholder="Din e-mailadresse" required>' +
@@ -726,138 +726,118 @@
   }
 
   function buildMiniBog() {
-    // SVG illustrationer i appens stil
-    var ill1 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="240" height="160" rx="12" fill="var(--primary-pale)"/>' +
-      '<circle cx="120" cy="70" r="35" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
-      '<circle cx="100" cy="60" r="12" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
-      '<circle cx="140" cy="60" r="12" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
-      '<circle cx="110" cy="85" r="10" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
-      '<circle cx="130" cy="85" r="10" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
-      '<circle cx="120" cy="70" r="5" fill="var(--primary)" opacity="0.3"/>' +
-      '<path d="M85 70 Q80 55 90 48" stroke="var(--primary-light)" stroke-width="1" fill="none"/>' +
-      '<path d="M155 70 Q160 55 150 48" stroke="var(--primary-light)" stroke-width="1" fill="none"/>' +
-      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Familien som helhed</text>' +
+    // Simple, abstrakte illustrationer — geometriske former i appens farver
+    // 1: Koncentriske cirkler (rytme, puls)
+    var ill1 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="120" rx="12" fill="var(--primary-pale)"/>' +
+      '<circle cx="120" cy="60" r="10" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
+      '<circle cx="120" cy="60" r="22" stroke="var(--primary)" stroke-width="1" fill="none" opacity="0.6"/>' +
+      '<circle cx="120" cy="60" r="34" stroke="var(--primary)" stroke-width="0.8" fill="none" opacity="0.35"/>' +
+      '<circle cx="120" cy="60" r="46" stroke="var(--primary)" stroke-width="0.5" fill="none" opacity="0.15"/>' +
       '</svg>';
 
-    var ill2 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="240" height="160" rx="12" fill="var(--amber-bg)"/>' +
-      '<path d="M90 90 Q90 50 120 50 Q150 50 150 90" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
-      '<path d="M100 85 Q100 60 120 58 Q140 60 140 85" stroke="var(--accent)" stroke-width="1.2" fill="none" stroke-dasharray="4 3"/>' +
-      '<circle cx="120" cy="48" r="6" fill="var(--primary)" opacity="0.2"/>' +
-      '<line x1="120" y1="54" x2="120" y2="90" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="2 4"/>' +
-      '<circle cx="90" cy="92" r="4" fill="var(--accent)" opacity="0.4"/>' +
-      '<circle cx="150" cy="92" r="4" fill="var(--accent)" opacity="0.4"/>' +
-      '<circle cx="120" cy="92" r="4" fill="var(--primary)" opacity="0.4"/>' +
-      '<path d="M80 70 C70 65 70 80 80 78" stroke="var(--rose)" stroke-width="1" fill="none"/>' +
-      '<path d="M160 70 C170 65 170 80 160 78" stroke="var(--rose)" stroke-width="1" fill="none"/>' +
-      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Tryghedens bro</text>' +
+    // 2: To lodrette streger der nærmer sig hinanden (lytte, pause)
+    var ill2 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="120" rx="12" fill="var(--amber-bg)"/>' +
+      '<line x1="105" y1="30" x2="105" y2="90" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>' +
+      '<line x1="135" y1="30" x2="135" y2="90" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>' +
+      '<circle cx="120" cy="60" r="3" fill="var(--primary)" opacity="0.3"/>' +
       '</svg>';
 
-    var ill3 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="240" height="160" rx="12" fill="var(--sage-bg)"/>' +
-      '<path d="M60 100 Q80 40 120 55 Q160 40 180 100" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
-      '<path d="M90 85 Q105 60 120 65 Q135 60 150 85" stroke="var(--sage)" stroke-width="1.2" fill="none"/>' +
-      '<circle cx="120" cy="55" r="8" stroke="var(--accent)" stroke-width="1" fill="var(--accent)" opacity="0.15"/>' +
-      '<path d="M112 55 L120 48 L128 55" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
-      '<line x1="75" y1="95" x2="85" y2="88" stroke="var(--primary-light)" stroke-width="0.8"/>' +
-      '<line x1="165" y1="95" x2="155" y2="88" stroke="var(--primary-light)" stroke-width="0.8"/>' +
-      '<path d="M100 100 C105 95 108 95 110 100" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
-      '<path d="M130 100 C135 95 138 95 140 100" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
-      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Kroppen husker</text>' +
+    // 3: Tre bølgelinjer (åndedræt, krop)
+    var ill3 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="120" rx="12" fill="var(--sage-bg)"/>' +
+      '<path d="M50 45 Q95 30 120 45 Q145 60 190 45" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round"/>' +
+      '<path d="M50 60 Q95 45 120 60 Q145 75 190 60" stroke="var(--primary)" stroke-width="1.5" fill="none" stroke-linecap="round"/>' +
+      '<path d="M50 75 Q95 60 120 75 Q145 90 190 75" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round"/>' +
       '</svg>';
 
-    var ill4 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="240" height="160" rx="12" fill="var(--rose-bg)"/>' +
-      '<path d="M70 90 C70 60 95 45 120 60 C145 45 170 60 170 90" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
-      '<path d="M120 60 L120 95" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="3 3"/>' +
-      '<path d="M95 72 Q108 68 120 75 Q132 68 145 72" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
-      '<circle cx="95" cy="80" r="3" fill="var(--rose)" opacity="0.4"/>' +
-      '<circle cx="145" cy="80" r="3" fill="var(--rose)" opacity="0.4"/>' +
-      '<path d="M105 95 Q112 88 120 92 Q128 88 135 95" stroke="var(--accent)" stroke-width="1.2" fill="none"/>' +
-      '<path d="M85 55 Q90 48 100 50" stroke="var(--primary-light)" stroke-width="0.8" fill="none"/>' +
-      '<path d="M155 55 Q150 48 140 50" stroke="var(--primary-light)" stroke-width="0.8" fill="none"/>' +
-      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">Den nye fortælling</text>' +
+    // 4: Brudt cirkel der samles (fortælling, heling)
+    var ill4 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="120" rx="12" fill="var(--rose-bg)"/>' +
+      '<path d="M88 40 A35 35 0 0 1 152 40" stroke="var(--rose)" stroke-width="1.5" fill="none" stroke-linecap="round"/>' +
+      '<path d="M152 80 A35 35 0 0 1 88 80" stroke="var(--primary)" stroke-width="1.5" fill="none" stroke-linecap="round"/>' +
+      '<circle cx="88" cy="60" r="2.5" fill="var(--rose)" opacity="0.5"/>' +
+      '<circle cx="152" cy="60" r="2.5" fill="var(--primary)" opacity="0.5"/>' +
       '</svg>';
 
-    var ill5 = '<svg class="bog-ill" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="240" height="160" rx="12" fill="var(--primary-pale)"/>' +
-      '<path d="M120 40 L120 50" stroke="var(--primary)" stroke-width="1.5"/>' +
-      '<circle cx="120" cy="65" r="15" stroke="var(--primary)" stroke-width="1.5" fill="none"/>' +
-      '<path d="M120 80 L120 100" stroke="var(--primary)" stroke-width="1.2"/>' +
-      '<path d="M110 88 L120 80 L130 88" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
-      '<path d="M105 100 Q112 92 120 96 Q128 92 135 100" stroke="var(--accent)" stroke-width="1" fill="none"/>' +
-      '<path d="M95 65 C85 55 85 75 95 68" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
-      '<path d="M145 65 C155 55 155 75 145 68" stroke="var(--sage)" stroke-width="0.8" fill="none"/>' +
-      '<path d="M108 60 Q112 55 116 60" stroke="var(--primary)" stroke-width="0.8" fill="none"/>' +
-      '<path d="M124 60 Q128 55 132 60" stroke="var(--primary)" stroke-width="0.8" fill="none"/>' +
-      '<circle cx="120" cy="68" r="2" fill="var(--accent)" opacity="0.5"/>' +
-      '<path d="M70 50 Q80 45 90 50 Q100 45 110 50" stroke="var(--primary-light)" stroke-width="0.6" fill="none" opacity="0.5"/>' +
-      '<path d="M130 50 Q140 45 150 50 Q160 45 170 50" stroke="var(--primary-light)" stroke-width="0.6" fill="none" opacity="0.5"/>' +
-      '<text x="120" y="130" text-anchor="middle" fill="var(--text-light)" font-size="11" font-family="Georgia, serif" font-style="italic">At ånde frit</text>' +
+    // 5: Enkelt spire/blad (vækst, begyndelse)
+    var ill5 = '<svg class="bog-ill" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="240" height="120" rx="12" fill="var(--primary-pale)"/>' +
+      '<line x1="120" y1="95" x2="120" y2="55" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<path d="M120 55 Q110 40 100 35 Q115 40 120 55" stroke="var(--primary)" stroke-width="1.2" fill="var(--primary)" opacity="0.15"/>' +
+      '<path d="M120 65 Q130 50 140 45 Q125 52 120 65" stroke="var(--sage)" stroke-width="1.2" fill="var(--sage)" opacity="0.15"/>' +
       '</svg>';
 
     return '<div class="minibog">' +
       '<div class="minibog-header">' +
         '<div class="minibog-badge">Din gave</div>' +
-        '<h2 class="minibog-titel">Fem veje hjem</h2>' +
-        '<p class="minibog-author">af Rikke Veth</p>' +
-        '<p class="minibog-intro">En lille bog om de principper, der bærer mit arbejde med mennesker — og som måske kan bære dig et stykke af vejen.</p>' +
+        '<h2 class="minibog-titel">Rytmen i alt</h2>' +
+        '<p class="minibog-author">Et personligt brev af Rikke Veth</p>' +
+        '<p class="minibog-intro">Fra trommestolens puls til terapirummets stilhed. Om det, musikken lærte mig — og det, børnene lærte mig bagefter.</p>' +
+      '</div>' +
+
+      '<div class="minibog-kapitel">' +
+        '<p class="minibog-aabning">Kære dig.</p>' +
+        '<p>Jeg ved ikke, hvem du er. Måske er du en forælder, der ligger vågen om natten og spekulerer på, om du gør det godt nok. Måske er du en fagperson, der bærer andres tunge historier med hjem. Eller måske er du bare et menneske, der leder efter noget, der giver mening.</p>' +
+        '<p>Jeg vil gerne fortælle dig noget. Ikke en teori. Ikke en metode. Men en historie — min historie — og de fem ting, den lærte mig om at møde mennesker.</p>' +
+        '<p>Den begynder med en tromme.</p>' +
       '</div>' +
 
       // Kapitel 1
       '<div class="minibog-kapitel">' +
         ill1 +
-        '<h3 class="minibog-kap-titel">1. Se helheden — ikke symptomerne</h3>' +
-        '<p>Når en familie søger hjælp, er det sjældent én person, der har problemet. Det er hele systemet, der har fundet en balance, som ikke længere holder. Barnet, der slår. Moderen, der råber. Faderen, der forsvinder ind i sig selv. Hver enkelt gør det bedste, de kan — men summen af alles bedste bliver til kaos.</p>' +
-        '<p>Det første princip i mit arbejde er at se helheden. Ikke at finde synderen. Ikke at diagnosticere den, der larmer mest. Men at forstå, hvordan alle i familien er forbundet — og hvordan forandring ét sted skaber bevægelse alle steder.</p>' +
-        '<p>Forestil dig familien som et mobilt kunstværk, der hænger i loftet. Rør ved én del, og alting bevæger sig. Det er ikke svaghed. Det er sammenhæng. Og den sammenhæng er også jeres styrke — for det betyder, at selv små skridt kan flytte hele familien.</p>' +
-        '<p>Når jeg møder en familie for første gang, lytter jeg ikke kun til ordene. Jeg lytter til tavsheden mellem dem. Til de blikke, der udveksles. Til den krop, der strammer sig. Alt det fortæller mig noget om det system, jeg er inviteret ind i. Og det er i den helhedsforståelse, at forandringen begynder.</p>' +
+        '<h3 class="minibog-kap-titel">Alt har en rytme</h3>' +
+        '<p>Som ung var jeg trommeslager. Ikke sådan lidt — det var alt, jeg var. Jeg spillede med nogle af de bedste bands i Danmark, og der var noget ved det, der fangede mig dybere end musikken selv. Det var <em>samspillet</em>. Følelsen af at sidde bag trommerne og mærke, hvordan hele bandet åndede sammen.</p>' +
+        '<p>En trommeslager styrer ikke musikken. Hun lytter. Hun mærker, hvor de andre er på vej hen, og så møder hun dem der. Nogle gange skal rytmen bære. Andre gange skal den trække sig. Det kræver noget, som ingen musikteori kan lære dig: evnen til at mærke rummet.</p>' +
+        '<p>Mange år senere sidder jeg i mit terapilokale med en familie, der er gået i stå. Og pludselig genkender jeg det. Familien har en rytme — ligesom et band. Når den ene taler, tier den anden. Når barnet larmer, trækker moderen sig. Der er et mønster. Ikke kaos. Mønster. Og som med musik: man kan ikke ændre rytmen, før man har hørt den.</p>' +
+        '<p>Det var det første, trommerne lærte mig: Alt har en rytme. Også smerte. Også familier. Og forandring begynder med at lytte til den rytme, der allerede er der.</p>' +
       '</div>' +
 
       // Kapitel 2
       '<div class="minibog-kapitel">' +
         ill2 +
-        '<h3 class="minibog-kap-titel">2. Tryghed er fundamentet for alt</h3>' +
-        '<p>Intet menneske kan vokse, lære eller forandre sig, hvis det ikke føler sig trygt. Det gælder børn, der skal udvikle sig. Det gælder voksne, der skal turde se på deres mønstre. Og det gælder familier, der skal finde nye veje sammen.</p>' +
-        '<p>Mange af de familier, jeg arbejder med, har levet i utrygheds skygge i generationer. Forældrene voksede selv op uden den tryghed, de nu forsøger at give deres børn. Og det er umuligt at give noget, man aldrig selv har modtaget — medmindre nogen hjælper med at bygge broen.</p>' +
-        '<p>Tryghed er ikke fravær af problemer. Det er vissheden om, at der er nogen, der holder, også når det er svært. I terapien skaber vi et rum, hvor familien langsomt kan erfare, at det er muligt at være sammen uden fare. At konflikter kan rummes. At følelser er tilladte. Det lyder simpelt. For familier med traumatiske erfaringer er det revolutionerende.</p>' +
-        '<p>Som terapeut er mit vigtigste redskab ikke en metode. Det er min egen regulering — min evne til at forblive rolig, nærværende og forankret, også når stormen raser. For tryghed smitter. Og den smitter begge veje.</p>' +
+        '<h3 class="minibog-kap-titel">Pausen er det vigtigste slag</h3>' +
+        '<p>I musik er det ikke tonerne, der skaber følelse. Det er pauserne. Stilheden mellem slagene. Den tomhed, der giver det næste slag sin kraft. Enhver trommeslager ved det: det du <em>ikke</em> spiller, er lige så vigtigt som det, du spiller.</p>' +
+        '<p>Det har taget mig år at forstå, at det samme gælder, når man sidder overfor et barn, der ikke vil tale. En 8-årig dreng, der trækker hætten ned over øjnene og kigger i gulvet. Førhen ville jeg have stillet spørgsmål. Prøvet at finde vej ind. Nu ved jeg: pausen er vejen ind. At tåle stilheden. At lade den vare. At vise barnet, at jeg kan holde rummet, også når det er tomt.</p>' +
+        '<p>For mange af de børn, jeg møder, har aldrig oplevet en voksen, der bare var der uden at ville noget. Uden at dømme, instruere eller reparere. Bare var der. Den oplevelse er ikke ingenting. For et barn, der har levet i larm og uro, er den alt.</p>' +
+        '<p>I et band lærte jeg at spille pausen. I terapirummet lærte jeg, at pausen er der, hvor tilliden vokser.</p>' +
       '</div>' +
 
       // Kapitel 3
       '<div class="minibog-kapitel">' +
         ill3 +
-        '<h3 class="minibog-kap-titel">3. Kroppen bærer historien</h3>' +
-        '<p>Vi tror, at vi tænker os til forandring. Men kroppen er hurtigere end tanken. Den husker, hvad sindet har forsøgt at glemme. Hjertebanken ved et bestemt tonefald. Spændingen i skuldrene, når døren smækker. Den flade vejrtrækning, der aldrig helt fylder lungerne.</p>' +
-        '<p>I mit arbejde har åndedrættet en central plads. Ikke som teknik eller trick, men som en direkte linje til nervesystemet. Når en forælder har levet i alarmberedskab i årevis, kan ingen samtale alene ændre det. Men åndedrættet kan. En langsom udånding aktiverer den del af nervesystemet, der signalerer tryghed. Det er fysiologi, ikke filosofi.</p>' +
-        '<p>For familier med traumatiske spor er denne kropslige vej afgørende. Børn, der ikke har ord for deres oplevelser, mærker alligevel alt i deres kroppe. Forældre, der rationelt godt ved, at faren er overstået, har kroppe, der stadig er i beredskab. Når vi hjælper kroppen med at lande, følger resten med.</p>' +
-        '<p>Jeg beder ofte familier om at mærke efter: Hvor holder du vejret? Hvor i kroppen sidder uroen? Ikke for at analysere, men for at anerkende. For kroppen fortjener at blive lyttet til — den har holdt dig i live indtil nu.</p>' +
+        '<h3 class="minibog-kap-titel">Kroppen ved det først</h3>' +
+        '<p>Når du spiller trommer, tænker du ikke. Du mærker. Dine hænder og fødder ved, hvad de skal, før din hjerne når at formulere det. Musikken bor i kroppen — i musklerne, i åndedrættet, i den puls, der synkroniserer sig med de andre i bandet.</p>' +
+        '<p>Det tog mig lang tid at forstå, at det samme gælder for smerte. Traumer bor ikke i hovedet. De bor i kroppen. I det åndedræt, der aldrig helt slipper. I skuldrene, der altid er oppe ved ørerne. I maven, der knuger sig sammen, når stemmen bliver en anelse for høj.</p>' +
+        '<p>Jeg mødte engang en pige på 14, der ikke kunne sætte ord på, hvad der var sket i hendes familie. Men hendes krop kunne. Hendes vejrtrækning blev flad og hurtig, når vi nærmede os det svære. Hendes hænder knyttede sig. Det var ikke modstand. Det var hendes krop, der fortalte sin historie. Og da vi begyndte at lytte til kroppen i stedet for at insistere på ord, åbnede der sig noget.</p>' +
+        '<p>Åndedrættet er den mest direkte vej til nervesystemet. Det vidste jeg fra musikken — at ånde med rytmen, lade kroppen finde sin puls. Nu bruger jeg det hver dag: at hjælpe mennesker med at finde den vejrtrækning, der fortæller deres krop, at det er trygt nu. At faren er overstået. At de må lande.</p>' +
       '</div>' +
 
       // Kapitel 4
       '<div class="minibog-kapitel">' +
         ill4 +
-        '<h3 class="minibog-kap-titel">4. Historien kan genfortælles</h3>' +
-        '<p>Enhver familie har en historie, den lever efter. "Vi er en familie, der ikke taler om følelser." "I vores familie klarer man sig selv." "Vi er dem, der altid har problemer." Disse fortællinger er ikke sandheder. De er historier — og historier kan genfortælles.</p>' +
-        '<p>Den narrative tilgang, som er kernen i mit arbejde, handler om at adskille personen fra problemet. Du er ikke en dårlig forælder — du er en forælder, der kæmper med svære følelser. Dit barn er ikke et problemet — dit barn kommunikerer noget vigtigt. Når vi eksternaliserer problemet, skabes der rum for at se alt det, der også er til stede: styrke, omsorg, modstandskraft og kærlighed.</p>' +
-        '<p>I de mest belastede familier, jeg møder, finder jeg altid øjeblikke af forbindelse. Et blik mellem mor og barn. En fars hånd på en skulder. Øjeblikke, der let overses i kaoset, men som rummer hele familiens potentiale for forandring. Narrativ terapi hjælper familien med at finde og forstørre disse øjeblikke, så de bliver den nye fortælling.</p>' +
-        '<p>Det kræver mod at genfortælle sin historie. Men det er en af de mest befriende oplevelser, et menneske kan have — at opdage, at man er mere end det, der skete med én.</p>' +
+        '<h3 class="minibog-kap-titel">Historien bag larmen</h3>' +
+        '<p>I et band er der altid én, der spiller for højt. Og den uerfarne reaktion er irritation. Men en god musiker spørger: <em>Hvorfor</em> spiller han for højt? Er han usikker? Kan han ikke høre sig selv? Er monitoren i stykker? Problemet er sjældent det, det ligner.</p>' +
+        '<p>Det samme gælder børn. Det barn, der slår, råber eller vælter møblerne — det barn, som alle er trætte af — det barn spiller for højt, fordi det ikke kan høre sig selv. Fordi ingen har lyttet til det, det faktisk prøver at sige. Adfærden er ikke problemet. Adfærden er kommunikation.</p>' +
+        '<p>Jeg husker en dreng på 9. Skolens "vanskelige barn." Tre underretninger. To skoleskift. Alle havde fokuseret på hans vrede. Ingen havde spurgt, hvad der lå bag den. Da jeg endelig sad med ham — efter uger med stille tegning og pausen, der gjorde ham tryg — sagde han noget, jeg aldrig glemmer: "Jeg råber, fordi det er det eneste, der er højt nok til at nogen hører det."</p>' +
+        '<p>Hver familie har en fortælling om sig selv. "Vi er dem, der altid har problemer." "I vores familie klarer man sig selv." De fortællinger er ikke sandheder — de er historier. Og historier kan genfortælles. Når vi hjælper et barn med at finde en ny fortælling om sig selv, ændrer vi ikke bare barnet. Vi ændrer hele familiens partitur.</p>' +
       '</div>' +
 
       // Kapitel 5
       '<div class="minibog-kapitel">' +
         ill5 +
-        '<h3 class="minibog-kap-titel">5. Mennesket før metoden</h3>' +
-        '<p>I en verden fuld af manualer, programmer og standardiserede forløb tror jeg på noget andet: at det vigtigste redskab i terapien er mødet mellem to mennesker. Ingen metode kan erstatte evnen til at se, hvem der sidder foran dig, og hvad netop dette menneske har brug for lige nu.</p>' +
-        '<p>Jeg bruger mange tilgange i mit arbejde — narrativ terapi, systemisk familieterapi, polyvagal teori, åndedrætsterapi, mentaliseringsbaseret behandling. Men ingen af dem er et mål i sig selv. De er redskaber, jeg vælger ud fra det menneske, jeg møder. Nogle familier har brug for at forstå deres mønstre. Andre har brug for at mærke deres krop. Nogle har brug for at tale. Andre har brug for stilhed.</p>' +
-        '<p>Det handler ikke om, hvad der er "evidensbaseret" i en abstrakt forstand. Det handler om, hvad der virker for lige præcis denne familie, i lige præcis denne situation, på lige præcis dette tidspunkt i deres liv. At turde lytte til sin intuition — som fagperson og som menneske — er ikke uprofessionelt. Det er det mest professionelle, man kan gøre.</p>' +
-        '<p>For bag alle modeller og metoder er der ét spørgsmål, der bærer det hele: Hvad har du brug for? Og bag svaret på det spørgsmål er der altid et menneske, der fortjener at blive mødt.</p>' +
+        '<h3 class="minibog-kap-titel">Mennesket før partituret</h3>' +
+        '<p>De bedste koncerter, jeg spillede, var dem, hvor vi lagde partituret væk. Hvor vi stoppede med at tænke over, hvad vi <em>skulle</em> spille, og bare lyttede til hinanden. Hvor teknikken forsvandt, og kun musikken var tilbage.</p>' +
+        '<p>Det er det sidste og vigtigste, musikken lærte mig: mennesket kommer før metoden. Altid. Jeg har læst bøgerne. Jeg kender teorierne. Narrativ terapi, systemisk familieterapi, polyvagal regulering, mentaliseringsbaseret behandling. Det er mine redskaber, og de er gode. Men de er ikke det, der helbreder.</p>' +
+        '<p>Det, der helbreder, er mødet. Øjeblikket, hvor et andet menneske mærker, at det bliver set. Virkelig set. Ikke som en diagnose, en sag eller et problem — men som et menneske. Det øjeblik kan ingen manual skabe. Det opstår, når jeg lægger partituret væk og bare er til stede med det, der er.</p>' +
+        '<p>For de børn og unge, der er mit hjerteblod i dette arbejde, er det ofte det allervigtigste: en voksen, der ser dem som dem, de er — ikke som dem, de er blevet gjort til. En voksen, der tror på, at der bag al den larm, al den stilhed, al den smerte, er et menneske, der bare gerne vil høres.</p>' +
       '</div>' +
 
       '<div class="minibog-footer">' +
-        '<p class="minibog-footer-text">Tak fordi du læste med. Disse fem principper er ikke bare teori — de er det, jeg bringer med mig hver dag, når jeg møder familier i mit terapilokale på Frederiksberg. Hvis noget resonerede med dig, er du altid velkommen til at række ud.</p>' +
-        '<p class="minibog-footer-sign">Med varme,<br><strong>Rikke Veth</strong><br>Familieterapeut · Familiepraxis</p>' +
+        '<p class="minibog-footer-text">Jeg lagde trommestikkerne fra mig for mange år siden. Men rytmen har jeg aldrig sluppet. Den banker stadig — i hvert møde, i hvert åndedrag, i hvert øjeblik af stilhed, der langsomt fylder sig med tillid.</p>' +
+        '<p class="minibog-footer-text">Hvis du kender et barn, der spiller for højt — eller for stille — så vid, at der er en historie bag. Og at den historie kan få et nyt kapitel.</p>' +
+        '<p class="minibog-footer-sign">Med varme fra terapilokalet på Frederiksberg,<br><strong>Rikke Veth</strong><br>Familieterapeut · Familiepraxis</p>' +
       '</div>' +
     '</div>';
   }

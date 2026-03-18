@@ -2650,6 +2650,12 @@ body {
   margin-bottom: 8px;
 }
 
+.minibog-aabning {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--primary-dark);
+}
+
 .minibog-kap-titel {
   font-family: Georgia, serif;
   font-size: 1.15rem;
