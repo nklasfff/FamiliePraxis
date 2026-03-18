@@ -2384,20 +2384,69 @@ body {
 
 /* ---------- Hvad er muligt lige nu ---------- */
 .muligt-board {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
+/* --- Progression --- */
+.muligt-progression {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 16px 18px;
+}
+
+.muligt-progression-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.muligt-progression-segment {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.muligt-progression-segment.empty { background: var(--border); opacity: 0.3; }
+.muligt-progression-segment.active.muligt-farve-sage { background: var(--sage); }
+.muligt-progression-segment.active.muligt-farve-rose { background: var(--rose); }
+.muligt-progression-segment.active.muligt-farve-amber { background: var(--amber); }
+.muligt-progression-segment.active.muligt-farve-stone { background: #9E9589; }
+.muligt-progression-segment.done { background: #2C5F5C; }
+
+.muligt-progression-tekst {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.muligt-anerkendelse {
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: var(--sage-bg);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* --- Kasse (lukket) --- */
 .muligt-card {
   border-radius: 14px;
-  padding: 16px 14px 12px;
+  padding: 14px 16px;
   position: relative;
   border: 1.5px solid transparent;
   transition: all 0.3s;
   box-shadow: 0 2px 8px var(--shadow);
+  cursor: pointer;
 }
+
+.muligt-card:hover { box-shadow: 0 4px 16px var(--shadow); }
 
 .muligt-farve-sage { background: #E8F0EB; border-color: #C5D9CC; }
 .muligt-farve-rose { background: #F3E6E9; border-color: #DCC4CA; }
@@ -2406,9 +2455,8 @@ body {
 
 .muligt-card-header {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 8px;
+  align-items: center;
+  gap: 10px;
 }
 
 .muligt-card-check {
@@ -2432,145 +2480,255 @@ body {
   transition: all 0.2s;
 }
 
-.muligt-check-empty {
-  border: 2px solid var(--text-muted);
-  opacity: 0.4;
-}
-
-.muligt-check-working {
-  background: #E0C87A;
-  color: #5C4A1E;
-  font-size: 13px;
-}
-
-.muligt-check-waiting {
-  background: #C5C0B8;
-  color: #4A4540;
-  font-size: 12px;
-}
-
-.muligt-check-temp {
-  background: #B8D4C4;
-  color: #2C5F5C;
-  border: 2px dashed #2C5F5C;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.muligt-check-done {
-  background: #2C5F5C;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
+.muligt-check-empty { border: 2px solid var(--text-muted); opacity: 0.4; }
+.muligt-check-working { background: #E0C87A; color: #5C4A1E; }
+.muligt-check-waiting { background: #C5C0B8; color: #4A4540; }
+.muligt-check-temp { background: #B8D4C4; color: #2C5F5C; border: 2px dashed #2C5F5C; font-weight: 700; }
+.muligt-check-done { background: #2C5F5C; color: #fff; font-weight: 700; }
 
 .muligt-card-titel {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1.3;
   flex: 1;
-  margin: 2px 0 0;
 }
 
-.muligt-card-delete {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  opacity: 0.3;
-  transition: opacity 0.2s;
-  padding: 0 4px;
-}
-
-.muligt-card-delete:hover {
-  opacity: 0.8;
-  color: #9E6B7B;
-}
-
-.muligt-card-badge {
-  display: inline-block;
-  font-size: 0.72rem;
+.muligt-card-mini-badge {
+  font-size: 0.68rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 3px 10px;
-  border-radius: 12px;
-  margin-bottom: 8px;
-  color: var(--text);
-  opacity: 0.7;
-}
-
-.muligt-status-working .muligt-card-badge { background: #E0C87A; color: #5C4A1E; }
-.muligt-status-waiting .muligt-card-badge { background: #D5D1CC; color: #4A4540; }
-.muligt-status-temp .muligt-card-badge { background: #B8D4C4; color: #2C5F5C; }
-.muligt-status-done .muligt-card-badge { background: #2C5F5C; color: #fff; }
-
-.muligt-card-note-wrap {
-  margin-bottom: 8px;
-}
-
-.muligt-card-note {
-  width: 100%;
-  border: none;
-  background: rgba(255,255,255,0.5);
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-family: Georgia, serif;
-  font-size: 0.82rem;
-  color: var(--text);
-  resize: none;
-  line-height: 1.5;
-  transition: background 0.2s;
-}
-
-.muligt-card-note:focus {
-  outline: none;
-  background: rgba(255,255,255,0.85);
-}
-
-.muligt-card-note::placeholder {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.6);
   color: var(--text-muted);
-  opacity: 0.6;
+}
+
+.muligt-card-chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  opacity: 0.5;
+  transition: transform 0.2s;
+}
+
+.muligt-card-preview {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 6px 0 0 36px;
+  line-height: 1.4;
   font-style: italic;
 }
 
-.muligt-card-statuses {
+/* --- Kasse (åben) --- */
+.muligt-card-open {
+  cursor: default;
+  box-shadow: 0 6px 24px var(--shadow);
+}
+
+.muligt-card-open .muligt-card-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: 0;
+}
+
+.muligt-card-expanded {
+  padding-top: 16px;
+}
+
+/* Status-chips i åben kasse */
+.muligt-status-sektion {
+  margin-bottom: 16px;
+}
+
+.muligt-status-row {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
-.muligt-status-btn {
-  flex: 1;
-  padding: 5px 0;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  background: rgba(255,255,255,0.5);
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--text-muted);
+.muligt-status-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-light);
 }
 
-.muligt-status-btn:hover {
-  background: rgba(255,255,255,0.9);
-}
+.muligt-status-chip:hover { background: rgba(255,255,255,0.85); }
 
-.muligt-status-btn.active {
+.muligt-status-chip.active {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary);
 }
 
-.muligt-status-done .muligt-card {
-  opacity: 0.65;
+/* Terapeutisk kontekst */
+.muligt-terapeutisk {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.65;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 10px;
+  border-left: 3px solid rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+/* Felt-labels */
+.muligt-felt-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Note-felt (ekspanderet) */
+.muligt-card-note-expanded {
+  width: 100%;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: Georgia, serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  resize: vertical;
+  line-height: 1.6;
+  transition: all 0.2s;
+  margin-bottom: 14px;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+.muligt-card-note-expanded:focus {
+  outline: none;
+  border-color: var(--sage);
+  background: rgba(255,255,255,0.85);
+}
+
+.muligt-card-note-expanded::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* Næste skridt */
+.muligt-naeste-skridt {
+  width: 100%;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: Georgia, serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  transition: all 0.2s;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.muligt-naeste-skridt:focus {
+  outline: none;
+  border-color: var(--sage);
+  background: rgba(255,255,255,0.85);
+}
+
+.muligt-naeste-skridt::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* Links til andre views */
+.muligt-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.muligt-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.5);
+  font-size: 0.78rem;
+  font-family: inherit;
+  color: var(--sage);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.muligt-link-btn:hover {
+  background: var(--sage-bg);
+  border-color: var(--sage);
+}
+
+/* Handlinger i bunden */
+.muligt-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.muligt-card-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-family: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s;
+  padding: 4px 0;
+}
+
+.muligt-card-delete-btn:hover {
+  color: var(--rose);
+  opacity: 1;
+}
+
+.muligt-card-close-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-family: inherit;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.muligt-card-close-btn:hover {
+  background: var(--bg);
+}
+
+/* Done-status dæmpes */
+.muligt-status-done {
+  opacity: 0.6;
+}
+
+.muligt-status-done.muligt-card-open {
+  opacity: 1;
 }
 
 /* Add form */

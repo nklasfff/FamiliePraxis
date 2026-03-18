@@ -56,6 +56,7 @@
     arrowBack:   function(s){ return svgWrap(s||18, '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'); },
     chevUp:      function(s){ return svgWrap(s||16, '<polyline points="18 15 12 9 6 15"/>'); },
     chevDown:    function(s){ return svgWrap(s||16, '<polyline points="6 9 12 15 18 9"/>'); },
+    chevRight:   function(s){ return svgWrap(s||16, '<polyline points="9 18 15 12 9 6"/>'); },
 
     // Social
     linkedin:    function(s){ return svgWrap(s||16, '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>'); },
@@ -156,6 +157,26 @@
       loest: 'Løst',
       muligtPlaceholder: 'Hvad kan vi gøre lige nu?',
       fjern: 'Fjern',
+      muligtIntroPrivat: 'Ikke alt kan løses. Men noget kan røres ved. Tryk på en kasse for at åbne den — skriv hvad der fylder, og hvad det næste lille skridt kunne være.',
+      muligtIntroProf: 'Overbliksværktøj inspireret af terapirummet. Brug kasserne til at kortlægge familiens belastningsområder, prioritere interventioner og synliggøre bevægelse over tid.',
+      muligtProgression: '{active} af {total} i bevægelse',
+      muligtProgressionDone: '{done} løst',
+      muligtAnerkendelse: 'I bevæger jer. Det er ikke småting.',
+      muligtAnerkendelseProf: 'Familien viser progression i {done} domæne(r).',
+      muligtNaesteSkridt: 'Næste skridt',
+      muligtNaesteSkridtPlaceholder: 'Hvad er ét konkret skridt, I kan tage?',
+      muligtNotePlaceholder: 'Hvad fylder? Skriv frit...',
+      muligtRelatertOevelse: 'Relateret øvelse',
+      muligtRelatertTrappe: 'Mærk efter på trappen',
+      muligtLuk: 'Luk',
+      muligtTerapeutisk: {
+        okonomi: { privat: 'Økonomisk pres rammer nervesystemet direkte. Usikkerhed om penge aktiverer det samme alarmsystem som fysisk fare. Det er ikke "bare penge" — det er overlevelse.', professionel: 'Økonomisk stress er en af de stærkeste prædiktorer for familiær dysfunktion. Kronisk ressourcemangel holder nervesystemet i sympatisk aktivering og reducerer forældrenes mentaliseringskapacitet.' },
+        boern: { privat: 'Bekymringer om børnene bærer ofte en dobbelt byrde: selve problemet — og skylden over ikke at kunne løse det. Begge dele er reelle. Ingen af dem definerer dig som forælder.', professionel: 'Børnerelaterede bekymringer er ofte familiens præsentationsproblem. Undersøg hvad barnets adfærd kommunikerer om systemets tilstand — barnet er sjældent problemet, men ofte symptombæreren.' },
+        folelser: { privat: 'Følelser og relationer er det, der gør familien til en familie — og det, der gør det sværest. Når følelserne fylder, er det fordi forbindelsen betyder noget.', professionel: 'Emotionel dysregulering i parforholdet eller familien er typisk et tilknytningssignal. Udforsk de underliggende behov bag de synlige konflikter — hvad er det egentlige spørgsmål, der stilles?' },
+        kommunen: { privat: 'Kontakten med kommunen kan føles overvældende — som om nogen kigger ind i dit liv og vurderer det. Husk: du har ret til at bede om hjælp, og du har ret til at blive mødt med respekt.', professionel: 'Familiens relation til myndighedssystemet er ofte præget af magtasymmetri og mistillid. Anerkend familiens oplevelse af at være vurderet, samtidig med at du arbejder med at tydeliggøre systemets intentioner.' },
+        bolig: { privat: 'Hjemmet er mere end et sted at bo — det er der, nervesystemet enten finder ro eller forbliver i alarm. Ustabilitet i boligen rammer hele familiens fundament.', professionel: 'Boligstabilitet er en forudsætning for terapeutisk arbejde med udsatte familier. Judith Hermans fase 1 (sikkerhed) gælder også fysisk: uden et stabilt hjem er regulering en illusion.' },
+        krop: { privat: 'Kroppen bærer det, som ordene ikke kan. Smerter, søvnproblemer, træthed — det er ofte kroppen, der taler, når du ikke har plads til at mærke efter.', professionel: 'Somatiske symptomer i udsatte familier er hyppigt udtryk for kronisk stressbelastning. Bessel van der Kolks somatiske markør-teori: kroppen holder regnskab, også når klienten dissocierer fra oplevelsen.' }
+      },
       // Onboarding
       onboardingTekst: 'Velkommen. Denne app guider dig gennem familieterapiens kernebegreber — med øvelser, viden og refleksion.',
       onboardingSpg: 'Hvem er du?',
@@ -297,6 +318,26 @@
       loest: 'Resolved',
       muligtPlaceholder: 'What can we do right now?',
       fjern: 'Remove',
+      muligtIntroPrivat: 'Not everything can be solved. But some things can be touched. Tap a box to open it — write what weighs on you, and what one small next step could be.',
+      muligtIntroProf: 'Overview tool inspired by the therapy room. Use the boxes to map the family\'s stress areas, prioritize interventions, and make progress visible over time.',
+      muligtProgression: '{active} of {total} in motion',
+      muligtProgressionDone: '{done} resolved',
+      muligtAnerkendelse: 'You\'re moving. That\'s not a small thing.',
+      muligtAnerkendelseProf: 'The family shows progression in {done} domain(s).',
+      muligtNaesteSkridt: 'Next step',
+      muligtNaesteSkridtPlaceholder: 'What is one concrete step you can take?',
+      muligtNotePlaceholder: 'What weighs on you? Write freely...',
+      muligtRelatertOevelse: 'Related exercise',
+      muligtRelatertTrappe: 'Check in on the staircase',
+      muligtLuk: 'Close',
+      muligtTerapeutisk: {
+        okonomi: { privat: 'Financial pressure hits the nervous system directly. Uncertainty about money activates the same alarm system as physical danger. It\'s not "just money" — it\'s survival.', professionel: 'Financial stress is one of the strongest predictors of family dysfunction. Chronic resource scarcity keeps the nervous system in sympathetic activation and reduces parental mentalization capacity.' },
+        boern: { privat: 'Worries about the children often carry a double burden: the problem itself — and the guilt of not being able to solve it. Both are real. Neither defines you as a parent.', professionel: 'Child-related concerns are often the family\'s presenting problem. Explore what the child\'s behavior communicates about the system\'s state — the child is rarely the problem, but often the symptom carrier.' },
+        folelser: { privat: 'Emotions and relationships are what makes a family a family — and what makes it hardest. When feelings overwhelm, it\'s because the connection matters.', professionel: 'Emotional dysregulation in the couple or family is typically an attachment signal. Explore the underlying needs behind visible conflicts — what is the real question being asked?' },
+        kommunen: { privat: 'Contact with the municipality can feel overwhelming — as if someone is looking into your life and judging it. Remember: you have the right to ask for help, and you have the right to be met with respect.', professionel: 'The family\'s relationship with the authority system is often marked by power asymmetry and distrust. Acknowledge the family\'s experience of being evaluated, while working to clarify the system\'s intentions.' },
+        bolig: { privat: 'Home is more than a place to live — it\'s where the nervous system either finds peace or stays in alarm. Housing instability shakes the whole family\'s foundation.', professionel: 'Housing stability is a prerequisite for therapeutic work with vulnerable families. Judith Herman\'s phase 1 (safety) applies physically too: without a stable home, regulation is an illusion.' },
+        krop: { privat: 'The body carries what words cannot. Pain, sleep problems, fatigue — it\'s often the body speaking when you don\'t have space to feel.', professionel: 'Somatic symptoms in vulnerable families frequently express chronic stress. Bessel van der Kolk\'s somatic marker theory: the body keeps score, even when the client dissociates from the experience.' }
+      },
       onboardingTekst: 'Welcome. This app guides you through the core concepts of family therapy — with exercises, knowledge, and reflection.',
       onboardingSpg: 'Who are you?',
       privatKlient: 'I\'m a private client',
@@ -1891,28 +1932,45 @@
   }
 
   // ---------- Hvad er muligt lige nu ----------
+  // Relaterede øvelser per kasse-id (mapper til OEVELSER-keys)
+  var MULIGT_RELATEREDE = {
+    okonomi: 'aandedraet',
+    boern: 'mentalisering',
+    folelser: 'parrelation',
+    kommunen: 'aandedraet',
+    bolig: 'grounding',
+    krop: 'grounding'
+  };
+
   var MULIGT_DEFAULTS = [
-    { id: 'okonomi', titel: 'Økonomi', farve: 'amber', status: 'none', note: '' },
-    { id: 'boern', titel: 'Børnene', farve: 'sage', status: 'none', note: '' },
-    { id: 'folelser', titel: 'Følelser & relationer', farve: 'rose', status: 'none', note: '' },
-    { id: 'kommunen', titel: 'Kommunen & systemet', farve: 'stone', status: 'none', note: '' },
-    { id: 'bolig', titel: 'Bolig & hverdag', farve: 'amber', status: 'none', note: '' },
-    { id: 'krop', titel: 'Krop & helbred', farve: 'sage', status: 'none', note: '' }
+    { id: 'okonomi', titel: 'Økonomi', farve: 'amber', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'boern', titel: 'Børnene', farve: 'sage', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'folelser', titel: 'Følelser & relationer', farve: 'rose', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'kommunen', titel: 'Kommunen & systemet', farve: 'stone', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'bolig', titel: 'Bolig & hverdag', farve: 'amber', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'krop', titel: 'Krop & helbred', farve: 'sage', status: 'none', note: '', naesteSkridt: '' }
   ];
 
   var MULIGT_DEFAULTS_EN = [
-    { id: 'okonomi', titel: 'Finances', farve: 'amber', status: 'none', note: '' },
-    { id: 'boern', titel: 'The children', farve: 'sage', status: 'none', note: '' },
-    { id: 'folelser', titel: 'Emotions & relationships', farve: 'rose', status: 'none', note: '' },
-    { id: 'kommunen', titel: 'Municipality & the system', farve: 'stone', status: 'none', note: '' },
-    { id: 'bolig', titel: 'Housing & everyday life', farve: 'amber', status: 'none', note: '' },
-    { id: 'krop', titel: 'Body & health', farve: 'sage', status: 'none', note: '' }
+    { id: 'okonomi', titel: 'Finances', farve: 'amber', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'boern', titel: 'The children', farve: 'sage', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'folelser', titel: 'Emotions & relationships', farve: 'rose', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'kommunen', titel: 'Municipality & the system', farve: 'stone', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'bolig', titel: 'Housing & everyday life', farve: 'amber', status: 'none', note: '', naesteSkridt: '' },
+    { id: 'krop', titel: 'Body & health', farve: 'sage', status: 'none', note: '', naesteSkridt: '' }
   ];
+
+  var aktivMuligtKasse = null; // index af den åbnede kasse
 
   function getMuligtData() {
     var saved = localStorage.getItem('fp_muligt');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) {}
+      try {
+        var data = JSON.parse(saved);
+        // Migrer: tilføj naesteSkridt hvis det mangler
+        data.forEach(function(d) { if (typeof d.naesteSkridt === 'undefined') d.naesteSkridt = ''; });
+        return data;
+      } catch (e) {}
     }
     return getMuligtDefaults().map(function (d) { return Object.assign({}, d); });
   }
@@ -1921,10 +1979,31 @@
     localStorage.setItem('fp_muligt', JSON.stringify(data));
   }
 
+  function getMuligtStats(data) {
+    var total = data.length;
+    var active = 0;
+    var done = 0;
+    var hasContent = 0;
+    data.forEach(function(d) {
+      if (d.status === 'working' || d.status === 'waiting' || d.status === 'temp') active++;
+      if (d.status === 'done') done++;
+      if (d.note || d.naesteSkridt) hasContent++;
+    });
+    return { total: total, active: active, done: done, hasContent: hasContent };
+  }
+
   function renderMuligt() {
     var board = document.getElementById('muligtBoard');
     if (!board) return;
     var data = getMuligtData();
+    var p = contentPerspektiv();
+
+    // Opdater intro-tekst baseret på perspektiv
+    var descEl = document.querySelector('#viewMuligt .view-desc');
+    if (descEl) {
+      descEl.textContent = p === 'professionel' ? t('muligtIntroProf') : t('muligtIntroPrivat');
+    }
+    var stats = getMuligtStats(data);
 
     var statusLabels = {
       'none': '',
@@ -1943,34 +2022,142 @@
     };
 
     var html = '';
+
+    // === Progressionsoverblik ===
+    if (stats.active > 0 || stats.done > 0) {
+      html += '<div class="muligt-progression">';
+      // Progressionslinje
+      html += '<div class="muligt-progression-bar">';
+      data.forEach(function(item) {
+        var farveClass = item.status === 'done' ? 'done' : (item.status !== 'none' ? 'active' : 'empty');
+        html += '<div class="muligt-progression-segment ' + farveClass + ' muligt-farve-' + item.farve + '"></div>';
+      });
+      html += '</div>';
+      // Tekst
+      var progressText = '';
+      if (stats.active > 0) {
+        progressText += t('muligtProgression').replace('{active}', stats.active).replace('{total}', stats.total);
+      }
+      if (stats.done > 0) {
+        if (progressText) progressText += ' · ';
+        progressText += t('muligtProgressionDone').replace('{done}', stats.done);
+      }
+      html += '<div class="muligt-progression-tekst">' + progressText + '</div>';
+      // Anerkendelse
+      if (stats.done > 0) {
+        var anerkTekst = p === 'professionel'
+          ? t('muligtAnerkendelseProf').replace('{done}', stats.done)
+          : t('muligtAnerkendelse');
+        html += '<div class="muligt-anerkendelse">' + anerkTekst + '</div>';
+      }
+      html += '</div>';
+    }
+
+    // === Kasser ===
     data.forEach(function (item, idx) {
+      var isOpen = aktivMuligtKasse === idx;
       var statusClass = 'muligt-status-' + item.status;
-      html += '<div class="muligt-card muligt-farve-' + item.farve + ' ' + statusClass + '" data-idx="' + idx + '">';
-      html += '<div class="muligt-card-header">';
+      html += '<div class="muligt-card muligt-farve-' + item.farve + ' ' + statusClass + (isOpen ? ' muligt-card-open' : '') + '" data-idx="' + idx + '">';
+
+      // Header (altid synlig)
+      html += '<div class="muligt-card-header" data-card-toggle="' + idx + '">';
       html += '<div class="muligt-card-check" data-idx="' + idx + '">' + statusIcons[item.status] + '</div>';
       html += '<h3 class="muligt-card-titel">' + item.titel + '</h3>';
-      html += '<button class="muligt-card-delete" data-idx="' + idx + '" title="' + t('fjern') + '">&times;</button>';
-      html += '</div>';
-      if (item.status !== 'none') {
-        html += '<div class="muligt-card-badge">' + statusLabels[item.status] + '</div>';
+      if (item.status !== 'none' && !isOpen) {
+        html += '<span class="muligt-card-mini-badge">' + statusLabels[item.status] + '</span>';
       }
-      html += '<div class="muligt-card-note-wrap">';
-      html += '<textarea class="muligt-card-note" data-idx="' + idx + '" placeholder="' + t('muligtPlaceholder') + '" rows="2">' + (item.note || '') + '</textarea>';
+      html += '<span class="muligt-card-chevron">' + (isOpen ? IKONER.chevDown(14) : IKONER.chevRight(14)) + '</span>';
       html += '</div>';
-      html += '<div class="muligt-card-statuses">';
-      html += '<button class="muligt-status-btn' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working" title="' + t('underArbejde') + '">' + IKONER.refresh(14) + '</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting" title="' + t('viVenter') + '">' + IKONER.hourglass(14) + '</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp" title="' + t('forNu') + '">' + IKONER.check(14) + '</button>';
-      html += '<button class="muligt-status-btn' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done" title="' + t('loest') + '">' + IKONER.checkCircle(14) + '</button>';
-      html += '</div>';
-      html += '</div>';
+
+      // Preview (lukket: vis evt. note-snippet)
+      if (!isOpen && (item.note || item.naesteSkridt)) {
+        var snippet = item.naesteSkridt || item.note;
+        if (snippet.length > 60) snippet = snippet.slice(0, 57) + '...';
+        html += '<div class="muligt-card-preview">' + snippet + '</div>';
+      }
+
+      // Ekspanderet indhold
+      if (isOpen) {
+        html += '<div class="muligt-card-expanded">';
+
+        // Terapeutisk kontekst
+        var terapeutisk = t('muligtTerapeutisk');
+        if (terapeutisk && terapeutisk[item.id] && terapeutisk[item.id][p]) {
+          html += '<div class="muligt-terapeutisk">' + terapeutisk[item.id][p] + '</div>';
+        }
+
+        // Status-valg (tydelig)
+        html += '<div class="muligt-status-sektion">';
+        html += '<div class="muligt-status-row">';
+        html += '<button class="muligt-status-chip' + (item.status === 'working' ? ' active' : '') + '" data-idx="' + idx + '" data-status="working">' + IKONER.refresh(13) + ' ' + t('underArbejde') + '</button>';
+        html += '<button class="muligt-status-chip' + (item.status === 'waiting' ? ' active' : '') + '" data-idx="' + idx + '" data-status="waiting">' + IKONER.hourglass(13) + ' ' + t('viVenter') + '</button>';
+        html += '<button class="muligt-status-chip' + (item.status === 'temp' ? ' active' : '') + '" data-idx="' + idx + '" data-status="temp">' + IKONER.check(13) + ' ' + t('forNu') + '</button>';
+        html += '<button class="muligt-status-chip' + (item.status === 'done' ? ' active' : '') + '" data-idx="' + idx + '" data-status="done">' + IKONER.checkCircle(13) + ' ' + t('loest') + '</button>';
+        html += '</div></div>';
+
+        // Note-felt (stort)
+        html += '<div class="muligt-felt-label">' + t('muligtNotePlaceholder').split('?')[0] + '?</div>';
+        html += '<textarea class="muligt-card-note-expanded" data-idx="' + idx + '" data-field="note" placeholder="' + t('muligtNotePlaceholder') + '" rows="4">' + (item.note || '') + '</textarea>';
+
+        // Næste skridt
+        html += '<div class="muligt-felt-label">' + t('muligtNaesteSkridt') + '</div>';
+        html += '<input type="text" class="muligt-naeste-skridt" data-idx="' + idx + '" data-field="naesteSkridt" placeholder="' + t('muligtNaesteSkridtPlaceholder') + '" value="' + escapeAttr(item.naesteSkridt || '') + '" />';
+
+        // Links til resten af appen
+        html += '<div class="muligt-links">';
+        html += '<button class="muligt-link-btn" data-goto="trappen">' + IKONER.lightning(14) + ' ' + t('muligtRelatertTrappe') + '</button>';
+        var relOev = MULIGT_RELATEREDE[item.id];
+        if (relOev) {
+          html += '<button class="muligt-link-btn" data-goto="oevelser" data-oevelse="' + relOev + '">' + IKONER.wind(14) + ' ' + t('muligtRelatertOevelse') + '</button>';
+        }
+        html += '</div>';
+
+        // Slet + luk
+        html += '<div class="muligt-card-actions">';
+        html += '<button class="muligt-card-delete-btn" data-idx="' + idx + '">' + IKONER.trash(13) + ' ' + t('fjern') + '</button>';
+        html += '<button class="muligt-card-close-btn" data-close="' + idx + '">' + t('muligtLuk') + '</button>';
+        html += '</div>';
+
+        html += '</div>'; // .muligt-card-expanded
+      }
+
+      html += '</div>'; // .muligt-card
     });
 
     board.innerHTML = html;
 
-    // Bind events
-    board.querySelectorAll('.muligt-status-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
+    // === Event bindings ===
+
+    // Kort-toggle (åbn/luk)
+    board.querySelectorAll('[data-card-toggle]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        if (e.target.closest('.muligt-card-check')) return;
+        var idx = parseInt(this.getAttribute('data-card-toggle'));
+        aktivMuligtKasse = aktivMuligtKasse === idx ? null : idx;
+        renderMuligt();
+        // Scroll til åbnet kort
+        if (aktivMuligtKasse !== null) {
+          setTimeout(function() {
+            var openCard = board.querySelector('.muligt-card-open');
+            if (openCard) openCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 50);
+        }
+      });
+    });
+
+    // Luk-knap
+    board.querySelectorAll('[data-close]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        aktivMuligtKasse = null;
+        renderMuligt();
+      });
+    });
+
+    // Status-chips
+    board.querySelectorAll('.muligt-status-chip').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
         var d = getMuligtData();
         var i = parseInt(this.getAttribute('data-idx'));
         var newStatus = this.getAttribute('data-status');
@@ -1980,7 +2167,22 @@
       });
     });
 
-    board.querySelectorAll('.muligt-card-note').forEach(function (ta) {
+    // Status-check (cykl)
+    board.querySelectorAll('.muligt-card-check').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var d = getMuligtData();
+        var i = parseInt(this.getAttribute('data-idx'));
+        var order = ['none', 'working', 'waiting', 'temp', 'done'];
+        var cur = order.indexOf(d[i].status);
+        d[i].status = order[(cur + 1) % order.length];
+        saveMuligtData(d);
+        renderMuligt();
+      });
+    });
+
+    // Note-felt (stort)
+    board.querySelectorAll('.muligt-card-note-expanded').forEach(function (ta) {
       ta.addEventListener('input', function () {
         var d = getMuligtData();
         var i = parseInt(this.getAttribute('data-idx'));
@@ -1989,25 +2191,35 @@
       });
     });
 
-    board.querySelectorAll('.muligt-card-delete').forEach(function (btn) {
-      btn.addEventListener('click', function () {
+    // Næste skridt
+    board.querySelectorAll('.muligt-naeste-skridt').forEach(function (inp) {
+      inp.addEventListener('input', function () {
+        var d = getMuligtData();
+        var i = parseInt(this.getAttribute('data-idx'));
+        d[i].naesteSkridt = this.value;
+        saveMuligtData(d);
+      });
+    });
+
+    // Slet-knap
+    board.querySelectorAll('.muligt-card-delete-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
         var d = getMuligtData();
         var i = parseInt(this.getAttribute('data-idx'));
         d.splice(i, 1);
+        aktivMuligtKasse = null;
         saveMuligtData(d);
         renderMuligt();
       });
     });
 
-    board.querySelectorAll('.muligt-card-check').forEach(function (el) {
-      el.addEventListener('click', function () {
-        var d = getMuligtData();
-        var i = parseInt(this.getAttribute('data-idx'));
-        var order = ['none', 'working', 'waiting', 'temp', 'done'];
-        var cur = order.indexOf(d[i].status);
-        d[i].status = order[(cur + 1) % order.length];
-        saveMuligtData(d);
-        renderMuligt();
+    // Links til andre views
+    board.querySelectorAll('.muligt-link-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var target = this.getAttribute('data-goto');
+        showView(target);
       });
     });
   }
@@ -2052,7 +2264,8 @@
         titel: val,
         farve: selectedColor,
         status: 'none',
-        note: ''
+        note: '',
+        naesteSkridt: ''
       });
       saveMuligtData(d);
       input.value = '';
