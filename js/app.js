@@ -168,6 +168,23 @@
       nyhedsbrevPrivacy: 'Ingen spam. Kun indhold med mening. Du kan altid afmelde dig.',
       // Diverse
       tilbage: 'Tilbage',
+      heroTitel: 'Relationer der bærer',
+      dynamikLinkTekst: 'Forstå dynamikken — hvordan alting påvirker hinanden',
+      trappenNav: 'Trappen',
+      ligeNu: 'Lige nu',
+      tilbageForsiden: 'Tilbage til forsiden',
+      tilfoejKasse: 'Tilføj ny kasse',
+      muligtInputPlaceholder: 'Skriv emne — fx "Bolig", "Skole", "Min søvn"...',
+      tilfoej: 'Tilføj',
+      annuller: 'Annullér',
+      terapeutTitel: 'Familieterapeut',
+      kommuneSamarbejde: 'Kommune & samarbejde',
+      kommuneSamarbejdeDesc: 'Jeg overvejer et samarbejde med Rikke',
+      tilbageToppen: '↑ Tilbage til toppen',
+      groen: 'Grøn',
+      rosa: 'Rosa',
+      gylden: 'Gylden',
+      varmGraa: 'Varm grå',
       viewTitles: {
         trappen: 'Nervesystemets trappe',
         temaer: 'Hverdagens udfordringer',
@@ -262,6 +279,23 @@
       nyhedsbrevBtn: 'Subscribe & receive mini-book',
       nyhedsbrevPrivacy: 'No spam. Only meaningful content. You can unsubscribe at any time.',
       tilbage: 'Back',
+      heroTitel: 'Relationships that carry',
+      dynamikLinkTekst: 'Understand the dynamics — how everything affects each other',
+      trappenNav: 'Staircase',
+      ligeNu: 'Right now',
+      tilbageForsiden: 'Back to front page',
+      tilfoejKasse: 'Add new box',
+      muligtInputPlaceholder: 'Write a topic — e.g. "Housing", "School", "My sleep"...',
+      tilfoej: 'Add',
+      annuller: 'Cancel',
+      terapeutTitel: 'Family Therapist',
+      kommuneSamarbejde: 'Municipality & collaboration',
+      kommuneSamarbejdeDesc: 'I\'m considering a collaboration with Rikke',
+      tilbageToppen: '↑ Back to top',
+      groen: 'Green',
+      rosa: 'Pink',
+      gylden: 'Golden',
+      varmGraa: 'Warm grey',
       viewTitles: {
         trappen: 'The nervous system staircase',
         temaer: 'Everyday challenges',
@@ -612,6 +646,59 @@
     if (si) si.placeholder = t('soegPlaceholder');
     // Update search tags
     renderSearchTags();
+
+    // Hero title
+    var heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) heroTitle.textContent = t('heroTitel');
+
+    // Dynamik link text
+    var dynamikLinkText = document.querySelector('.dynamik-link-text');
+    if (dynamikLinkText) dynamikLinkText.textContent = t('dynamikLinkTekst');
+
+    // Bottom nav labels
+    var navBtns = document.querySelectorAll('.nav-btn');
+    var navKeys = ['hjem', 'trappenNav', 'temaer', 'oevelser', 'ligeNu'];
+    navBtns.forEach(function(btn, i) {
+      var span = btn.querySelector('span');
+      if (span && navKeys[i]) span.textContent = t(navKeys[i]);
+    });
+
+    // Back buttons
+    document.querySelectorAll('.back-btn').forEach(function(btn) {
+      var textPart = btn.childNodes[btn.childNodes.length - 1];
+      if (textPart && textPart.nodeType === 3) {
+        var text = textPart.textContent.trim();
+        if (text === 'Tilbage' || text === 'Back') {
+          textPart.textContent = ' ' + t('tilbage');
+        } else if (text.indexOf('Tilbage til forsiden') >= 0 || text.indexOf('Back to front page') >= 0) {
+          textPart.textContent = ' ' + t('tilbageForsiden');
+        }
+      }
+    });
+
+    // Muligt section
+    var muligtAddBtn = document.getElementById('muligtAddBtn');
+    if (muligtAddBtn) muligtAddBtn.textContent = '+ ' + t('tilfoejKasse');
+
+    var muligtInput = document.getElementById('muligtInput');
+    if (muligtInput) muligtInput.placeholder = t('muligtInputPlaceholder');
+
+    var muligtSave = document.getElementById('muligtSave');
+    if (muligtSave) muligtSave.textContent = t('tilfoej');
+
+    var muligtCancel = document.getElementById('muligtCancel');
+    if (muligtCancel) muligtCancel.textContent = t('annuller');
+
+    // Color tooltips
+    var colorMap = { sage: 'groen', rose: 'rosa', amber: 'gylden', stone: 'varmGraa' };
+    document.querySelectorAll('.muligt-color-dot').forEach(function(dot) {
+      var color = dot.getAttribute('data-color');
+      if (color && colorMap[color]) dot.title = t(colorMap[color]);
+    });
+
+    // Menu terapeut title
+    var terapeutTitle = document.querySelector('.menu-terapeut-titel');
+    if (terapeutTitle) terapeutTitle.textContent = t('terapeutTitel');
   }
 
   // ---------- Circle Diagram ----------
@@ -1910,15 +1997,16 @@
     var container = document.getElementById('dynamikContent');
     if (!container) return;
 
+    var isEn = aktivSprog === 'en';
     var html = '';
 
     // Header
-    html += '<h2 class="dynamik-title">Dynamikken bag cirkelmodellen</h2>';
-    html += '<p class="dynamik-lead">Cirkelmodellen er ikke bare en illustration. Den er et spejl af den måde din familie faktisk fungerer — som ét sammenhængende system, hvor intet område står alene. Forstår du denne dynamik, forstår du også hvorfor forandring kræver mere end én isoleret indsats.</p>';
+    html += '<h2 class="dynamik-title">' + (isEn ? 'The dynamics behind the circle model' : 'Dynamikken bag cirkelmodellen') + '</h2>';
+    html += '<p class="dynamik-lead">' + (isEn ? 'The circle model is not just an illustration. It\'s a mirror of how your family actually functions — as one interconnected system where no area stands alone. Understanding this dynamic also helps you understand why change requires more than one isolated effort.' : 'Cirkelmodellen er ikke bare en illustration. Den er et spejl af den måde din familie faktisk fungerer — som ét sammenhængende system, hvor intet område står alene. Forstår du denne dynamik, forstår du også hvorfor forandring kræver mere end én isoleret indsats.') + '</p>';
 
     // === SECTION 1: Balance ===
     html += '<div class="dynamik-section">';
-    html += '<h3 class="dynamik-section-title">Når alt er i balance</h3>';
+    html += '<h3 class="dynamik-section-title">' + (isEn ? 'When everything is in balance' : 'Når alt er i balance') + '</h3>';
 
     // SVG balanced
     html += '<div class="dynamik-svg-wrap">';
@@ -1939,15 +2027,15 @@
     // Circles — white mask first, then colored circle on top
     html += '<circle cx="260" cy="260" r="72" fill="#fff"/>';
     html += '<circle cx="260" cy="260" r="72" fill="#2C5F5C" stroke="#1E4340" stroke-width="2"/>';
-    html += '<text x="260" y="252" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">Familien</text>';
-    html += '<text x="260" y="274" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">som helhed</text>';
+    html += '<text x="260" y="252" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">' + (isEn ? 'The family' : 'Familien') + '</text>';
+    html += '<text x="260" y="274" fill="#fff" font-family="Georgia,serif" font-size="15" text-anchor="middle" font-weight="600">' + (isEn ? 'as a whole' : 'som helhed') + '</text>';
     var balCircles = [
-      {x:260,y:110,l1:'Tilknytning',l2:'& tryghed'},
-      {x:390,y:185,l1:'Parforholdet',l2:'& nærvær'},
-      {x:390,y:335,l1:'Samspil',l2:'& mønstre'},
-      {x:260,y:410,l1:'Barnets',l2:'stemme'},
-      {x:130,y:335,l1:'Åndedræt',l2:'& nervesystem'},
-      {x:130,y:185,l1:'Dig selv',l2:'& dine spor'}
+      {x:260,y:110,l1:(isEn?'Attachment':'Tilknytning'),l2:(isEn?'& security':'& tryghed')},
+      {x:390,y:185,l1:(isEn?'The couple':'Parforholdet'),l2:(isEn?'& presence':'& nærvær')},
+      {x:390,y:335,l1:(isEn?'Interaction':'Samspil'),l2:(isEn?'& patterns':'& mønstre')},
+      {x:260,y:410,l1:(isEn?'The child\'s':'Barnets'),l2:(isEn?'voice':'stemme')},
+      {x:130,y:335,l1:(isEn?'Breathing':'Åndedræt'),l2:(isEn?'& nervous system':'& nervesystem')},
+      {x:130,y:185,l1:(isEn?'Yourself':'Dig selv'),l2:(isEn?'& your traces':'& dine spor')}
     ];
     balCircles.forEach(function(c){
       html += '<circle cx="'+c.x+'" cy="'+c.y+'" r="56" fill="#fff"/>';
@@ -1956,7 +2044,7 @@
       html += '<text x="'+c.x+'" y="'+(c.y+12)+'" fill="#fff" font-family="Georgia,serif" font-size="13" text-anchor="middle">'+c.l2+'</text>';
     });
     html += '</svg>';
-    html += '<p class="dynamik-svg-caption">Systemet i balance — alle områder støtter hinanden</p>';
+    html += '<p class="dynamik-svg-caption">' + (isEn ? 'The system in balance — all areas support each other' : 'Systemet i balance — alle områder støtter hinanden') + '</p>';
     html += '</div>';
 
     html += '<p class="dynamik-text">Når familien fungerer, arbejder alle syv dimensioner sammen i en gensidig vekselvirkning. I narrativ-systemisk forståelse er det den tilstand hvor familiens fortælling bærer alle medlemmer — hvor hver stemme har plads, og hvor relationer er fleksible nok til at rumme konflikter uden at bryde sammen.</p>';
@@ -2139,7 +2227,7 @@
     html += '</div>';
 
     // Back to top
-    html += '<button class="dynamik-to-top" onclick="window.scrollTo({top:0,behavior:\'smooth\'})">↑ Tilbage til toppen</button>';
+    html += '<button class="dynamik-to-top" onclick="window.scrollTo({top:0,behavior:\'smooth\'})">' + t('tilbageToppen') + '</button>';
 
     container.innerHTML = html;
   }
@@ -2168,8 +2256,8 @@
         if (el('onbPrivatDesc')) el('onbPrivatDesc').textContent = t('privatKlientDesc');
         if (el('onbProfLabel')) el('onbProfLabel').textContent = t('fagprofessionel');
         if (el('onbProfDesc')) el('onbProfDesc').textContent = t('fagprofessionelDesc');
-        if (el('onbKomLabel')) el('onbKomLabel').textContent = t('samarbejde');
-        if (el('onbKomDesc')) el('onbKomDesc').textContent = t('samarbejdeDesc');
+        if (el('onbKomLabel')) el('onbKomLabel').textContent = t('kommuneSamarbejde');
+        if (el('onbKomDesc')) el('onbKomDesc').textContent = t('kommuneSamarbejdeDesc');
       });
     });
 
