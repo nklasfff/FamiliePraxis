@@ -539,6 +539,31 @@ body {
   margin-bottom: 24px;
 }
 
+.onboarding-lang {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.onboarding-lang-btn {
+  padding: 6px 16px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.onboarding-lang-btn.active {
+  border-color: rgba(255,255,255,0.8);
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+}
+
 .onboarding-text {
   color: rgba(255,255,255,0.85);
   font-size: 0.95rem;
@@ -2477,6 +2502,33 @@ body {
 .favoritter-item-remove:hover {
   color: var(--rose);
   background: var(--rose-bg);
+}
+
+/* ---------- Language Switch ---------- */
+.menu-lang-switch {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.menu-lang-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--bg);
+  color: var(--text-light);
+  font-family: Georgia, serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menu-lang-btn.active {
+  border-color: var(--primary);
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+  font-weight: 500;
 }
 
 /* ---------- Nyhedsbrev & Mini-bog ---------- */
