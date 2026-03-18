@@ -1757,7 +1757,7 @@
     html += '<p class="kommune-appnav-label">' + (isEn ? 'Also explore Rikke\'s professional universe' : 'Udforsk også Rikkes faglige univers') + '</p>';
     html += '<div class="kommune-appnav-grid">';
     html += '<button class="kommune-appnav-btn" data-goto="hjem">' + IKONER.leaf(20) + '<span>' + (isEn ? 'The circle model' : 'Cirkelmodellen') + '</span></button>';
-    html += '<button class="kommune-appnav-btn" data-goto="trappen">' + IKONER.lightning(20) + '<span>' + (isEn ? 'Nervous system staircase' : 'Nervesystemets trappe') + '</span></button>';
+    html += '<button class="kommune-appnav-btn" data-goto="trappen">' + IKONER.lightning(20) + '<span>' + (isEn ? 'The nervous system staircase' : 'Nervesystemets trappe') + '</span></button>';
     html += '<button class="kommune-appnav-btn" data-goto="temaer">' + IKONER.chatBubble(20) + '<span>' + (isEn ? 'Themes' : 'Temaer') + '</span></button>';
     html += '<button class="kommune-appnav-btn" data-goto="oevelser">' + IKONER.wind(20) + '<span>' + (isEn ? 'Exercises' : 'Øvelser') + '</span></button>';
     html += '</div>';
@@ -1875,7 +1875,7 @@
     html += '<p class="kommune-bridge-text">' + (isEn ? 'This app is the same tool Rikke shares with her clients. Explore the circle model, the nervous system staircase, themes, and exercises — and see what families encounter in a program with Rikke.' : 'Denne app er det samme værktøj, Rikke deler med sine klienter. Udforsk cirkelmodellen, nervesystemets trappe, temaer og øvelser — og se, hvad familier møder i et forløb med Rikke.') + '</p>';
     html += '<div class="kommune-bridge-btns">';
     html += '<button class="kommune-bridge-btn" data-goto="hjem">' + IKONER.leaf(20) + ' ' + (isEn ? 'The circle model' : 'Cirkelmodellen') + '</button>';
-    html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' ' + (isEn ? 'Nervous system staircase' : 'Nervesystemets trappe') + '</button>';
+    html += '<button class="kommune-bridge-btn" data-goto="trappen">' + IKONER.lightning(20) + ' ' + (isEn ? 'The nervous system staircase' : 'Nervesystemets trappe') + '</button>';
     html += '<button class="kommune-bridge-btn" data-goto="temaer">' + IKONER.chatBubble(20) + ' ' + (isEn ? 'Themes' : 'Temaer') + '</button>';
     html += '<button class="kommune-bridge-btn" data-goto="oevelser">' + IKONER.wind(20) + ' ' + (isEn ? 'Exercises' : 'Øvelser') + '</button>';
     html += '</div>';
