@@ -1126,6 +1126,238 @@ var MORGEN_CHECKIN = [
 ];
 
 // ============================================================
+// Morning Check-in — 25 variants (English)
+// Each variant: question, answer buttons with response + link
+// ============================================================
+var MORGEN_CHECKIN_EN = [
+  {
+    spoergsmaal: 'How are you feeling right now?',
+    svar: [
+      { label: 'Calm', respons: 'That is a good starting point. Perhaps today is the day you can sense a little more of what usually gets lost in the noise.', link: 'temaer', linkTekst: 'Explore a theme' },
+      { label: 'Restless', respons: 'When your body is in alarm, it is hard to think clearly. Start with your breath — it is the fastest path to calm.', link: 'oevelser', linkTekst: 'Try an exercise' },
+      { label: 'Heavy', respons: 'Some mornings weigh more than others. You do not have to carry it all. Just one thing.', link: 'muligt', linkTekst: 'What is possible now?' },
+      { label: 'Not sure', respons: 'That is also an answer. Just being here is enough.', link: 'hjem', linkTekst: 'Explore at your pace' }
+    ]
+  },
+  {
+    spoergsmaal: 'What is weighing on you most this morning?',
+    svar: [
+      { label: 'Worry', respons: 'Worries fill you because you care about someone. Let us see if there is one small place to begin.', link: 'muligt', linkTekst: 'Find one step' },
+      { label: 'Sadness', respons: 'Sadness is not weakness. It tells you that something matters. Give it space.', link: 'temaer', linkTekst: 'Read about loss & grief' },
+      { label: 'Anger', respons: 'Anger is energy. It shows you where your boundaries are. The question is what you want to do with it.', link: 'trappen', linkTekst: 'See where you are on the staircase' },
+      { label: 'Hope', respons: 'Hold on to that. Even the smallest hope is a door left ajar.', link: 'hjem', linkTekst: 'Explore further' }
+    ]
+  },
+  {
+    spoergsmaal: 'If your body could say one thing — what would it be?',
+    svar: [
+      { label: 'I am tired', respons: 'Your body is asking for a pause. Not necessarily sleep — but a moment without demands. Start with three deep breaths.', link: 'oevelser', linkTekst: 'Try the breathing exercise' },
+      { label: 'I am tense', respons: 'Tension is your body\'s way of protecting you. Let us help it release, just a little.', link: 'trappen', linkTekst: 'Understand your nervous system' },
+      { label: 'I am restless', respons: 'Restlessness is movement searching for a direction. Perhaps something is asking for your attention.', link: 'temaer', linkTekst: 'Find your theme' },
+      { label: 'I feel okay', respons: 'That is worth noticing. Good moments deserve attention — even the quiet ones.', link: 'hjem', linkTekst: 'Enjoy the calm' }
+    ]
+  },
+  {
+    spoergsmaal: 'Where are you on the staircase right now?',
+    svar: [
+      { label: 'Safe', respons: 'When you are in your window of tolerance, you are best able to meet yourself and others. Use it.', link: 'temaer', linkTekst: 'Explore a new theme' },
+      { label: 'Activated', respons: 'Your sympathetic nervous system is switched on. It is not dangerous — but it is important to notice before it takes the wheel.', link: 'trappen', linkTekst: 'Learn more about the staircase' },
+      { label: 'Shut down', respons: 'When the body shuts down, it needs warmth — not demands. Be gentle with yourself.', link: 'oevelser', linkTekst: 'Start softly with an exercise' },
+      { label: 'Keeps shifting', respons: 'That is normal, especially under pressure. Your nervous system is seeking balance. Let us find an anchor.', link: 'oevelser', linkTekst: 'Find an anchor' }
+    ]
+  },
+  {
+    spoergsmaal: 'What do you need today?',
+    svar: [
+      { label: 'Calm', respons: 'Calm is not laziness. It is recharging. Give yourself permission.', link: 'oevelser', linkTekst: 'Exercise for calm' },
+      { label: 'Courage', respons: 'Courage is not about being fearless. It is about taking the next step, even when it is hard.', link: 'muligt', linkTekst: 'Take one step' },
+      { label: 'To be seen', respons: 'It is human to need witnesses. You are not alone in what you carry.', link: 'temaer', linkTekst: 'You are not alone' },
+      { label: 'Overview', respons: 'When everything blurs together, it helps to sort. One thing at a time.', link: 'muligt', linkTekst: 'Create an overview' }
+    ]
+  },
+  {
+    spoergsmaal: 'Is there something you are carrying from yesterday?',
+    svar: [
+      { label: 'A conflict', respons: 'Conflicts leave traces in the body. The most important thing now is not to resolve it — but to regulate yourself first.', link: 'trappen', linkTekst: 'Check your nervous system' },
+      { label: 'A good moment', respons: 'Keep that. Good moments are fuel. Notice what made it possible.', link: 'hjem', linkTekst: 'Continue from here' },
+      { label: 'Guilt', respons: 'Guilt shows that you care. But it must not fill so much space that it paralyses you. What can you do today?', link: 'muligt', linkTekst: 'What is possible now?' },
+      { label: 'Nothing much', respons: 'That is fine too. Not every day needs to be heavy. Some days simply are.', link: 'hjem', linkTekst: 'Just be here' }
+    ]
+  },
+  {
+    spoergsmaal: 'Who are you thinking about right now?',
+    svar: [
+      { label: 'My child', respons: 'Your child senses you before you say a word. When you regulate yourself, you give your child permission to relax.', link: 'trappen', linkTekst: 'Start with yourself' },
+      { label: 'My partner', respons: 'The relationship is the family\'s foundation. Even small movements toward each other make a difference.', link: 'temaer', linkTekst: 'Read about the relationship' },
+      { label: 'Myself', respons: 'Thinking about yourself is not selfish. It is necessary. You cannot pour from an empty cup.', link: 'oevelser', linkTekst: 'Do something for you' },
+      { label: 'The whole family', respons: 'The family is a system. When you move, everyone moves. Start with what you can.', link: 'hjem', linkTekst: 'See the whole picture' }
+    ]
+  },
+  {
+    spoergsmaal: 'If you could only carry one thing today — what would it be?',
+    svar: [
+      { label: 'Something practical', respons: 'Practical things can give back a sense of control. Choose the smallest task and finish it. It counts.', link: 'muligt', linkTekst: 'Write it down' },
+      { label: 'A relationship', respons: 'Relationships need presence, not perfection. One moment of genuine contact is enough.', link: 'temaer', linkTekst: 'Understand the relationship' },
+      { label: 'My own state', respons: 'The most important work is often invisible. Regulating yourself is a gift to everyone around you.', link: 'oevelser', linkTekst: 'Start here' },
+      { label: 'I don\'t know', respons: 'When you don\'t know, that is honest. Give it a little time. The answer will come when your body is ready.', link: 'hjem', linkTekst: 'Take it easy' }
+    ]
+  },
+  {
+    spoergsmaal: 'How did you sleep last night?',
+    svar: [
+      { label: 'Well', respons: 'Sleep is the body\'s most important repair. Take that with you as a good foundation today.', link: 'hjem', linkTekst: 'Good start' },
+      { label: 'Restlessly', respons: 'Restless sleep tells you that the nervous system is still working. Breathing can help you find calm.', link: 'oevelser', linkTekst: 'Try a breathing exercise' },
+      { label: 'Too little', respons: 'When the body lacks sleep, the threshold is lower. Be extra kind to yourself today.', link: 'trappen', linkTekst: 'Be mindful today' },
+      { label: 'Couldn\'t fall asleep', respons: 'Racing thoughts keep the nervous system active. Try landing in the body instead of the mind.', link: 'oevelser', linkTekst: 'Grounding exercise' }
+    ]
+  },
+  {
+    spoergsmaal: 'What is the first thing you notice in your body right now?',
+    svar: [
+      { label: 'Shoulder tension', respons: 'Your shoulders carry what you don\'t say out loud. Let them drop — just for a moment. You don\'t have to carry it all.', link: 'oevelser', linkTekst: 'Release the tension' },
+      { label: 'Knot in my stomach', respons: 'The stomach responds to the unconscious. Something wants your attention. You don\'t have to solve it — just notice it.', link: 'trappen', linkTekst: 'Understand the signal' },
+      { label: 'Heaviness', respons: 'Heaviness is your body\'s way of saying: slow down. Follow its pace today.', link: 'oevelser', linkTekst: 'Start slowly' },
+      { label: 'Nothing special', respons: 'Sometimes the body is quiet. That is fine. It will speak when it is ready.', link: 'hjem', linkTekst: 'Continue quietly' }
+    ]
+  },
+  {
+    spoergsmaal: 'What would you say to yourself if you were your own best friend?',
+    svar: [
+      { label: 'You\'re doing enough', respons: '"Good enough" is not an excuse — it is the truth. Perfectionism is trauma in disguise.', link: 'temaer', linkTekst: 'Read about shame & guilt' },
+      { label: 'It will get better', respons: 'And it will. Not because everything fixes itself — but because you are already in motion.', link: 'hjem', linkTekst: 'See your progress' },
+      { label: 'Take a break', respons: 'A break is not giving up. It is regulation. Your body knows best.', link: 'oevelser', linkTekst: 'Take a break now' },
+      { label: 'Ask for help', respons: 'Asking for help is strength, not weakness. Nobody manages alone — and you shouldn\'t have to either.', link: 'temaer', linkTekst: 'You are not alone' }
+    ]
+  },
+  {
+    spoergsmaal: 'If this day could give you one thing — what would it be?',
+    svar: [
+      { label: 'Lightness', respons: 'Lightness comes in small glimpses. Not as the absence of problems, but as moments when you forget them.', link: 'hjem', linkTekst: 'Find a glimpse' },
+      { label: 'Connection', respons: 'We are built for connection. One genuine moment with another person can change an entire day.', link: 'temaer', linkTekst: 'Understand connection' },
+      { label: 'Clarity', respons: 'Clarity rarely comes from thinking more. It comes from pausing and feeling what truly matters.', link: 'muligt', linkTekst: 'Sort out what matters' },
+      { label: 'Just surviving', respons: 'That is enough. Survival is not failure — it is the foundation. You are here. That counts.', link: 'trappen', linkTekst: 'Notice where you are' }
+    ]
+  },
+  {
+    spoergsmaal: 'What makes you feel most vulnerable right now?',
+    svar: [
+      { label: 'Loneliness', respons: 'Loneliness inside a family is one of the heaviest things. You are not wrong — you are missing being met.', link: 'temaer', linkTekst: 'About isolation' },
+      { label: 'Power struggles', respons: 'Power struggles are rarely about power. They are about being heard. What do you truly want to say?', link: 'temaer', linkTekst: 'Understand the conflict' },
+      { label: 'My children\'s reactions', respons: 'Children react to what they sense — not what they are told. Their behaviour is communication.', link: 'hjem', linkTekst: 'See the child\'s perspective' },
+      { label: 'My own history', respons: 'Your wounds do not make you a bad parent. They make you a human being who is fighting. That is brave.', link: 'oevelser', linkTekst: 'Start with yourself' }
+    ]
+  },
+  {
+    spoergsmaal: 'Do you feel more fear or more hope right now?',
+    svar: [
+      { label: 'Mostly fear', respons: 'Fear is the nervous system\'s alarm bell. It protects you — but it does not have to steer you.', link: 'trappen', linkTekst: 'Regulate the fear' },
+      { label: 'Mostly hope', respons: 'Hope is not naive. It is your nervous system saying: there are possibilities here. Follow it.', link: 'muligt', linkTekst: 'Seize the possibility' },
+      { label: 'Both', respons: 'That is the most human answer. Fear and hope live side by side. You do not have to choose.', link: 'hjem', linkTekst: 'Let both exist' },
+      { label: 'Neither', respons: 'Numbness can be the body\'s pause button. It protects you, but it also keeps you away.', link: 'oevelser', linkTekst: 'Come back to the body' }
+    ]
+  },
+  {
+    spoergsmaal: 'What do you need to hear today?',
+    svar: [
+      { label: 'That it\'s okay', respons: 'It is okay. Not everything needs to be resolved. Not everything needs to make sense. It is okay, just as it is right now.', link: 'hjem', linkTekst: 'Just be here' },
+      { label: 'That I\'m not alone', respons: 'You are not alone. Thousands of families are struggling with the same thing. Your struggle does not isolate you — it connects you.', link: 'temaer', linkTekst: 'Others know this too' },
+      { label: 'That there\'s a way', respons: 'There is a way. It is not always visible, and it is rarely straight. But it is there.', link: 'muligt', linkTekst: 'See the next step' },
+      { label: 'That I\'m enough', respons: 'You are doing well enough. Not perfectly — well enough. And that is precisely enough.', link: 'oevelser', linkTekst: 'Give yourself credit' }
+    ]
+  },
+  {
+    spoergsmaal: 'Which role fills you the most right now?',
+    svar: [
+      { label: 'Parent', respons: 'Being a parent under pressure is exhausting. Remember: your child does not need a perfect parent — just a good enough one.', link: 'hjem', linkTekst: 'Give yourself calm' },
+      { label: 'Partner', respons: 'A relationship under pressure is like building a bridge in a storm. It demands patience — with yourself and with the other.', link: 'temaer', linkTekst: 'About the relationship' },
+      { label: 'Myself', respons: 'You exist beyond your roles too. The person you were before all of this — they are still there.', link: 'oevelser', linkTekst: 'Find yourself' },
+      { label: 'All at once', respons: 'When everything demands everything at once, the foundation creaks. Choose one role today. The rest can wait.', link: 'muligt', linkTekst: 'Prioritise today' }
+    ]
+  },
+  {
+    spoergsmaal: 'How would you describe your energy right now?',
+    svar: [
+      { label: 'Full of energy', respons: 'Use it wisely. Energy is a resource — and you decide where it goes.', link: 'muligt', linkTekst: 'Put it to use' },
+      { label: 'Neutral', respons: 'Neutral is underrated. From here, you can choose freely. Enjoy the quiet moment.', link: 'hjem', linkTekst: 'Explore calmly' },
+      { label: 'Low', respons: 'Low energy is the body\'s message: do less, not more. What can you let go of today?', link: 'oevelser', linkTekst: 'Recharge quietly' },
+      { label: 'Fluctuating', respons: 'Fluctuating energy reflects a nervous system in motion. It is not instability — it is regulation in progress.', link: 'trappen', linkTekst: 'Understand the shifts' }
+    ]
+  },
+  {
+    spoergsmaal: 'What would help you most right now?',
+    svar: [
+      { label: 'Understanding more', respons: 'Understanding creates calm. When you know what is happening, it loses some of its power.', link: 'temaer', linkTekst: 'Learn something new' },
+      { label: 'Doing something concrete', respons: 'Action is medicine for powerlessness. Even the smallest action changes the dynamic.', link: 'muligt', linkTekst: 'Do one thing' },
+      { label: 'Feeling my body', respons: 'The body often knows more than the mind. When you land in it, you find answers that thought cannot give.', link: 'oevelser', linkTekst: 'Land in the body' },
+      { label: 'Just breathing', respons: 'Then do it. Three deep breaths. In through the nose, out through the mouth. You have time.', link: 'oevelser', linkTekst: 'The breathing exercise' }
+    ]
+  },
+  {
+    spoergsmaal: 'What do you see when you look at your family right now?',
+    svar: [
+      { label: 'Love under pressure', respons: 'Love under pressure is still love. It is just harder to see when the alarm is running.', link: 'hjem', linkTekst: 'See the whole picture' },
+      { label: 'Distance', respons: 'Distance in a family is painful. But it is also information: something can be repaired.', link: 'temaer', linkTekst: 'Understand the distance' },
+      { label: 'Chaos', respons: 'Chaos is what happens when many nervous systems are dysregulated at the same time. It is not the family\'s fault.', link: 'trappen', linkTekst: 'Start with your nervous system' },
+      { label: 'Possibilities', respons: 'Seeing possibilities is a sign that you are in your window of tolerance. Seize it while it is here.', link: 'muligt', linkTekst: 'Seize them now' }
+    ]
+  },
+  {
+    spoergsmaal: 'Which sentence resonates with you most right now?',
+    svar: [
+      { label: 'I\'m doing my best', respons: 'Yes. And your best is enough. It is not always pretty — but it is real.', link: 'hjem', linkTekst: 'You are enough' },
+      { label: 'I\'m afraid to fail', respons: 'The fear of failure is often inherited. You are not necessarily repeating your history — you are writing a new one.', link: 'temaer', linkTekst: 'Break the pattern' },
+      { label: 'I miss myself', respons: 'Missing yourself is a healthy sign. It means you know there is more.', link: 'oevelser', linkTekst: 'Find yourself again' },
+      { label: 'This can\'t go on', respons: 'When you feel that, you are already in motion. Change begins with saying: this is not working.', link: 'muligt', linkTekst: 'Take the first step' }
+    ]
+  },
+  {
+    spoergsmaal: 'What is the mood like at home?',
+    svar: [
+      { label: 'Quiet — the good kind', respons: 'Quiet spaces are spaces where the nervous system can regulate. Enjoy it. It is healing.', link: 'hjem', linkTekst: 'Rest in it' },
+      { label: 'Tense', respons: 'Tension is contagious. When one nervous system is in alarm, the others follow. Start by regulating your own.', link: 'trappen', linkTekst: 'Start with yourself' },
+      { label: 'Chaotic', respons: 'Chaos is temporary. It feels endless, but it is not. Find one calm point and hold on.', link: 'oevelser', linkTekst: 'Find your anchor' },
+      { label: 'Absent', respons: 'When everyone is present but no one is truly "there", the connection is missing. One moment of genuine contact can change that.', link: 'temaer', linkTekst: 'Rebuild the connection' }
+    ]
+  },
+  {
+    spoergsmaal: 'What did you dream of when you were younger?',
+    svar: [
+      { label: 'A safe family', respons: 'That dream is still alive. Safety is not built from perfection, but from presence and repair.', link: 'hjem', linkTekst: 'Build on' },
+      { label: 'Freedom', respons: 'Freedom in a family is not about escaping — but about being yourself, together with others.', link: 'oevelser', linkTekst: 'Feel the freedom' },
+      { label: 'To be seen', respons: 'The need to be seen never disappears. Give yourself what you did not receive. It is never too late.', link: 'temaer', linkTekst: 'About attachment' },
+      { label: 'I don\'t remember', respons: 'When dreams are forgotten, it is often because survival took up all the space. They are still there — beneath the surface.', link: 'oevelser', linkTekst: 'Dig gently' }
+    ]
+  },
+  {
+    spoergsmaal: 'When did you last feel truly present?',
+    svar: [
+      { label: 'Recently', respons: 'Hold on to that feeling. Presence is a muscle — the more you use it, the stronger it becomes.', link: 'hjem', linkTekst: 'Strengthen it' },
+      { label: 'A long time ago', respons: 'When presence has become rare, the nervous system needs help shifting down.', link: 'oevelser', linkTekst: 'Shift down' },
+      { label: 'Only with my child', respons: 'Children draw us into the present. They are our best teachers in presence — at any age.', link: 'hjem', linkTekst: 'Learn from your child' },
+      { label: 'Never really', respons: 'If you have always lived in survival mode, presence can feel foreign. It can be learned. Slowly and safely.', link: 'trappen', linkTekst: 'Understand why' }
+    ]
+  },
+  {
+    spoergsmaal: 'What would Rikke say to you right now?',
+    svar: [
+      { label: 'Feel it', respons: 'Rikke would say: let yourself feel it. Not analyse it, not solve it — just feel it.', link: 'oevelser', linkTekst: 'Feel it now' },
+      { label: 'You\'re not alone', respons: 'Rikke would say: the families I meet all carry this. You are not the only one.', link: 'temaer', linkTekst: 'See that others know this' },
+      { label: 'Start with the body', respons: 'Rikke would say: your body remembers more than you think. The path through the body is often faster than words.', link: 'oevelser', linkTekst: 'Start with the body' },
+      { label: 'Ask for help', respons: 'Rikke would say: asking for help is not giving up. It is taking yourself and your family seriously.', link: 'hjem', linkTekst: 'Take it seriously' }
+    ]
+  },
+  {
+    spoergsmaal: 'How do you feel about the day ahead?',
+    svar: [
+      { label: 'Manageable', respons: 'When the day feels manageable, your nervous system is regulated. Use it — but don\'t push yourself.', link: 'hjem', linkTekst: 'Carry it with you' },
+      { label: 'Overwhelming', respons: 'An overwhelming day does not have to be lived all at once. Think about the next 30 minutes. That is enough.', link: 'muligt', linkTekst: 'One step at a time' },
+      { label: 'Monotonous', respons: 'Monotony can be safe — or suffocating. Which is it for you? There are no wrong answers.', link: 'temaer', linkTekst: 'Explore something new' },
+      { label: 'Unpredictable', respons: 'Unpredictability keeps the nervous system active. Give yourself an anchor — one thing that stays fixed.', link: 'oevelser', linkTekst: 'Find your anchor' }
+    ]
+  }
+];
+
+// ============================================================
 // Trappen — Forstå dit nervesystem (uddybende afsnit)
 // ============================================================
 var TRAPPEN_FORSTAELSE = {
@@ -1160,6 +1392,46 @@ var TRAPPEN_FORSTAELSE = {
       {
         undertitel: 'Bottom-up før top-down',
         tekst: 'I traumeinformeret familiebehandling er rækkefølgen afgørende: kropslig regulering (bottom-up) før kognitiv bearbejdning (top-down). Bessel van der Kolks "The Body Keeps the Score" understreger, at traumatiske erfaringer lagres somatisk og ikke kan tilgås udelukkende gennem samtale. I praksis betyder det: vagusnerve-aktivering, åndedrætsinstrukter og somatisk grounding skal integreres i hver session — ikke som supplement, men som fundament. Trappen bruges klinisk til at etablere et fælles sprog med familien om reguleringstilstande og til at identificere, hvornår interventioner er mulige.'
+      }
+    ]
+  }
+};
+
+// ============================================================
+// Trappen — Understanding your nervous system (English version)
+// ============================================================
+var TRAPPEN_FORSTAELSE_EN = {
+  privat: {
+    titel: 'Understanding your nervous system as a parent',
+    afsnit: [
+      {
+        undertitel: 'Why your child responds to YOUR nervous system',
+        tekst: 'Children do not yet have a fully developed nervous system. They borrow yours. When you are calm, your child can find calm. When you are in alarm, your child goes into alarm — not because they understand the situation, but because their body reads yours. This is called co-regulation, and it is the most fundamental mechanism in parenting. It means that the most important thing you can do for your child in a stressful moment is to regulate yourself first. Not because your feelings are wrong — but because your child needs to borrow your calm before they can find their own.'
+      },
+      {
+        undertitel: 'Your reactions are not your fault — but they are your responsibility',
+        tekst: 'If you grew up in a family marked by unpredictability, violence, neglect, or absence, your nervous system learned to stay on guard. That is not a flaw — it was a survival strategy. But that strategy can make it difficult to be the parent you want to be. When your child screams and you feel rage rising, it is often not your child you are reacting to — it is an echo from your own history. Understanding this is not an excuse. It is the beginning of choosing differently.'
+      },
+      {
+        undertitel: 'Regulation comes before conversation',
+        tekst: 'Many parents try to talk with their children while everyone is still in alarm. But the brain cannot listen when the nervous system is in fight-or-flight. It is biologically impossible. That is why the sequence matters: first regulation (breathing, grounding, pausing), then connection (eye contact, touch, presence), and only then conversation. The Staircase helps you recognise where you are — so you know what is possible right now. Some days the answer is simply: survive. And that is enough.'
+      }
+    ]
+  },
+  professionel: {
+    titel: 'The nervous system in family therapy',
+    afsnit: [
+      {
+        undertitel: 'Co-regulation as a foundation for intervention',
+        tekst: 'Stephen Porges\' Polyvagal Theory describes how the autonomic nervous system organises itself hierarchically: ventral vagal (social engagement), sympathetic (fight-flight), and dorsal vagal (immobilisation). In family therapy with vulnerable families, this understanding is central, because the parents\' regulatory capacity directly shapes the child\'s nervous system development. When a parent is chronically in a sympathetic or dorsal vagal state, the child lacks the co-regulatory function that is the prerequisite for secure attachment. The therapist\'s primary task is often to serve as the co-regulating nervous system for the parent — who can then pass that regulation on to the child.'
+      },
+      {
+        undertitel: 'Intergenerational transmission of dysregulation',
+        tekst: 'ACE research (Felitti & Anda) documents that adverse childhood experiences have a cumulative effect on the nervous system\'s baseline setting. Parents with high ACE scores often have a nervous system calibrated for danger — interpreting neutral signals as threatening (neuroception). Daniel Siegel\'s "Window of Tolerance" model is clinically useful: we map family members\' windows of tolerance and work systematically to widen them. Judith Herman\'s phase model — safety, processing, integration — also applies to the nervous system: regulation is always phase one.'
+      },
+      {
+        undertitel: 'Bottom-up before top-down',
+        tekst: 'In trauma-informed family therapy, the sequence is essential: somatic regulation (bottom-up) before cognitive processing (top-down). Bessel van der Kolk\'s "The Body Keeps the Score" underlines that traumatic experiences are stored somatically and cannot be accessed through conversation alone. In practice, this means: vagus nerve activation, breathing exercises, and somatic grounding must be integrated into every session — not as a supplement, but as a foundation. The Staircase is used clinically to establish a shared language with the family about regulatory states and to identify when interventions are possible.'
       }
     ]
   }
@@ -1248,4 +1520,95 @@ var MORGEN_HILSNER = {
   foraar: 'Noget nyt er på vej. Også i dig.',
   sommer: 'Lyset er langt. Brug det til at se klart.',
   efteraar: 'Bladene falder. Måske er der noget, du også kan slippe.'
+};
+
+// ============================================================
+// ENGLISH TRANSLATIONS
+// ============================================================
+
+// ============================================================
+// Trappen — Family effect per state (English)
+// ============================================================
+var TRAPPEN_FAMILIE_EFFEKT_EN = {
+  1: {
+    privat: {
+      titel: 'What does your family feel when you are safe?',
+      barn: 'Your child relaxes. They dare to explore, play, and come to you when they need to. Children read your calm faster than your words — and they begin to mirror it.',
+      partner: 'Your conversations become easier. You can listen to each other without becoming defensive. Even the hard topics can be held when both nervous systems feel safe.',
+      familie: 'The whole family slows down. There is room for pauses, for humour, for simply being together without purpose. It is in these moments that connection grows stronger.'
+    },
+    professionel: {
+      titel: 'Systemic effect of ventral vagal state',
+      barn: 'The child\'s social engagement system is activated via mirror neurons: safe parent → safe child. Attachment behaviour (explore/return) functions optimally. Mentalisation capacity is accessible.',
+      partner: 'The parental alliance is strengthened: co-regulation between partners enables constructive conflict resolution and cooperation on the parenting task. Affective attunement is accessible.',
+      familie: 'The system as a whole is in homeostasis. Communication patterns are flexible, roles are negotiable, and the family\'s narrative identity can evolve. This is the optimal window for therapeutic intervention.'
+    }
+  },
+  2: {
+    privat: {
+      titel: 'What does your family feel when you are in alarm?',
+      barn: 'Your child senses it immediately. Some children become quiet and invisible — they have learned that it is safest. Others escalate, because they are trying to "reach you" through your alarm. Both are attachment behaviour.',
+      partner: 'Your communication becomes harsh or disappears. One attacks, the other withdraws. It looks like a conflict about practical things — but it is really about: "Are you there for me? Can I reach you?"',
+      familie: 'The atmosphere at home becomes electric. Everyone is on guard. Even the good moments are fragile, because everyone is waiting for the next escalation. Routines break down, patience vanishes.'
+    },
+    professionel: {
+      titel: 'Systemic effect of sympathetic activation',
+      barn: 'The child\'s neuroception detects danger: the attachment system activates in protest or despair mode. Behaviours such as clinging, acting out, or withdrawal are regulatory strategies — not "problem behaviour."',
+      partner: 'Pursuer-withdrawer dynamics intensify. When one partner is in sympathetic arousal, the other\'s nervous system is triggered — a negative interaction cycle is established. Mentalisation is compromised bilaterally.',
+      familie: 'The system shifts to survival mode: communication is reduced to imperative form, role flexibility disappears, and the risk of parentification increases. Children take on regulatory responsibility for parents.'
+    }
+  },
+  3: {
+    privat: {
+      titel: 'What does your family feel when you are shut down?',
+      barn: 'Your child feels your absence — even when you are physically present. Some children desperately try to wake you: they shout, throw, provoke. Others give up and retreat into themselves. Both are a child who misses their parent.',
+      partner: 'Your partner may experience you as indifferent or cold — but it is not indifference. It is overload. The misunderstanding can create deep loneliness in both of you.',
+      familie: 'The family loses its connection. Everyone is in the same room, but no one is truly present. Routines may keep going on the surface, but the emotional contact is broken. The children begin to fend for themselves.'
+    },
+    professionel: {
+      titel: 'Systemic effect of dorsal vagal state',
+      barn: 'The child\'s attachment system is in crisis: the attachment figure is physically available but emotionally unavailable. This is the core of disorganised attachment — fear without resolution. The child\'s own strategies (hyperactivation or deactivation) become consolidated.',
+      partner: 'The partner experiences emotional unavailability: attempts at contact are met with flatness or absence. This can be interpreted as rejection and trigger the partner\'s own attachment system. Risk of parallel isolation.',
+      familie: 'The system fragments: family members operate as isolated units. Emotional neglect — not through intention, but through capacity failure. Particularly risky for younger children, whose attachment development requires active emotional availability.'
+    }
+  }
+};
+
+// ============================================================
+// Trappen — Pattern reflections (English)
+// ============================================================
+var TRAPPEN_MOENSTRE_EN = {
+  privat: {
+    mestTryg: 'You have mostly been in the safety zone. That is a good foundation — hold on to what brings you there. Notice what makes the difference on those days.',
+    mestAlarm: 'You have mostly been in alarm this period. That is not wrong — it is information. Your nervous system is telling you that something is pressing. What would happen if you gave yourself 5 minutes of breathing each time you notice it?',
+    mestNedlukning: 'You have mostly been in shutdown. That tells you the strain has been high — perhaps for longer than you realised. Be gentle with yourself. Small steps: feel your feet, drink something warm, seek out another person. You do not need to solve anything — just come a little bit back to your body.',
+    blandtMoenster: 'You have moved between states. That is actually healthy — it shows that your nervous system can shift. Notice what brings you up, and what brings you down. Those patterns are the key.',
+    forFaa: 'You have only checked in a few times. That is perfectly okay — there are no demands here. The more often you check in, the clearer the pattern becomes. Try making it part of your morning.',
+    ingenData: 'You have not checked in yet. Give it a try — it takes 5 seconds. Over time it gives you a picture of where your nervous system is in everyday life.'
+  },
+  professionel: {
+    mestTryg: 'The client is predominantly in a ventral vagal state — the therapeutic window is open. Consider intensifying narrative work and mentalisation exercises during this period.',
+    mestAlarm: 'The client is predominantly in sympathetic activation. Prioritise regulatory interventions (polyvagal, somatic) over conversation-based processing. Explore what maintains the chronic activation — external stressors or retraumatisation?',
+    mestNedlukning: 'The client is predominantly in a dorsal vagal state. Proceed cautiously: bottom-up interventions, sensory stimulation, graduated activation. Investigate whether there is active danger in the client\'s life sustaining the immobilisation response.',
+    blandtMoenster: 'The client oscillates between states — the window of tolerance is narrow but flexible. Focus on expanding the window: psychoeducation about the nervous system, regulatory exercises, and consolidation of moments of safety.',
+    forFaa: 'Insufficient data for pattern analysis. Encourage the client to register daily — this increases self-awareness and provides clinically relevant data.',
+    ingenData: 'No registrations. Introduce the Staircase as a psychoeducational tool and encourage daily use between sessions.'
+  }
+};
+
+// ============================================================
+// Morning greetings by weekday and season (English)
+// ============================================================
+var MORGEN_HILSNER_EN = {
+  mandag: 'New week. You do not need a plan — just a next step.',
+  tirsdag: 'Tuesday. The week is underway. How did you land in it?',
+  onsdag: 'Middle of the week. A good time to pause and feel into yourself.',
+  torsdag: 'Thursday. The weekend is near. What has this week taught you?',
+  fredag: 'Friday. The week is almost over. What will you carry forward?',
+  loerdag: 'Weekend. Perhaps there is room for something that usually does not get space.',
+  soendag: 'Sunday. A day to gather yourself — before a new week begins.',
+  vinter: 'It is dark outside. But you are here.',
+  foraar: 'Something new is on its way. In you, too.',
+  sommer: 'The light is long. Use it to see clearly.',
+  efteraar: 'The leaves are falling. Perhaps there is something you can let go of, too.'
 };
