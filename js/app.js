@@ -1561,6 +1561,15 @@
     { id: 'krop', titel: 'Krop & helbred', farve: 'sage', status: 'none', note: '' }
   ];
 
+  var MULIGT_DEFAULTS_EN = [
+    { id: 'okonomi', titel: 'Finances', farve: 'amber', status: 'none', note: '' },
+    { id: 'boern', titel: 'The children', farve: 'sage', status: 'none', note: '' },
+    { id: 'folelser', titel: 'Emotions & relationships', farve: 'rose', status: 'none', note: '' },
+    { id: 'kommunen', titel: 'Municipality & the system', farve: 'stone', status: 'none', note: '' },
+    { id: 'bolig', titel: 'Housing & everyday life', farve: 'amber', status: 'none', note: '' },
+    { id: 'krop', titel: 'Body & health', farve: 'sage', status: 'none', note: '' }
+  ];
+
   function getMuligtData() {
     var saved = localStorage.getItem('fp_muligt');
     if (saved) {
