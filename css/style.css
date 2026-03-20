@@ -305,6 +305,63 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.menu-email-signup {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.menu-email-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--card-bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.menu-email-input:focus {
+  border-color: var(--primary);
+}
+
+.menu-email-btn {
+  padding: 10px 16px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: opacity 0.2s;
+}
+
+.menu-email-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.menu-email-status {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.menu-email-status.success {
+  color: var(--primary);
+}
+
+.menu-email-status.error {
+  color: #B8484E;
+}
+
 .menu-contact-item {
   display: flex;
   align-items: center;

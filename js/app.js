@@ -2272,9 +2272,18 @@
     // Indstillinger
     html += '<div class="menu-section">' +
       '<div class="menu-section-title">' + t('indstillinger') + '</div>' +
-      buildToggle(t('dagligPaamindelse'), 'fp_daily') +
       buildToggle(t('morgenCheckin'), 'fp_morning') +
-      buildToggle(t('ugentligOpsummering'), 'fp_weekly') +
+      '</div>';
+
+    // Email-tilmelding
+    html += '<div class="menu-section">' +
+      '<div class="menu-section-title">' + (aktivSprog === 'en' ? 'Stay updated' : 'Hold dig opdateret') + '</div>' +
+      '<p class="menu-info">' + (aktivSprog === 'en' ? 'Get notified when new content, exercises or inspiration from Rikke is available.' : 'Få besked når der kommer nyt indhold, nye øvelser eller inspiration fra Rikke.') + '</p>' +
+      '<div class="menu-email-signup" id="menuEmailSignup">' +
+      '<input type="email" class="menu-email-input" id="menuEmailInput" placeholder="' + (aktivSprog === 'en' ? 'Your email address' : 'Din email-adresse') + '" autocomplete="email">' +
+      '<button class="menu-email-btn" id="menuEmailBtn">' + (aktivSprog === 'en' ? 'Subscribe' : 'Tilmeld') + '</button>' +
+      '</div>' +
+      '<div class="menu-email-status" id="menuEmailStatus" style="display:none"></div>' +
       '</div>';
 
     // Privatliv
@@ -2375,7 +2384,6 @@
         if (newLang === aktivSprog) return;
         aktivSprog = newLang;
         localStorage.setItem('fp_sprog', aktivSprog);
-        // Re-render everything
         updatePerspektivUI();
         updateHeroDesc();
         updateCircleTexts();
@@ -2390,6 +2398,50 @@
         closeMenu();
       });
     });
+
+    // Email signup
+    var emailBtn = document.getElementById('menuEmailBtn');
+    var emailInput = document.getElementById('menuEmailInput');
+    if (emailBtn && emailInput) {
+      emailBtn.addEventListener('click', function () {
+        var email = emailInput.value.trim();
+        var status = document.getElementById('menuEmailStatus');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          status.style.display = 'block';
+          status.className = 'menu-email-status error';
+          status.textContent = aktivSprog === 'en' ? 'Enter a valid email address' : 'Indtast en gyldig email-adresse';
+          return;
+        }
+        emailBtn.disabled = true;
+        emailBtn.textContent = aktivSprog === 'en' ? 'Sending...' : 'Sender...';
+        if (typeof FPBackend !== 'undefined' && FPBackend.isReady()) {
+          FPBackend.subscribeEmail(email, null, aktivPerspektiv || 'privat')
+            .then(function () {
+              status.style.display = 'block';
+              status.className = 'menu-email-status success';
+              status.textContent = aktivSprog === 'en' ? 'Thank you! You are now subscribed.' : 'Tak! Du er nu tilmeldt.';
+              emailInput.value = '';
+              emailBtn.textContent = aktivSprog === 'en' ? 'Subscribed ✓' : 'Tilmeldt ✓';
+            })
+            .catch(function (err) {
+              status.style.display = 'block';
+              status.className = 'menu-email-status error';
+              status.textContent = err.message.indexOf('duplicate') >= 0 ? (aktivSprog === 'en' ? 'This email is already subscribed.' : 'Denne email er allerede tilmeldt.') : (aktivSprog === 'en' ? 'Something went wrong. Try again.' : 'Noget gik galt. Prøv igen.');
+              emailBtn.disabled = false;
+              emailBtn.textContent = aktivSprog === 'en' ? 'Subscribe' : 'Tilmeld';
+            });
+        } else {
+          var subs = JSON.parse(localStorage.getItem('fp_email_signups') || '[]');
+          subs.push({ email: email, dato: new Date().toISOString() });
+          localStorage.setItem('fp_email_signups', JSON.stringify(subs));
+          status.style.display = 'block';
+          status.className = 'menu-email-status success';
+          status.textContent = aktivSprog === 'en' ? 'Thank you! You are now subscribed.' : 'Tak! Du er nu tilmeldt.';
+          emailInput.value = '';
+          emailBtn.textContent = aktivSprog === 'en' ? 'Subscribed ✓' : 'Tilmeldt ✓';
+        }
+      });
+    }
   }
 
   function buildToggle(label, key) {
@@ -3533,10 +3585,142 @@
     });
   }
 
+  // ---------- Supabase Integration ----------
+  // Henter data fra Supabase og overskriver globale arrays.
+  // Falder automatisk tilbage til lokale data i data.js hvis Supabase ikke er konfigureret.
+  function startApp() {
+    // Prøv at initialisere Supabase
+    var hasBackend = (typeof FPBackend !== 'undefined') && FPBackend.init();
+
+    if (!hasBackend) {
+      // Ingen Supabase — brug lokale data direkte
+      init();
+      return;
+    }
+
+    // Hent alt data parallelt fra Supabase
+    Promise.all([
+      FPBackend.getCirkler().catch(function() { return null; }),
+      FPBackend.getTemaer().catch(function() { return null; }),
+      FPBackend.getOevelser().catch(function() { return null; }),
+      FPBackend.getTrappen().catch(function() { return null; }),
+      FPBackend.getSammenhaenge().catch(function() { return null; }),
+      FPBackend.getMorgenCheckin().catch(function() { return null; })
+    ]).then(function(results) {
+      var dbCirkler = results[0];
+      var dbTemaer = results[1];
+      var dbOevelser = results[2];
+      var dbTrappen = results[3];
+      var dbSammenhaenge = results[4];
+      var dbCheckins = results[5];
+
+      // Overskriver kun hvis vi fik data tilbage
+      if (dbCirkler && dbCirkler.length > 0) {
+        // Konverter fra flat DB-format til appens nested format
+        CIRKLER = dbCirkler.map(function(c) {
+          return {
+            id: c.id,
+            titel: c.titel,
+            ikon: c.ikon,
+            privat: {
+              overblik: {
+                beskrivelse: c.privat_overblik_beskrivelse || '',
+                punkter: c.privat_overblik_punkter || [],
+                tip: c.privat_overblik_tip || ''
+              },
+              dybde: c.privat_dybde || []
+            },
+            professionel: {
+              overblik: {
+                beskrivelse: c.professionel_overblik_beskrivelse || '',
+                punkter: c.professionel_overblik_punkter || [],
+                tip: c.professionel_overblik_tip || ''
+              },
+              dybde: c.professionel_dybde || []
+            }
+          };
+        });
+      }
+
+      if (dbTemaer && dbTemaer.length > 0) {
+        TEMA_INDHOLD = dbTemaer.map(function(t) {
+          return {
+            id: t.id,
+            titel: t.titel,
+            ikon: t.ikon,
+            privat: {
+              intro: t.privat_intro || '',
+              tekst: t.privat_tekst || '',
+              cirkler: t.privat_cirkler || []
+            },
+            professionel: {
+              intro: t.professionel_intro || '',
+              tekst: t.professionel_tekst || '',
+              cirkler: t.professionel_cirkler || []
+            }
+          };
+        });
+      }
+
+      if (dbOevelser && dbOevelser.length > 0) {
+        OEVELSER = dbOevelser.map(function(o) {
+          return {
+            id: o.id,
+            titel: o.titel,
+            tid: o.tid,
+            sted: o.sted,
+            intro: o.intro,
+            trin: o.trin || [],
+            cirkel: o.cirkel
+          };
+        });
+      }
+
+      if (dbTrappen && dbTrappen.length > 0) {
+        TRAPPEN = dbTrappen.map(function(t) {
+          return {
+            trin: t.trin,
+            navn: t.navn,
+            farve: t.farve,
+            privat: {
+              beskrivelse: t.privat_beskrivelse || '',
+              kropsSignaler: t.privat_krops_signaler || [],
+              handlinger: t.privat_handlinger || [],
+              oevelser: t.privat_oevelser || []
+            },
+            professionel: {
+              beskrivelse: t.professionel_beskrivelse || '',
+              kropsSignaler: t.professionel_krops_signaler || [],
+              handlinger: t.professionel_handlinger || [],
+              oevelser: t.professionel_oevelser || []
+            }
+          };
+        });
+      }
+
+      if (dbSammenhaenge && dbSammenhaenge.length > 0) {
+        SAMMENHAENGE = dbSammenhaenge.map(function(s) {
+          return { fra: s.fra, til: s.til, privat: s.privat, professionel: s.professionel };
+        });
+      }
+
+      if (dbCheckins && dbCheckins.length > 0) {
+        MORGEN_CHECKIN = dbCheckins.map(function(m) {
+          return { spoergsmaal: m.spoergsmaal, svar: m.svar || [] };
+        });
+      }
+
+      init();
+    }).catch(function() {
+      // Fejl ved hentning — brug lokale data
+      init();
+    });
+  }
+
   // ---------- Start ----------
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', startApp);
   } else {
-    init();
+    startApp();
   }
 })();
