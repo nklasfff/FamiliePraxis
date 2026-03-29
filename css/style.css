@@ -4602,3 +4602,137 @@ body {
   cursor: pointer;
   opacity: 0.7;
 }
+
+/* ---- Profil kontekst ---- */
+.vurd-profil-section {
+  margin-bottom: 32px;
+}
+.vurd-profil-niveau {
+  border-left: 4px solid;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.vurd-profil-niveau-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.vurd-profil-niveau-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.vurd-profil-avg {
+  margin-left: auto;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #9E9589;
+}
+.vurd-profil-niveau p {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #6B6560;
+  line-height: 1.6;
+  margin: 0;
+}
+.vurd-profil-kontekst {
+  background: rgba(44,95,92,0.04);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.vurd-profil-kontekst h4 {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.vurd-profil-sh-tekst {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #6B6560;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  font-style: italic;
+}
+.vurd-profil-implikation {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #5C5347;
+  line-height: 1.5;
+  margin: 0;
+}
+.vurd-profil-styrker {
+  margin-bottom: 20px;
+}
+.vurd-profil-styrker h4 {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+.vurd-profil-styrker p {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #6B6560;
+  margin: 0 0 10px;
+}
+.vurd-profil-styrke-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.vurd-profil-styrke-tag {
+  border: 1.5px solid;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ---- Mønster-analyse ---- */
+.vurd-moenster-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-left: 4px solid;
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #5C5347;
+  line-height: 1.5;
+}
+.vurd-moenster-icon {
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.vurd-moenster-pos .vurd-moenster-icon { color: #4A8B6F; }
+.vurd-moenster-neg .vurd-moenster-icon { color: #B85C5C; }
+.vurd-moenster-stabil { border-left-color: #9E9589; }
+.vurd-moenster-stabil .vurd-moenster-icon { color: #9E9589; }
+.vurd-moenster-tip {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #9E9589;
+  font-style: italic;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* Menu vurdering link */
+.menu-link-vurdering {
+  color: var(--sage) !important;
+  font-weight: 600;
+}

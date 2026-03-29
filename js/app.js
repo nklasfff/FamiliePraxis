@@ -2256,6 +2256,7 @@
       '<div class="menu-link" data-nav="oevelser">' + t('oevelser') + '</div>' +
       '<div class="menu-link" data-nav="muligt">' + t('muligt') + '</div>' +
       '<div class="menu-link" data-nav="kommune">' + IKONER.handshake(15) + ' ' + t('kommune') + '</div>' +
+      '<div class="menu-link menu-link-vurdering" id="menuVurdering">' + IKONER.sparkles(15) + ' ' + (aktivSprog === 'en' ? 'My assessment' : 'Min vurdering') + '</div>' +
       '<div class="menu-link menu-link-favoritter" id="menuFavoritter">' + IKONER.bookmark(15) + ' ' + t('favoritter') + ' <span class="menu-favorit-badge" id="favoritBadge" style="' + (favCount > 0 ? '' : 'display:none') + '">' + favCount + '</span></div>' +
       '</div>';
 
@@ -2342,6 +2343,19 @@
     if (favLink) {
       favLink.addEventListener('click', function () {
         showFavoritter();
+        closeMenu();
+      });
+    }
+
+    var vurdLink = document.getElementById('menuVurdering');
+    if (vurdLink) {
+      vurdLink.addEventListener('click', function () {
+        var historik = JSON.parse(localStorage.getItem('fp_vurdering_historik') || '[]');
+        if (historik.length > 0) {
+          showVurderingHistorik();
+        } else {
+          showVurdering();
+        }
         closeMenu();
       });
     }
@@ -4023,6 +4037,9 @@
       html += '</div>';
     }
 
+    // Kontekstuel profilbeskrivelse
+    html += renderProfilKontekst(resultater, scores, isEn, persp, data);
+
     // Action buttons
     html += '<div class="vurd-resultat-actions">';
     html += '<button class="vurd-next-btn" id="vurdNyVurdering">' + (isEn ? 'Take assessment again' : 'Tag vurderingen igen') + '</button>';
@@ -4046,6 +4063,98 @@
         showView('oevelser');
       });
     });
+  }
+
+  // ---------- Vurdering: Profil Kontekst ----------
+  function renderProfilKontekst(resultater, scores, isEn, persp, data) {
+    if (resultater.length === 0) return '';
+    var html = '';
+
+    // Beregn samlet gennemsnit
+    var totalAvg = 0;
+    for (var i = 0; i < resultater.length; i++) totalAvg += resultater[i].gennemsnit;
+    totalAvg = totalAvg / resultater.length;
+
+    // Profil-niveau
+    var niveau, niveauFarve, niveauBeskrivelse;
+    if (totalAvg >= 7.5) {
+      niveau = isEn ? 'Strong foundation' : 'Stærkt fundament';
+      niveauFarve = '#4A8B6F';
+      niveauBeskrivelse = isEn
+        ? 'Your family system shows significant strengths across most areas. The connections between you are largely intact, and there is capacity for growth. Focus on maintaining what works and gently addressing the areas where you see room for improvement.'
+        : 'Jeres familiesystem viser styrke på tværs af de fleste områder. Forbindelserne mellem jer er i høj grad intakte, og der er kapacitet til vækst. Fokusér på at fastholde det, der virker, og forsigtig adressere de områder, hvor I ser plads til forbedring.';
+    } else if (totalAvg >= 5) {
+      niveau = isEn ? 'Mixed picture' : 'Blandet billede';
+      niveauFarve = '#B8956A';
+      niveauBeskrivelse = isEn
+        ? 'Your family is navigating a mixed landscape — some areas are functioning well, while others are under pressure. This is very common, especially in families dealing with stress, transition, or unresolved history. The good news is that strengthening one area often creates positive ripple effects throughout the entire system.'
+        : 'Jeres familie navigerer i et blandet landskab — nogle områder fungerer godt, mens andre er under pres. Det er meget almindeligt, især i familier der håndterer stress, forandringer eller uforløst historie. Det gode er, at styrkelse af ét område ofte skaber positive bølgevirkninger i hele systemet.';
+    } else {
+      niveau = isEn ? 'System under pressure' : 'System under pres';
+      niveauFarve = '#9E6B7B';
+      niveauBeskrivelse = isEn
+        ? 'Your family system is currently under significant pressure across multiple areas. This doesn\'t mean things can\'t change — it means the system is telling you that it needs attention. Small, consistent steps in the right area can start to shift the entire dynamic. Professional support can make a real difference here.'
+        : 'Jeres familiesystem er lige nu under betydeligt pres på tværs af flere områder. Det betyder ikke, at tingene ikke kan ændre sig — det betyder, at systemet fortæller jer, at det har brug for opmærksomhed. Små, konsekvente skridt i det rigtige område kan begynde at flytte hele dynamikken. Professionel støtte kan gøre en reel forskel her.';
+    }
+
+    html += '<div class="vurd-profil-section">';
+    html += '<h3 class="vurd-resultat-section-title">' + (isEn ? 'What your profile means' : 'Hvad din profil betyder') + '</h3>';
+    html += '<div class="vurd-profil-niveau" style="border-color:' + niveauFarve + '">';
+    html += '<div class="vurd-profil-niveau-header">';
+    html += '<span class="vurd-profil-niveau-dot" style="background:' + niveauFarve + '"></span>';
+    html += '<strong>' + niveau + '</strong>';
+    html += '<span class="vurd-profil-avg">' + totalAvg.toFixed(1) + '/10</span>';
+    html += '</div>';
+    html += '<p>' + niveauBeskrivelse + '</p>';
+    html += '</div>';
+
+    // Specifik kontekst for de 2 lavest scorende
+    if (resultater.length >= 2) {
+      var lav1 = resultater[0];
+      var lav2 = resultater[1];
+      html += '<div class="vurd-profil-kontekst">';
+      html += '<h4>' + (isEn ? 'The connection between your main challenges' : 'Forbindelsen mellem jeres hovedudfordringer') + '</h4>';
+
+      // Find sammenhæng mellem de to laveste
+      var sammenhaenge = typeof SAMMENHAENGE !== 'undefined' ? SAMMENHAENGE : [];
+      var found = null;
+      for (var s = 0; s < sammenhaenge.length; s++) {
+        var sh = sammenhaenge[s];
+        if ((sh.fra === lav1.id && sh.til === lav2.id) || (sh.fra === lav2.id && sh.til === lav1.id)) {
+          found = sh;
+          break;
+        }
+      }
+
+      if (found) {
+        html += '<p class="vurd-profil-sh-tekst">' + (found[persp] || found.privat) + '</p>';
+      }
+
+      html += '<p class="vurd-profil-implikation">' + (isEn
+        ? 'Because <strong>' + lav1.titel + '</strong> and <strong>' + lav2.titel + '</strong> are your two most challenged areas, working on either one will likely create positive movement in the other. This is the systemic principle: nothing stands alone in a family.'
+        : 'Fordi <strong>' + lav1.titel + '</strong> og <strong>' + lav2.titel + '</strong> er jeres to mest udfordrede områder, vil arbejde med det ene sandsynligvis skabe positiv bevægelse i det andet. Det er det systemiske princip: intet står alene i en familie.'
+      ) + '</p>';
+      html += '</div>';
+    }
+
+    // Styrker
+    var styrker = resultater.filter(function(r) { return r.gennemsnit >= 7; });
+    if (styrker.length > 0) {
+      html += '<div class="vurd-profil-styrker">';
+      html += '<h4>' + (isEn ? 'Your strengths' : 'Jeres styrker') + '</h4>';
+      html += '<p>' + (isEn ? 'These areas are resources you can build on:' : 'Disse områder er ressourcer I kan bygge videre på:') + '</p>';
+      html += '<div class="vurd-profil-styrke-list">';
+      for (var st = styrker.length - 1; st >= 0; st--) {
+        var sty = styrker[st];
+        var styFarve = data[sty.id] ? data[sty.id].farve : '#2C5F5C';
+        html += '<span class="vurd-profil-styrke-tag" style="border-color:' + styFarve + ';color:' + styFarve + '">' + sty.titel + ' (' + sty.gennemsnit + ')</span>';
+      }
+      html += '</div>';
+      html += '</div>';
+    }
+
+    html += '</div>';
+    return html;
   }
 
   // ---------- Vurdering: Historik / Tidslinje ----------
@@ -4103,6 +4212,62 @@
         html += '<span class="vurd-historik-diff ' + diffClass + '">' + diffSymbol + '</span>';
         html += '</div>';
       }
+      html += '</div>';
+    }
+
+    // Mønster-analyse over tid (ved 3+ vurderinger)
+    if (historik.length >= 3) {
+      html += '<div class="vurd-historik-section">';
+      html += '<h3 class="vurd-resultat-section-title">' + (isEn ? 'Patterns over time' : 'Mønstre over tid') + '</h3>';
+
+      // Find største forbedring og største fald over alle vurderinger
+      var foerste = historik[0];
+      var sidst = historik[historik.length - 1];
+      var stoerstForbedring = { id: null, diff: 0 };
+      var stoerstFald = { id: null, diff: 0 };
+      var stabilt = [];
+
+      for (var pi = 0; pi < raekkefoelge.length; pi++) {
+        var pcId = raekkefoelge[pi];
+        var foersteScore = foerste.scores[pcId] ? foerste.scores[pcId].generel : null;
+        var sidstScore = sidst.scores[pcId] ? sidst.scores[pcId].generel : null;
+        if (foersteScore === null || sidstScore === null) continue;
+        var pDiff = sidstScore - foersteScore;
+        if (pDiff > stoerstForbedring.diff) stoerstForbedring = { id: pcId, diff: pDiff, fra: foersteScore, til: sidstScore };
+        if (pDiff < stoerstFald.diff) stoerstFald = { id: pcId, diff: pDiff, fra: foersteScore, til: sidstScore };
+        if (Math.abs(pDiff) <= 1) stabilt.push(pcId);
+      }
+
+      if (stoerstForbedring.id) {
+        var fbTitel = data[stoerstForbedring.id] ? data[stoerstForbedring.id].titel : '';
+        var fbFarve = data[stoerstForbedring.id] ? data[stoerstForbedring.id].farve : '#4A8B6F';
+        html += '<div class="vurd-moenster-card vurd-moenster-pos" style="border-left-color:' + fbFarve + '">';
+        html += '<div class="vurd-moenster-icon">↑</div>';
+        html += '<div><strong>' + fbTitel + '</strong> ' + (isEn ? 'has improved the most' : 'er forbedret mest') + ': ' + stoerstForbedring.fra + ' → ' + stoerstForbedring.til + ' (+' + stoerstForbedring.diff + ')</div>';
+        html += '</div>';
+      }
+
+      if (stoerstFald.id) {
+        var fdTitel = data[stoerstFald.id] ? data[stoerstFald.id].titel : '';
+        var fdFarve = data[stoerstFald.id] ? data[stoerstFald.id].farve : '#B85C5C';
+        html += '<div class="vurd-moenster-card vurd-moenster-neg" style="border-left-color:' + fdFarve + '">';
+        html += '<div class="vurd-moenster-icon">↓</div>';
+        html += '<div><strong>' + fdTitel + '</strong> ' + (isEn ? 'needs more attention' : 'har brug for mere opmærksomhed') + ': ' + stoerstFald.fra + ' → ' + stoerstFald.til + ' (' + stoerstFald.diff + ')</div>';
+        html += '</div>';
+      }
+
+      if (stabilt.length > 0) {
+        var stabilNavne = stabilt.map(function(s) { return data[s] ? data[s].titel : s; }).join(', ');
+        html += '<div class="vurd-moenster-card vurd-moenster-stabil">';
+        html += '<div class="vurd-moenster-icon">→</div>';
+        html += '<div><strong>' + (isEn ? 'Stable:' : 'Stabilt:') + '</strong> ' + stabilNavne + '</div>';
+        html += '</div>';
+      }
+
+      html += '<p class="vurd-moenster-tip">' + (isEn
+        ? 'Continue tracking regularly to see clearer patterns. Each assessment gives you a snapshot — together they reveal your family\'s journey.'
+        : 'Fortsæt med at registrere regelmæssigt for at se klarere mønstre. Hver vurdering giver et øjebliksbillede — sammen afslører de jeres families rejse.'
+      ) + '</p>';
       html += '</div>';
     }
 
