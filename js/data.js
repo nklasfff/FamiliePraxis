@@ -1612,3 +1612,300 @@ var MORGEN_HILSNER_EN = {
   sommer: 'The light is long. Use it to see clearly.',
   efteraar: 'The leaves are falling. Perhaps there is something you can let go of, too.'
 };
+
+// ============================================================
+// VURDERING — Selvvurdering / Assessment
+// 7 cirkler × 1 generelt spørgsmål + 6 uddybende vinkler
+// ============================================================
+var VURDERING_DATA = {
+  centrum: {
+    titel: 'Familien som helhed',
+    ikon: 'leaf',
+    farve: '#2C5F5C',
+    generelt: {
+      privat: 'Hvordan oplever du jeres familie som helhed lige nu?',
+      professionel: 'Hvordan vurderer du familiens samlede funktionsniveau?'
+    },
+    vinkler: [
+      {
+        id: 'sammenhold',
+        privat: { label: 'Sammenhold', spg: 'Føler du, at I holder sammen som familie — også når det er svært?' },
+        professionel: { label: 'Kohæsion', spg: 'Hvor stærk er familiens indbyrdes kohæsion under pres?' }
+      },
+      {
+        id: 'kommunikation',
+        privat: { label: 'Åbenhed', spg: 'Kan I tale åbent om det, der fylder — uden at det bliver til konflikt?' },
+        professionel: { label: 'Kommunikation', spg: 'Hvor funktionel er familiens kommunikation om svære emner?' }
+      },
+      {
+        id: 'roller',
+        privat: { label: 'Roller', spg: 'Har alle i familien en rolle, der passer til deres alder og behov?' },
+        professionel: { label: 'Rollekonfiguration', spg: 'Er familiens rollefordeling aldersadekvat og fleksibel?' }
+      },
+      {
+        id: 'ydre_pres',
+        privat: { label: 'Ydre pres', spg: 'Hvor meget påvirker ydre ting jeres familieliv — økonomi, bolig, myndigheder?' },
+        professionel: { label: 'Ydre belastning', spg: 'Hvor belastet er familien af ydre faktorer (økonomi, system, bolig)?' }
+      },
+      {
+        id: 'forandring',
+        privat: { label: 'Forandring', spg: 'Oplever du, at jeres familie kan tilpasse sig, når livet ændrer sig?' },
+        professionel: { label: 'Fleksibilitet', spg: 'Hvor fleksibelt er familiesystemet i forhold til forandring?' }
+      },
+      {
+        id: 'haab',
+        privat: { label: 'Håb', spg: 'Tror du på, at jeres familie kan finde en bedre balance?' },
+        professionel: { label: 'Motivation', spg: 'Hvor motiveret er familien for forandring og behandling?' }
+      }
+    ]
+  },
+  relationer: {
+    titel: 'Tilknytning & tryghed',
+    ikon: 'heart',
+    farve: '#3A7A76',
+    generelt: {
+      privat: 'Hvordan oplever du tryghed og tilknytning i dine nære relationer?',
+      professionel: 'Hvordan vurderer du tilknytningsmønstrene i familien?'
+    },
+    vinkler: [
+      {
+        id: 'tryghed',
+        privat: { label: 'Tryghed', spg: 'Føler du dig tryg i dine vigtigste relationer?' },
+        professionel: { label: 'Tilknytningstryghed', spg: 'Hvor tryg er den primære tilknytning i familien?' }
+      },
+      {
+        id: 'hjaelp',
+        privat: { label: 'Hjælp', spg: 'Kan du bede om hjælp, når du har brug for det?' },
+        professionel: { label: 'Hjælpsøgning', spg: 'Er familien i stand til at søge og modtage hjælp?' }
+      },
+      {
+        id: 'saarbarhed',
+        privat: { label: 'Sårbarhed', spg: 'Oplever du, at du bliver mødt, når du viser dig sårbar?' },
+        professionel: { label: 'Emotionel responsivitet', spg: 'Hvor emotionelt responsive er familiemedlemmerne over for hinanden?' }
+      },
+      {
+        id: 'tillid',
+        privat: { label: 'Tillid', spg: 'Har du tillid til, at dine relationer kan bære konflikter?' },
+        professionel: { label: 'Konflikttolerance', spg: 'Kan tilknytningsrelationerne bære konflikt uden sammenbrud?' }
+      },
+      {
+        id: 'tryghed_barn',
+        privat: { label: 'Tryghed for barn', spg: 'Kan du give tryghed til dine børn, når de er urolige?' },
+        professionel: { label: 'Forældrekapacitet', spg: 'Kan forældrene tilbyde en sikker base for barnet?' }
+      },
+      {
+        id: 'arv',
+        privat: { label: 'Arv fra opvækst', spg: 'Føler du, at din egen opvækst påvirker dine relationer i dag?' },
+        professionel: { label: 'Intergenerationel transmission', spg: 'I hvor høj grad påvirker forældrenes egne tilknytningserfaringer familiedynamikken?' }
+      }
+    ]
+  },
+  parterapi: {
+    titel: 'Parforholdet & nærvær',
+    ikon: 'heartDouble',
+    farve: '#8B6F5C',
+    generelt: {
+      privat: 'Hvordan oplever du parforholdet lige nu?',
+      professionel: 'Hvordan vurderer du forældrealliancen?'
+    },
+    vinkler: [
+      {
+        id: 'naerhed',
+        privat: { label: 'Nærvær', spg: 'Kan I finde nærvær og intimitet i hverdagen?' },
+        professionel: { label: 'Emotionel nærhed', spg: 'Er der emotionel nærhed mellem forældrene?' }
+      },
+      {
+        id: 'konflikt',
+        privat: { label: 'Konflikter', spg: 'Kan I håndtere uenigheder uden at det eskalerer?' },
+        professionel: { label: 'Konfliktmønster', spg: 'Hvor konstruktiv er parrets konflikthåndtering?' }
+      },
+      {
+        id: 'lytning',
+        privat: { label: 'Lytning', spg: 'Føler du dig hørt og forstået af din partner?' },
+        professionel: { label: 'Mentalisering', spg: 'Kan forældrene mentalisere hinandens perspektiv?' }
+      },
+      {
+        id: 'samarbejde',
+        privat: { label: 'Samarbejde', spg: 'Arbejder I sammen som et team om børnene og hverdagen?' },
+        professionel: { label: 'Co-parenting', spg: 'Hvor funktionelt er det fælles forældresamarbejde?' }
+      },
+      {
+        id: 'reparation',
+        privat: { label: 'Reparation', spg: 'Kan I finde tilbage til hinanden efter en konflikt?' },
+        professionel: { label: 'Reparationskapacitet', spg: 'Er parret i stand til at reparere efter brud?' }
+      },
+      {
+        id: 'pres',
+        privat: { label: 'Pres', spg: 'Hvor meget påvirker ydre pres jeres relation til hinanden?' },
+        professionel: { label: 'Systemisk pres', spg: 'Hvor belastet er parrelationen af ydre systemisk pres?' }
+      }
+    ]
+  },
+  familie: {
+    titel: 'Samspil & mønstre',
+    ikon: 'homeHeart',
+    farve: '#6B7B5C',
+    generelt: {
+      privat: 'Hvordan oplever du jeres families samspil og mønstre?',
+      professionel: 'Hvordan vurderer du familiens interaktionsmønstre?'
+    },
+    vinkler: [
+      {
+        id: 'gentagelser',
+        privat: { label: 'Gentagelser', spg: 'Oplever du, at de samme konflikter gentager sig igen og igen?' },
+        professionel: { label: 'Cirkulære mønstre', spg: 'Hvor fastlåste er familiens cirkulære interaktionsmønstre?' }
+      },
+      {
+        id: 'fleksibilitet',
+        privat: { label: 'Fleksibilitet', spg: 'Kan jeres familie tilpasse sig nye situationer?' },
+        professionel: { label: 'Systemisk fleksibilitet', spg: 'Hvor fleksibelt er familiesystemets interaktionsmønstre?' }
+      },
+      {
+        id: 'usagt',
+        privat: { label: 'Det usagte', spg: 'Er der ting i familien, som alle ved men ingen taler om?' },
+        professionel: { label: 'Familiehemligheder', spg: 'Er der betydningsfulde usagte temaer i familiesystemet?' }
+      },
+      {
+        id: 'generationer',
+        privat: { label: 'Arv', spg: 'Genkender du mønstre fra din egen opvækstfamilie i jeres familie?' },
+        professionel: { label: 'Generationelle mønstre', spg: 'I hvor høj grad gentager generationelle mønstre sig?' }
+      },
+      {
+        id: 'stemning',
+        privat: { label: 'Stemning', spg: 'Hvordan er den generelle stemning derhjemme?' },
+        professionel: { label: 'Emotionelt klima', spg: 'Hvordan er det emotionelle klima i familien?' }
+      },
+      {
+        id: 'plads',
+        privat: { label: 'Plads til alle', spg: 'Har alle i familien plads til at være sig selv?' },
+        professionel: { label: 'Individuation', spg: 'Er der plads til individuation inden for familiesystemet?' }
+      }
+    ]
+  },
+  individuel: {
+    titel: 'Dig selv & dine spor',
+    ikon: 'butterfly',
+    farve: '#9E6B7B',
+    generelt: {
+      privat: 'Hvordan har du det med dig selv lige nu?',
+      professionel: 'Hvordan vurderer du klientens individuelle funktionsniveau?'
+    },
+    vinkler: [
+      {
+        id: 'selvindsigt',
+        privat: { label: 'Selvindsigt', spg: 'Forstår du dine egne reaktioner — hvorfor du gør som du gør?' },
+        professionel: { label: 'Refleksiv funktion', spg: 'Hvor høj er klientens refleksive funktionsevne?' }
+      },
+      {
+        id: 'traumer',
+        privat: { label: 'Gamle sår', spg: 'Hvor meget påvirker gamle oplevelser dit liv i dag?' },
+        professionel: { label: 'Traumebelastning', spg: 'Hvor belastet er klienten af uforarbejdede traumatiske oplevelser?' }
+      },
+      {
+        id: 'energi',
+        privat: { label: 'Energi', spg: 'Har du energi til at være den forælder og partner, du gerne vil være?' },
+        professionel: { label: 'Ressourcer', spg: 'Har klienten tilstrækkelige psykiske ressourcer til forældreopgaven?' }
+      },
+      {
+        id: 'selvomsorg',
+        privat: { label: 'Selvomsorg', spg: 'Gør du noget for dig selv — bare for din egen skyld?' },
+        professionel: { label: 'Selvomsorg', spg: 'Er klienten i stand til at praktisere selvomsorg?' }
+      },
+      {
+        id: 'identitet',
+        privat: { label: 'Identitet', spg: 'Føler du, at du er mere end dine problemer og din historie?' },
+        professionel: { label: 'Narrativ identitet', spg: 'Er klientens selvnarrativ domineret af problemhistorien?' }
+      },
+      {
+        id: 'stabilitet',
+        privat: { label: 'Stabilitet', spg: 'Føler du dig stabil nok til at håndtere hverdagen?' },
+        professionel: { label: 'Psykisk stabilitet', spg: 'Hvor psykisk stabil er klienten i dagligdagen?' }
+      }
+    ]
+  },
+  aandedraet: {
+    titel: 'Åndedræt & nervesystem',
+    ikon: 'wind',
+    farve: '#B8956A',
+    generelt: {
+      privat: 'Hvordan oplever du dit nervesystem og din krop lige nu?',
+      professionel: 'Hvordan vurderer du klientens reguleringskapacitet?'
+    },
+    vinkler: [
+      {
+        id: 'ro',
+        privat: { label: 'Indre ro', spg: 'Kan du finde ro i din krop, når du har brug for det?' },
+        professionel: { label: 'Selvregulering', spg: 'Er klienten i stand til at selvregulere sit nervesystem?' }
+      },
+      {
+        id: 'alarm',
+        privat: { label: 'Alarm', spg: 'Hvor ofte føler du dig i alarmberedskab — anspændt, på vagt, urolig?' },
+        professionel: { label: 'Sympatisk aktivering', spg: 'Hvor kronisk er klientens sympatiske aktivering?' }
+      },
+      {
+        id: 'nedlukning',
+        privat: { label: 'Udmattelse', spg: 'Oplever du perioder med følelsesløshed, tomhed eller total udmattelse?' },
+        professionel: { label: 'Dorsal vagal', spg: 'Er der tegn på dorsal vagal kollaps hos klienten?' }
+      },
+      {
+        id: 'krop',
+        privat: { label: 'Kropsbevidsthed', spg: 'Kan du mærke hvad din krop fortæller dig?' },
+        professionel: { label: 'Interoception', spg: 'Hvor udviklet er klientens interoceptive bevidsthed?' }
+      },
+      {
+        id: 'aandedraet',
+        privat: { label: 'Åndedræt', spg: 'Trækker du vejret frit og dybt — eller holder du ofte vejret?' },
+        professionel: { label: 'Åndedrætsrestriktion', spg: 'Er der synlige åndedrætsrestriktioner?' }
+      },
+      {
+        id: 'coregulering',
+        privat: { label: 'Smitte', spg: 'Kan du mærke, at din uro smitter af på dem omkring dig?' },
+        professionel: { label: 'Co-regulering', spg: 'Er forælderen i stand til at co-regulere barnet?' }
+      }
+    ]
+  },
+  boern: {
+    titel: 'Barnets stemme',
+    ikon: 'sprout',
+    farve: '#5C8B6F',
+    generelt: {
+      privat: 'Hvordan oplever du, at dit barn/dine børn har det?',
+      professionel: 'Hvordan vurderer du barnets trivsel og position i familiesystemet?'
+    },
+    vinkler: [
+      {
+        id: 'trivsel',
+        privat: { label: 'Trivsel', spg: 'Virker dit barn generelt glad og i trivsel?' },
+        professionel: { label: 'Generel trivsel', spg: 'Hvordan vurderer du barnets generelle trivsel?' }
+      },
+      {
+        id: 'stemme',
+        privat: { label: 'Stemme', spg: 'Har dit barn plads til at udtrykke sine følelser derhjemme?' },
+        professionel: { label: 'Barnets stemme', spg: 'Har barnet en autentisk stemme i familiesystemet?' }
+      },
+      {
+        id: 'adfaerd',
+        privat: { label: 'Adfærd', spg: 'Er der adfærd hos dit barn, som bekymrer dig?' },
+        professionel: { label: 'Symptombæring', spg: 'I hvor høj grad bærer barnet symptomer for familiesystemet?' }
+      },
+      {
+        id: 'byrde',
+        privat: { label: 'Byrde', spg: 'Bærer dit barn på ansvar, der egentlig er for tungt for dem?' },
+        professionel: { label: 'Parentificering', spg: 'Er der tegn på parentificering af barnet?' }
+      },
+      {
+        id: 'kontakt',
+        privat: { label: 'Kontakt', spg: 'Kan du og dit barn finde forbindelse — også i de svære øjeblikke?' },
+        professionel: { label: 'Forælder-barn-relation', spg: 'Hvor tryg er forælder-barn-relationen?' }
+      },
+      {
+        id: 'udvikling',
+        privat: { label: 'Udvikling', spg: 'Har dit barn mulighed for at være barn — lege, udforske, bare være?' },
+        professionel: { label: 'Udviklingsrum', spg: 'Har barnet tilstrækkeligt udviklingsrum for aldersadekvat udfoldelse?' }
+      }
+    ]
+  }
+};
+
+// Rækkefølge for vurderingstrin (ekskl. centrum — det er samlet resultat)
+var VURDERING_RAEKKEFOELGE = ['relationer', 'parterapi', 'familie', 'boern', 'aandedraet', 'individuel'];
