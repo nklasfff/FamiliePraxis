@@ -3971,3 +3971,634 @@ body {
     padding-top: 32px;
   }
 }
+
+/* ============================================================
+   VURDERING / ASSESSMENT
+   ============================================================ */
+
+/* Dynamik CTA section */
+.dynamik-cta-section {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(44,95,92,0.04), rgba(58,122,118,0.08));
+  border-radius: 16px;
+  border: 1px solid rgba(44,95,92,0.12);
+}
+.dynamik-cta-icon {
+  margin-bottom: 16px;
+}
+.dynamik-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sage);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.dynamik-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44,95,92,0.25);
+}
+.dynamik-cta-btn-icon { display: flex; }
+.dynamik-historik-link {
+  display: block;
+  margin: 16px auto 0;
+  background: none;
+  border: none;
+  color: var(--sage);
+  font-family: Georgia, serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Progress bar */
+.vurd-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.vurd-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #e8e2da;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.vurd-progress-fill {
+  height: 100%;
+  background: var(--sage);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.vurd-progress-text {
+  font-size: 13px;
+  color: #9E9589;
+  font-family: Georgia, serif;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* Header med cirkel-ikon */
+.vurd-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.vurd-cirkel-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.vurd-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Sections */
+.vurd-section {
+  margin-bottom: 24px;
+}
+.vurd-section-intro {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: #6B6560;
+  margin-bottom: 20px;
+}
+.vurd-question {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* Slider */
+.vurd-slider-wrap {
+  max-width: 340px;
+  margin: 0 auto 24px;
+}
+.vurd-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #9E9589;
+  margin-bottom: 4px;
+}
+.vurd-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #e8e2da;
+  outline: none;
+  cursor: pointer;
+}
+.vurd-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sage);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+.vurd-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sage);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+.vurd-slider-value {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--sage);
+  margin-top: 12px;
+}
+.vurd-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #b5aea6;
+  margin-top: 4px;
+}
+
+/* Vinkel cards */
+.vurd-vinkel-card {
+  background: #fff;
+  border: 1px solid #e8e2da;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.vurd-vinkel-label {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 4px;
+}
+.vurd-vinkel-spg {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #6B6560;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.vurd-slider-compact {
+  max-width: 100%;
+  margin-bottom: 0;
+}
+.vurd-vinkel-value {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sage);
+  margin-top: 6px;
+}
+
+/* Next button */
+.vurd-next-btn {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  margin: 28px auto 0;
+  padding: 16px;
+  background: var(--sage);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vurd-next-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(44,95,92,0.2);
+}
+.vurd-finish-btn {
+  background: linear-gradient(135deg, #2C5F5C, #3A7A76);
+}
+
+/* Opsummering bars */
+.vurd-ops-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.vurd-ops-chart { margin-bottom: 20px; }
+.vurd-ops-generel,
+.vurd-ops-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.vurd-ops-generel {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8e2da;
+  margin-bottom: 12px;
+}
+.vurd-ops-label {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #6B6560;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+.vurd-ops-bar-wrap {
+  flex: 1;
+  height: 10px;
+  background: #f0ece6;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.vurd-ops-bar {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+.vurd-ops-val {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 38px;
+  text-align: right;
+}
+.vurd-ops-avg {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: #6B6560;
+  margin-top: 12px;
+}
+
+/* ---- Resultat side ---- */
+.vurdering-content,
+.vurdering-resultat-content,
+.vurdering-historik-content {
+  padding: 16px 20px 120px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.vurd-resultat-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.vurd-resultat-icon { margin-bottom: 12px; }
+.vurd-resultat-title {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.vurd-resultat-dato {
+  font-size: 13px;
+  color: #9E9589;
+}
+
+/* Radar chart */
+.vurd-radar-wrap {
+  max-width: 380px;
+  margin: 0 auto 32px;
+}
+.vurd-radar-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Resultat bars */
+.vurd-resultat-section {
+  margin-bottom: 32px;
+}
+.vurd-resultat-section-title {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.vurd-resultat-section-intro {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #6B6560;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.vurd-resultat-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.vurd-resultat-bar-label {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #6B6560;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+.vurd-resultat-bar-track {
+  flex: 1;
+  height: 12px;
+  background: #f0ece6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.vurd-resultat-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.8s ease;
+}
+.vurd-resultat-bar-val {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 28px;
+  text-align: right;
+}
+
+/* Indsigt card */
+.vurd-resultat-indsigt {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.vurd-resultat-indsigt-title {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.vurd-resultat-indsigt p {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: #6B6560;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+/* Sammenhænge cards */
+.vurd-resultat-sh-card {
+  background: #fff;
+  border: 1px solid #e8e2da;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.vurd-resultat-sh-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.vurd-sh-tag {
+  background: rgba(44,95,92,0.08);
+  color: var(--sage);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+.vurd-resultat-sh-tekst {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #6B6560;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Anbefalinger */
+.vurd-resultat-anbefaling {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.vurd-anbefaling-nummer {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.vurd-anbefaling-content h4 {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+.vurd-anbefaling-score {
+  font-weight: 400;
+  color: #9E9589;
+  font-size: 13px;
+}
+.vurd-anbefaling-oevelser {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #6B6560;
+}
+.vurd-anbefaling-oevelser-label {
+  font-weight: 600;
+}
+.vurd-oevelse-link {
+  background: none;
+  border: none;
+  color: var(--sage);
+  font-family: Georgia, serif;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* Actions */
+.vurd-resultat-actions {
+  text-align: center;
+  margin-top: 32px;
+  padding-bottom: 24px;
+}
+.vurd-historik-btn {
+  display: block;
+  margin: 12px auto 0;
+  background: none;
+  border: 1px solid var(--sage);
+  color: var(--sage);
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  max-width: 340px;
+  width: 100%;
+}
+
+/* ---- Historik / Tidslinje ---- */
+.vurd-empty {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: #9E9589;
+  margin: 40px 0;
+}
+
+.vurd-historik-section {
+  margin-bottom: 32px;
+}
+.vurd-tidslinje-svg {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+.vurd-tidslinje-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: center;
+}
+.vurd-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  color: #6B6560;
+}
+.vurd-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Ændringer siden sidst */
+.vurd-historik-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0ece6;
+}
+.vurd-historik-cirkel {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  flex: 1;
+}
+.vurd-historik-scores {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #9E9589;
+}
+.vurd-historik-diff {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: right;
+}
+.vurd-diff-pos { color: #4A8B6F; }
+.vurd-diff-neg { color: #B85C5C; }
+.vurd-diff-neutral { color: #9E9589; }
+
+/* Historik entries */
+.vurd-historik-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e8e2da;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.vurd-historik-entry:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.vurd-historik-entry-dato {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 600;
+  min-width: 80px;
+}
+.vurd-historik-entry-avg {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #9E9589;
+  min-width: 65px;
+}
+.vurd-historik-entry-mini {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 30px;
+  flex: 1;
+}
+.vurd-mini-bar {
+  flex: 1;
+  border-radius: 2px;
+  min-width: 4px;
+  transition: height 0.3s;
+}
+
+/* Slet-knap */
+.vurd-slet-btn {
+  display: block;
+  margin: 12px auto 0;
+  background: none;
+  border: none;
+  color: #B85C5C;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.7;
+}
